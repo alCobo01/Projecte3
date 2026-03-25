@@ -8,11 +8,8 @@ public class BattleManager : MonoBehaviour
 
     private Stack _turnOrder;
     
-    private void Awake()
-    {
-        Instance = this;
-    }
-
+    private void Awake() => Instance = this;
+    
     public void StartBattle()
     {
         
