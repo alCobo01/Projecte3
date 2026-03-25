@@ -1,3 +1,4 @@
+using System;
 using static InputSystem_Actions;
 using UnityEngine;
 using UnityEngine.Events;
@@ -9,7 +10,20 @@ public class PlayerInputController : MonoBehaviour, IPlayerActions
     public event UnityAction OnAttackEvent, OnJumpEvent, OnInteractEvent, OnDashEvent;
     public event UnityAction<Vector2> OnMoveEvent;
     public event UnityAction<bool> OnFlyEvent;
+
+    // Init input system
+    private InputSystem_Actions _inputActions;
     
+    private void Awake()
+    {
+        _inputActions = new InputSystem_Actions();
+        _inputActions.Player.SetCallbacks(this);
+    }
+    
+    private void Start() => _inputActions.Enable();
+    private void OnEnable() => _inputActions.Enable();
+    private void OnDisable() => _inputActions.Disable();
+
     // Methods
     public void OnMove(InputAction.CallbackContext context) => OnMoveEvent?.Invoke(context.ReadValue<Vector2>());
     public void OnAttack(InputAction.CallbackContext context) => OnAttackEvent?.Invoke();
