@@ -54,7 +54,7 @@ public class Parallax : MonoBehaviour
     private void LateUpdate()
     {
         distance = cam.position.x - camStartPos.x;
-        transform.position = new Vector3(cam.position.x - 1, transform.position.y, 9.92f);
+        transform.position = new Vector3(cam.position.x , transform.position.y, 0f);
 
         for (int i = 0; i < backgrounds.Length; i++)
         {
@@ -63,3 +63,4 @@ public class Parallax : MonoBehaviour
         }
     }
 }
+
