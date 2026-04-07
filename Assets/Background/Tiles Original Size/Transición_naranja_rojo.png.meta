@@ -169,8 +169,8 @@ TextureImporter:
       name: "Transici\xF3n_naranja_rojo_3"
       rect:
         serializedVersion: 2
-        x: 0
-        y: 48
+        x: 48
+        y: 64
         width: 16
         height: 16
       alignment: 0
@@ -191,7 +191,7 @@ TextureImporter:
       name: "Transici\xF3n_naranja_rojo_4"
       rect:
         serializedVersion: 2
-        x: 16
+        x: 0
         y: 48
         width: 16
         height: 16
@@ -213,7 +213,7 @@ TextureImporter:
       name: "Transici\xF3n_naranja_rojo_5"
       rect:
         serializedVersion: 2
-        x: 32
+        x: 16
         y: 48
         width: 16
         height: 16
@@ -227,6 +227,72 @@ TextureImporter:
       bones: []
       spriteID: 52bdce287fbd9424cad4e55133822e38
       internalID: -38531143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Transici\xF3n_naranja_rojo_6"
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bcff1fedf933b34887a37152a267711
+      internalID: -367343497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Transici\xF3n_naranja_rojo_7"
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 771527f78cd6874479740522bd99f019
+      internalID: 1139432555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Transici\xF3n_naranja_rojo_8"
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3438853d3d361a44abc4054b5044040
+      internalID: -1762683599
       vertices: []
       indices: 
       edges: []
@@ -253,6 +319,9 @@ TextureImporter:
       "Transici\xF3n_naranja_rojo_3": 1542755736
       "Transici\xF3n_naranja_rojo_4": -1033046365
       "Transici\xF3n_naranja_rojo_5": -38531143
+      "Transici\xF3n_naranja_rojo_6": -367343497
+      "Transici\xF3n_naranja_rojo_7": 1139432555
+      "Transici\xF3n_naranja_rojo_8": -1762683599
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
