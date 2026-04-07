@@ -79,8 +79,7 @@ public class BattleUI : MonoBehaviour
         _battleManager.OnBattleEnded += HandleBattleEnded;
         _battleManager.OnBattleStateChanged += HandleBattleStateChanged;
 
-        if (rootPanel != null)
-            rootPanel.SetActive(true);
+        if (rootPanel != null) rootPanel.SetActive(true);
 
         SetMode(UiMode.Hidden);
         RefreshHud();
@@ -377,9 +376,6 @@ public class BattleUI : MonoBehaviour
 
     private void Unsubscribe()
     {
-        if (_battleManager == null)
-            return;
-
         _battleManager.OnTurnStarted -= HandleTurnStarted;
         _battleManager.OnDamageTaken -= HandleDamageTaken;
         _battleManager.OnBattleEnded -= HandleBattleEnded;

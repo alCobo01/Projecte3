@@ -14690,7 +14690,7 @@ Transform:
   m_GameObject: {fileID: 1198625039}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.286888, y: -2.47313, z: -10}
+  m_LocalPosition: {x: -4.8290677, y: -2.47451, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15550,7 +15550,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GroundCheck
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   rayLength: 2
 --- !u!114 &1813155976
 MonoBehaviour:

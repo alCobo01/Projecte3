@@ -7,12 +7,13 @@ using Random = UnityEngine.Random;
 
 public class BattleManager : MonoBehaviour
 {
+    public enum BattleInitiator { Player, Enemy }
     public static BattleManager Instance { get; private set; }
 
-    [SerializeField] private BattleUI _ui;
+    [SerializeField] private BattleUI ui;
 
-    private TurnStack _turnStack = new();
-    private List<BattleUnit> _allUnits = new();
+    private readonly TurnStack _turnStack = new();
+    private readonly List<BattleUnit> _allUnits = new();
     private BattleUnit _playerUnit;
     private Coroutine _battleLoopCoroutine;
     private bool _battleEnded;
@@ -24,6 +25,7 @@ public class BattleManager : MonoBehaviour
 
     public BattleUnit PlayerUnit => _playerUnit;
     public IReadOnlyList<BattleUnit> AllUnits => _allUnits;
+    public bool IsBattleRunning => _battleLoopCoroutine != null && !_battleEnded;
 
     private void Awake()
     {
@@ -36,7 +38,7 @@ public class BattleManager : MonoBehaviour
         Instance = this;
     }
 
-    public void StartBattle(CharacterData playerData, CharacterData[] enemies)
+    public void StartBattle(CharacterData playerData, CharacterData[] enemies, BattleInitiator initiator = BattleInitiator.Player)
     {
         if (_battleLoopCoroutine != null)
             StopCoroutine(_battleLoopCoroutine);
@@ -52,9 +54,9 @@ public class BattleManager : MonoBehaviour
         foreach (var e in enemies)
             _allUnits.Add(new BattleUnit(e, isPlayer: false, startingSp: 0));
 
-        _turnStack.Build(_allUnits);
-        if (_ui != null)
-            _ui.Initialize(this);
+        var firstTurnUnit = GetFirstTurnUnit(initiator);
+        _turnStack.Build(_allUnits, firstTurnUnit);
+        ui.Initialize(this);
 
         OnBattleStateChanged?.Invoke();
         _battleLoopCoroutine = StartCoroutine(BattleLoop());
@@ -86,8 +88,7 @@ public class BattleManager : MonoBehaviour
                 yield break;
             }
 
-            if (current.IsDead)
-                continue;
+            if (current.IsDead) continue;
 
             if (current.SkipNextAction)
             {
@@ -116,7 +117,7 @@ public class BattleManager : MonoBehaviour
         var done = false;
         var enemies = _allUnits.Where(u => !u.IsPlayer && !u.IsDead).ToList();
 
-        _ui.ShowActionMenu(
+        ui.ShowActionMenu(
             player,
             enemies,
             onAttack: (target) =>
@@ -254,5 +255,14 @@ public class BattleManager : MonoBehaviour
         OnBattleStateChanged?.Invoke();
         OnBattleEnded?.Invoke(playerWon);
         _battleLoopCoroutine = null;
+    }
+
+    private BattleUnit GetFirstTurnUnit(BattleInitiator initiator)
+    {
+        return initiator switch
+        {
+            BattleInitiator.Enemy => _allUnits.FirstOrDefault(u => !u.IsPlayer && !u.IsDead),
+            BattleInitiator.Player => _playerUnit
+        };
     }
 }
