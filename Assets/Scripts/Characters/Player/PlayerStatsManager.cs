@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStats : MonoBehaviour
+public class PlayerStatsManager : MonoBehaviour
 {
-    public static PlayerStats Instance { get; private set; }
+    public static PlayerStatsManager Instance { get; private set; }
 
     public int currentHp;
     public int currentSp;

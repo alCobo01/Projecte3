@@ -38,17 +38,17 @@ public static class ActionResolver
         {
             case ItemType.Healing:
                 user.Heal(item.value);
-                if (user.IsPlayer) PlayerStats.Instance.currentHp = user.CurrentHp;
+                if (user.IsPlayer) PlayerStatsManager.Instance.currentHp = user.CurrentHp;
                 break;
             case ItemType.Energy:
                 user.GainSp(item.value);
-                if (user.IsPlayer) PlayerStats.Instance.currentSp = user.CurrentSp;
+                if (user.IsPlayer) PlayerStatsManager.Instance.currentSp = user.CurrentSp;
                 break;
             case ItemType.Buff:
                 user.ApplyStatBoost(item.boostedStat, item.value, item.boostDuration);
                 break;
         }
 
-        if (user.IsPlayer) PlayerStats.Instance.ConsumeItem(item);
+        if (user.IsPlayer) PlayerStatsManager.Instance.ConsumeItem(item);
     }
 }

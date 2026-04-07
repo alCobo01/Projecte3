@@ -102,7 +102,7 @@ public class BattleUI : MonoBehaviour
 
         attackButton.interactable = _currentEnemies.Any(e => !e.IsDead);
         skillButton.interactable = _currentPlayer != null && (_currentPlayer.Data.skills?.Length ?? 0) > 0;
-        itemButton.interactable = PlayerStats.Instance;
+        itemButton.interactable = PlayerStatsManager.Instance;
 
         BuildSkillButtons();
         BuildItemButtons();
@@ -202,7 +202,7 @@ public class BattleUI : MonoBehaviour
     private void HandleItemSelected(ItemData item)
     {
         if (!item) return;
-        if (!PlayerStats.Instance.HasItem(item))
+        if (!PlayerStatsManager.Instance.HasItem(item))
         {
             BuildItemButtons();
             return;
@@ -245,7 +245,7 @@ public class BattleUI : MonoBehaviour
         if (itemListRoot || listButtonPrefab)
             return;
         
-        var inventory = PlayerStats.Instance.inventory;
+        var inventory = PlayerStatsManager.Instance.inventory;
         if (inventory == null || inventory.Count == 0)
         {
             AddTextOnlyRow(itemListRoot, "No items available");

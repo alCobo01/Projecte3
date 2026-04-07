@@ -44,8 +44,8 @@ public class BattleManager : MonoBehaviour
         _battleEnded = false;
 
         _playerUnit = new BattleUnit(playerData, isPlayer: true,
-                                     startingSp: PlayerStats.Instance.currentSp);
-        _playerUnit.SetHp(PlayerStats.Instance.currentHp);
+                                     startingSp: PlayerStatsManager.Instance.currentSp);
+        _playerUnit.SetHp(PlayerStatsManager.Instance.currentHp);
 
         _allUnits.Clear();
         _allUnits.Add(_playerUnit);
@@ -138,7 +138,7 @@ public class BattleManager : MonoBehaviour
             },
             onItem: (item) =>
             {
-                if (!PlayerStats.Instance.HasItem(item)) return;
+                if (!PlayerStatsManager.Instance.HasItem(item)) return;
                 var hpBefore = CaptureHp();
                 ActionResolver.ResolveItem(player, item);
                 NotifyHpChanges(hpBefore);
@@ -220,8 +220,8 @@ public class BattleManager : MonoBehaviour
 
     private void PersistPlayerState()
     {
-        PlayerStats.Instance.currentHp = _playerUnit.CurrentHp;
-        PlayerStats.Instance.currentSp = _playerUnit.CurrentSp;
+        PlayerStatsManager.Instance.currentHp = _playerUnit.CurrentHp;
+        PlayerStatsManager.Instance.currentSp = _playerUnit.CurrentSp;
     }
 
     private Dictionary<BattleUnit, int> CaptureHp()
