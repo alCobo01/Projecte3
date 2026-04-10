@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,7 +12,7 @@ public class PlayerStatsManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
+        if (Instance is null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);

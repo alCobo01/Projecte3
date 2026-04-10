@@ -1,35 +1,72 @@
+using System;
+using static BattleManager;
 using System.Linq;
 using UnityEngine;
 
 public class BattleStarter : MonoBehaviour, IBattleStarter
 {
-    [SerializeField] private BattleManager.BattleInitiator battleInitiator = BattleManager.BattleInitiator.Player;
+    [Header("Batlle config")]
+    [SerializeField] private BattleInitiator battleInitiator = BattleInitiator.Player;
     [SerializeField] private CharacterData[] battleParty;
 
-    public BattleManager.BattleInitiator BattleInitiator => battleInitiator;
+    public BattleInitiator BattleInitiator => battleInitiator;
     public CharacterData[] BattleParty => battleParty;
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private int _playerLayer;
+    private int _enemyLayer;
+    private float _nextAllowedBattleTime;
+
+    [Header("Runtime")]
+    [SerializeField] private float reenterCooldown = 0.2f;
+
+    private void Awake()
     {
-        TryStartBattleWith(other);
+        _playerLayer = LayerMask.NameToLayer("Player");
+        _enemyLayer = LayerMask.NameToLayer("Enemy");
+
+        if (_playerLayer < 0 || _enemyLayer < 0)
+            Debug.LogWarning("BattleStarter: Player/Enemy layers not found.", this);
+
+        _nextAllowedBattleTime = 0f;
     }
 
-    private bool TryStartBattleWith(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if (!other) return false;
-        if (BattleManager.Instance == null) return false;
+        if (Time.time < _nextAllowedBattleTime)
+            return;
+
+        if (BattleManager.Instance == null)
+            return;
+
+        var otherLayer = other.gameObject.layer;
+        var validTargetLayer = battleInitiator == BattleInitiator.Player
+            ? otherLayer == _enemyLayer
+            : otherLayer == _playerLayer;
+
+        if (!validTargetLayer)
+            return;
+
+        TryStartBattleWith(other.gameObject);
+    } 
+
+    private bool TryStartBattleWith(GameObject other)
+    {
+        if (Time.time < _nextAllowedBattleTime)
+            return false;
+
         if (BattleManager.Instance.IsBattleRunning) return false;
         
         var target = other.GetComponentInParent<IBattleStarter>();
-        if (target == null || (BattleStarter)target == this) return false;
+        if (target == null || ReferenceEquals(target, this)) return false;
 
         var ownParty = GetAliveParty(BattleParty);
         var targetParty = GetAliveParty(target.BattleParty);
+        if (ownParty.Length == 0 || targetParty.Length == 0) return false;
         
         CharacterData playerData;
         CharacterData[] enemies;
 
-        if (BattleInitiator == BattleManager.BattleInitiator.Player)
+        if (BattleInitiator == BattleInitiator.Player)
         {
             playerData = ownParty[0];
             enemies = targetParty;
@@ -41,14 +78,15 @@ public class BattleStarter : MonoBehaviour, IBattleStarter
         }
 
         BattleManager.Instance.StartBattle(playerData, enemies, BattleInitiator);
+        _nextAllowedBattleTime = Time.time + Mathf.Max(0.01f, reenterCooldown);
         return true;
     }
 
     private static CharacterData[] GetAliveParty(CharacterData[] party)
     {
         if (party == null || party.Length == 0)
-            return System.Array.Empty<CharacterData>();
+            return Array.Empty<CharacterData>();
 
-        return party.Where(member => member).ToArray();
+        return party.Where(member => member != null).ToArray();
     }
 }

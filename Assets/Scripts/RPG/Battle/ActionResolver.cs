@@ -6,7 +6,7 @@ public static class ActionResolver
 {
     public static void ResolveAttack(BattleUnit attacker, BattleUnit target)
     {
-        int dmg = Mathf.Max(1, attacker.GetStat(StatType.Attack) - target.GetStat(StatType.Defense));
+        var dmg = Mathf.Max(1, attacker.GetStat(StatType.Attack) - target.GetStat(StatType.Defense));
         target.TakeDamage(dmg);
         attacker.GainSp(attacker.Data.spGainPerHit);
     }

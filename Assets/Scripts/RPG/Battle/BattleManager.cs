@@ -17,15 +17,22 @@ public class BattleManager : MonoBehaviour
     private BattleUnit _playerUnit;
     private Coroutine _battleLoopCoroutine;
     private bool _battleEnded;
+    private bool _battleStartingOrRunning;
+    private bool _battleEndNotified;
 
     public event Action<BattleUnit> OnTurnStarted;
     public event Action<BattleUnit> OnDamageTaken;
     public event Action<bool> OnBattleEnded;
     public event Action OnBattleStateChanged;
+    public event Action<bool> OnFleeAttempted;
+    public event Action<string> OnCombatMessage;
+    public event Action<int> OnRoundStarted;
+
+    private int _roundNumber;
 
     public BattleUnit PlayerUnit => _playerUnit;
     public IReadOnlyList<BattleUnit> AllUnits => _allUnits;
-    public bool IsBattleRunning => _battleLoopCoroutine != null && !_battleEnded;
+    public bool IsBattleRunning => _battleStartingOrRunning;
 
     private void Awake()
     {
@@ -40,24 +47,64 @@ public class BattleManager : MonoBehaviour
 
     public void StartBattle(CharacterData playerData, CharacterData[] enemies, BattleInitiator initiator = BattleInitiator.Player)
     {
+        if (_battleStartingOrRunning)
+        {
+            Debug.Log("BattleManager: battle already in progress, new start request ignored.", this);
+            return;
+        }
+
+        if (playerData == null || enemies == null)
+        {
+            Debug.LogError("BattleManager.StartBattle received null playerData or enemies.", this);
+            return;
+        }
+
+        if (PlayerStatsManager.Instance == null)
+        {
+            Debug.LogError("BattleManager.StartBattle requires PlayerStatsManager.Instance in scene.", this);
+            return;
+        }
+
+        _battleStartingOrRunning = true;
+        _battleEndNotified = false;
+
         if (_battleLoopCoroutine != null)
             StopCoroutine(_battleLoopCoroutine);
 
         _battleEnded = false;
 
-        _playerUnit = new BattleUnit(playerData, isPlayer: true,
-                                     startingSp: PlayerStatsManager.Instance.currentSp);
-        _playerUnit.SetHp(PlayerStatsManager.Instance.currentHp);
+        var persistedSp = Mathf.Clamp(PlayerStatsManager.Instance.currentSp, 0, playerData.maxSp);
+        var persistedHp = PlayerStatsManager.Instance.currentHp;
+        if (persistedHp <= 0)
+            persistedHp = playerData.maxHp;
+
+        _playerUnit = new BattleUnit(playerData, isPlayer: true, startingSp: persistedSp);
+        _playerUnit.SetHp(Mathf.Clamp(persistedHp, 1, playerData.maxHp));
 
         _allUnits.Clear();
         _allUnits.Add(_playerUnit);
         foreach (var e in enemies)
+        {
+            if (e == null) continue;
             _allUnits.Add(new BattleUnit(e, isPlayer: false, startingSp: 0));
+        }
 
+        if (_allUnits.Count <= 1)
+        {
+            Debug.LogError("BattleManager.StartBattle needs at least one valid enemy CharacterData.", this);
+            _battleStartingOrRunning = false;
+            return;
+        }
+
+        _roundNumber = 1;
         var firstTurnUnit = GetFirstTurnUnit(initiator);
         _turnStack.Build(_allUnits, firstTurnUnit);
-        ui.Initialize(this);
+        if (ui != null)
+            ui.Initialize(this);
+        else
+            Debug.LogWarning("BattleManager UI reference is null. Battle will run without menu UI.", this);
 
+        OnRoundStarted?.Invoke(_roundNumber);
         OnBattleStateChanged?.Invoke();
         _battleLoopCoroutine = StartCoroutine(BattleLoop());
     }
@@ -73,10 +120,15 @@ public class BattleManager : MonoBehaviour
             }
 
             if (_turnStack.IsEmpty)
+            {
+                _roundNumber++;
+                OnRoundStarted?.Invoke(_roundNumber);
                 _turnStack.Rebuild(_allUnits.Where(u => !u.IsDead));
+            }
 
             var current = _turnStack.PopCurrent();
-            if (current == null) break;
+            if (current == null)
+                continue;
 
             var hpBeforeTick = current.CurrentHp;
             current.TickEffects();
@@ -104,9 +156,24 @@ public class BattleManager : MonoBehaviour
             else
                 yield return ExecuteEnemyAction(current);
 
+            if (_battleEnded)
+                yield break;
+
             if (!CheckBattleEnd(out var playerWon)) continue;
             EndBattle(playerWon);
             yield break;
+        }
+
+        if (!_battleEndNotified)
+        {
+            if (CheckBattleEnd(out var winner))
+                EndBattle(winner);
+            else
+            {
+                Debug.LogWarning("BattleLoop exited without terminal state. Forcing cleanup.", this);
+                _battleEnded = true;
+                _battleStartingOrRunning = false;
+            }
         }
 
         _battleLoopCoroutine = null;
@@ -117,6 +184,21 @@ public class BattleManager : MonoBehaviour
         var done = false;
         var enemies = _allUnits.Where(u => !u.IsPlayer && !u.IsDead).ToList();
 
+        if (ui == null)
+        {
+            if (enemies.Count > 0)
+            {
+                var hpBefore = enemies[0].CurrentHp;
+                ActionResolver.ResolveAttack(player, enemies[0]);
+                NotifyHpChange(enemies[0], hpBefore);
+                EmitHpDeltaMessage(player.Data.characterName, "Attack", enemies[0], hpBefore);
+                OnBattleStateChanged?.Invoke();
+            }
+
+            yield return null;
+            yield break;
+        }
+
         ui.ShowActionMenu(
             player,
             enemies,
@@ -125,7 +207,9 @@ public class BattleManager : MonoBehaviour
                 var hpBefore = target.CurrentHp;
                 ActionResolver.ResolveAttack(player, target);
                 NotifyHpChange(target, hpBefore);
+                EmitHpDeltaMessage(player.Data.characterName, "Attack", target, hpBefore);
                 OnBattleStateChanged?.Invoke();
+                TryEndBattleFromAction();
                 done = true;
             },
             onSkill: (skill, target) =>
@@ -134,7 +218,9 @@ public class BattleManager : MonoBehaviour
                 var hpBefore = CaptureHp();
                 ActionResolver.ResolveSkill(player, target, skill, enemies);
                 NotifyHpChanges(hpBefore);
+                EmitGroupHpDeltaMessages(player.Data.characterName, skill.skillName, hpBefore);
                 OnBattleStateChanged?.Invoke();
+                TryEndBattleFromAction();
                 done = true;
             },
             onItem: (item) =>
@@ -143,7 +229,9 @@ public class BattleManager : MonoBehaviour
                 var hpBefore = CaptureHp();
                 ActionResolver.ResolveItem(player, item);
                 NotifyHpChanges(hpBefore);
+                EmitGroupHpDeltaMessages(player.Data.characterName, item.itemName, hpBefore);
                 OnBattleStateChanged?.Invoke();
+                TryEndBattleFromAction();
                 done = true;
             },
             onFlee: () => StartCoroutine(AttemptFlee(enemies, () => done = true))
@@ -170,12 +258,14 @@ public class BattleManager : MonoBehaviour
             ActionResolver.ResolveSkill(enemy, _playerUnit, skill,
                                         new List<BattleUnit> { _playerUnit });
             NotifyHpChanges(hpBefore);
+            EmitGroupHpDeltaMessages(enemy.Data.characterName, skill.skillName, hpBefore);
         }
         else
         {
             var hpBefore = _playerUnit.CurrentHp;
             ActionResolver.ResolveAttack(enemy, _playerUnit);
             NotifyHpChange(_playerUnit, hpBefore);
+            EmitHpDeltaMessage(enemy.Data.characterName, "Attack", _playerUnit, hpBefore);
         }
 
         OnBattleStateChanged?.Invoke();
@@ -194,16 +284,19 @@ public class BattleManager : MonoBehaviour
 
         if (Random.value < fleeChance)
         {
+            OnFleeAttempted?.Invoke(true);
             _battleEnded = true;
             EndBattle(false);
         }
         else
         {
+            OnFleeAttempted?.Invoke(false);
             var punisher = enemies.OrderByDescending(e => e.Data.speed).First();
             yield return new WaitForSeconds(0.8f);
             var hpBefore = _playerUnit.CurrentHp;
             ActionResolver.ResolveAttack(punisher, _playerUnit);
             NotifyHpChange(_playerUnit, hpBefore);
+            EmitHpDeltaMessage(punisher.Data.characterName, "Punish", _playerUnit, hpBefore);
             OnBattleStateChanged?.Invoke();
         }
 
@@ -247,14 +340,18 @@ public class BattleManager : MonoBehaviour
 
     private void EndBattle(bool playerWon)
     {
-        if (_battleEnded && _battleLoopCoroutine == null)
+        if (_battleEndNotified)
             return;
 
         _battleEnded = true;
+        _battleEndNotified = true;
         PersistPlayerState();
         OnBattleStateChanged?.Invoke();
         OnBattleEnded?.Invoke(playerWon);
+        if (_battleLoopCoroutine != null)
+            StopCoroutine(_battleLoopCoroutine);
         _battleLoopCoroutine = null;
+        _battleStartingOrRunning = false;
     }
 
     private BattleUnit GetFirstTurnUnit(BattleInitiator initiator)
@@ -264,5 +361,36 @@ public class BattleManager : MonoBehaviour
             BattleInitiator.Enemy => _allUnits.FirstOrDefault(u => !u.IsPlayer && !u.IsDead),
             BattleInitiator.Player => _playerUnit
         };
+    }
+
+    private void EmitGroupHpDeltaMessages(string actorName, string actionName, Dictionary<BattleUnit, int> beforeHp)
+    {
+        foreach (var unit in _allUnits)
+        {
+            if (!beforeHp.TryGetValue(unit, out var hpBefore))
+                continue;
+
+            EmitHpDeltaMessage(actorName, actionName, unit, hpBefore);
+        }
+    }
+
+    private void EmitHpDeltaMessage(string actorName, string actionName, BattleUnit target, int hpBefore)
+    {
+        if (target == null)
+            return;
+
+        var delta = hpBefore - target.CurrentHp;
+        if (delta > 0)
+            OnCombatMessage?.Invoke($"{actorName} has dealt {delta} damage to {target.Data.characterName} ({actionName}).");
+        else if (delta < 0)
+            OnCombatMessage?.Invoke($"{actorName} has healed {-delta} HP on {target.Data.characterName} ({actionName}).");
+    }
+
+    private void TryEndBattleFromAction()
+    {
+        if (!CheckBattleEnd(out var playerWon))
+            return;
+
+        EndBattle(playerWon);
     }
 }
