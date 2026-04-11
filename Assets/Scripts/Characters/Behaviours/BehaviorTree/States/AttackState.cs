@@ -10,7 +10,7 @@ public class AttackBehavior : Node
     }
     public override bool ExitCondition(EnemyController ec)
     {
-        return !ec.attack.check || ec.run.check;
+        return !ec.attack.check;
     }
     public override void OnStart(EnemyController ec)
     {

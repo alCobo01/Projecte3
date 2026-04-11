@@ -7,46 +7,44 @@ public class EnemyController : MonoBehaviour
     public Condition attack;
     public Condition chase;
     public Condition combat;
-    public Condition run;
     public GameObject target;
     public float AttackDistance;
-    public int HP = 5;
     public Node root;
     public Node currentState;
 
-    public int AttackDamage = 1;
 
     private void Awake()
     {
         attack = new Condition("Attack");
         chase = new Condition("Chase");
         combat = new Condition("Combat");
-        run = new Condition("Run");
 
-        AttackDistance = GetComponent<CapsuleCollider>().radius;
+        AttackDistance = 0;
         ChangeState();
     }
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         // Solo reaccionar si el objeto es Player
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             chase.check = true;
             target = collision.gameObject;
+            Debug.Log(" Chase = true");
         }
     }
 
-    private void OnTriggerExit(Collider collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             chase.check = false;
             target = null;
+            Debug.Log("Chase = false");
         }
     }
 
-    private void OnTriggerStay(Collider collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
@@ -54,16 +52,12 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            Player player = collision.gameObject.GetComponent<Player>();
-            if (player != null)
-            {
-                player.TakeDamage(AttackDamage);
-                Debug.Log("Enemigo atacó al jugador!");
-            }
+            //Aqui ira la funcion para inicar combate :*
+            Debug.Log("Enemigo ataca al jugador!");
         }
     }
 
