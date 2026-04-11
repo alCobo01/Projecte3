@@ -12830,6 +12830,30 @@ MonoBehaviour:
     m_Bits: 64
   edgeCheckDistance: 0.4
   groundDetectionDistance: 0.56
+--- !u!114 &983838224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983838211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9daf393c1d6a4fe8a07d5dbaab044e9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterAnimationController
+--- !u!114 &983838225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983838211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 722961260fbd4215b9d1d80369ae21ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationBehaviour
 --- !u!1 &1067842944
 GameObject:
   m_ObjectHideFlags: 0
@@ -20304,6 +20328,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 430709197540013394, guid: 894012504a7b8704a91bf2f2cf255ae1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 983838218}
+    - targetCorrespondingSourceObject: {fileID: 430709197540013394, guid: 894012504a7b8704a91bf2f2cf255ae1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 983838225}
+    - targetCorrespondingSourceObject: {fileID: 430709197540013394, guid: 894012504a7b8704a91bf2f2cf255ae1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 983838224}
   m_SourcePrefab: {fileID: 100100000, guid: 894012504a7b8704a91bf2f2cf255ae1, type: 3}
 --- !u!1001 &5577747956772495182
 PrefabInstance:

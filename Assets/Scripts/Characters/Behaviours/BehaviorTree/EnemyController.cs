@@ -13,8 +13,11 @@ public class EnemyController : MonoBehaviour
     public Node currentState;
 
 
+    private CharacterAnimationController _animController;
+
     private void Awake()
     {
+        _animController = GetComponent<CharacterAnimationController>();
         attack = new Condition("Attack");
         chase = new Condition("Chase");
         combat = new Condition("Combat");
@@ -30,6 +33,7 @@ public class EnemyController : MonoBehaviour
         {
             chase.check = true;
             target = collision.gameObject;
+            if (_animController != null) _animController.SetRunning(true);
             Debug.Log(" Chase = true");
         }
     }
@@ -40,6 +44,7 @@ public class EnemyController : MonoBehaviour
         {
             chase.check = false;
             target = null;
+            if (_animController != null) _animController.SetRunning(false);
             Debug.Log("Chase = false");
         }
     }
@@ -56,6 +61,7 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
+            if (_animController != null) _animController.TriggerAttack();
             //Aqui ira la funcion para inicar combate :*
             Debug.Log("Enemigo ataca al jugador!");
         }
@@ -64,6 +70,7 @@ public class EnemyController : MonoBehaviour
     public void OnHurt()
     {
         combat.check = true;
+        if (_animController != null) _animController.TriggerHurt();
         ChangeState();
     }
 

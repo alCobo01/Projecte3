@@ -13,7 +13,8 @@ public class ChaseState : Node
     }
     public override void OnStart(EnemyController ec)
     {
-
+        var anim = ec.GetComponent<CharacterAnimationController>();
+        if (anim != null) anim.SetRunning(true);
     }
     public override void OnUpdate(EnemyController ec)
     {

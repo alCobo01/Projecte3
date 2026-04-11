@@ -14,6 +14,8 @@ public class PatrolState : Node
     public override void OnStart(EnemyController ec)
     {
         Debug.Log("PATROL START");
+        var anim = ec.GetComponent<CharacterAnimationController>();
+        if (anim != null) anim.SetRunning(false);
     }
     public override void OnUpdate(EnemyController ec)
     {
