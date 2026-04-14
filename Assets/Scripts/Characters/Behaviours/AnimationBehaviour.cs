@@ -6,10 +6,25 @@ public class AnimationBehaviour : MonoBehaviour
 {
     private Animator _animator;
 
-    private void Awake() => _animator = GetComponent<Animator>();
+    private void Awake() 
+    {
+        _animator = GetComponent<Animator>();
+        if (_animator == null) Debug.LogError("¡ERROR! No hay Animator en " + gameObject.name);
+    }
 
     // Set animator values
-    public void Trigger(int triggerNameHash) => _animator.SetTrigger(triggerNameHash);
-    public void SetBool(int parameterNameHash, bool value) => _animator.SetBool(parameterNameHash, value);
-    public void SetFloat(int parameterNameHash, float value) => _animator.SetFloat(parameterNameHash, value, 0.1f, Time.deltaTime);
+    public void Trigger(int triggerNameHash) 
+    {
+        if (_animator != null) _animator.SetTrigger(triggerNameHash);
+    }
+    
+    public void SetBool(int parameterNameHash, bool value) 
+    {
+        if (_animator != null) _animator.SetBool(parameterNameHash, value);
+    }
+    
+    public void SetFloat(int parameterNameHash, float value) 
+    {
+        if (_animator != null) _animator.SetFloat(parameterNameHash, value, 0.1f, Time.deltaTime);
+    }
 }
