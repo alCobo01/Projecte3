@@ -28,14 +28,14 @@ public class PlayerInputController : MonoBehaviour, IPlayerActions
     public void OnMove(InputAction.CallbackContext context) => OnMoveEvent?.Invoke(context.ReadValue<Vector2>());
     public void OnAttack(InputAction.CallbackContext context) => OnAttackEvent?.Invoke();
     public void OnInteract(InputAction.CallbackContext context) => OnInteractEvent?.Invoke();
-
+    public void OnDash(InputAction.CallbackContext context) => OnDashEvent?.Invoke();
+    
     public void OnJump(InputAction.CallbackContext context)
     {
         if (context.started) OnJumpEvent?.Invoke(true);
         else if (context.canceled) OnJumpEvent?.Invoke(false);
     } 
     
-    public void OnDash(InputAction.CallbackContext context) => OnDashEvent?.Invoke();
     public void OnFly(InputAction.CallbackContext context)
     {
         if (context.performed) OnFlyEvent?.Invoke(true);

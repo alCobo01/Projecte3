@@ -36,15 +36,13 @@ public class PatrolBehaviour : MonoBehaviour
             _waitTimer -= Time.deltaTime;
             _rb.linearVelocity = new Vector2(0, _rb.linearVelocity.y);
             _animController.SetWalking(0f);
-            if (_waitTimer <= 0)
-            {
-                _isWaiting = false;
-                _currentPointIndex = (_currentPointIndex + 1) % patrolPoints.Length;
-            }
+            if (!(_waitTimer <= 0)) return;
+            _isWaiting = false;
+            _currentPointIndex = (_currentPointIndex + 1) % patrolPoints.Length;
             return;
         }
 
-        Transform targetPoint = patrolPoints[_currentPointIndex];
+        var targetPoint = patrolPoints[_currentPointIndex];
         if (targetPoint == null) return;
 
         Vector2 targetPosition = targetPoint.position;
@@ -59,24 +57,26 @@ public class PatrolBehaviour : MonoBehaviour
         }
         else
         {
-            float directionX = Mathf.Sign(targetPosition.x - currentPosition.x);
+            var directionX = Mathf.Sign(targetPosition.x - currentPosition.x);
             _animController.SetWalking(Mathf.Abs(directionX));
 
             _rb.linearVelocity = new Vector2(directionX * speed, _rb.linearVelocity.y);
-            
-            // Update rotation/flip based on direction
-            if (directionX > 0) transform.rotation = Quaternion.Euler(0, 0, 0);
-            else if (directionX < 0) transform.rotation = Quaternion.Euler(0, 180, 0);
+
+            transform.rotation = directionX switch
+            {
+                // Update rotation/flip based on direction
+                > 0 => Quaternion.Euler(0, 0, 0),
+                < 0 => Quaternion.Euler(0, 180, 0),
+                _ => transform.rotation
+            };
         }
     }
 
     public void StopPatrol()
     {
         _isWaiting = false;
-        if (_rb != null)
-        {
-            _rb.linearVelocity = new Vector2(0, _rb.linearVelocity.y);
-        }
+        _rb.linearVelocity = new Vector2(0, _rb.linearVelocity.y);
+        
     }
 
     private void OnDrawGizmosSelected()
@@ -84,18 +84,16 @@ public class PatrolBehaviour : MonoBehaviour
         if (patrolPoints == null || patrolPoints.Length == 0) return;
 
         Gizmos.color = Color.yellow;
-        for (int i = 0; i < patrolPoints.Length; i++)
+        for (var i = 0; i < patrolPoints.Length; i++)
         {
-            if (patrolPoints[i] != null)
-            {
-                Gizmos.DrawSphere(patrolPoints[i].position, 0.3f);
+            if (patrolPoints[i] == null) continue;
+            Gizmos.DrawSphere(patrolPoints[i].position, 0.3f);
                 
-                // Draw line to next point
-                int nextIndex = (i + 1) % patrolPoints.Length;
-                if (patrolPoints[nextIndex] != null)
-                {
-                    Gizmos.DrawLine(patrolPoints[i].position, patrolPoints[nextIndex].position);
-                }
+            // Draw line to next point
+            var nextIndex = (i + 1) % patrolPoints.Length;
+            if (patrolPoints[nextIndex] != null)
+            {
+                Gizmos.DrawLine(patrolPoints[i].position, patrolPoints[nextIndex].position);
             }
         }
     }
