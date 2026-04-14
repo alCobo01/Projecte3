@@ -13,6 +13,7 @@ public class PlayerJumpController : MonoBehaviour
     private JumpBehaviour _jumpBehaviour;
     private GroundCheck _groundCheck;
     private int _jumpsRemaining;
+    private bool _isJumpHeld;
     
     private void Awake()
     {
@@ -25,11 +26,23 @@ public class PlayerJumpController : MonoBehaviour
     private void OnDisable() => _inputController.OnJumpEvent -= HandleJump;
 
     private void Update() { if (_groundCheck.IsGrounded) _jumpsRemaining = maxJumps; } 
-    
-    private void HandleJump()
+    private void FixedUpdate()
     {
-        if (_jumpsRemaining <= 0) return;
-        _jumpBehaviour.Jump();
-        _jumpsRemaining--;
+        if (_isJumpHeld) _jumpBehaviour.HoldJump(Time.fixedDeltaTime);
+    }
+    
+    private void HandleJump(bool isPressed)
+    {
+        _isJumpHeld = isPressed;
+        if (isPressed)
+        {
+            if (_jumpsRemaining <= 0) return;
+            _jumpBehaviour.Jump();
+            _jumpsRemaining--;
+        }
+        else
+        {
+            _jumpBehaviour.CancelJump();
+        }
     }
 }
