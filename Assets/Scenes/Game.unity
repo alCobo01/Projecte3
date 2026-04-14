@@ -19727,7 +19727,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: fcec57faf545c47a684214484fefcab3, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -19766,7 +19766,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  rayLength: 0.5
+  rayLength: 0.35
 --- !u!114 &1813155976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19779,9 +19779,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d47dfffc72044fa884c8f31466272bc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JumpBehaviour
-  jumpForce: 1.8
-  holdJumpForce: 6
-  maxHoldTime: 0.2
+  jumpForce: 5
+  holdJumpForce: 20
+  maxHoldTime: 1
   cutJumpModifier: 0.5
 --- !u!114 &1813155977
 MonoBehaviour:
