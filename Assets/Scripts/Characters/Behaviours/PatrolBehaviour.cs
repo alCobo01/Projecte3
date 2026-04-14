@@ -15,10 +15,12 @@ public class PatrolBehaviour : MonoBehaviour
     private Rigidbody2D _rb;
     private float _waitTimer = 0f;
     private bool _isWaiting = false;
+    private CharacterAnimationController _animController;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _animController = GetComponent<CharacterAnimationController>();
     }
 
     public void Patrol()
@@ -33,7 +35,7 @@ public class PatrolBehaviour : MonoBehaviour
         {
             _waitTimer -= Time.deltaTime;
             _rb.linearVelocity = new Vector2(0, _rb.linearVelocity.y);
-            
+            _animController.SetWalking(0f);
             if (_waitTimer <= 0)
             {
                 _isWaiting = false;
@@ -58,6 +60,8 @@ public class PatrolBehaviour : MonoBehaviour
         else
         {
             float directionX = Mathf.Sign(targetPosition.x - currentPosition.x);
+            _animController.SetWalking(Mathf.Abs(directionX));
+
             _rb.linearVelocity = new Vector2(directionX * speed, _rb.linearVelocity.y);
             
             // Update rotation/flip based on direction

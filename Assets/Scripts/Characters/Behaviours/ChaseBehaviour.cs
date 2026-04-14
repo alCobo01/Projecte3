@@ -10,10 +10,11 @@ public class ChaseBehaviour : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float edgeCheckDistance = 0.5f;
     [SerializeField] private float groundDetectionDistance = 0.5f;
-
+    private CharacterAnimationController animController;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animController = GetComponent<CharacterAnimationController>();
         if (groundCheck == null) groundCheck = GetComponentInChildren<GroundCheck>();
     }
 
@@ -21,7 +22,7 @@ public class ChaseBehaviour : MonoBehaviour
     {
         Vector2 dir = (target.position - transform.position).normalized;
         float directionX = Mathf.Sign(dir.x);
-
+        animController.SetWalking(Mathf.Abs(dir.x));
         // Check for ground ahead with a much shorter ray
         Vector2 checkOrigin = (Vector2)transform.position + new Vector2(directionX * edgeCheckDistance, 0);
         RaycastHit2D hit = Physics2D.Raycast(checkOrigin, Vector2.down, groundDetectionDistance, groundLayer);

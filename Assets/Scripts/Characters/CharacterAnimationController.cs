@@ -26,7 +26,7 @@ public class CharacterAnimationController : MonoBehaviour
     protected virtual void Update()
     {
         float speed = Mathf.Abs(_rb.linearVelocity.x);
-        _animationBehaviour.SetFloat(HorizontalSpeedHash, speed);
+        //_animationBehaviour.SetFloat(HorizontalSpeedHash, speed);
         _animationBehaviour.SetFloat(VerticalSpeedHash, _rb.linearVelocity.y);
         
         if (_groundCheck != null)
@@ -37,7 +37,7 @@ public class CharacterAnimationController : MonoBehaviour
             // Debug.Log(gameObject.name + " moviéndose a velocidad: " + speed);
         }
     }
-
+    public void SetWalking(float speed) => _animationBehaviour.SetFloat(HorizontalSpeedHash, speed);
     public void TriggerJump() => _animationBehaviour.Trigger(JumpHash);
     public void TriggerDash() => _animationBehaviour.Trigger(DashHash);
     public void TriggerAttack() => _animationBehaviour.Trigger(AttackHash);
