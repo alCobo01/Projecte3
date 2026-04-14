@@ -19789,7 +19789,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  rayLength: 2
+  rayLength: 0.5
 --- !u!114 &1813155976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19803,6 +19803,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JumpBehaviour
   jumpForce: 1.8
+  holdJumpForce: 6
+  maxHoldTime: 0.2
+  cutJumpModifier: 0.5
 --- !u!114 &1813155977
 MonoBehaviour:
   m_ObjectHideFlags: 0
