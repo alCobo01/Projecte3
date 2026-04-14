@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(MoveBehaviour))]
@@ -5,6 +6,7 @@ public class PlayerMovementController : MonoBehaviour
 {
     private PlayerInputController _inputController;
     private MoveBehaviour _moveBehaviour;
+    private Vector2 _moveInput;
 
     private void Awake()
     {
@@ -14,9 +16,6 @@ public class PlayerMovementController : MonoBehaviour
 
     private void Start() => _inputController.OnMoveEvent += HandleMovement;
     private void OnDisable() => _inputController.OnMoveEvent -= HandleMovement;
-
-    private void HandleMovement(Vector2 moveInput)
-    {
-        _moveBehaviour.MoveCharacter(moveInput);
-    }
+    private void HandleMovement(Vector2 moveInput) => _moveInput = moveInput;
+    private void FixedUpdate() => _moveBehaviour.MoveCharacter(_moveInput);
 }
