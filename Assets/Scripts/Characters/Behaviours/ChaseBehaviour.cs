@@ -40,7 +40,6 @@ public class ChaseBehaviour : MonoBehaviour
         {
             // Stop if there's no ground immediately ahead
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
-            // Debug.Log("CHASE: Detenido por borde detectado.");
         }
     }
 
