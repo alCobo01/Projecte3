@@ -13,6 +13,7 @@ public class PlayerJumpController : MonoBehaviour
     private JumpBehaviour _jumpBehaviour;
     private GroundCheck _groundCheck;
     private int _jumpsRemaining;
+    private bool _isJumpHeld, _wasGrounded;
     
     private void Awake()
     {
@@ -20,16 +21,40 @@ public class PlayerJumpController : MonoBehaviour
         _jumpBehaviour = GetComponent<JumpBehaviour>();
         _groundCheck = GetComponent<GroundCheck>();
     }
+
+    private void Start()
+    {
+        _wasGrounded = _groundCheck.IsGrounded;
+        _jumpsRemaining = _wasGrounded ? maxJumps : 0;
+        _inputController.OnJumpEvent += HandleJump;
+    } 
     
-    private void Start() => _inputController.OnJumpEvent += HandleJump;
     private void OnDisable() => _inputController.OnJumpEvent -= HandleJump;
 
-    private void Update() { if (_groundCheck.IsGrounded) _jumpsRemaining = maxJumps; } 
-    
-    private void HandleJump()
+    private void Update()
     {
-        if (_jumpsRemaining <= 0) return;
-        _jumpBehaviour.Jump();
-        _jumpsRemaining--;
+        var isGrounded = _groundCheck.IsGrounded;
+        if (isGrounded && !_wasGrounded) _jumpsRemaining = maxJumps;
+        _wasGrounded = isGrounded;
+    } 
+    
+    private void FixedUpdate()
+    {
+        if (_isJumpHeld) _jumpBehaviour.HoldJump(Time.fixedDeltaTime);
+    }
+    
+    private void HandleJump(bool isPressed)
+    {
+        _isJumpHeld = isPressed;
+        if (isPressed)
+        {
+            if (_jumpsRemaining <= 0) return;
+            _jumpBehaviour.Jump();
+            _jumpsRemaining--;
+        }
+        else
+        {
+            _jumpBehaviour.CancelJump();
+        }
     }
 }

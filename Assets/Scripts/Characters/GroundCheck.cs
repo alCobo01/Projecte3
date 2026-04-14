@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GroundCheck : MonoBehaviour
@@ -11,5 +12,11 @@ public class GroundCheck : MonoBehaviour
     {
         var hit = Physics2D.Raycast(transform.position, -transform.up, rayLength, groundLayer);
         IsGrounded = hit;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(transform.position, transform.position + (-transform.up * rayLength));
     }
 }
