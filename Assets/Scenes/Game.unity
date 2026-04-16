@@ -4966,6 +4966,7 @@ GameObject:
   - component: {fileID: 112721132}
   - component: {fileID: 112721131}
   - component: {fileID: 112721130}
+  - component: {fileID: 112721133}
   m_Layer: 0
   m_Name: Golem_spritesheet 1_0 (1)
   m_TagString: Untagged
@@ -5069,6 +5070,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &112721133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112721129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 993f781bfece1ce42b88a347be3c1415, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyController
+  target: {fileID: 0}
+  AttackDistance: 0
+  root: {fileID: 0}
+  currentState: {fileID: 0}
+  enemyData: {fileID: 11400000, guid: 1643aefae944bf949aa58176466eaabe, type: 2}
 --- !u!1 &339190726
 GameObject:
   m_ObjectHideFlags: 0
@@ -12816,6 +12834,7 @@ MonoBehaviour:
   AttackDistance: 0
   root: {fileID: 11400000, guid: a8da72026ca90834585cc8d9b6f82905, type: 2}
   currentState: {fileID: 0}
+  enemyData: {fileID: 0}
 --- !u!114 &983838219
 MonoBehaviour:
   m_ObjectHideFlags: 0

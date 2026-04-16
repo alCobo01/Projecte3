@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "AttackState", menuName = "Scriptable Objects/AttackState")]
-public class AttackBehavior : Node
+public class AttackState : Node
 {
     [SerializeField] private float attackCooldown = 1f;
     private float _lastAttackTime = 0f;

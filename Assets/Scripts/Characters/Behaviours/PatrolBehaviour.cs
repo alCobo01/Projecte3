@@ -1,16 +1,11 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PatrolBehaviour : MonoBehaviour
 {
     [Header("Patrol Settings")]
     [SerializeField] private Transform[] patrolPoints;
-    [SerializeField] private float speed = 2f;
     
-    [Header("Wait Settings")]
-    [SerializeField] private float minWaitTime = 1f;
-    [SerializeField] private float maxWaitTime = 3f;
-
     private int _currentPointIndex = 0;
     private Rigidbody2D _rb;
     private float _waitTimer = 0f;
@@ -23,7 +18,7 @@ public class PatrolBehaviour : MonoBehaviour
         _animController = GetComponent<CharacterAnimationController>();
     }
 
-    public void Patrol()
+    public void Patrol(float speed, float minWaitTime, float maxWaitTime)
     {
         if (patrolPoints == null || patrolPoints.Length == 0)
         {
@@ -68,6 +63,58 @@ public class PatrolBehaviour : MonoBehaviour
             if (directionX > 0) transform.rotation = Quaternion.Euler(0, 0, 0);
             else if (directionX < 0) transform.rotation = Quaternion.Euler(0, 180, 0);
         }
+    }
+    public void FlyingPatrol(float speed, float minWaitTime, float maxWaitTime)
+    {
+        if (patrolPoints == null || patrolPoints.Length == 0)
+        {
+            Debug.LogWarning("No patrol points assigned to PatrolBehaviour on " + gameObject.name);
+            return;
+        }
+
+        if (_isWaiting)
+        {
+            _waitTimer -= Time.deltaTime;
+            _rb.linearVelocity = Vector2.zero;
+            _animController.SetWalking(0f);
+
+            if (_waitTimer <= 0)
+            {
+                _isWaiting = false;
+                _currentPointIndex = (_currentPointIndex + 1) % patrolPoints.Length;
+            }
+            return;
+        }
+
+        Transform targetPoint = patrolPoints[_currentPointIndex];
+        if (targetPoint == null) return;
+
+        Vector2 targetPos = targetPoint.position;
+        Vector2 currentPos = transform.position;
+
+        float distance = Vector2.Distance(currentPos, targetPos);
+
+        // Si llegó al punto → esperar
+        if (distance < 0.2f)
+        {
+            _isWaiting = true;
+            _waitTimer = Random.Range(minWaitTime, maxWaitTime);
+            _rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
+        // Dirección en 2D
+        Vector2 dir = (targetPos - currentPos).normalized;
+
+        // Movimiento volador
+        _rb.linearVelocity = dir * speed;
+
+        // Animación
+        _animController.SetWalking(1f);
+
+        // Rotación opcional (solo horizontal)
+        if (dir.x > 0) transform.rotation = Quaternion.Euler(0, 0, 0);
+        else if (dir.x < 0) transform.rotation = Quaternion.Euler(0, 180, 0);
     }
 
     public void StopPatrol()

@@ -11,8 +11,7 @@ public class EnemyController : MonoBehaviour
     public float AttackDistance;
     public Node root;
     public Node currentState;
-
-
+    public EnemySO enemyData;
     private CharacterAnimationController _animController;
 
     private void Awake()
@@ -21,8 +20,6 @@ public class EnemyController : MonoBehaviour
         attack = new Condition("Attack");
         chase = new Condition("Chase");
         combat = new Condition("Combat");
-
-        AttackDistance = 0;
         ChangeState();
     }
 
