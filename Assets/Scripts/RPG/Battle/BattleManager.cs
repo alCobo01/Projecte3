@@ -130,24 +130,8 @@ public class BattleManager : MonoBehaviour
     {
         var done = false;
         var enemies = _allUnits.Where(u => !u.IsPlayer && !u.IsDead).ToList();
-
-        if (ui == null)
-        {
-            if (enemies.Count > 0)
-            {
-                var hp = enemies[0].CurrentHp;
-                ActionResolver.ResolveAttack(player, enemies[0]);
-                NotifyHpChange(enemies[0], hp);
-                EmitHpDeltaMessage(player.Data.characterName, "Attack", enemies[0], hp);
-                OnBattleStateChanged?.Invoke();
-            }
-
-            yield break;
-        }
-
-        ui.ShowActionMenu(
-            player,
-            enemies,
+        
+        ui.ShowActionMenu(player, enemies,
             onAttack: target =>
             {
                 var hp = target.CurrentHp;
@@ -244,10 +228,8 @@ public class BattleManager : MonoBehaviour
 
     private bool TryEndIfFinished()
     {
-        if (!IsBattleRunning)
-            return true;
-        if (PlayerUnit == null)
-            return false;
+        if (!IsBattleRunning) return true;
+        if (PlayerUnit == null) return false;
 
         if (PlayerUnit.IsDead)
         {
@@ -256,8 +238,7 @@ public class BattleManager : MonoBehaviour
         }
 
         var enemiesAlive = _allUnits.Any(u => !u.IsPlayer && !u.IsDead);
-        if (enemiesAlive)
-            return false;
+        if (enemiesAlive) return false;
 
         EndBattle(playerWon: true);
         return true;

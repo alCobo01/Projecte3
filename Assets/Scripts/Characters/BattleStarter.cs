@@ -8,6 +8,9 @@ public class BattleStarter : MonoBehaviour, IBattleStarter
     [Header("Batlle config")]
     [SerializeField] private BattleInitiator battleInitiator = BattleInitiator.Player;
     [SerializeField] private CharacterData[] battleParty;
+    
+    [Header("Runtime")]
+    [SerializeField] private float reenterCooldown = 0.2f;
 
     public BattleInitiator BattleInitiator => battleInitiator;
     public CharacterData[] BattleParty => battleParty;
@@ -15,28 +18,17 @@ public class BattleStarter : MonoBehaviour, IBattleStarter
     private int _playerLayer;
     private int _enemyLayer;
     private float _nextAllowedBattleTime;
-
-    [Header("Runtime")]
-    [SerializeField] private float reenterCooldown = 0.2f;
-
+    
     private void Awake()
     {
         _playerLayer = LayerMask.NameToLayer("Player");
         _enemyLayer = LayerMask.NameToLayer("Enemy");
-
-        if (_playerLayer < 0 || _enemyLayer < 0)
-            Debug.LogWarning("BattleStarter: Player/Enemy layers not found.", this);
-
         _nextAllowedBattleTime = 0f;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (Time.time < _nextAllowedBattleTime)
-            return;
-
-        if (BattleManager.Instance == null)
-            return;
+        if (Time.time < _nextAllowedBattleTime) return;
 
         var otherLayer = other.gameObject.layer;
         var validTargetLayer = battleInitiator == BattleInitiator.Player

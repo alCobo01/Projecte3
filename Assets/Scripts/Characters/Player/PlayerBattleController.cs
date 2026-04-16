@@ -6,8 +6,6 @@ public class PlayerBattleController : MonoBehaviour
     private PlayerJumpController _jumpController;
     private PlayerDashController _dashController;
 
-    private bool _valueToSet;
-
     private void Awake()
     {
         _movementController = GetComponent<PlayerMovementController>();
@@ -15,34 +13,19 @@ public class PlayerBattleController : MonoBehaviour
         _dashController = GetComponent<PlayerDashController>();
     }
 
-    private void OnEnable()
+    private void Update()
     {
-        BattleManager.Instance.OnBattleStarted += HandleStart;
-        BattleManager.Instance.OnBattleEnded += HandleEnd;
+        BattleManager.Instance.OnBattleStarted += OnBattleStarted;
+        BattleManager.Instance.OnBattleEnded += OnBattleEnded;
     }
+    
+    private void OnBattleStarted() => SetMovement(false);
+    private void OnBattleEnded(bool _) => SetMovement(true);
 
-    private void OnDisable()
+    private void SetMovement(bool canMove)
     {
-        BattleManager.Instance.OnBattleStarted -= HandleStart;
-        BattleManager.Instance.OnBattleEnded -= HandleEnd;
-    }
-
-    private void HandleStart()
-    {
-        _valueToSet = false;
-        TogglePlayerMovement();
-    }
-
-    private void HandleEnd(bool _)
-    {
-        _valueToSet = true;
-        TogglePlayerMovement();
-    }
-
-    private void TogglePlayerMovement()
-    {
-        _movementController.CanMove = _valueToSet;
-        _jumpController.CanJump = _valueToSet;
-        _dashController.CanDash = _valueToSet;
+        _movementController.CanMove = canMove;
+        _jumpController.CanJump = canMove;
+        _dashController.CanDash = canMove;
     }
 }
