@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Scorpion CharData
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   characterName: Scorpion
-  maxHp: 1
+  maxHp: 10
   maxSp: 100
   attack: 20
   defense: 20

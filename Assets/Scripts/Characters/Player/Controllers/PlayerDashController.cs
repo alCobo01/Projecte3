@@ -3,6 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(DashBehaviour))]
 public class PlayerDashController : MonoBehaviour
 {
+    public bool CanDash { get; set; }
+    
     [SerializeField] private float dashCooldown = 2f;
     
     private PlayerInputController _inputController;
@@ -22,6 +24,8 @@ public class PlayerDashController : MonoBehaviour
     {
         _inputController.OnMoveEvent += UpdateMoveInput;
         _inputController.OnDashEvent += HandleDash;
+
+        CanDash = true;
     }
 
     private void OnDisable()
@@ -38,6 +42,7 @@ public class PlayerDashController : MonoBehaviour
     
     private void HandleDash()
     {
+        if (!CanDash) return;
         if (!(Time.time >= _lastDashTime + dashCooldown) || _dashBehaviour.IsDashing) return;
         
         var targetDirectionX = _currentMoveInput.x != 0 ? Mathf.Sign(_currentMoveInput.x) : _lastFacingDirectionX;

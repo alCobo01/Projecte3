@@ -5,6 +5,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(GroundCheck))]
 public class PlayerJumpController : MonoBehaviour
 {
+    public bool CanJump { get; set; }
     public bool CanDoubleJump { get; set; }
     
     [SerializeField] private int maxJumps = 2;
@@ -27,6 +28,8 @@ public class PlayerJumpController : MonoBehaviour
         _wasGrounded = _groundCheck.IsGrounded;
         _jumpsRemaining = _wasGrounded ? maxJumps : 0;
         _inputController.OnJumpEvent += HandleJump;
+
+        CanJump = true;
     } 
     
     private void OnDisable() => _inputController.OnJumpEvent -= HandleJump;
@@ -45,6 +48,7 @@ public class PlayerJumpController : MonoBehaviour
     
     private void HandleJump(bool isPressed)
     {
+        if (!CanJump) return;
         _isJumpHeld = isPressed;
         if (isPressed)
         {

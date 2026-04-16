@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 public class BattleManager : MonoBehaviour
@@ -25,13 +26,14 @@ public class BattleManager : MonoBehaviour
     public IReadOnlyList<BattleUnit> AllUnits => _allUnits;
     public bool IsBattleRunning { get; private set; }
 
-    public event Action<BattleUnit> OnTurnStarted;
-    public event Action<BattleUnit> OnDamageTaken;
-    public event Action<bool> OnBattleEnded;
-    public event Action OnBattleStateChanged;
-    public event Action<bool> OnFleeAttempted;
-    public event Action<string> OnCombatMessage;
-    public event Action<int> OnRoundStarted;
+    public event UnityAction OnBattleStarted;
+    public event UnityAction<BattleUnit> OnTurnStarted;
+    public event UnityAction<BattleUnit> OnDamageTaken;
+    public event UnityAction<bool> OnBattleEnded;
+    public event UnityAction OnBattleStateChanged;
+    public event UnityAction<bool> OnFleeAttempted;
+    public event UnityAction<string> OnCombatMessage;
+    public event UnityAction<int> OnRoundStarted;
 
     private void Awake()
     {
@@ -55,6 +57,7 @@ public class BattleManager : MonoBehaviour
         IsBattleRunning = true;
         _endNotified = false;
         _round = 1;
+        OnBattleStarted?.Invoke();
 
         if (_battleLoop != null) StopCoroutine(_battleLoop);
 
