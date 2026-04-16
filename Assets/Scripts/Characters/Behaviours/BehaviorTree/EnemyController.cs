@@ -8,7 +8,6 @@ public class EnemyController : MonoBehaviour
     public Condition chase;
     public Condition combat;
     public GameObject target;
-    public float AttackDistance;
     public Node root;
     public Node currentState;
     public EnemySO enemyData;
@@ -50,7 +49,7 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            attack.check = (target.transform.position - transform.position).magnitude <= AttackDistance;
+            attack.check = (target.transform.position - transform.position).magnitude <= enemyData.attackDistance;
         }
     }
 

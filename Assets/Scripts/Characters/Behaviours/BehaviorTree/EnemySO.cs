@@ -2,8 +2,7 @@ using UnityEngine;
 
 public abstract class EnemySO : ScriptableObject
 {
-    public GameObject target;
-    public float AttackDistance;
+    public float attackDistance;
     public float walkingSpeed;
     public float chaseSpeed;
     public float attackSpeed;

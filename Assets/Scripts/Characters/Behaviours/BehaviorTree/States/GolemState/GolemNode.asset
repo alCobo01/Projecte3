@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd696440763e0a146a7445cb7445d5a1, type: 3}
   m_Name: GolemNode
   m_EditorClassIdentifier: Assembly-CSharp::Node
-  children: []
+  children:
+  - {fileID: 11400000, guid: ba099505c70775f468271c7899bec8ff, type: 2}
+  - {fileID: 11400000, guid: 66e645b466941f64f837b49f079c1ef6, type: 2}
+  - {fileID: 11400000, guid: e560fe6d6e633934f81f5f2a64c3a5e3, type: 2}
+  - {fileID: 11400000, guid: 5ec276b96b65dd14baefaa806d90a97d, type: 2}

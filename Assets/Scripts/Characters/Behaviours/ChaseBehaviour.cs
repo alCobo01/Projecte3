@@ -5,6 +5,7 @@ public class ChaseBehaviour : MonoBehaviour
     private Rigidbody2D rb;
 
     [Header("Ground Detection")]
+    [SerializeField] public GameObject target;
     [SerializeField] private GroundCheck groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float edgeCheckDistance = 0.5f;
