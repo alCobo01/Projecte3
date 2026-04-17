@@ -3,30 +3,26 @@ using UnityEngine;
 
 public class BattleCameraManager : MonoBehaviour
 {
-    public static BattleCameraManager Instance { get; private set; }
-    
+    [SerializeField] private CinemachineBrain worldCamera;
     [SerializeField] private CinemachineCamera battleCamera;
-    [SerializeField] private GameObject player;
 
-    private PlayerMovementController _movementController;
+    private bool _isBattleCamActive;
     
-    private void Awake()
+    public void SwitchToBattleCam()
     {
-        if (Instance is null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else { Destroy(gameObject); }
+        if (_isBattleCamActive) return;
+        _isBattleCamActive = true;
+        
+        if (worldCamera != null) worldCamera.enabled = false;
+        if (battleCamera != null) battleCamera.gameObject.SetActive(true);
     }
 
-    public void Start()
+    public void SwitchToWorldCam()
     {
-        _movementController = player.GetComponent<PlayerMovementController>();
-    }
-    
-    public void TogglePlayerMovement(bool value)
-    {
-        _movementController.CanMove = value;
+        if (!_isBattleCamActive) return;
+        _isBattleCamActive = false;
+        
+        if (battleCamera != null) battleCamera.gameObject.SetActive(false);
+        if (worldCamera != null) worldCamera.enabled = true;
     }
 }

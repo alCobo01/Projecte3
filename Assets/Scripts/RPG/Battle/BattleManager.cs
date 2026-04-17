@@ -78,6 +78,13 @@ public class BattleManager : MonoBehaviour
         _turnStack.Build(_allUnits, first);
         ui.Initialize(this);
 
+        StartCoroutine(BattleEntrySequence());
+    }
+
+    private IEnumerator BattleEntrySequence()
+    {
+        yield return BattleTransitionManager.Instance?.ExecuteBattleEntry();
+
         OnRoundStarted?.Invoke(_round);
         OnBattleStateChanged?.Invoke();
         _battleLoop = StartCoroutine(BattleLoop());
@@ -262,6 +269,13 @@ public class BattleManager : MonoBehaviour
 
         if (_battleLoop != null) StopCoroutine(_battleLoop);
         _battleLoop = null;
+
+        StartCoroutine(BattleExitSequence());
+    }
+
+    private IEnumerator BattleExitSequence()
+    {
+        yield return BattleTransitionManager.Instance?.ExecuteBattleExit();
     }
 
     private void ForceCleanupIfNeeded()

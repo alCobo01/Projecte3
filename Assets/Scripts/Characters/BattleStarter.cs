@@ -62,11 +62,17 @@ public class BattleStarter : MonoBehaviour, IBattleStarter
         {
             playerData = ownParty[0];
             enemies = targetParty;
+            var playerTransform = GetComponentInParent<Transform>();
+            var enemyTransform = other.transform.root;
+            BattleTransitionManager.Instance?.PrepareBattle(playerTransform, enemyTransform);
         }
         else
         {
             playerData = targetParty[0];
             enemies = ownParty;
+            var playerTransform = other.transform.root;
+            var enemyTransform = GetComponentInParent<Transform>();
+            BattleTransitionManager.Instance?.PrepareBattle(playerTransform, enemyTransform);
         }
 
         BattleManager.Instance.StartBattle(playerData, enemies, BattleInitiator);
