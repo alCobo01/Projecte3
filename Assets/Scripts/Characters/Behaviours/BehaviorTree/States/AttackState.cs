@@ -26,7 +26,8 @@ public class AttackState : Node
         {
             var anim = ec.GetComponent<CharacterAnimationController>();
             if (anim != null) anim.TriggerAttack();
-            
+            Debug.Log(ec.GetComponent<AttackBehaviour>());
+            ec.GetComponent<AttackBehaviour>().Attack(ec.target.transform);
             _lastAttackTime = Time.time;
             Debug.Log("Enemigo atacando!");
         }

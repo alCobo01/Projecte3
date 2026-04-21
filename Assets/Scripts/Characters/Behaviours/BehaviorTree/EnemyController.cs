@@ -39,6 +39,7 @@ public class EnemyController : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             chase.check = false;
+            attack.check = false;
             target = null;
             if (_animController != null) _animController.SetRunning(false);
             Debug.Log("Chase = false");
