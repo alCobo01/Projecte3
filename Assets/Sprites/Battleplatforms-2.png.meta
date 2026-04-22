@@ -1,0 +1,6097 @@
+fileFormatVersion: 2
+guid: 8909f41c0e473470a9b40a7770000d3b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8408719873071562246
+    second: Battleplatforms-2_0
+  - first:
+      213: 7571453896727504555
+    second: Battleplatforms-2_1
+  - first:
+      213: -2841643249317695969
+    second: Battleplatforms-2_2
+  - first:
+      213: 3010104960450796552
+    second: Battleplatforms-2_3
+  - first:
+      213: -4859578329333571258
+    second: Battleplatforms-2_4
+  - first:
+      213: -5730863294123123329
+    second: Battleplatforms-2_5
+  - first:
+      213: 2401536067086820852
+    second: Battleplatforms-2_6
+  - first:
+      213: -7990002739396897826
+    second: Battleplatforms-2_7
+  - first:
+      213: -7347845273652813423
+    second: Battleplatforms-2_8
+  - first:
+      213: -1829615233407188906
+    second: Battleplatforms-2_9
+  - first:
+      213: 8441535964622572746
+    second: Battleplatforms-2_10
+  - first:
+      213: 4524304922161214670
+    second: Battleplatforms-2_11
+  - first:
+      213: -6195736888060326955
+    second: Battleplatforms-2_12
+  - first:
+      213: 6545247851401306488
+    second: Battleplatforms-2_13
+  - first:
+      213: -4401401580494282556
+    second: Battleplatforms-2_14
+  - first:
+      213: -4871154929833978566
+    second: Battleplatforms-2_15
+  - first:
+      213: 3892520442618463860
+    second: Battleplatforms-2_16
+  - first:
+      213: -1508411098077083712
+    second: Battleplatforms-2_17
+  - first:
+      213: -5979359723730784177
+    second: Battleplatforms-2_18
+  - first:
+      213: 2697994768280427811
+    second: Battleplatforms-2_19
+  - first:
+      213: -1287251834596380575
+    second: Battleplatforms-2_20
+  - first:
+      213: -5863884785432025536
+    second: Battleplatforms-2_21
+  - first:
+      213: 8241510925790154910
+    second: Battleplatforms-2_22
+  - first:
+      213: 7773152820756653054
+    second: Battleplatforms-2_23
+  - first:
+      213: -8327899293230275315
+    second: Battleplatforms-2_24
+  - first:
+      213: -737357728555599343
+    second: Battleplatforms-2_25
+  - first:
+      213: 514022587569852811
+    second: Battleplatforms-2_26
+  - first:
+      213: 2410250431293236711
+    second: Battleplatforms-2_27
+  - first:
+      213: -6930559857613299170
+    second: Battleplatforms-2_28
+  - first:
+      213: 5081273670393151221
+    second: Battleplatforms-2_29
+  - first:
+      213: 442258286891315143
+    second: Battleplatforms-2_30
+  - first:
+      213: -241972938445949844
+    second: Battleplatforms-2_31
+  - first:
+      213: 3577212308336374232
+    second: Battleplatforms-2_32
+  - first:
+      213: -3083582237830386294
+    second: Battleplatforms-2_33
+  - first:
+      213: 8184200701953585503
+    second: Battleplatforms-2_34
+  - first:
+      213: -1859685920019433723
+    second: Battleplatforms-2_35
+  - first:
+      213: 439547057315186825
+    second: Battleplatforms-2_36
+  - first:
+      213: -2757123281970470850
+    second: Battleplatforms-2_37
+  - first:
+      213: 6642521284400108066
+    second: Battleplatforms-2_38
+  - first:
+      213: 8247962845621689233
+    second: Battleplatforms-2_39
+  - first:
+      213: -3413959956927054127
+    second: Battleplatforms-2_40
+  - first:
+      213: -2284097924988086947
+    second: Battleplatforms-2_41
+  - first:
+      213: -8751286781548981010
+    second: Battleplatforms-2_42
+  - first:
+      213: 6565971368458874821
+    second: Battleplatforms-2_43
+  - first:
+      213: -8022808857324572699
+    second: Battleplatforms-2_44
+  - first:
+      213: 8962975634297506698
+    second: Battleplatforms-2_45
+  - first:
+      213: 3197082687945086898
+    second: Battleplatforms-2_46
+  - first:
+      213: 6342245302494410753
+    second: Battleplatforms-2_47
+  - first:
+      213: 7331291998963191993
+    second: Battleplatforms-2_48
+  - first:
+      213: -389717746563424897
+    second: Battleplatforms-2_49
+  - first:
+      213: 2618309180209842726
+    second: Battleplatforms-2_50
+  - first:
+      213: -259140056449416081
+    second: Battleplatforms-2_51
+  - first:
+      213: -2810208627629769329
+    second: Battleplatforms-2_52
+  - first:
+      213: 7339923090093627424
+    second: Battleplatforms-2_53
+  - first:
+      213: 3552247087420068460
+    second: Battleplatforms-2_54
+  - first:
+      213: -4747852739954186077
+    second: Battleplatforms-2_55
+  - first:
+      213: -2680390070135607317
+    second: Battleplatforms-2_56
+  - first:
+      213: 7403221942912301343
+    second: Battleplatforms-2_57
+  - first:
+      213: -1593991481608459366
+    second: Battleplatforms-2_58
+  - first:
+      213: -5486792835851803494
+    second: Battleplatforms-2_59
+  - first:
+      213: 8630752432806821704
+    second: Battleplatforms-2_60
+  - first:
+      213: 8605022994362431605
+    second: Battleplatforms-2_61
+  - first:
+      213: 6705623224450680727
+    second: Battleplatforms-2_62
+  - first:
+      213: -3960798272051520134
+    second: Battleplatforms-2_63
+  - first:
+      213: 7454554715544397764
+    second: Battleplatforms-2_64
+  - first:
+      213: 6247375728177656858
+    second: Battleplatforms-2_65
+  - first:
+      213: 8078944055366254884
+    second: Battleplatforms-2_66
+  - first:
+      213: -6627092090968506213
+    second: Battleplatforms-2_67
+  - first:
+      213: 2501605518413793785
+    second: Battleplatforms-2_68
+  - first:
+      213: -378821383397400855
+    second: Battleplatforms-2_69
+  - first:
+      213: -3778119881569021194
+    second: Battleplatforms-2_70
+  - first:
+      213: 2078667680079849916
+    second: Battleplatforms-2_71
+  - first:
+      213: -3165069129702388894
+    second: Battleplatforms-2_72
+  - first:
+      213: -2929700371942674960
+    second: Battleplatforms-2_73
+  - first:
+      213: 8961129058411542746
+    second: Battleplatforms-2_74
+  - first:
+      213: 6657938501944459351
+    second: Battleplatforms-2_75
+  - first:
+      213: 7934468939407903924
+    second: Battleplatforms-2_76
+  - first:
+      213: 1892960470638993834
+    second: Battleplatforms-2_77
+  - first:
+      213: 7677601000209284234
+    second: Battleplatforms-2_78
+  - first:
+      213: -6119139682564090094
+    second: Battleplatforms-2_79
+  - first:
+      213: 6915273213266081072
+    second: Battleplatforms-2_80
+  - first:
+      213: -1061345418639311326
+    second: Battleplatforms-2_81
+  - first:
+      213: -5350849915576118213
+    second: Battleplatforms-2_82
+  - first:
+      213: -1387438111542959091
+    second: Battleplatforms-2_83
+  - first:
+      213: -9171761835329341732
+    second: Battleplatforms-2_84
+  - first:
+      213: -5427870639856630411
+    second: Battleplatforms-2_85
+  - first:
+      213: -6550042150375850342
+    second: Battleplatforms-2_86
+  - first:
+      213: 4910841196347604749
+    second: Battleplatforms-2_87
+  - first:
+      213: -8601928929110726467
+    second: Battleplatforms-2_88
+  - first:
+      213: -5185604708710661019
+    second: Battleplatforms-2_89
+  - first:
+      213: 1927303382719413251
+    second: Battleplatforms-2_90
+  - first:
+      213: 2423393005000462199
+    second: Battleplatforms-2_91
+  - first:
+      213: -6380653671146431646
+    second: Battleplatforms-2_92
+  - first:
+      213: -8957410523977640853
+    second: Battleplatforms-2_93
+  - first:
+      213: 2765596929254195088
+    second: Battleplatforms-2_94
+  - first:
+      213: -5270520158228624099
+    second: Battleplatforms-2_95
+  - first:
+      213: -3582442002198642441
+    second: Battleplatforms-2_96
+  - first:
+      213: 152618232775908973
+    second: Battleplatforms-2_97
+  - first:
+      213: 5967180018341689530
+    second: Battleplatforms-2_98
+  - first:
+      213: -6629108116131041105
+    second: Battleplatforms-2_99
+  - first:
+      213: -6800402886229332846
+    second: Battleplatforms-2_100
+  - first:
+      213: -4221873488292485142
+    second: Battleplatforms-2_101
+  - first:
+      213: 8949184553321601194
+    second: Battleplatforms-2_102
+  - first:
+      213: 7087452208822062233
+    second: Battleplatforms-2_103
+  - first:
+      213: -3441326238111939970
+    second: Battleplatforms-2_104
+  - first:
+      213: 5229117900208972450
+    second: Battleplatforms-2_105
+  - first:
+      213: 3734449921841628836
+    second: Battleplatforms-2_106
+  - first:
+      213: -8796633253648792444
+    second: Battleplatforms-2_107
+  - first:
+      213: 1476673941456176187
+    second: Battleplatforms-2_108
+  - first:
+      213: 2242579685971826386
+    second: Battleplatforms-2_109
+  - first:
+      213: -3522986484419329750
+    second: Battleplatforms-2_110
+  - first:
+      213: 2775091052174486577
+    second: Battleplatforms-2_111
+  - first:
+      213: -2024571315490091748
+    second: Battleplatforms-2_112
+  - first:
+      213: -4993640958823824055
+    second: Battleplatforms-2_113
+  - first:
+      213: 222235650512022401
+    second: Battleplatforms-2_114
+  - first:
+      213: 6021402776647191332
+    second: Battleplatforms-2_115
+  - first:
+      213: -3896606865678266971
+    second: Battleplatforms-2_116
+  - first:
+      213: 5250896069933799696
+    second: Battleplatforms-2_117
+  - first:
+      213: 5943617562048701328
+    second: Battleplatforms-2_118
+  - first:
+      213: 125860831012332326
+    second: Battleplatforms-2_119
+  - first:
+      213: -2167213096769474627
+    second: Battleplatforms-2_120
+  - first:
+      213: 1996324113726201531
+    second: Battleplatforms-2_121
+  - first:
+      213: 594759381582074462
+    second: Battleplatforms-2_122
+  - first:
+      213: -7632091075169602839
+    second: Battleplatforms-2_123
+  - first:
+      213: -7480575486215885359
+    second: Battleplatforms-2_124
+  - first:
+      213: 5293931867854683504
+    second: Battleplatforms-2_125
+  - first:
+      213: -6933350019302785424
+    second: Battleplatforms-2_126
+  - first:
+      213: 2947882800208951020
+    second: Battleplatforms-2_127
+  - first:
+      213: -3437990254068933355
+    second: Battleplatforms-2_128
+  - first:
+      213: 2965233628833725443
+    second: Battleplatforms-2_129
+  - first:
+      213: -8595590399200700600
+    second: Battleplatforms-2_130
+  - first:
+      213: -5278599953084595491
+    second: Battleplatforms-2_131
+  - first:
+      213: -3270402909575550620
+    second: Battleplatforms-2_132
+  - first:
+      213: -6470625991510227037
+    second: Battleplatforms-2_133
+  - first:
+      213: -1450546890538229996
+    second: Battleplatforms-2_134
+  - first:
+      213: 272816575481835583
+    second: Battleplatforms-2_135
+  - first:
+      213: -81589441001762463
+    second: Battleplatforms-2_136
+  - first:
+      213: 8911166375200027419
+    second: Battleplatforms-2_137
+  - first:
+      213: 6764408377383364484
+    second: Battleplatforms-2_138
+  - first:
+      213: -5785577422911677385
+    second: Battleplatforms-2_139
+  - first:
+      213: -1590312335339188380
+    second: Battleplatforms-2_140
+  - first:
+      213: 1935476402447685994
+    second: Battleplatforms-2_141
+  - first:
+      213: 6300314266709794587
+    second: Battleplatforms-2_142
+  - first:
+      213: 6299335747736469174
+    second: Battleplatforms-2_143
+  - first:
+      213: 743938580402763559
+    second: Battleplatforms-2_144
+  - first:
+      213: -942941909169827857
+    second: Battleplatforms-2_145
+  - first:
+      213: -7876983053458747177
+    second: Battleplatforms-2_146
+  - first:
+      213: 1277192442029854119
+    second: Battleplatforms-2_147
+  - first:
+      213: -2278437100430524815
+    second: Battleplatforms-2_148
+  - first:
+      213: -5037347900990079840
+    second: Battleplatforms-2_149
+  - first:
+      213: 2010150039934104229
+    second: Battleplatforms-2_150
+  - first:
+      213: 906592910925806774
+    second: Battleplatforms-2_151
+  - first:
+      213: 3034754609669083640
+    second: Battleplatforms-2_152
+  - first:
+      213: 2940438911170388128
+    second: Battleplatforms-2_153
+  - first:
+      213: 5100234743131392438
+    second: Battleplatforms-2_154
+  - first:
+      213: 1409937215472413009
+    second: Battleplatforms-2_155
+  - first:
+      213: 8424766949443174057
+    second: Battleplatforms-2_156
+  - first:
+      213: -8374573456015477719
+    second: Battleplatforms-2_157
+  - first:
+      213: 2017111494012836513
+    second: Battleplatforms-2_158
+  - first:
+      213: 3205396319887106070
+    second: Battleplatforms-2_159
+  - first:
+      213: -359400954850983048
+    second: Battleplatforms-2_160
+  - first:
+      213: 6065576238515755584
+    second: Battleplatforms-2_161
+  - first:
+      213: -2303889938298182672
+    second: Battleplatforms-2_162
+  - first:
+      213: -2745236378991219079
+    second: Battleplatforms-2_163
+  - first:
+      213: -4666195055174513389
+    second: Battleplatforms-2_164
+  - first:
+      213: 3929925909183387139
+    second: Battleplatforms-2_165
+  - first:
+      213: 1882223242084668385
+    second: Battleplatforms-2_166
+  - first:
+      213: -4401235707046080448
+    second: Battleplatforms-2_167
+  - first:
+      213: -6967692169704889488
+    second: Battleplatforms-2_168
+  - first:
+      213: -6893153377892772999
+    second: Battleplatforms-2_169
+  - first:
+      213: 722093318696130336
+    second: Battleplatforms-2_170
+  - first:
+      213: 2736880724742581440
+    second: Battleplatforms-2_171
+  - first:
+      213: 8729592922977071770
+    second: Battleplatforms-2_172
+  - first:
+      213: -2403100210038712188
+    second: Battleplatforms-2_173
+  - first:
+      213: -8153492578292084187
+    second: Battleplatforms-2_174
+  - first:
+      213: 2173162863300866636
+    second: Battleplatforms-2_175
+  - first:
+      213: -3683274397607938209
+    second: Battleplatforms-2_176
+  - first:
+      213: 3514697105944812223
+    second: Battleplatforms-2_177
+  - first:
+      213: -3715713492835427028
+    second: Battleplatforms-2_178
+  - first:
+      213: -217673865296833041
+    second: Battleplatforms-2_179
+  - first:
+      213: -4058657328628151702
+    second: Battleplatforms-2_180
+  - first:
+      213: -4770218983325623798
+    second: Battleplatforms-2_181
+  - first:
+      213: 2795690992369846378
+    second: Battleplatforms-2_182
+  - first:
+      213: -1739089511471545832
+    second: Battleplatforms-2_183
+  - first:
+      213: 4111308620662251079
+    second: Battleplatforms-2_184
+  - first:
+      213: -1208023253237763994
+    second: Battleplatforms-2_185
+  - first:
+      213: -6960117816785934297
+    second: Battleplatforms-2_186
+  - first:
+      213: 2278711681013531051
+    second: Battleplatforms-2_187
+  - first:
+      213: 7086221833749216474
+    second: Battleplatforms-2_188
+  - first:
+      213: -3293201520589287438
+    second: Battleplatforms-2_189
+  - first:
+      213: -2274917950525878387
+    second: Battleplatforms-2_190
+  - first:
+      213: -6957805112201723734
+    second: Battleplatforms-2_191
+  - first:
+      213: -3284282085600600842
+    second: Battleplatforms-2_192
+  - first:
+      213: -9082376465671220704
+    second: Battleplatforms-2_193
+  - first:
+      213: 4572048077299820034
+    second: Battleplatforms-2_194
+  - first:
+      213: 1568691636998253437
+    second: Battleplatforms-2_195
+  - first:
+      213: -1170736134589724041
+    second: Battleplatforms-2_196
+  - first:
+      213: -14055754378946160
+    second: Battleplatforms-2_197
+  - first:
+      213: -2114429682471959574
+    second: Battleplatforms-2_198
+  - first:
+      213: -5937838736396734214
+    second: Battleplatforms-2_199
+  - first:
+      213: 80884320492740123
+    second: Battleplatforms-2_200
+  - first:
+      213: -7193564874320529233
+    second: Battleplatforms-2_201
+  - first:
+      213: 1375850729324607991
+    second: Battleplatforms-2_202
+  - first:
+      213: 7411333357976044052
+    second: Battleplatforms-2_203
+  - first:
+      213: 9029927044129806273
+    second: Battleplatforms-2_204
+  - first:
+      213: -4514003182424490902
+    second: Battleplatforms-2_205
+  - first:
+      213: -2406242000976327278
+    second: Battleplatforms-2_206
+  - first:
+      213: 5296483722777738495
+    second: Battleplatforms-2_207
+  - first:
+      213: -5896824147024494092
+    second: Battleplatforms-2_208
+  - first:
+      213: 2091243714219235847
+    second: Battleplatforms-2_209
+  - first:
+      213: -7632087982202822338
+    second: Battleplatforms-2_210
+  - first:
+      213: -5825082728036156160
+    second: Battleplatforms-2_211
+  - first:
+      213: 7291797716924680671
+    second: Battleplatforms-2_212
+  - first:
+      213: 4406927448129323636
+    second: Battleplatforms-2_213
+  - first:
+      213: -7020116169179007528
+    second: Battleplatforms-2_214
+  - first:
+      213: -9028273934709640632
+    second: Battleplatforms-2_215
+  - first:
+      213: 7744590152795135547
+    second: Battleplatforms-2_216
+  - first:
+      213: 397000017237414835
+    second: Battleplatforms-2_217
+  - first:
+      213: 3306246538797835262
+    second: Battleplatforms-2_218
+  - first:
+      213: -2221379715898333705
+    second: Battleplatforms-2_219
+  - first:
+      213: 5730696822736952605
+    second: Battleplatforms-2_220
+  - first:
+      213: -8495103809138393740
+    second: Battleplatforms-2_221
+  - first:
+      213: -3564097597544954652
+    second: Battleplatforms-2_222
+  - first:
+      213: -7366939030461192348
+    second: Battleplatforms-2_223
+  - first:
+      213: -5808825487719739429
+    second: Battleplatforms-2_224
+  - first:
+      213: 2820177153988492931
+    second: Battleplatforms-2_225
+  - first:
+      213: 884485825211230370
+    second: Battleplatforms-2_226
+  - first:
+      213: 700013926615439171
+    second: Battleplatforms-2_227
+  - first:
+      213: 5236937598024993830
+    second: Battleplatforms-2_228
+  - first:
+      213: 2659493127056544957
+    second: Battleplatforms-2_229
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Battleplatforms-2_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 671
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60eb23a5c26c1b470800000000000000
+      internalID: 8408719873071562246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_1
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 671
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba6a0bb2435331960800000000000000
+      internalID: 7571453896727504555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_2
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 671
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1e280a35847098d0800000000000000
+      internalID: -2841643249317695969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_3
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 671
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80c9f48638a06c920800000000000000
+      internalID: 3010104960450796552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_4
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 671
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 641e2e1b14f4f8cb0800000000000000
+      internalID: -4859578329333571258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_5
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 671
+        width: 14
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7d57798232e770b0800000000000000
+      internalID: -5730863294123123329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_6
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 671
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f5aff14458f35120800000000000000
+      internalID: 2401536067086820852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_7
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 671
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed399d367decd1190800000000000000
+      internalID: -7990002739396897826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_8
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 662
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 191246777a5370a90800000000000000
+      internalID: -7347845273652813423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_9
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 662
+        width: 18
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6500f1193a6eb96e0800000000000000
+      internalID: -1829615233407188906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_10
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 662
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: acc43021c3c562570800000000000000
+      internalID: 8441535964622572746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_11
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 662
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec478fc1b5f89ce30800000000000000
+      internalID: 4524304922161214670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_12
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 666
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5db41617022540aa0800000000000000
+      internalID: -6195736888060326955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_13
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 666
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 871e9ad1e3465da50800000000000000
+      internalID: 6545247851401306488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_14
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 666
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c0abc805941be2c0800000000000000
+      internalID: -4401401580494282556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_15
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 666
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a355a59566e266cb0800000000000000
+      internalID: -4871154929833978566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_16
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 666
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 476483718b2050630800000000000000
+      internalID: 3892520442618463860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_17
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 664
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c7cbd3291c011be0800000000000000
+      internalID: -1508411098077083712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_18
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 666
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f40bfb2e20c050da0800000000000000
+      internalID: -5979359723730784177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_19
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 666
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32d973972f3317520800000000000000
+      internalID: 2697994768280427811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_20
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 666
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 160b96ec643c22ee0800000000000000
+      internalID: -1287251834596380575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_21
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 666
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 046a1881bdb4f9ea0800000000000000
+      internalID: -5863884785432025536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_22
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 666
+        width: 18
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e901938858abf5270800000000000000
+      internalID: 8241510925790154910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_23
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 666
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef3a60a7e49cfdb60800000000000000
+      internalID: 7773152820756653054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_24
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 666
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0568c547bb5d6c80800000000000000
+      internalID: -8327899293230275315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_25
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 666
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11afd057d0164c5f0800000000000000
+      internalID: -737357728555599343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_26
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 666
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b81d0aae1dc222700800000000000000
+      internalID: 514022587569852811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_27
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 666
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e527f84ffde27120800000000000000
+      internalID: 2410250431293236711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_28
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 666
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e12a0687784b1df90800000000000000
+      internalID: -6930559857613299170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_29
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 657
+        width: 14
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fe34524b7f448640800000000000000
+      internalID: 5081273670393151221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_30
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 655
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cf21299197332600800000000000000
+      internalID: 442258286891315143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_31
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 655
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c64fbaef4e654acf0800000000000000
+      internalID: -241972938445949844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_32
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 662
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d17b8c34afc4a130800000000000000
+      internalID: 3577212308336374232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_33
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 662
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8d6a6eca4ae435d0800000000000000
+      internalID: -3083582237830386294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_34
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 662
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f51327a3d2f149170800000000000000
+      internalID: 8184200701953585503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_35
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 662
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 507327f32811136e0800000000000000
+      internalID: -1859685920019433723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 65
+        height: 641
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 988075548b5991600800000000000000
+      internalID: 439547057315186825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_37
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 591
+        width: 126
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e30e030abfabcb9d0800000000000000
+      internalID: -2757123281970470850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_38
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 597
+        width: 194
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 222d3a12ae9fe2c50800000000000000
+      internalID: 6642521284400108066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_39
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 319
+        width: 66
+        height: 322
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19b96ed2286a67270800000000000000
+      internalID: 8247962845621689233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_40
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 591
+        width: 132
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1de74f1d18d2f90d0800000000000000
+      internalID: -3413959956927054127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_41
+      rect:
+        serializedVersion: 2
+        x: 603
+        y: 597
+        width: 194
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d55d0e4f9014d40e0800000000000000
+      internalID: -2284097924988086947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_42
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 580
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee4933ad90f2d8680800000000000000
+      internalID: -8751286781548981010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_43
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 580
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cf606eeb240f1b50800000000000000
+      internalID: 6565971368458874821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_44
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 580
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5efaf46d9d149a090800000000000000
+      internalID: -8022808857324572699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_45
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 580
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8bc8ccf9d2e26c70800000000000000
+      internalID: 8962975634297506698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_46
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 578
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b7948c04c15e5c20800000000000000
+      internalID: 3197082687945086898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_47
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 580
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 108b19dff7e240850800000000000000
+      internalID: 6342245302494410753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_48
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 580
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b05ddeea3bfdb560800000000000000
+      internalID: 7331291998963191993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_49
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 580
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7ddb6936c1779af0800000000000000
+      internalID: -389717746563424897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_50
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 578
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62a4d86b35a165420800000000000000
+      internalID: 2618309180209842726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_51
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 580
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f64024cdd79576cf0800000000000000
+      internalID: -259140056449416081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_52
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 580
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8db36d64222009d0800000000000000
+      internalID: -2810208627629769329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_53
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 580
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 028d7bf6925acd560800000000000000
+      internalID: 7339923090093627424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_54
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 580
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c62d618c7ed1c4130800000000000000
+      internalID: 3552247087420068460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_55
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 580
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a86a25961d3c1eb0800000000000000
+      internalID: -4747852739954186077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_56
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 580
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bef251abe675dcad0800000000000000
+      internalID: -2680390070135607317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_57
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 578
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f193aa412278db660800000000000000
+      internalID: 7403221942912301343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_58
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 583
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9baabb513101e9e0800000000000000
+      internalID: -1593991481608459366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_59
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 583
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9425ee6cfefad3b0800000000000000
+      internalID: -5486792835851803494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_60
+      rect:
+        serializedVersion: 2
+        x: 595
+        y: 583
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84ff9c52c9796c770800000000000000
+      internalID: 8630752432806821704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_61
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 583
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5787a0f62de2b6770800000000000000
+      internalID: 8605022994362431605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_62
+      rect:
+        serializedVersion: 2
+        x: 607
+        y: 583
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7970ef27bc82f0d50800000000000000
+      internalID: 6705623224450680727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_63
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 527
+        width: 126
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7d536fe4fa6809c0800000000000000
+      internalID: -3960798272051520134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_64
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 533
+        width: 194
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c7acb29406e37760800000000000000
+      internalID: 7454554715544397764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_65
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 527
+        width: 126
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a143d60ff1323b650800000000000000
+      internalID: 6247375728177656858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_66
+      rect:
+        serializedVersion: 2
+        x: 603
+        y: 533
+        width: 194
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4210c5470dc2e1070800000000000000
+      internalID: 8078944055366254884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_67
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 518
+        width: 15
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b908508ead6d704a0800000000000000
+      internalID: -6627092090968506213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_68
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 518
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f9063507fc77b220800000000000000
+      internalID: 2501605518413793785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_69
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 518
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ee964975f72ebaf0800000000000000
+      internalID: -378821383397400855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_70
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 518
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f2dc3c2cfb619bc0800000000000000
+      internalID: -3778119881569021194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_71
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 518
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb9ae35ed39e8dc10800000000000000
+      internalID: 2078667680079849916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_72
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 518
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26bc882556a6314d0800000000000000
+      internalID: -3165069129702388894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_73
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 516
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fde600b80d9757d0800000000000000
+      internalID: -2929700371942674960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_74
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 516
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad8fc0986635c5c70800000000000000
+      internalID: 8961129058411542746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_75
+      rect:
+        serializedVersion: 2
+        x: 601
+        y: 518
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 750cbc0dacfb56c50800000000000000
+      internalID: 6657938501944459351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_76
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 518
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bc47c63675ec1e60800000000000000
+      internalID: 7934468939407903924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_77
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 518
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa12b4ac485254a10800000000000000
+      internalID: 1892960470638993834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_78
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 518
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8c78a89e615c8a60800000000000000
+      internalID: 7677601000209284234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_79
+      rect:
+        serializedVersion: 2
+        x: 627
+        y: 518
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21755c911e2741ba0800000000000000
+      internalID: -6119139682564090094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_80
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 463
+        width: 126
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 035bf79495cf7ff50800000000000000
+      internalID: 6915273213266081072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_81
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 469
+        width: 194
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22ef30a07f75541f0800000000000000
+      internalID: -1061345418639311326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_82
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 463
+        width: 126
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3418af0a56fdb5b0800000000000000
+      internalID: -5350849915576118213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_83
+      rect:
+        serializedVersion: 2
+        x: 603
+        y: 469
+        width: 194
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d04a4a57364debce0800000000000000
+      internalID: -1387438111542959091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_84
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 453
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd6b5b0743b57b080800000000000000
+      internalID: -9171761835329341732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_85
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 451
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 575c29049645ca4b0800000000000000
+      internalID: -5427870639856630411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_86
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 453
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9ef20b2e539915a0800000000000000
+      internalID: -6550042150375850342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_87
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 453
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0f37a0ac00d62440800000000000000
+      internalID: 4910841196347604749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_88
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 453
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db8e235c63fcf9880800000000000000
+      internalID: -8601928929110726467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_89
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 453
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56445bfedf70908b0800000000000000
+      internalID: -5185604708710661019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_90
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 453
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30c366d17382fba10800000000000000
+      internalID: 1927303382719413251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_91
+      rect:
+        serializedVersion: 2
+        x: 536
+        y: 453
+        width: 13
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77f083e291f91a120800000000000000
+      internalID: 2423393005000462199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_92
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 453
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26b5680da4d5377a0800000000000000
+      internalID: -6380653671146431646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_93
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 453
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6497fa3692e0b380800000000000000
+      internalID: -8957410523977640853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_94
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 453
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09f7b1021cf516620800000000000000
+      internalID: 2765596929254195088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_95
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 451
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1d4f3b27d95bd6b0800000000000000
+      internalID: -5270520158228624099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_96
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 453
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f0c286cafb984ec0800000000000000
+      internalID: -3582442002198642441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_97
+      rect:
+        serializedVersion: 2
+        x: 587
+        y: 453
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6e1bde59753e1200800000000000000
+      internalID: 152618232775908973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_98
+      rect:
+        serializedVersion: 2
+        x: 597
+        y: 451
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab8b0187c9eafc250800000000000000
+      internalID: 5967180018341689530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_99
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 453
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa0b9587a4da004a0800000000000000
+      internalID: -6629108116131041105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_100
+      rect:
+        serializedVersion: 2
+        x: 611
+        y: 453
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29c62c4ea9d10a1a0800000000000000
+      internalID: -6800402886229332846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_101
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 453
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae7efab4e64e865c0800000000000000
+      internalID: -4221873488292485142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_102
+      rect:
+        serializedVersion: 2
+        x: 627
+        y: 453
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa8952abfe3e13c70800000000000000
+      internalID: 8949184553321601194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_103
+      rect:
+        serializedVersion: 2
+        x: 634
+        y: 453
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99c8565ab30bb5260800000000000000
+      internalID: 7087452208822062233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_104
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 453
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e724b15f404fd30d0800000000000000
+      internalID: -3441326238111939970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_105
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 453
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a2a792760f819840800000000000000
+      internalID: 5229117900208972450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_106
+      rect:
+        serializedVersion: 2
+        x: 661
+        y: 453
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a60bdefa6e63d330800000000000000
+      internalID: 3734449921841628836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_107
+      rect:
+        serializedVersion: 2
+        x: 668
+        y: 453
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48400e099a41ce580800000000000000
+      internalID: -8796633253648792444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_108
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 451
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b34429140233e7410800000000000000
+      internalID: 1476673941456176187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_109
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 399
+        width: 126
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d69bdab75e3f1f10800000000000000
+      internalID: 2242579685971826386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_110
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 405
+        width: 194
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a210faf3576db1fc0800000000000000
+      internalID: -3522986484419329750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_111
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 399
+        width: 126
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13ca930eb9a138620800000000000000
+      internalID: 2775091052174486577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_112
+      rect:
+        serializedVersion: 2
+        x: 638
+        y: 423
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1d84cd7d1747e3e0800000000000000
+      internalID: -2024571315490091748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_113
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 423
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9450771610603bab0800000000000000
+      internalID: -4993640958823824055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_114
+      rect:
+        serializedVersion: 2
+        x: 651
+        y: 423
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18b623d852a851300800000000000000
+      internalID: 222235650512022401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_115
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 423
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42b4b9f2ce1509350800000000000000
+      internalID: 6021402776647191332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_116
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 423
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ad06e563b87ce9c0800000000000000
+      internalID: -3896606865678266971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_117
+      rect:
+        serializedVersion: 2
+        x: 674
+        y: 423
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01916e8b72eeed840800000000000000
+      internalID: 5250896069933799696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_118
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 421
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 093afaa9ea8fb7250800000000000000
+      internalID: 5943617562048701328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_119
+      rect:
+        serializedVersion: 2
+        x: 691
+        y: 423
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62320ab42c52fb100800000000000000
+      internalID: 125860831012332326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_120
+      rect:
+        serializedVersion: 2
+        x: 698
+        y: 423
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbf2b7ebb238ce1e0800000000000000
+      internalID: -2167213096769474627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_121
+      rect:
+        serializedVersion: 2
+        x: 705
+        y: 423
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbe5237543e54bb10800000000000000
+      internalID: 1996324113726201531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_122
+      rect:
+        serializedVersion: 2
+        x: 712
+        y: 423
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e52d702a182014800800000000000000
+      internalID: 594759381582074462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_123
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 423
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e2361b8a9d551690800000000000000
+      internalID: -7632091075169602839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_124
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 423
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1dd6b94aa38af2890800000000000000
+      internalID: -7480575486215885359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_125
+      rect:
+        serializedVersion: 2
+        x: 740
+        y: 423
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07d39904cf2d77940800000000000000
+      internalID: 5293931867854683504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_126
+      rect:
+        serializedVersion: 2
+        x: 747
+        y: 423
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07e720454eac7cf90800000000000000
+      internalID: -6933350019302785424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_127
+      rect:
+        serializedVersion: 2
+        x: 754
+        y: 421
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce630f9c9cbf8e820800000000000000
+      internalID: 2947882800208951020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_128
+      rect:
+        serializedVersion: 2
+        x: 638
+        y: 409
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51d57f4441ec940d0800000000000000
+      internalID: -3437990254068933355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_129
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 409
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30c3da26640a62920800000000000000
+      internalID: 2965233628833725443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_130
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 409
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84752e4c21456b880800000000000000
+      internalID: -8595590399200700600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_131
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 409
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd2cff45f45aeb6b0800000000000000
+      internalID: -5278599953084595491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_132
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 409
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 469685e81e13d92d0800000000000000
+      internalID: -3270402909575550620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_133
+      rect:
+        serializedVersion: 2
+        x: 676
+        y: 409
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a78f9d81f7b336a0800000000000000
+      internalID: -6470625991510227037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_134
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 409
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41fdb63d94f9edbe0800000000000000
+      internalID: -1450546890538229996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_135
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 409
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f30fe6eda3d39c300800000000000000
+      internalID: 272816575481835583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_136
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 409
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 161daafe5d22edef0800000000000000
+      internalID: -81589441001762463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_137
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 409
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b13f338da92daab70800000000000000
+      internalID: 8911166375200027419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_138
+      rect:
+        serializedVersion: 2
+        x: 715
+        y: 409
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 487ac91749100ed50800000000000000
+      internalID: 6764408377383364484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_139
+      rect:
+        serializedVersion: 2
+        x: 722
+        y: 409
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73c54d6bcff75bfa0800000000000000
+      internalID: -5785577422911677385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_140
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 407
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46f8f2a5b531ee9e0800000000000000
+      internalID: -1590312335339188380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_141
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 409
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a699b0f88813cda10800000000000000
+      internalID: 1935476402447685994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_142
+      rect:
+        serializedVersion: 2
+        x: 741
+        y: 409
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1f1090f1763f6750800000000000000
+      internalID: 6300314266709794587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_143
+      rect:
+        serializedVersion: 2
+        x: 748
+        y: 409
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6be70ccbc7cbb6750800000000000000
+      internalID: 6299335747736469174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_144
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 389
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7277d938230035a00800000000000000
+      internalID: 743938580402763559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_145
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 389
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fef8a1c545ff9e2f0800000000000000
+      internalID: -942941909169827857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_146
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 389
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d0d1dc95a55fa290800000000000000
+      internalID: -7876983053458747177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_147
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 389
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7adc00952cf79b110800000000000000
+      internalID: 1277192442029854119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_148
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 389
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17e74c1678d5160e0800000000000000
+      internalID: -2278437100430524815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_149
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 389
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ac3d67e5ceb71ab0800000000000000
+      internalID: -5037347900990079840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_150
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 389
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a27283afcc75eb10800000000000000
+      internalID: 2010150039934104229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_151
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 389
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bcbe9bf27dd49c00800000000000000
+      internalID: 906592910925806774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_152
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 389
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f11ec91d3d9d1a20800000000000000
+      internalID: 3034754609669083640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_153
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 389
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a02c005c998ec820800000000000000
+      internalID: 2940438911170388128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_154
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 393
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b9c3770a7ca7c640800000000000000
+      internalID: 5100234743131392438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_155
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 393
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15926d36d6a119310800000000000000
+      internalID: 1409937215472413009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_156
+      rect:
+        serializedVersion: 2
+        x: 597
+        y: 393
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9aef20977e8cae470800000000000000
+      internalID: 8424766949443174057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_157
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 393
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92438c8efc987cb80800000000000000
+      internalID: -8374573456015477719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_158
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 393
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1aa1ef877383efb10800000000000000
+      internalID: 2017111494012836513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_159
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 393
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 610273358fadb7c20800000000000000
+      internalID: 3205396319887106070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_160
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 391
+        width: 26
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 873cb2a5cb6230bf0800000000000000
+      internalID: -359400954850983048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_161
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 335
+        width: 126
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04a18ceb3714d2450800000000000000
+      internalID: 6065576238515755584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_162
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 341
+        width: 194
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f3e322ce40f600e0800000000000000
+      internalID: -2303889938298182672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_163
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 335
+        width: 126
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97eafb5ee06f6e9d0800000000000000
+      internalID: -2745236378991219079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_164
+      rect:
+        serializedVersion: 2
+        x: 603
+        y: 341
+        width: 194
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31d83a3e1585e3fb0800000000000000
+      internalID: -4666195055174513389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_165
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 324
+        width: 15
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 306da72fac6e98630800000000000000
+      internalID: 3929925909183387139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_166
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 324
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e3d074f0100f1a10800000000000000
+      internalID: 1882223242084668385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_167
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 324
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 040d0c4717babe2c0800000000000000
+      internalID: -4401235707046080448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_168
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 324
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 073287853e8cd4f90800000000000000
+      internalID: -6967692169704889488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_169
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 324
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 973da6836899650a0800000000000000
+      internalID: -6893153377892772999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_170
+      rect:
+        serializedVersion: 2
+        x: 568
+        y: 321
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 027d09b2c04650a00800000000000000
+      internalID: 722093318696130336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_171
+      rect:
+        serializedVersion: 2
+        x: 578
+        y: 321
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cc25eeb48a5bf520800000000000000
+      internalID: 2736880724742581440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_172
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 321
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a92ffc7138eb52970800000000000000
+      internalID: 8729592922977071770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_173
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 321
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 488d9f4571976aed0800000000000000
+      internalID: -2403100210038712188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_174
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 321
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 522dd18f2b9f8de80800000000000000
+      internalID: -8153492578292084187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_175
+      rect:
+        serializedVersion: 2
+        x: 611
+        y: 321
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c427e1a3c10a82e10800000000000000
+      internalID: 2173162863300866636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_176
+      rect:
+        serializedVersion: 2
+        x: 618
+        y: 321
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f57b940437162ecc0800000000000000
+      internalID: -3683274397607938209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_177
+      rect:
+        serializedVersion: 2
+        x: 628
+        y: 319
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fba1fec6566b6c030800000000000000
+      internalID: 3514697105944812223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_178
+      rect:
+        serializedVersion: 2
+        x: 635
+        y: 321
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2d1b64d3422f6cc0800000000000000
+      internalID: -3715713492835427028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_179
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 321
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe59816d5caaafcf0800000000000000
+      internalID: -217673865296833041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_180
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 321
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6a451ec9a0cca7c0800000000000000
+      internalID: -4058657328628151702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_181
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 271
+        width: 126
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0a1d0ebb17cccdb0800000000000000
+      internalID: -4770218983325623798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_182
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 277
+        width: 194
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a68c6f5352a4cc620800000000000000
+      internalID: 2795690992369846378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_183
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 259
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 812812cad438dd7e0800000000000000
+      internalID: -1739089511471545832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_184
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 259
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74e1398686d4e0930800000000000000
+      internalID: 4111308620662251079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_185
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 259
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 660f956604d3c3fe0800000000000000
+      internalID: -1208023253237763994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_186
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 259
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7286b9fc8b1b86f90800000000000000
+      internalID: -6960117816785934297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_187
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 259
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba14854633c9f9f10800000000000000
+      internalID: 2278711681013531051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_188
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 259
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adc3d30a631575260800000000000000
+      internalID: 7086221833749216474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_189
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 259
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ffcf774aa23c42d0800000000000000
+      internalID: -3293201520589287438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_190
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 259
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8fceb15d2edd60e0800000000000000
+      internalID: -2274917950525878387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_191
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 259
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa0c1de4d19e07f90800000000000000
+      internalID: -6957805112201723734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_192
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 259
+        width: 14
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fcd89118d2eb62d0800000000000000
+      internalID: -3284282085600600842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_193
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 259
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0229c4799bae4f180800000000000000
+      internalID: -9082376465671220704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_194
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 259
+        width: 15
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 206a677a08d237f30800000000000000
+      internalID: 4572048077299820034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_195
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 259
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7b28698bbc15c510800000000000000
+      internalID: 1568691636998253437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_196
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 207
+        width: 126
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77ac01c30b5b0cfe0800000000000000
+      internalID: -1170736134589724041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_197
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 213
+        width: 194
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0995139ad501ecff0800000000000000
+      internalID: -14055754378946160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_198
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 195
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae387b1186908a2e0800000000000000
+      internalID: -2114429682471959574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_199
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 195
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af0b487112f889da0800000000000000
+      internalID: -5937838736396734214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_200
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 195
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1e5ed66cdb5f1100800000000000000
+      internalID: 80884320492740123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_201
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 195
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa8b5652cd25b2c90800000000000000
+      internalID: -7193564874320529233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_202
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 195
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f9fa51e2f0081310800000000000000
+      internalID: 1375850729324607991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_203
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 193
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4124a221c685ad660800000000000000
+      internalID: 7411333357976044052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_204
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 195
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c7dc05ddceb05d70800000000000000
+      internalID: 9029927044129806273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_205
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 195
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6cfa94950a0b51c0800000000000000
+      internalID: -4514003182424490902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_206
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 195
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29d4e2026af4b9ed0800000000000000
+      internalID: -2406242000976327278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_207
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 195
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffc3ec642e3e08940800000000000000
+      internalID: 5296483722777738495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_208
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 193
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f1c8a55ea54a2ea0800000000000000
+      internalID: -5896824147024494092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_209
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 143
+        width: 126
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70a5ec40417950d10800000000000000
+      internalID: 2091243714219235847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_210
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 149
+        width: 194
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e31e54eaa60651690800000000000000
+      internalID: -7632087982202822338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_211
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 133
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00d34281f16292fa0800000000000000
+      internalID: -5825082728036156160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_212
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 133
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd9cc43d36ba13560800000000000000
+      internalID: 7291797716924680671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_213
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 133
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 472caa84a2d882d30800000000000000
+      internalID: 4406927448129323636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_214
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 133
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d5fb1ec989839e90800000000000000
+      internalID: -7020116169179007528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_215
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 79
+        width: 126
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 842b6b2b0b025b280800000000000000
+      internalID: -9028273934709640632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_216
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 85
+        width: 194
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3e975c16bf4a7b60800000000000000
+      internalID: 7744590152795135547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_217
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 69
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b3924b896d628500800000000000000
+      internalID: 397000017237414835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_218
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 69
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef3e8e4b5b522ed20800000000000000
+      internalID: 3306246538797835262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_219
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 69
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f52f92fae21c21e0800000000000000
+      internalID: -2221379715898333705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_220
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 67
+        width: 18
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1d12b2d566878f40800000000000000
+      internalID: 5730696822736952605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_221
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 69
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47dfc3638145b1a80800000000000000
+      internalID: -8495103809138393740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_222
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 69
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e482815e18c98ec0800000000000000
+      internalID: -3564097597544954652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_223
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 69
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4676667cbff53c990800000000000000
+      internalID: -7366939030461192348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_224
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 69
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdfca32def7e26fa0800000000000000
+      internalID: -5808825487719739429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_225
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 69
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38ef72bfd28432720800000000000000
+      internalID: 2820177153988492931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_226
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 15
+        width: 126
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a8659cfb23564c00800000000000000
+      internalID: 884485825211230370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_227
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 21
+        width: 194
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3475db915f2f6b900800000000000000
+      internalID: 700013926615439171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_228
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 5
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62cca29bff65da840800000000000000
+      internalID: 5236937598024993830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battleplatforms-2_229
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 5
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db45cc098ea68e420800000000000000
+      internalID: 2659493127056544957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Battleplatforms-2_0: 8408719873071562246
+      Battleplatforms-2_1: 7571453896727504555
+      Battleplatforms-2_10: 8441535964622572746
+      Battleplatforms-2_100: -6800402886229332846
+      Battleplatforms-2_101: -4221873488292485142
+      Battleplatforms-2_102: 8949184553321601194
+      Battleplatforms-2_103: 7087452208822062233
+      Battleplatforms-2_104: -3441326238111939970
+      Battleplatforms-2_105: 5229117900208972450
+      Battleplatforms-2_106: 3734449921841628836
+      Battleplatforms-2_107: -8796633253648792444
+      Battleplatforms-2_108: 1476673941456176187
+      Battleplatforms-2_109: 2242579685971826386
+      Battleplatforms-2_11: 4524304922161214670
+      Battleplatforms-2_110: -3522986484419329750
+      Battleplatforms-2_111: 2775091052174486577
+      Battleplatforms-2_112: -2024571315490091748
+      Battleplatforms-2_113: -4993640958823824055
+      Battleplatforms-2_114: 222235650512022401
+      Battleplatforms-2_115: 6021402776647191332
+      Battleplatforms-2_116: -3896606865678266971
+      Battleplatforms-2_117: 5250896069933799696
+      Battleplatforms-2_118: 5943617562048701328
+      Battleplatforms-2_119: 125860831012332326
+      Battleplatforms-2_12: -6195736888060326955
+      Battleplatforms-2_120: -2167213096769474627
+      Battleplatforms-2_121: 1996324113726201531
+      Battleplatforms-2_122: 594759381582074462
+      Battleplatforms-2_123: -7632091075169602839
+      Battleplatforms-2_124: -7480575486215885359
+      Battleplatforms-2_125: 5293931867854683504
+      Battleplatforms-2_126: -6933350019302785424
+      Battleplatforms-2_127: 2947882800208951020
+      Battleplatforms-2_128: -3437990254068933355
+      Battleplatforms-2_129: 2965233628833725443
+      Battleplatforms-2_13: 6545247851401306488
+      Battleplatforms-2_130: -8595590399200700600
+      Battleplatforms-2_131: -5278599953084595491
+      Battleplatforms-2_132: -3270402909575550620
+      Battleplatforms-2_133: -6470625991510227037
+      Battleplatforms-2_134: -1450546890538229996
+      Battleplatforms-2_135: 272816575481835583
+      Battleplatforms-2_136: -81589441001762463
+      Battleplatforms-2_137: 8911166375200027419
+      Battleplatforms-2_138: 6764408377383364484
+      Battleplatforms-2_139: -5785577422911677385
+      Battleplatforms-2_14: -4401401580494282556
+      Battleplatforms-2_140: -1590312335339188380
+      Battleplatforms-2_141: 1935476402447685994
+      Battleplatforms-2_142: 6300314266709794587
+      Battleplatforms-2_143: 6299335747736469174
+      Battleplatforms-2_144: 743938580402763559
+      Battleplatforms-2_145: -942941909169827857
+      Battleplatforms-2_146: -7876983053458747177
+      Battleplatforms-2_147: 1277192442029854119
+      Battleplatforms-2_148: -2278437100430524815
+      Battleplatforms-2_149: -5037347900990079840
+      Battleplatforms-2_15: -4871154929833978566
+      Battleplatforms-2_150: 2010150039934104229
+      Battleplatforms-2_151: 906592910925806774
+      Battleplatforms-2_152: 3034754609669083640
+      Battleplatforms-2_153: 2940438911170388128
+      Battleplatforms-2_154: 5100234743131392438
+      Battleplatforms-2_155: 1409937215472413009
+      Battleplatforms-2_156: 8424766949443174057
+      Battleplatforms-2_157: -8374573456015477719
+      Battleplatforms-2_158: 2017111494012836513
+      Battleplatforms-2_159: 3205396319887106070
+      Battleplatforms-2_16: 3892520442618463860
+      Battleplatforms-2_160: -359400954850983048
+      Battleplatforms-2_161: 6065576238515755584
+      Battleplatforms-2_162: -2303889938298182672
+      Battleplatforms-2_163: -2745236378991219079
+      Battleplatforms-2_164: -4666195055174513389
+      Battleplatforms-2_165: 3929925909183387139
+      Battleplatforms-2_166: 1882223242084668385
+      Battleplatforms-2_167: -4401235707046080448
+      Battleplatforms-2_168: -6967692169704889488
+      Battleplatforms-2_169: -6893153377892772999
+      Battleplatforms-2_17: -1508411098077083712
+      Battleplatforms-2_170: 722093318696130336
+      Battleplatforms-2_171: 2736880724742581440
+      Battleplatforms-2_172: 8729592922977071770
+      Battleplatforms-2_173: -2403100210038712188
+      Battleplatforms-2_174: -8153492578292084187
+      Battleplatforms-2_175: 2173162863300866636
+      Battleplatforms-2_176: -3683274397607938209
+      Battleplatforms-2_177: 3514697105944812223
+      Battleplatforms-2_178: -3715713492835427028
+      Battleplatforms-2_179: -217673865296833041
+      Battleplatforms-2_18: -5979359723730784177
+      Battleplatforms-2_180: -4058657328628151702
+      Battleplatforms-2_181: -4770218983325623798
+      Battleplatforms-2_182: 2795690992369846378
+      Battleplatforms-2_183: -1739089511471545832
+      Battleplatforms-2_184: 4111308620662251079
+      Battleplatforms-2_185: -1208023253237763994
+      Battleplatforms-2_186: -6960117816785934297
+      Battleplatforms-2_187: 2278711681013531051
+      Battleplatforms-2_188: 7086221833749216474
+      Battleplatforms-2_189: -3293201520589287438
+      Battleplatforms-2_19: 2697994768280427811
+      Battleplatforms-2_190: -2274917950525878387
+      Battleplatforms-2_191: -6957805112201723734
+      Battleplatforms-2_192: -3284282085600600842
+      Battleplatforms-2_193: -9082376465671220704
+      Battleplatforms-2_194: 4572048077299820034
+      Battleplatforms-2_195: 1568691636998253437
+      Battleplatforms-2_196: -1170736134589724041
+      Battleplatforms-2_197: -14055754378946160
+      Battleplatforms-2_198: -2114429682471959574
+      Battleplatforms-2_199: -5937838736396734214
+      Battleplatforms-2_2: -2841643249317695969
+      Battleplatforms-2_20: -1287251834596380575
+      Battleplatforms-2_200: 80884320492740123
+      Battleplatforms-2_201: -7193564874320529233
+      Battleplatforms-2_202: 1375850729324607991
+      Battleplatforms-2_203: 7411333357976044052
+      Battleplatforms-2_204: 9029927044129806273
+      Battleplatforms-2_205: -4514003182424490902
+      Battleplatforms-2_206: -2406242000976327278
+      Battleplatforms-2_207: 5296483722777738495
+      Battleplatforms-2_208: -5896824147024494092
+      Battleplatforms-2_209: 2091243714219235847
+      Battleplatforms-2_21: -5863884785432025536
+      Battleplatforms-2_210: -7632087982202822338
+      Battleplatforms-2_211: -5825082728036156160
+      Battleplatforms-2_212: 7291797716924680671
+      Battleplatforms-2_213: 4406927448129323636
+      Battleplatforms-2_214: -7020116169179007528
+      Battleplatforms-2_215: -9028273934709640632
+      Battleplatforms-2_216: 7744590152795135547
+      Battleplatforms-2_217: 397000017237414835
+      Battleplatforms-2_218: 3306246538797835262
+      Battleplatforms-2_219: -2221379715898333705
+      Battleplatforms-2_22: 8241510925790154910
+      Battleplatforms-2_220: 5730696822736952605
+      Battleplatforms-2_221: -8495103809138393740
+      Battleplatforms-2_222: -3564097597544954652
+      Battleplatforms-2_223: -7366939030461192348
+      Battleplatforms-2_224: -5808825487719739429
+      Battleplatforms-2_225: 2820177153988492931
+      Battleplatforms-2_226: 884485825211230370
+      Battleplatforms-2_227: 700013926615439171
+      Battleplatforms-2_228: 5236937598024993830
+      Battleplatforms-2_229: 2659493127056544957
+      Battleplatforms-2_23: 7773152820756653054
+      Battleplatforms-2_24: -8327899293230275315
+      Battleplatforms-2_25: -737357728555599343
+      Battleplatforms-2_26: 514022587569852811
+      Battleplatforms-2_27: 2410250431293236711
+      Battleplatforms-2_28: -6930559857613299170
+      Battleplatforms-2_29: 5081273670393151221
+      Battleplatforms-2_3: 3010104960450796552
+      Battleplatforms-2_30: 442258286891315143
+      Battleplatforms-2_31: -241972938445949844
+      Battleplatforms-2_32: 3577212308336374232
+      Battleplatforms-2_33: -3083582237830386294
+      Battleplatforms-2_34: 8184200701953585503
+      Battleplatforms-2_35: -1859685920019433723
+      Battleplatforms-2_36: 439547057315186825
+      Battleplatforms-2_37: -2757123281970470850
+      Battleplatforms-2_38: 6642521284400108066
+      Battleplatforms-2_39: 8247962845621689233
+      Battleplatforms-2_4: -4859578329333571258
+      Battleplatforms-2_40: -3413959956927054127
+      Battleplatforms-2_41: -2284097924988086947
+      Battleplatforms-2_42: -8751286781548981010
+      Battleplatforms-2_43: 6565971368458874821
+      Battleplatforms-2_44: -8022808857324572699
+      Battleplatforms-2_45: 8962975634297506698
+      Battleplatforms-2_46: 3197082687945086898
+      Battleplatforms-2_47: 6342245302494410753
+      Battleplatforms-2_48: 7331291998963191993
+      Battleplatforms-2_49: -389717746563424897
+      Battleplatforms-2_5: -5730863294123123329
+      Battleplatforms-2_50: 2618309180209842726
+      Battleplatforms-2_51: -259140056449416081
+      Battleplatforms-2_52: -2810208627629769329
+      Battleplatforms-2_53: 7339923090093627424
+      Battleplatforms-2_54: 3552247087420068460
+      Battleplatforms-2_55: -4747852739954186077
+      Battleplatforms-2_56: -2680390070135607317
+      Battleplatforms-2_57: 7403221942912301343
+      Battleplatforms-2_58: -1593991481608459366
+      Battleplatforms-2_59: -5486792835851803494
+      Battleplatforms-2_6: 2401536067086820852
+      Battleplatforms-2_60: 8630752432806821704
+      Battleplatforms-2_61: 8605022994362431605
+      Battleplatforms-2_62: 6705623224450680727
+      Battleplatforms-2_63: -3960798272051520134
+      Battleplatforms-2_64: 7454554715544397764
+      Battleplatforms-2_65: 6247375728177656858
+      Battleplatforms-2_66: 8078944055366254884
+      Battleplatforms-2_67: -6627092090968506213
+      Battleplatforms-2_68: 2501605518413793785
+      Battleplatforms-2_69: -378821383397400855
+      Battleplatforms-2_7: -7990002739396897826
+      Battleplatforms-2_70: -3778119881569021194
+      Battleplatforms-2_71: 2078667680079849916
+      Battleplatforms-2_72: -3165069129702388894
+      Battleplatforms-2_73: -2929700371942674960
+      Battleplatforms-2_74: 8961129058411542746
+      Battleplatforms-2_75: 6657938501944459351
+      Battleplatforms-2_76: 7934468939407903924
+      Battleplatforms-2_77: 1892960470638993834
+      Battleplatforms-2_78: 7677601000209284234
+      Battleplatforms-2_79: -6119139682564090094
+      Battleplatforms-2_8: -7347845273652813423
+      Battleplatforms-2_80: 6915273213266081072
+      Battleplatforms-2_81: -1061345418639311326
+      Battleplatforms-2_82: -5350849915576118213
+      Battleplatforms-2_83: -1387438111542959091
+      Battleplatforms-2_84: -9171761835329341732
+      Battleplatforms-2_85: -5427870639856630411
+      Battleplatforms-2_86: -6550042150375850342
+      Battleplatforms-2_87: 4910841196347604749
+      Battleplatforms-2_88: -8601928929110726467
+      Battleplatforms-2_89: -5185604708710661019
+      Battleplatforms-2_9: -1829615233407188906
+      Battleplatforms-2_90: 1927303382719413251
+      Battleplatforms-2_91: 2423393005000462199
+      Battleplatforms-2_92: -6380653671146431646
+      Battleplatforms-2_93: -8957410523977640853
+      Battleplatforms-2_94: 2765596929254195088
+      Battleplatforms-2_95: -5270520158228624099
+      Battleplatforms-2_96: -3582442002198642441
+      Battleplatforms-2_97: 152618232775908973
+      Battleplatforms-2_98: 5967180018341689530
+      Battleplatforms-2_99: -6629108116131041105
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
