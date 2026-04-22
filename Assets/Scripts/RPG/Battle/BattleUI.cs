@@ -46,7 +46,6 @@ public class BattleUI : MonoBehaviour
     [SerializeField] private Button listButtonPrefab;
 
     private BattleManager _manager;
-
     private Action<BattleUnit> _onAttack;
     private Action<SkillData, BattleUnit> _onSkill;
     private Action<ItemData> _onItem;
@@ -65,17 +64,29 @@ public class BattleUI : MonoBehaviour
 
     private enum Mode { Hidden, Action, Skill, Item, Target, Ended }
 
+    private readonly struct ListOption
+    {
+        public readonly string Label;
+        public readonly Action OnClick;
+        public readonly bool Interactable;
+
+        public ListOption(string label, Action onClick, bool interactable = true)
+        {
+            Label = label;
+            OnClick = onClick;
+            Interactable = interactable;
+        }
+    }
+
     private void Awake()
     {
-        attackButton?.onClick.AddListener(ShowAttackTargets);
-        skillButton?.onClick.AddListener(ShowSkills);
-        itemButton?.onClick.AddListener(ShowItems);
-        fleeButton?.onClick.AddListener(RequestFlee);
-        battleEndButton?.onClick.AddListener(CloseBattleUi);
+        attackButton.onClick.AddListener(ShowAttackTargets);
+        skillButton.onClick.AddListener(ShowSkills);
+        itemButton.onClick.AddListener(ShowItems);
+        fleeButton.onClick.AddListener(RequestFlee);
+        battleEndButton.onClick.AddListener(CloseBattleUi);
 
-        if (feedbackPanel != null)
-            feedbackPanel.SetActive(false);
-
+        feedbackPanel.SetActive(false);
         SetMode(Mode.Hidden);
     }
 
@@ -139,24 +150,12 @@ public class BattleUI : MonoBehaviour
         SetMode(Mode.Target);
     }
 
-    private void ShowSkills()
-    {
-        if (_mode != Mode.Action) return;
-        BuildSkills();
-        SetMode(Mode.Skill);
-    }
-
-    private void ShowItems()
-    {
-        if (_mode != Mode.Action) return;
-        BuildItems();
-        SetMode(Mode.Item);
-    }
+    private void ShowSkills() { if (_mode == Mode.Action) { BuildSkills(); SetMode(Mode.Skill); } }
+    private void ShowItems() { if (_mode == Mode.Action) { BuildItems(); SetMode(Mode.Item); } }
 
     private void RequestFlee()
     {
         if (_mode != Mode.Action) return;
-
         HideInputPanels();
         _onFlee?.Invoke();
     }
@@ -164,7 +163,6 @@ public class BattleUI : MonoBehaviour
     private void PickAttackTarget(BattleUnit target)
     {
         if (target == null || target.IsDead) return;
-
         HideInputPanels();
         _onAttack?.Invoke(target);
     }
@@ -174,7 +172,6 @@ public class BattleUI : MonoBehaviour
         if (!skill || _player == null || _player.CurrentSp < skill.spCost) return;
 
         _selectedSkill = skill;
-
         switch (skill.targetType)
         {
             case TargetType.Self:
@@ -185,7 +182,6 @@ public class BattleUI : MonoBehaviour
             {
                 var firstAlive = _enemies.FirstOrDefault(e => !e.IsDead);
                 if (firstAlive == null) return;
-
                 HideInputPanels();
                 _onSkill?.Invoke(skill, firstAlive);
                 return;
@@ -200,19 +196,15 @@ public class BattleUI : MonoBehaviour
     private void PickSkillTarget(BattleUnit target)
     {
         if (target == null || target.IsDead || !_selectedSkill) return;
-
         HideInputPanels();
         _onSkill?.Invoke(_selectedSkill, target);
     }
 
     private void PickItem(ItemData item)
     {
-        if (!item || !PlayerStatsManager.Instance) return;
-        if (!PlayerStatsManager.Instance.HasItem(item))
-        {
-            BuildItems();
-            return;
-        }
+        var stats = PlayerStatsManager.Instance;
+        if (!item || !stats) return;
+        if (!stats.HasItem(item)) { BuildItems(); return; }
 
         HideInputPanels();
         _onItem?.Invoke(item);
@@ -222,69 +214,72 @@ public class BattleUI : MonoBehaviour
     {
         ClearButtons(targetListRoot);
         SetMode(_backFromTargetMode);
-        if (_backFromTargetMode != Mode.Action) return;
-        BuildSkills();
-        BuildItems();
+        if (_backFromTargetMode == Mode.Action) { BuildSkills(); BuildItems(); }
     }
 
     private void BuildSkills()
     {
-        ClearButtons(skillListRoot);
-        if (!skillListRoot || !listButtonPrefab || _player == null) return;
+        var skills = (_player?.Data.skills ?? Array.Empty<SkillData>())
+            .Where(s => s != null)
+            .Select(s => new ListOption($"{s.skillName} ({s.spCost} SP)", () => PickSkill(s), _player.CurrentSp >= s.spCost));
 
-        var skills = _player.Data.skills ?? Array.Empty<SkillData>();
-        if (skills.Length == 0)
-        {
-            CreateDisabledRow(skillListRoot, "No skills available");
-            CreateButton(skillListRoot, "Back", () => SetMode(Mode.Action));
-            return;
-        }
-
-        foreach (var s in skills.Where(s => s is not null))
-        {
-            var b = CreateButton(skillListRoot, $"{s.skillName} ({s.spCost} SP)", () => PickSkill(s));
-            b.interactable = _player.CurrentSp >= s.spCost;
-        }
-
-        CreateButton(skillListRoot, "Back", () => SetMode(Mode.Action));
+        BuildList(skillListRoot, skills, "No skills available", () => SetMode(Mode.Action));
     }
 
     private void BuildItems()
     {
-        ClearButtons(itemListRoot);
-        if (!itemListRoot || !listButtonPrefab)
-            return;
-        
-        var inv = PlayerStatsManager.Instance.inventory;
-        if (inv == null || inv.Count == 0)
-        {
-            CreateDisabledRow(itemListRoot, "No items available");
-            CreateButton(itemListRoot, "Back", () => SetMode(Mode.Action));
-            return;
-        }
+        var inventory = PlayerStatsManager.Instance?.inventory;
+        var items = (inventory ?? new List<ItemStack>())
+            .Where(stack => stack != null && stack.item != null && stack.quantity > 0)
+            .Select(stack => new ListOption($"{stack.item.itemName} x{stack.quantity}", () => PickItem(stack.item)));
 
-        foreach (var stack in inv.Where(x => x != null && x.item != null && x.quantity > 0))
-            CreateButton(itemListRoot, $"{stack.item.itemName} x{stack.quantity}", () => PickItem(stack.item));
-
-        CreateButton(itemListRoot, "Back", () => SetMode(Mode.Action));
+        BuildList(itemListRoot, items, "No items available", () => SetMode(Mode.Action));
     }
 
     private void BuildTargets(List<BattleUnit> targets, Action<BattleUnit> onPick)
     {
-        ClearButtons(targetListRoot);
-        if (targetListRoot == null || listButtonPrefab == null || targets == null)
-            return;
+        var targetOptions = (targets ?? new List<BattleUnit>())
+            .Where(t => t is { IsDead: false })
+            .Select(t => new ListOption($"{t.Data.characterName} HP {t.CurrentHp}/{t.Data.maxHp}", () => onPick?.Invoke(t)));
 
-        foreach (var t in targets.Where(t => t is { IsDead: false }))
-            CreateButton(targetListRoot, $"{t.Data.characterName} HP {t.CurrentHp}/{t.Data.maxHp}", () => onPick?.Invoke(t));
+        BuildList(targetListRoot, targetOptions, emptyMessage: null, onBack: BackFromTarget);
+    }
 
-        CreateButton(targetListRoot, "Back", BackFromTarget);
+    private void BuildList(Transform root, IEnumerable<ListOption> options, string emptyMessage, Action onBack)
+    {
+        ClearButtons(root);
+        var hasAny = false;
+        foreach (var option in options ?? Enumerable.Empty<ListOption>())
+        {
+            hasAny = true;
+            var button = CreateButton(root, option.Label, option.OnClick);
+            button.interactable = option.Interactable;
+        }
+
+        if (!hasAny && !string.IsNullOrEmpty(emptyMessage)) CreateDisabledRow(root, emptyMessage);
+        CreateButton(root, "Back", onBack);
     }
 
     private Button CreateButton(Transform parent, string label, Action onClick)
     {
         var button = Instantiate(listButtonPrefab, parent);
+        var rect = button.GetComponent<RectTransform>();
+        rect.localScale = Vector3.one;
+        rect.localRotation = Quaternion.identity;
+        rect.anchoredPosition = Vector2.zero;
+        var actionRect = attackButton.GetComponent<RectTransform>();
+        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, actionRect.rect.height);
+
+        var layoutElement = button.GetComponent<LayoutElement>();
+        if (layoutElement == null) layoutElement = button.gameObject.AddComponent<LayoutElement>();
+        layoutElement.minHeight = actionRect.rect.height;
+        layoutElement.preferredHeight = actionRect.rect.height;
+        layoutElement.flexibleWidth = 1f;
+        layoutElement.flexibleHeight = 0f;
+
         var text = button.GetComponentInChildren<TMP_Text>(true);
+        text.textWrappingMode = TextWrappingModes.Normal;
+        text.overflowMode = TextOverflowModes.Ellipsis;
         text.text = label;
 
         button.onClick.RemoveAllListeners();
@@ -300,8 +295,7 @@ public class BattleUI : MonoBehaviour
 
     private static void ClearButtons(Transform root)
     {
-        for (var i = root.childCount - 1; i >= 0; i--)
-            Destroy(root.GetChild(i).gameObject);
+        for (var i = root.childCount - 1; i >= 0; i--) Destroy(root.GetChild(i).gameObject);
     }
 
     private void HandleTurnStarted(BattleUnit unit)
@@ -322,12 +316,10 @@ public class BattleUI : MonoBehaviour
         StopFeedbackCoroutines();
         _inputLockedByFeedback = false;
         _fleeSuccess = false;
-
     }
 
     private void HandleDamageTaken(BattleUnit _) => RefreshHud();
-
-    private void HandleRoundStarted(int round) => roundText.text = $"Round {Mathf.Max(1, round)}";
+    private void HandleRoundStarted(int round) { roundText.text = $"Round {Mathf.Max(1, round)}"; }
 
     private void HandleFleeAttempted(bool success)
     {
@@ -350,8 +342,7 @@ public class BattleUI : MonoBehaviour
 
         StopFeedbackCoroutines();
         _feedbackClearCoroutine = StartCoroutine(ClearFeedbackAfter(Mathf.Max(0f, clearDelay)));
-        if (blockInput)
-            _feedbackUnlockCoroutine = StartCoroutine(UnlockInputAfter(Mathf.Max(0f, feedbackUiUnlockDelay)));
+        if (blockInput) _feedbackUnlockCoroutine = StartCoroutine(UnlockInputAfter(Mathf.Max(0f, feedbackUiUnlockDelay)));
     }
 
     private IEnumerator ClearFeedbackAfter(float delay)
@@ -377,9 +368,11 @@ public class BattleUI : MonoBehaviour
             _feedbackClearCoroutine = null;
         }
 
-        if (_feedbackUnlockCoroutine == null) return;
-        StopCoroutine(_feedbackUnlockCoroutine);
-        _feedbackUnlockCoroutine = null;
+        if (_feedbackUnlockCoroutine != null)
+        {
+            StopCoroutine(_feedbackUnlockCoroutine);
+            _feedbackUnlockCoroutine = null;
+        }
     }
 
     private void CloseBattleUi() => SetMode(Mode.Hidden);
@@ -387,8 +380,8 @@ public class BattleUI : MonoBehaviour
     private void ClearFeedback()
     {
         feedbackText.text = string.Empty;
-        feedbackPanel.SetActive(false);
         feedbackText.gameObject.SetActive(false);
+        feedbackPanel.SetActive(false);
     }
 
     private void ApplyActionInteractivity()
@@ -404,7 +397,7 @@ public class BattleUI : MonoBehaviour
     {
         _mode = mode;
         rootPanel.SetActive(mode != Mode.Hidden);
-        actionPanel.SetActive(mode == Mode.Action); 
+        actionPanel.SetActive(mode == Mode.Action);
         skillPanel.SetActive(mode == Mode.Skill);
         itemPanel.SetActive(mode == Mode.Item);
         targetPanel.SetActive(mode == Mode.Target);
@@ -425,14 +418,13 @@ public class BattleUI : MonoBehaviour
         playerNameText.text = player.Data.characterName;
         playerHpText.text = $"HP {player.CurrentHp}/{player.Data.maxHp}";
         playerSpText.text = $"SP {player.CurrentSp}/{player.Data.maxSp}";
-        
+
         ClearButtons(enemyListRoot);
-        var enemies = _manager.AllUnits.Where(u => !u.IsPlayer).ToList();
-        foreach (var enemy in enemies)
+        foreach (var enemy in _manager.AllUnits.Where(u => !u.IsPlayer))
         {
             var row = CreateEnemyRow(enemyListRoot);
             row.text = enemy.IsDead
-                ? $"{enemy.Data.characterName} - DEAD"
+                ? $"{enemy.Data.characterName} - HP 0/{enemy.Data.maxHp} - DEAD"
                 : $"{enemy.Data.characterName} - HP {enemy.CurrentHp}/{enemy.Data.maxHp}";
         }
     }
@@ -448,12 +440,17 @@ public class BattleUI : MonoBehaviour
         row.fontSize = playerNameText.fontSize;
         row.color = playerNameText.color;
         row.alignment = playerNameText.alignment;
-        
+        row.textWrappingMode = TextWrappingModes.Normal;
+        row.enableAutoSizing = true;
+        row.fontSize = playerNameText.fontSize;
+        row.overflowMode = TextOverflowModes.Ellipsis;
         return row;
     }
 
     private void Unsubscribe()
     {
+        if (_manager == null) return;
+
         _manager.OnTurnStarted -= HandleTurnStarted;
         _manager.OnDamageTaken -= HandleDamageTaken;
         _manager.OnBattleStateChanged -= RefreshHud;

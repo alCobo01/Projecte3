@@ -30,7 +30,6 @@ public class BattleTransitionManager : MonoBehaviour
 
         Instance = this;
         _transitionCanvasGroup = transitionPanel.GetComponent<CanvasGroup>();
-        _transitionCanvasGroup = transitionPanel.AddComponent<CanvasGroup>();
 
         SetPanelAlpha(0f);
         transitionPanel.SetActive(false);
