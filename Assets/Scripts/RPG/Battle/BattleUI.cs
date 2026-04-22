@@ -31,6 +31,7 @@ public class BattleUI : MonoBehaviour
     [SerializeField] private TMP_Text turnText;
     [SerializeField] private TMP_Text roundText;
     [SerializeField] private TMP_Text battleEndText;
+    [SerializeField] private GameObject feedbackPanel;
     [SerializeField] private TMP_Text feedbackText;
 
     [Header("Feedback")]
@@ -71,6 +72,10 @@ public class BattleUI : MonoBehaviour
         itemButton?.onClick.AddListener(ShowItems);
         fleeButton?.onClick.AddListener(RequestFlee);
         battleEndButton?.onClick.AddListener(CloseBattleUi);
+
+        if (feedbackPanel != null)
+            feedbackPanel.SetActive(false);
+
         SetMode(Mode.Hidden);
     }
 
@@ -247,7 +252,7 @@ public class BattleUI : MonoBehaviour
     private void BuildItems()
     {
         ClearButtons(itemListRoot);
-        if (itemListRoot|| listButtonPrefab)
+        if (!itemListRoot || !listButtonPrefab)
             return;
         
         var inv = PlayerStatsManager.Instance.inventory;
@@ -336,6 +341,7 @@ public class BattleUI : MonoBehaviour
 
     private void ShowFeedback(string message, float clearDelay, bool blockInput)
     {
+        feedbackPanel.SetActive(true);
         feedbackText.gameObject.SetActive(true);
         feedbackText.text = message;
 
@@ -378,7 +384,12 @@ public class BattleUI : MonoBehaviour
 
     private void CloseBattleUi() => SetMode(Mode.Hidden);
 
-    private void ClearFeedback() => feedbackText.text = string.Empty;
+    private void ClearFeedback()
+    {
+        feedbackText.text = string.Empty;
+        feedbackPanel.SetActive(false);
+        feedbackText.gameObject.SetActive(false);
+    }
 
     private void ApplyActionInteractivity()
     {
@@ -424,7 +435,6 @@ public class BattleUI : MonoBehaviour
                 ? $"{enemy.Data.characterName} - DEAD"
                 : $"{enemy.Data.characterName} - HP {enemy.CurrentHp}/{enemy.Data.maxHp}";
         }
-        
     }
 
     private TMP_Text CreateEnemyRow(Transform parent)
@@ -444,8 +454,6 @@ public class BattleUI : MonoBehaviour
 
     private void Unsubscribe()
     {
-        if (_manager == null) return;
-
         _manager.OnTurnStarted -= HandleTurnStarted;
         _manager.OnDamageTaken -= HandleDamageTaken;
         _manager.OnBattleStateChanged -= RefreshHud;
