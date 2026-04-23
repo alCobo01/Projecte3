@@ -882,7 +882,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac44a79ae576c4786be04485f0d7d1b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleManager
-  ui: {fileID: 0}
+  ui: {fileID: 104282640355937734}
 --- !u!1 &518798231
 GameObject:
   m_ObjectHideFlags: 0
@@ -10871,7 +10871,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &1706177742
 Animator:
   serializedVersion: 7
@@ -11045,7 +11045,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -11466,7 +11466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GlideBehaviour
   glidingGravityScale: 0.5
-  defaultGravityScale: 3
+  defaultGravityScale: 1
   maxFallSpeed: -2
 --- !u!1 &1815768191
 GameObject:
