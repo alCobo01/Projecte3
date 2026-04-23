@@ -44,5 +44,4 @@ public class JumpBehaviour : MonoBehaviour
         }
         _holdTimeRemaining = 0f;
     }
-    
 }

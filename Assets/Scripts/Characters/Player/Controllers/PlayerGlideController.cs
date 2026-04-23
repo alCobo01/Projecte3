@@ -12,6 +12,7 @@ public class PlayerGlideController : MonoBehaviour
 
     private void Awake()
     {
+        _inputController = GetComponent<PlayerInputController>();
         glideBehaviour = GetComponent<GlideBehaviour>();
         _groundCheck = GetComponent<GroundCheck>();
     }
@@ -24,8 +25,8 @@ public class PlayerGlideController : MonoBehaviour
     
     private void OnDisable() => _inputController.OnFlyEvent -= HandleGlide;
 
-    private void HandleGlide(bool isGliding)
+    private void HandleGlide(bool isButtonPressed)
     {
-        glideBehaviour.IsGliding = !_groundCheck.IsGrounded;
+        glideBehaviour.IsGliding = isButtonPressed && !_groundCheck.IsGrounded;
     }
 }

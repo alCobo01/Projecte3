@@ -14,14 +14,15 @@ public class GlideBehaviour : MonoBehaviour, IWindAffected
 
     private void FixedUpdate()
     {
-        if (IsGliding && _rb.linearVelocityY < 0)
+        if (IsGliding)
         {
             _rb.gravityScale = glidingGravityScale;
+            if (!(_rb.linearVelocityY < 0)) return;
             var velY = Mathf.Max(_rb.linearVelocityY, maxFallSpeed);
             _rb.linearVelocity = new Vector2(_rb.linearVelocityX, velY);
         }
-        else
-            _rb.gravityScale = defaultGravityScale;
+        else _rb.gravityScale = defaultGravityScale;
+        
     }
     
     public void ApplyWindForce(Vector2 force)
