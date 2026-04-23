@@ -3,18 +3,18 @@ using UnityEngine;
 [RequireComponent(typeof(AnimationBehaviour))]
 public class CharacterAnimationController : MonoBehaviour
 {
-    protected static readonly int HorizontalSpeedHash = Animator.StringToHash("HorizontalSpeed");
-    protected static readonly int VerticalSpeedHash = Animator.StringToHash("VerticalSpeed");
-    protected static readonly int IsGroundedHash = Animator.StringToHash("IsGrounded");
-    protected static readonly int JumpHash = Animator.StringToHash("Jump");
-    protected static readonly int DashHash = Animator.StringToHash("Dash");
-    protected static readonly int AttackHash = Animator.StringToHash("Attack");
-    protected static readonly int HurtHash = Animator.StringToHash("Hurt");
-    protected static readonly int IsRunningHash = Animator.StringToHash("IsRunning");
+    private static readonly int HorizontalSpeedHash = Animator.StringToHash("HorizontalSpeed");
+    private static readonly int VerticalSpeedHash = Animator.StringToHash("VerticalSpeed");
+    private static readonly int IsGroundedHash = Animator.StringToHash("IsGrounded");
+    private static readonly int JumpHash = Animator.StringToHash("Jump");
+    private static readonly int DashHash = Animator.StringToHash("Dash");
+    private static readonly int AttackHash = Animator.StringToHash("Attack");
+    private static readonly int HurtHash = Animator.StringToHash("Hurt");
+    private static readonly int IsRunningHash = Animator.StringToHash("IsRunning");
     
-    protected AnimationBehaviour _animationBehaviour;
-    protected Rigidbody2D _rb;
-    protected GroundCheck _groundCheck;
+    private AnimationBehaviour _animationBehaviour;
+    private Rigidbody2D _rb;
+    private GroundCheck _groundCheck;
 
     protected virtual void Awake()
     {
@@ -25,17 +25,12 @@ public class CharacterAnimationController : MonoBehaviour
 
     protected virtual void Update()
     {
-        float speed = Mathf.Abs(_rb.linearVelocity.x);
+        var speed = Mathf.Abs(_rb.linearVelocity.x);
         //_animationBehaviour.SetFloat(HorizontalSpeedHash, speed);
         _animationBehaviour.SetFloat(VerticalSpeedHash, _rb.linearVelocity.y);
         
-        if (_groundCheck != null)
+        if (_groundCheck)
             _animationBehaviour.SetBool(IsGroundedHash, _groundCheck.IsGrounded);
-
-        // Log para ver si el script detecta movimiento
-        if (speed > 0.01f) {
-            // Debug.Log(gameObject.name + " moviéndose a velocidad: " + speed);
-        }
     }
     public void SetWalking(float speed) => _animationBehaviour.SetFloat(HorizontalSpeedHash, speed);
     public void TriggerJump() => _animationBehaviour.Trigger(JumpHash);
