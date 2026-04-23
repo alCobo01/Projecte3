@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerStatsManager : MonoBehaviour
@@ -38,5 +39,15 @@ public class PlayerStatsManager : MonoBehaviour
         if (stack == null) return;
         stack.quantity--;
         if (stack.quantity <= 0) inventory.Remove(stack);
+    }
+
+    public void AddItem(ItemStack stackToAdd)
+    {
+        var currentItem = inventory.FirstOrDefault(i => i.item == stackToAdd.item);
+        
+        if (currentItem == null)
+            inventory.Add(new ItemStack { item = stackToAdd.item, quantity = stackToAdd.quantity });
+        else
+            currentItem.quantity += stackToAdd.quantity;
     }
 }
