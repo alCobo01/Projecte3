@@ -11,11 +11,13 @@ public class PatrolBehaviour : MonoBehaviour
     private float _waitTimer = 0f;
     private bool _isWaiting = false;
     private CharacterAnimationController _animController;
+    private ObstacleAvoidance _obstacleAvoidance;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
         _animController = GetComponent<CharacterAnimationController>();
+        _obstacleAvoidance = GetComponent<ObstacleAvoidance>();
     }
 
     public void Patrol(float speed, float minWaitTime, float maxWaitTime)
@@ -106,6 +108,12 @@ public class PatrolBehaviour : MonoBehaviour
         // Dirección en 2D
         Vector2 dir = (targetPos - currentPos).normalized;
 
+        // Aplicar evitación de obstáculos si el componente existe
+        if (_obstacleAvoidance != null)
+        {
+            dir = _obstacleAvoidance.GetAvoidanceDirection(dir);
+        }
+
         // Movimiento volador
         _rb.linearVelocity = dir * speed;
 
@@ -113,8 +121,8 @@ public class PatrolBehaviour : MonoBehaviour
         _animController.SetWalking(1f);
 
         // Rotación opcional (solo horizontal)
-        if (dir.x > 0) transform.rotation = Quaternion.Euler(0, 0, 0);
-        else if (dir.x < 0) transform.rotation = Quaternion.Euler(0, 180, 0);
+        if (dir.x > 0.1f) transform.rotation = Quaternion.Euler(0, 0, 0);
+        else if (dir.x < -0.1f) transform.rotation = Quaternion.Euler(0, 180, 0);
     }
 
     public void StopPatrol()

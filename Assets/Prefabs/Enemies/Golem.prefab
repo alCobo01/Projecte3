@@ -50,6 +50,7 @@ GameObject:
   - component: {fileID: 5446242448518281566}
   - component: {fileID: 4010357491757896702}
   - component: {fileID: 8859565943488764224}
+  - component: {fileID: 1984097937166683761}
   m_Layer: 0
   m_Name: Golem
   m_TagString: Untagged
@@ -329,3 +330,22 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: -0.01, y: 0}
   m_Radius: 1.0593448
+--- !u!114 &1984097937166683761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7931461823127551002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a644f9ffaac5b041a8f8b00130cca31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleAvoidance
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  detectionRange: 1.5
+  avoidForce: 1
+  sensorCount: 5
+  sensorAngle: 45

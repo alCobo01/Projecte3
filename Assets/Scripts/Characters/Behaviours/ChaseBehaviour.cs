@@ -11,10 +11,13 @@ public class ChaseBehaviour : MonoBehaviour
     [SerializeField] private float edgeCheckDistance = 0.5f;
     [SerializeField] private float groundDetectionDistance = 0.5f;
     private CharacterAnimationController animController;
+    private ObstacleAvoidance obstacleAvoidance;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animController = GetComponent<CharacterAnimationController>();
+        obstacleAvoidance = GetComponent<ObstacleAvoidance>();
         if (groundCheck == null) groundCheck = GetComponentInChildren<GroundCheck>();
     }
 
@@ -45,12 +48,19 @@ public class ChaseBehaviour : MonoBehaviour
     public void FlyingChase(Transform target, float speed)
     {
         Vector2 dir = (target.position - transform.position).normalized;
+        
+        // Aplicar evitación de obstáculos si el componente existe
+        if (obstacleAvoidance != null)
+        {
+            dir = obstacleAvoidance.GetAvoidanceDirection(dir);
+        }
+
         animController.SetWalking(Mathf.Abs(dir.x));
         rb.linearVelocity = dir * speed;
 
-        // Rotación para mirar hacia el objetivo
-        if (dir.x > 0) transform.rotation = Quaternion.Euler(0, 0, 0);
-        else if (dir.x < 0) transform.rotation = Quaternion.Euler(0, 180, 0);
+        // Rotación para mirar hacia el objetivo (basada en la dirección final)
+        if (dir.x > 0.1f) transform.rotation = Quaternion.Euler(0, 0, 0);
+        else if (dir.x < -0.1f) transform.rotation = Quaternion.Euler(0, 180, 0);
     }
 
     public void StopChasing()
