@@ -9,20 +9,17 @@ public class AttackDistanceBeahviour : AttackBehaviour
     [SerializeField] private float speedProjectile = 5f;
     [SerializeField] private float timeSpawn = 2f;
 
-    private float _bulletdirection;
+    private Vector2 _shootDirection;
     private float _nextSpawnTime = 0f;
 
     public Stack<GameObject> BulletStack = new Stack<GameObject>();
 
-    private void Awake()
-    {
-       
-    }
-
-    private void TryShoot(float angle)
+    private void TryShoot(Vector2 direction, float angle)
     {
         if (Time.time < _nextSpawnTime)
             return;
+
+        _shootDirection = direction;
 
         if (BulletStack.Count == 0)
         {
@@ -30,7 +27,7 @@ public class AttackDistanceBeahviour : AttackBehaviour
         }
         else
         {
-            Pop();
+            Pop(angle);
         }
 
         _nextSpawnTime = Time.time + timeSpawn;
@@ -38,24 +35,39 @@ public class AttackDistanceBeahviour : AttackBehaviour
 
     public void Push(GameObject bullet)
     {
+        if (BulletStack.Contains(bullet)) return;
         BulletStack.Push(bullet);
         bullet.SetActive(false);
     }
+
     public override void Attack(Transform target)
     {
-        if (target == null)
+        if (target == null || _shootPoint == null)
             return;
-        _bulletdirection = target.transform.position.x - transform.position.x;
-        float angle = Mathf.Atan2(target.transform.position.y - transform.position.y, target.transform.position.x - transform.position.x) * Mathf.Rad2Deg;
-        TryShoot(angle);
+
+        Vector2 direction = (target.position - _shootPoint.position).normalized;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        
+        TryShoot(direction, angle);
     }
-    public GameObject Pop()
+
+    public GameObject Pop(float angle)
     {
         GameObject go = BulletStack.Pop();
-        go.SetActive(true);
-        go.GetComponent<Collider2D>().enabled = true;
         go.transform.position = _shootPoint.position;
-        go.GetComponent<Rigidbody2D>().linearVelocityX = speedProjectile * _bulletdirection;
+        go.transform.rotation = Quaternion.Euler(0, 0, angle);
+        go.SetActive(true);
+        
+        Rigidbody2D rb = go.GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.bodyType = RigidbodyType2D.Kinematic; // Asegurar que no le afecte la gravedad
+            rb.linearVelocity = _shootDirection * speedProjectile;
+        }
+
+        Collider2D col = go.GetComponent<Collider2D>();
+        if (col != null) col.enabled = true;
+
         return go;
     }
 
@@ -63,6 +75,12 @@ public class AttackDistanceBeahviour : AttackBehaviour
     {
         GameObject bullet = Instantiate(_gameObjecjtBullet, _shootPoint.position, Quaternion.Euler(0, 0, angle));
         bullet.GetComponent<Bullet>().shooter = this;
-        bullet.GetComponent<Rigidbody2D>().linearVelocityX = speedProjectile * _bulletdirection;
+        
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.bodyType = RigidbodyType2D.Kinematic;
+            rb.linearVelocity = _shootDirection * speedProjectile;
+        }
     }
 }
