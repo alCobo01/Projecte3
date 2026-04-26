@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1a833c017a3aa24ea67704d9374bdd5, type: 3}
   m_Name: Golem
   m_EditorClassIdentifier: Assembly-CSharp::FlyingEnemySO
-  attackDistance: 1
+  attackDistance: 1.1
   walkingSpeed: 0.4
   chaseSpeed: 0.7
   attackSpeed: 0
