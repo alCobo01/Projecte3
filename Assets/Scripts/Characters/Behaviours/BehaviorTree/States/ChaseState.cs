@@ -26,7 +26,7 @@ public class ChaseState : Node
             ChaseBehaviour chase = ec.GetComponent<ChaseBehaviour>();
             if (chase != null)
             {
-                chase.Chase(ec.target.transform);
+                ec.enemyData.Chase(chase, ec.target);
             }
         }
     }
