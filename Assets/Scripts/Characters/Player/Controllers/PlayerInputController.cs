@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerInputController : MonoBehaviour, IPlayerActions
 {
     // Events
-    public static event UnityAction OnOpenInventoryEvent;
+    public static event UnityAction OnOpenInventoryEvent, OnPauseMenuEvent;
     public event UnityAction OnAttackEvent, OnInteractEvent, OnDashEvent;
     public event UnityAction<Vector2> OnMoveEvent;
     public event UnityAction<bool> OnJumpEvent, OnFlyEvent;
@@ -30,7 +30,8 @@ public class PlayerInputController : MonoBehaviour, IPlayerActions
     public void OnInteract(InputAction.CallbackContext context) => OnInteractEvent?.Invoke();
     public void OnDash(InputAction.CallbackContext context) => OnDashEvent?.Invoke();
     public void OnOpenInventory(InputAction.CallbackContext context) => OnOpenInventoryEvent?.Invoke();
-    
+    public void OnPauseMenu(InputAction.CallbackContext context) => OnPauseMenuEvent?.Invoke();
+
     public void OnJump(InputAction.CallbackContext context)
     {
         if (context.started) OnJumpEvent?.Invoke(true);

@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -31,7 +30,7 @@ public class InventorySlotUI : MonoBehaviour
 
     private void UseItem()
     {
-        if (_itemData) return;
+        if (_itemData == null) return;
         _onUse?.Invoke(_itemData);
     }
 }

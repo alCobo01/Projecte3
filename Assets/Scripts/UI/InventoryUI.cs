@@ -1,10 +1,14 @@
+using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class InventoryUI : MonoBehaviour
 {
     [SerializeField] private GameObject slotPrefab;
-    [SerializeField] private Transform container;
+    [SerializeField] private RectTransform container;
     [SerializeField] private GameObject inventoryPanel;
+    [SerializeField] private TMP_Text emptyInventoryText;
     
     private void OnEnable()
     {
@@ -23,22 +27,37 @@ public class InventoryUI : MonoBehaviour
         var isActive = !inventoryPanel.activeSelf;
         inventoryPanel.SetActive(isActive);
         PauseManager.Instance.TogglePause();
-        if (isActive) RefreshUI();
+        if (isActive)
+        {
+            RefreshUI();
+        }
+        else if (emptyInventoryText != null)
+        {
+            emptyInventoryText.gameObject.SetActive(false);
+        }
     }
     
     private void RefreshUI()
     {
         foreach (Transform child in container) Destroy(child.gameObject);
-        foreach (var stack in PlayerStatsManager.Instance.inventory)
-        {
-            if (stack.quantity <= 0) continue;
+        var hasItems = false;
 
-            var obj = Instantiate(slotPrefab, container, false);
-            obj.transform.localScale = Vector3.one;
+        foreach (var stack in PlayerStatsManager.Instance.inventory.Where(stack => stack.quantity > 0))
+        {
+            hasItems = true;
+
+            var obj = Instantiate(slotPrefab);
+            var slotTransform = obj.transform as RectTransform;
+            slotTransform.SetParent(container, false);
+            slotTransform.localScale = Vector3.one;
+            slotTransform.localRotation = Quaternion.identity;
+            slotTransform.anchoredPosition3D = Vector3.zero;
             obj.GetComponent<InventorySlotUI>().SetData(stack, HandleUseItem);
         }
+        
+        emptyInventoryText.gameObject.SetActive(!hasItems);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(container);
     }
     
     private static void HandleUseItem(ItemData item) => PlayerStatsManager.Instance.ConsumeItem(item);
-    
 }
