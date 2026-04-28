@@ -4,7 +4,6 @@ public class PlayerInteractionController : MonoBehaviour
 {
     [SerializeField] private float interactionRadius = 1.5f;
     [SerializeField] private LayerMask interactionLayer = ~0;
-    [SerializeField] private Transform rayOrigin;
     
     private PlayerInputController _inputController;
     private IInteractable _currentInteractable;
@@ -21,8 +20,7 @@ public class PlayerInteractionController : MonoBehaviour
     private void HandleInteraction() => _currentInteractable?.Interact();
     private void DetectInteractable()
     {
-        var originTransform = rayOrigin != null ? rayOrigin : transform;
-        Vector2 origin = originTransform.position;
+        Vector2 origin = transform.position;
         var hits = Physics2D.OverlapCircleAll(origin, interactionRadius, interactionLayer);
 
         _currentInteractable = null;
@@ -36,8 +34,8 @@ public class PlayerInteractionController : MonoBehaviour
     
 private void OnDrawGizmosSelected()
     {
-        Transform originTransform = rayOrigin != null ? rayOrigin : transform;
-        Vector3 origin = originTransform.position;
+        var originTransform = transform;
+        var origin = originTransform.position;
     
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(origin, interactionRadius);
