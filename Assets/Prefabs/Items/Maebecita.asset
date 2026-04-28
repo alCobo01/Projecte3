@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Maebecita
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Maeb
-  itemType: 0
-  value: 0
+  type: 0
+  value: 10
   boostDuration: 1
   boostedStat: 1
-  icon: {fileID: 0}
+  icon: {fileID: 2006490755137791936, guid: d931a18ab21aa4e018b9fd3e42c00e55, type: 3}
   description: Maebecita te lo cura todo

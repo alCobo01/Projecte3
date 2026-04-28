@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerInputController : MonoBehaviour, IPlayerActions
 {
     // Events
+    public static event UnityAction OnOpenInventoryEvent;
     public event UnityAction OnAttackEvent, OnInteractEvent, OnDashEvent;
     public event UnityAction<Vector2> OnMoveEvent;
     public event UnityAction<bool> OnJumpEvent, OnFlyEvent;
@@ -28,6 +29,7 @@ public class PlayerInputController : MonoBehaviour, IPlayerActions
     public void OnAttack(InputAction.CallbackContext context) => OnAttackEvent?.Invoke();
     public void OnInteract(InputAction.CallbackContext context) => OnInteractEvent?.Invoke();
     public void OnDash(InputAction.CallbackContext context) => OnDashEvent?.Invoke();
+    public void OnOpenInventory(InputAction.CallbackContext context) => OnOpenInventoryEvent?.Invoke();
     
     public void OnJump(InputAction.CallbackContext context)
     {
@@ -40,5 +42,6 @@ public class PlayerInputController : MonoBehaviour, IPlayerActions
         if (context.performed) OnFlyEvent?.Invoke(true);
         else if (context.canceled) OnFlyEvent?.Invoke(false);
     }
-}
 
+    
+}

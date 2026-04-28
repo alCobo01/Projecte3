@@ -1,10 +1,8 @@
-using System;
 using UnityEngine;
 
 public class PlayerInteractionController : MonoBehaviour
 {
-    [SerializeField] private float interactionRange = 10f;
-    [SerializeField] private float sphereCastRadius = 5f;
+    [SerializeField] private float interactionRadius = 1.5f;
     [SerializeField] private LayerMask interactionLayer = ~0;
     [SerializeField] private Transform rayOrigin;
     
@@ -23,12 +21,26 @@ public class PlayerInteractionController : MonoBehaviour
     private void HandleInteraction() => _currentInteractable?.Interact();
     private void DetectInteractable()
     {
-        var offsetOrigin = rayOrigin.position - (rayOrigin.forward * sphereCastRadius);
-        var adjustedRange = interactionRange * sphereCastRadius;
-        
-        if (Physics.SphereCast(offsetOrigin, sphereCastRadius, rayOrigin.forward, out var hit, adjustedRange, interactionLayer))
-            _currentInteractable = hit.collider.TryGetComponent(out IInteractable interactable) ? interactable : null;
-        
-        else _currentInteractable = null;
+        var originTransform = rayOrigin != null ? rayOrigin : transform;
+        Vector2 origin = originTransform.position;
+        var hits = Physics2D.OverlapCircleAll(origin, interactionRadius, interactionLayer);
+
+        _currentInteractable = null;
+        foreach (var hit in hits)
+        {
+            if (!hit.TryGetComponent(out IInteractable interactable)) continue;
+            _currentInteractable = interactable;
+            break;
+        }
     }
+    
+private void OnDrawGizmosSelected()
+    {
+        Transform originTransform = rayOrigin != null ? rayOrigin : transform;
+        Vector3 origin = originTransform.position;
+    
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(origin, interactionRadius);
+    }
+    
 }

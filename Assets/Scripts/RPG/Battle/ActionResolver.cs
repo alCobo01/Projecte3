@@ -34,7 +34,7 @@ public static class ActionResolver
 
     public static void ResolveItem(BattleUnit user, ItemData item)
     {
-        switch (item.itemType)
+        switch (item.type)
         {
             case ItemType.Healing:
                 user.Heal(item.value);

@@ -4,7 +4,7 @@ using UnityEngine;
 public class ItemData : ScriptableObject
 {
     public string itemName;
-    public ItemType itemType;
+    public ItemType type;
     public int value;
     public int boostDuration = 1;
     public StatType boostedStat;
