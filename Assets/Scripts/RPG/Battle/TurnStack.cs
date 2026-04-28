@@ -12,12 +12,10 @@ public class TurnStack
         foreach (var unit in units.Where(u => !u.IsDead && u != firstUnit).OrderBy(u => u.Data.speed))
             _stack.Push(unit);
 
-        if (firstUnit != null && !firstUnit.IsDead)
-            _stack.Push(firstUnit);
+        if (firstUnit is { IsDead: false }) _stack.Push(firstUnit);
     }
 
     public void Rebuild(IEnumerable<BattleUnit> livingUnits) => Build(livingUnits);
-
-    public BattleUnit PopCurrent()
-        => _stack.Count > 0 ? _stack.Pop() : null;
+    
+    public BattleUnit PopCurrent() => _stack.Count > 0 ? _stack.Pop() : null;
 }

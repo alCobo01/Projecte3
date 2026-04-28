@@ -54,13 +54,10 @@ public class BattleUI : MonoBehaviour
     private BattleUnit _player;
     private List<BattleUnit> _enemies = new();
     private SkillData _selectedSkill;
-
-    private Mode _mode;
-    private Mode _backFromTargetMode = Mode.Action;
-    private bool _inputLockedByFeedback;
-    private bool _fleeSuccess;
-    private Coroutine _feedbackClearCoroutine;
-    private Coroutine _feedbackUnlockCoroutine;
+    
+    private Mode _backFromTargetMode = Mode.Action, _mode;
+    private bool _inputLockedByFeedback, _fleeSuccess;
+    private Coroutine _feedbackClearCoroutine, _feedbackUnlockCoroutine;
 
     private enum Mode { Hidden, Action, Skill, Item, Target, Ended }
 

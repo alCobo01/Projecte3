@@ -24,17 +24,13 @@ public class StatusEffect
 
     public void Tick(BattleUnit unit)
     {
-        if (Data == null)
-        {
-            RemainingTurns--;
-            return;
-        }
-
         switch (Data.type)
         {
             case StatusEffectType.Poison: unit.TakeDamage(Data.damagePerTurn); break;
             case StatusEffectType.Regen:  unit.Heal(Data.healPerTurn);         break;
             case StatusEffectType.Stun:   unit.SkipNextAction = true;          break;
+            default:
+                break;
         }
         
         RemainingTurns--;

@@ -35,7 +35,10 @@ public class InventoryUI : MonoBehaviour
 
             var obj = Instantiate(slotPrefab, container, false);
             obj.transform.localScale = Vector3.one;
-            obj.GetComponent<InventorySlotUI>().SetData(stack);
+            obj.GetComponent<InventorySlotUI>().SetData(stack, HandleUseItem);
         }
     }
+    
+    private static void HandleUseItem(ItemData item) => PlayerStatsManager.Instance.ConsumeItem(item);
+    
 }
