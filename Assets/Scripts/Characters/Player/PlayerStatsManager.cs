@@ -1,9 +1,12 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerStatsManager : MonoBehaviour
 {
     public static PlayerStatsManager Instance { get; private set; }
+    public static event UnityAction OnInventoryChanged;
 
     public int currentHp;
     public int currentSp;
@@ -38,5 +41,18 @@ public class PlayerStatsManager : MonoBehaviour
         if (stack == null) return;
         stack.quantity--;
         if (stack.quantity <= 0) inventory.Remove(stack);
+        OnInventoryChanged?.Invoke();
+    }
+
+    public void AddItem(ItemStack stackToAdd)
+    {
+        var currentItem = inventory.FirstOrDefault(i => i.item == stackToAdd.item);
+        
+        if (currentItem == null)
+            inventory.Add(new ItemStack { item = stackToAdd.item, quantity = stackToAdd.quantity });
+        else
+            currentItem.quantity += stackToAdd.quantity;
+        
+        OnInventoryChanged?.Invoke();
     }
 }

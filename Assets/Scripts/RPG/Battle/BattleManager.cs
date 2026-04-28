@@ -11,6 +11,8 @@ public class BattleManager : MonoBehaviour
     public enum BattleInitiator { Player, Enemy }
 
     public static BattleManager Instance { get; private set; }
+    public bool IsBattleRunning { get; private set; }
+    public BattleUnit PlayerUnit { get; private set; }
 
     [SerializeField] private BattleUI ui;
 
@@ -20,18 +22,11 @@ public class BattleManager : MonoBehaviour
     private Coroutine _battleLoop;
     private bool _endNotified;
     private int _round;
-
-    public BattleUnit PlayerUnit { get; private set; }
-
+    
     public IReadOnlyList<BattleUnit> AllUnits => _allUnits;
-    public bool IsBattleRunning { get; private set; }
-
-    public event UnityAction OnBattleStarted;
-    public event UnityAction<BattleUnit> OnTurnStarted;
-    public event UnityAction<BattleUnit> OnDamageTaken;
-    public event UnityAction<bool> OnBattleEnded;
-    public event UnityAction OnBattleStateChanged;
-    public event UnityAction<bool> OnFleeAttempted;
+    public event UnityAction OnBattleStarted, OnBattleStateChanged;
+    public event UnityAction<BattleUnit> OnTurnStarted, OnDamageTaken;
+    public event UnityAction<bool> OnBattleEnded, OnFleeAttempted;
     public event UnityAction<string> OnCombatMessage;
     public event UnityAction<int> OnRoundStarted;
 

@@ -13,8 +13,8 @@ public class BattleUnit
     public bool IsDead => CurrentHp <= 0;
     public bool IsStunned => _activeEffects.Any(e => e.Data != null && e.Data.type == StatusEffectType.Stun);
     
-    private List<StatusEffect> _activeEffects = new();
-    private Dictionary<StatType, int> _tempBoosts = new();
+    private readonly List<StatusEffect> _activeEffects = new();
+    private readonly Dictionary<StatType, int> _tempBoosts = new();
 
     public BattleUnit(CharacterData data, bool isPlayer, int startingSp = 0)
     {

@@ -145,6 +145,24 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenInventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""f9443a2a-910e-4841-95d0-0c71581919e0"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PauseMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""60b6f21e-c12f-467f-b2de-e8aae671d563"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -422,6 +440,28 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""action"": ""Fly"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f4079ca1-98da-4455-871c-06e1b803e424"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""327d7d04-e3a4-4442-a742-5fd18b231f7a"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -442,7 +482,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""name"": ""Submit"",
                     ""type"": ""Button"",
                     ""id"": ""7607c7b6-cd76-4816-beef-bd0341cfe950"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -1013,6 +1053,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_Fly = m_Player.FindAction("Fly", throwIfNotFound: true);
+        m_Player_OpenInventory = m_Player.FindAction("OpenInventory", throwIfNotFound: true);
+        m_Player_PauseMenu = m_Player.FindAction("PauseMenu", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1112,6 +1154,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_Fly;
+    private readonly InputAction m_Player_OpenInventory;
+    private readonly InputAction m_Player_PauseMenu;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1147,6 +1191,14 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Fly".
         /// </summary>
         public InputAction @Fly => m_Wrapper.m_Player_Fly;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/OpenInventory".
+        /// </summary>
+        public InputAction @OpenInventory => m_Wrapper.m_Player_OpenInventory;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/PauseMenu".
+        /// </summary>
+        public InputAction @PauseMenu => m_Wrapper.m_Player_PauseMenu;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1191,6 +1243,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Fly.started += instance.OnFly;
             @Fly.performed += instance.OnFly;
             @Fly.canceled += instance.OnFly;
+            @OpenInventory.started += instance.OnOpenInventory;
+            @OpenInventory.performed += instance.OnOpenInventory;
+            @OpenInventory.canceled += instance.OnOpenInventory;
+            @PauseMenu.started += instance.OnPauseMenu;
+            @PauseMenu.performed += instance.OnPauseMenu;
+            @PauseMenu.canceled += instance.OnPauseMenu;
         }
 
         /// <summary>
@@ -1220,6 +1278,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Fly.started -= instance.OnFly;
             @Fly.performed -= instance.OnFly;
             @Fly.canceled -= instance.OnFly;
+            @OpenInventory.started -= instance.OnOpenInventory;
+            @OpenInventory.performed -= instance.OnOpenInventory;
+            @OpenInventory.canceled -= instance.OnOpenInventory;
+            @PauseMenu.started -= instance.OnPauseMenu;
+            @PauseMenu.performed -= instance.OnPauseMenu;
+            @PauseMenu.canceled -= instance.OnPauseMenu;
         }
 
         /// <summary>
@@ -1562,6 +1626,20 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnFly(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "OpenInventory" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnOpenInventory(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "PauseMenu" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPauseMenu(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.
