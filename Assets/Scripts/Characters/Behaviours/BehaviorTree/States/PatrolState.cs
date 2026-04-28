@@ -20,11 +20,13 @@ public class PatrolState : Node
     public override void OnUpdate(EnemyController ec)
     {
         base.OnUpdate(ec);
-        ec.GetComponent<PatrolBehaviour>().Patrol();
+        PatrolBehaviour patrol = ec.GetComponent<PatrolBehaviour>();
+        ec.enemyData.Patrol(patrol);
     }
     public override void OnExit(EnemyController ec)
     {
         Debug.Log("PATROL EXIT - Reason: Chase=" + ec.chase.check + " Attack=" + ec.attack.check);
-        ec.GetComponent<PatrolBehaviour>().StopPatrol();
+        PatrolBehaviour patrol = ec.GetComponent<PatrolBehaviour>();
+        if (patrol != null) patrol.StopPatrol();
     }
 }

@@ -1,5 +1,4 @@
 using System.Collections;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -8,11 +7,9 @@ public class EnemyController : MonoBehaviour
     public Condition chase;
     public Condition combat;
     public GameObject target;
-    public float AttackDistance;
     public Node root;
     public Node currentState;
-
-
+    public EnemySO enemyData;
     private CharacterAnimationController _animController;
 
     private void Awake()
@@ -21,8 +18,6 @@ public class EnemyController : MonoBehaviour
         attack = new Condition("Attack");
         chase = new Condition("Chase");
         combat = new Condition("Combat");
-
-        AttackDistance = 0;
         ChangeState();
     }
 
@@ -43,6 +38,7 @@ public class EnemyController : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             chase.check = false;
+            attack.check = false;
             target = null;
             if (_animController != null) _animController.SetRunning(false);
             Debug.Log("Chase = false");
@@ -53,7 +49,7 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            attack.check = (target.transform.position - transform.position).magnitude <= AttackDistance;
+            attack.check = (target.transform.position - transform.position).magnitude <= enemyData.attackDistance;
         }
     }
 
