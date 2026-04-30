@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e38f6dbf6eee1a04ba4ca2861abc3749
+guid: cb0d0dcae8248fa46b33ebf00c69c471
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7873444928579934181
-    second: Cactus_0
+      213: -3527056459931870471
+    second: CactusGrande 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -74,7 +74,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cactus_0
+      name: CactusGrande 1_0
       rect:
         serializedVersion: 2
-        x: 11
+        x: 0
         y: 0
-        width: 42
-        height: 46
+        width: 64
+        height: 57
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5e79b9e7278144d60800000000000000
-      internalID: 7873444928579934181
+      spriteID: 9fa930b36d06d0fc0800000000000000
+      internalID: -3527056459931870471
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Cactus_0: 7873444928579934181
+      CactusGrande 1_0: -3527056459931870471
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
