@@ -156,7 +156,7 @@ public class BattleTransitionManager : MonoBehaviour
         return world;
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         var cam = Camera.main;
         const float markerRadius = 0.15f;
