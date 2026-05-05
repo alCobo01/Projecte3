@@ -1424,7 +1424,7 @@ TilemapRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 2046251113
   m_SortingLayer: 1
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -32386,6 +32386,14 @@ PrefabInstance:
     - target: {fileID: 5870802244680562195, guid: d35ae5786bc2b498a8c7365136404276, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6242348268568165105, guid: d35ae5786bc2b498a8c7365136404276, type: 3}
+      propertyPath: canRun
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6242348268568165105, guid: d35ae5786bc2b498a8c7365136404276, type: 3}
+      propertyPath: runMultiplier
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
