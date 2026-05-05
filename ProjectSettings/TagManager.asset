@@ -14,7 +14,7 @@ TagManager:
   - Terrain
   - Enemy
   - EnemyProjectile
-  - 
+  - Player
   - Interactable
   - 
   - 
@@ -42,16 +42,16 @@ TagManager:
     uniqueID: 0
     locked: 0
   - name: Terrain
-    uniqueID: 2913082855
+    uniqueID: 2046251113
     locked: 0
-  - name: BattlePanel
-    uniqueID: 4255769393
+  - name: GrayPanel
+    uniqueID: 4277049819
     locked: 0
-  - name: BattlePlatforms
-    uniqueID: 3051362681
+  - name: Platforms
+    uniqueID: 991225815
     locked: 0
   - name: Characters
-    uniqueID: 1205832633
+    uniqueID: 2274138289
     locked: 0
   m_RenderingLayers:
   - Default

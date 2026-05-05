@@ -87,8 +87,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 1205832633
-  m_SortingLayer: 4
+  m_SortingLayerID: -2020829007
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 4723107735738678597, guid: 45f8eb1240f7458438a4e4ebbafde7fc, type: 3}
@@ -271,6 +271,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
   target: {fileID: 0}
+  lastKnownPosition: {x: 0, y: 0, z: 0}
+  searchDuration: 4
   root: {fileID: 11400000, guid: a8da72026ca90834585cc8d9b6f82905, type: 2}
   currentState: {fileID: 0}
   enemyData: {fileID: 11400000, guid: c18b115343cb1dd4ab4160fc62d23f86, type: 2}
