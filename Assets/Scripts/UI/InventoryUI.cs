@@ -27,14 +27,11 @@ public class InventoryUI : MonoBehaviour
         var isActive = !inventoryPanel.activeSelf;
         inventoryPanel.SetActive(isActive);
         PauseManager.Instance.TogglePause();
+        
         if (isActive)
-        {
             RefreshUI();
-        }
-        else if (emptyInventoryText != null)
-        {
+        else
             emptyInventoryText.gameObject.SetActive(false);
-        }
     }
     
     private void RefreshUI()
@@ -46,18 +43,11 @@ public class InventoryUI : MonoBehaviour
         {
             hasItems = true;
 
-            var obj = Instantiate(slotPrefab);
-            var slotTransform = obj.transform as RectTransform;
-            slotTransform.SetParent(container, false);
-            slotTransform.localScale = Vector3.one;
-            slotTransform.localRotation = Quaternion.identity;
-            slotTransform.anchoredPosition3D = Vector3.zero;
-            obj.GetComponent<InventorySlotUI>().SetData(stack, HandleUseItem);
+            var obj = Instantiate(slotPrefab, container, false);
+            obj.GetComponent<InventorySlotUI>().SetData(stack);
         }
         
         emptyInventoryText.gameObject.SetActive(!hasItems);
         LayoutRebuilder.ForceRebuildLayoutImmediate(container);
     }
-    
-    private static void HandleUseItem(ItemData item) => PlayerStatsManager.Instance.ConsumeItem(item);
 }
