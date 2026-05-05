@@ -26,7 +26,7 @@ public class CharacterAnimationController : MonoBehaviour
     protected virtual void Update()
     {
         var speed = Mathf.Abs(_rb.linearVelocity.x);
-        //_animationBehaviour.SetFloat(HorizontalSpeedHash, speed);
+        _animationBehaviour.SetFloat(HorizontalSpeedHash, speed);
         _animationBehaviour.SetFloat(VerticalSpeedHash, _rb.linearVelocity.y);
         
         if (_groundCheck)

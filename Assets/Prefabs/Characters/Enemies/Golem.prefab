@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1527648028867002870}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShootPointGolem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,7 +51,8 @@ GameObject:
   - component: {fileID: 4010357491757896702}
   - component: {fileID: 8859565943488764224}
   - component: {fileID: 1984097937166683761}
-  m_Layer: 0
+  - component: {fileID: 2732062868719428814}
+  m_Layer: 7
   m_Name: Golem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,8 +120,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1205832633
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -1876605294, guid: b9e42660f08c4a5478ee9bc06ad7c851, type: 3}
@@ -329,7 +330,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: -0.01, y: 0}
-  m_Radius: 1.0593448
+  m_Radius: 1.5
 --- !u!114 &1984097937166683761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,7 +346,23 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 64
-  detectionRange: 1.5
+  detectionRange: 0.5
   avoidForce: 1
   sensorCount: 5
-  sensorAngle: 45
+  sensorAngle: 90
+--- !u!114 &2732062868719428814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7931461823127551002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0454d7f62a306d445b05aa1a9f08e97d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AttackDistanceBeahviour
+  _gameObjecjtBullet: {fileID: 8633189765614261655, guid: 9cc7ceac100fbf249a5e33f9744040a9, type: 3}
+  _shootPoint: {fileID: 1527648028867002870}
+  speedProjectile: 2
+  timeSpawn: 1.5

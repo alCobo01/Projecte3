@@ -22,7 +22,7 @@ public class BattleTransitionManager : MonoBehaviour
     
     private void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (Instance && Instance != this)
         {
             Destroy(gameObject);
             return;
@@ -156,7 +156,7 @@ public class BattleTransitionManager : MonoBehaviour
         return world;
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         var cam = Camera.main;
         const float markerRadius = 0.15f;
