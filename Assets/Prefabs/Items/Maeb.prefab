@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5320628191230924291}
   - component: {fileID: 3488187806479603643}
   - component: {fileID: 6297094837925108997}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Maeb
   m_TagString: Untagged
   m_Icon: {fileID: 0}

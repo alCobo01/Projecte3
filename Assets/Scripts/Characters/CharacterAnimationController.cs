@@ -32,6 +32,7 @@ public class CharacterAnimationController : MonoBehaviour
         if (_groundCheck)
             _animationBehaviour.SetBool(IsGroundedHash, _groundCheck.IsGrounded);
     }
+    
     public void SetWalking(float speed) => _animationBehaviour.SetFloat(HorizontalSpeedHash, speed);
     public void TriggerJump() => _animationBehaviour.Trigger(JumpHash);
     public void TriggerDash() => _animationBehaviour.Trigger(DashHash);

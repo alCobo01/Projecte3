@@ -13,6 +13,8 @@ public class PlayerStatsManager : MonoBehaviour
     public int maxSp;
     public List<ItemStack> inventory = new();
 
+    [SerializeField] private CharacterData characterData;
+
     private void Awake()
     {
         if (Instance is null)
@@ -55,4 +57,6 @@ public class PlayerStatsManager : MonoBehaviour
         
         OnInventoryChanged?.Invoke();
     }
+
+    public void AddSkill(SkillData skillToAdd) => characterData.skills.Add(skillToAdd);
 }
