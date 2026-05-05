@@ -6,7 +6,11 @@ public class EnemyController : MonoBehaviour
     public Condition attack;
     public Condition chase;
     public Condition combat;
+    public Condition search;
     public GameObject target;
+    [HideInInspector] public Vector3 lastKnownPosition;
+    public float searchDuration = 4f;
+    private float _currentSearchTimer;
     public Node root;
     public Node currentState;
     public EnemySO enemyData;
@@ -18,6 +22,7 @@ public class EnemyController : MonoBehaviour
         attack = new Condition("Attack");
         chase = new Condition("Chase");
         combat = new Condition("Combat");
+        search = new Condition("Search");
         ChangeState();
     }
 
@@ -27,9 +32,11 @@ public class EnemyController : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             chase.check = true;
+            search.check = false;
             target = collision.gameObject;
             if (_animController != null) _animController.SetRunning(true);
             Debug.Log(" Chase = true");
+            ChangeState();
         }
     }
 
@@ -37,17 +44,25 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
+            if (target != null)
+            {
+                lastKnownPosition = target.transform.position;
+            }
             chase.check = false;
             attack.check = false;
+            search.check = true;
+            _currentSearchTimer = searchDuration;
             target = null;
+            
             if (_animController != null) _animController.SetRunning(false);
-            Debug.Log("Chase = false");
+            Debug.Log("Chase = false, Search = true");
+            ChangeState();
         }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player") && target != null)
         {
             attack.check = (target.transform.position - transform.position).magnitude <= enemyData.attackDistance;
         }
@@ -72,6 +87,16 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
+        if (search.check)
+        {
+            _currentSearchTimer -= Time.deltaTime;
+            if (_currentSearchTimer <= 0)
+            {
+                search.check = false;
+                ChangeState();
+            }
+        }
+
         if (currentState != null)
             currentState.OnUpdate(this);
     }

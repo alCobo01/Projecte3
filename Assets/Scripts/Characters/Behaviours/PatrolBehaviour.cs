@@ -40,7 +40,7 @@ public class PatrolBehaviour : MonoBehaviour
         }
 
         var targetPoint = patrolPoints[_currentPointIndex];
-        if (targetPoint) return;
+        if (targetPoint == null) return;
 
         Vector2 targetPosition = targetPoint.position;
         Vector2 currentPosition = transform.position;
