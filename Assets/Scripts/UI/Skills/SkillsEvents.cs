@@ -3,9 +3,9 @@ using UnityEngine.Events;
 
 public class SkillEvents : MonoBehaviour
 {
-    public static event UnityAction<SkillData> OnSkillUnlocked;
-    public static void TriggerSkillUnlocked(SkillData skill)
+    public static event UnityAction OnSkillUnlocked;
+    public static void TriggerSkillUnlocked()
     {
-        OnSkillUnlocked?.Invoke(skill);
+        OnSkillUnlocked?.Invoke();
     }
 }
