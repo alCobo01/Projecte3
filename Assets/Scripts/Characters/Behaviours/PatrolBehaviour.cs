@@ -5,6 +5,7 @@ public class PatrolBehaviour : MonoBehaviour
 {
     [Header("Patrol Settings")]
     [SerializeField] private Transform[] patrolPoints;
+    [SerializeField] private GroundEdgeDetector edgeDetector;
     
     private int _currentPointIndex = 0;
     private Rigidbody2D _rb;
@@ -18,6 +19,7 @@ public class PatrolBehaviour : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _animController = GetComponent<CharacterAnimationController>();
         _obstacleAvoidance = GetComponent<ObstacleAvoidance>();
+        if (edgeDetector == null) edgeDetector = GetComponent<GroundEdgeDetector>();
     }
 
     public void Patrol(float speed, float minWaitTime, float maxWaitTime)
@@ -51,21 +53,33 @@ public class PatrolBehaviour : MonoBehaviour
             _isWaiting = true;
             _waitTimer = Random.Range(minWaitTime, maxWaitTime);
             _rb.linearVelocity = new Vector2(0, _rb.linearVelocity.y);
+            _animController.SetWalking(0f);
         }
         else
         {
             var directionX = Mathf.Sign(targetPosition.x - currentPosition.x);
-            _animController.SetWalking(Mathf.Abs(directionX));
-
-            _rb.linearVelocity = new Vector2(directionX * speed, _rb.linearVelocity.y);
-
-            transform.rotation = directionX switch
+            
+            if (edgeDetector == null || edgeDetector.HasGroundAhead(directionX))
             {
-                // Update rotation/flip based on direction
-                > 0 => Quaternion.Euler(0, 0, 0),
-                < 0 => Quaternion.Euler(0, 180, 0),
-                _ => transform.rotation
-            };
+                _animController.SetWalking(Mathf.Abs(directionX));
+                _rb.linearVelocity = new Vector2(directionX * speed, _rb.linearVelocity.y);
+
+                transform.rotation = directionX switch
+                {
+                    // Update rotation/flip based on direction
+                    > 0 => Quaternion.Euler(0, 0, 0),
+                    < 0 => Quaternion.Euler(0, 180, 0),
+                    _ => transform.rotation
+                };
+            }
+            else
+            {
+                // No hay suelo adelante, actuar como si hubiera llegado al punto
+                _isWaiting = true;
+                _waitTimer = Random.Range(minWaitTime, maxWaitTime);
+                _rb.linearVelocity = new Vector2(0, _rb.linearVelocity.y);
+                _animController.SetWalking(0f);
+            }
         }
     }
     public void FlyingPatrol(float speed, float minWaitTime, float maxWaitTime)
