@@ -13,14 +13,21 @@ public class NPC : MonoBehaviour, IInteractable
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TMP_Text dialogueText;
 
+    [Header("Settings")]
+    [SerializeField] private float interactionCooldown = 0.5f;
+
     private int _currentDialogueIndex = 0; 
     private int _lineIndex = 0;
 
     private bool _isTyping;
     private bool _isDialogueActive;
+    private float _lastInteractionTime;
 
-    public void Interact(GameObject interactor)
+    public void Interact()
     {
+        if (Time.time < _lastInteractionTime + interactionCooldown) return;
+        _lastInteractionTime = Time.time;
+
         if (_isDialogueActive)
             NextLine();
         else
@@ -59,7 +66,7 @@ public class NPC : MonoBehaviour, IInteractable
             if (_lineIndex < block.lines.Length)
                 StartCoroutine(TypeLine());
             else
-                EndDialogue();
+                EndDialogue(true);
         }
     }
 
@@ -79,7 +86,7 @@ public class NPC : MonoBehaviour, IInteractable
         _isTyping = false;
     }
 
-    private void EndDialogue()
+    private void EndDialogue(bool completed)
     {
         StopAllCoroutines();
         _isDialogueActive = false;
@@ -87,15 +94,15 @@ public class NPC : MonoBehaviour, IInteractable
         dialogueText.SetText("");
         dialoguePanel.SetActive(false);
 
-        // Avanzar al siguiente diálogo si no estamos en el último
-        if (_currentDialogueIndex < dialogueData.dialogues.Length - 1)
+        // Avanzar al siguiente diálogo solo si se ha completado y no estamos en el último
+        if (completed && _currentDialogueIndex < dialogueData.dialogues.Length - 1)
             _currentDialogueIndex++;
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D other)
     {
         if (!other.TryGetComponent(out PlayerInputController player)) return;
-        if (_isDialogueActive) EndDialogue();
+        if (_isDialogueActive) EndDialogue(false);
     }
 
 }
