@@ -7,7 +7,7 @@ public class NPCDialogueSequence : ScriptableObject
     public class DialogueBlock
     {
         public string[] lines;
-        public float typingSpeed = 0.05f;
+        public float typingSpeed = 0.08f;
     }
 
     public DialogueBlock[] dialogues;

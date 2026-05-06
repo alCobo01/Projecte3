@@ -16,14 +16,14 @@ MonoBehaviour:
   - lines:
     - Holaaaa
     - Que tal?
-    typingSpeed: 3
+    typingSpeed: 0.05
   - lines:
     - En verdad, no me cuentes tu vidaaaa
-    typingSpeed: 5
+    typingSpeed: 0.05
   - lines:
     - Es bromaaaaa
     - Cuentame.
-    typingSpeed: 2
+    typingSpeed: 0.05
   - lines:
     - En verdad ns porque te pregunto....
-    typingSpeed: 10
+    typingSpeed: 0.05

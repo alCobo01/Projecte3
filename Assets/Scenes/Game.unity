@@ -1587,46 +1587,6 @@ Tilemap:
   m_GameObject: {fileID: 563631558}
   m_Enabled: 1
   m_Tiles:
-  - first: {x: 55, y: -29, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 5
-      m_TileSpriteIndex: 5
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 57, y: -29, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 58, y: -29, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 59, y: -29, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: 61, y: -29, z: 0}
     second:
       serializedVersion: 2
@@ -2527,16 +2487,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 55, y: -22, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: 56, y: -22, z: 0}
     second:
       serializedVersion: 2
@@ -2688,16 +2638,6 @@ Tilemap:
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
   - first: {x: 71, y: -22, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 55, y: -21, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 0
@@ -4289,7 +4229,7 @@ Tilemap:
       m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 229
+  - m_RefCount: 224
     m_Data: {fileID: 11400000, guid: 7a647744a7e199a459b92de68bbedb7e, type: 2}
   - m_RefCount: 18
     m_Data: {fileID: 11400000, guid: 0e378632f7e40f74589904547a6c3ce8, type: 2}
@@ -4299,10 +4239,10 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 59c65cb197ff0ae4ba2694d360e38e81, type: 2}
   - m_RefCount: 3
     m_Data: {fileID: 11400000, guid: 048bb316924fc2949baf8f8eb505a459, type: 2}
-  - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: 49b51d8c728cca94591c09dd23489fef, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
-  - m_RefCount: 229
+  - m_RefCount: 224
     m_Data: {fileID: -99026140, guid: 96078fd97c3255e41930cf63462b1090, type: 3}
   - m_RefCount: 18
     m_Data: {fileID: 4347153169473674906, guid: 1fc1203e39e1759468e1fe57c82fd237, type: 3}
@@ -4312,10 +4252,10 @@ Tilemap:
     m_Data: {fileID: -726379772, guid: 96078fd97c3255e41930cf63462b1090, type: 3}
   - m_RefCount: 3
     m_Data: {fileID: -2144417952, guid: 96078fd97c3255e41930cf63462b1090, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 94203440, guid: 96078fd97c3255e41930cf63462b1090, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
-  - m_RefCount: 270
+  - m_RefCount: 264
     m_Data:
       e00: 1
       e01: 0
@@ -4334,7 +4274,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 270
+  - m_RefCount: 264
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -11929,6 +11869,7 @@ MonoBehaviour:
   dialogueData: {fileID: 11400000, guid: 2e3dc33f436db57479b4f42b37b753e1, type: 2}
   dialoguePanel: {fileID: 1497860447}
   dialogueText: {fileID: 291742339}
+  interactionCooldown: 1
 --- !u!61 &1608254911
 BoxCollider2D:
   m_ObjectHideFlags: 0
