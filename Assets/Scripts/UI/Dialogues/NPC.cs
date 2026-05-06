@@ -19,7 +19,7 @@ public class NPC : MonoBehaviour, IInteractable
     private bool _isTyping;
     private bool _isDialogueActive;
 
-    public void Interact(GameObject interactor)
+    public void Interact()
     {
         if (_isDialogueActive)
             NextLine();
