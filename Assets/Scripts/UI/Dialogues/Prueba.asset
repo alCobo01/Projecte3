@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7130b1fe8d406a44887de6e51500e85b, type: 3}
+  m_Name: Prueba
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogueSequence
+  dialogues:
+  - lines:
+    - Holaaaa
+    - Que tal?
+    typingSpeed: 0.05
+  - lines:
+    - En verdad, no me cuentes tu vidaaaa
+    typingSpeed: 0.01
+  - lines:
+    - Es bromaaaaa
+    - Cuentame.
+    typingSpeed: 0
+  - lines:
+    - En verdad ns porque te pregunto....
+    typingSpeed: 0

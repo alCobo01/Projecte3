@@ -4,7 +4,7 @@ public class ItemPickup : MonoBehaviour, IInteractable
 {
     [SerializeField] private ItemStack stack;
     
-    public void Interact()
+    public void Interact(GameObject _)
     {
         if (stack == null || stack.item == null || stack.quantity <= 0) return;
         PlayerStatsManager.Instance.AddItem(stack);
