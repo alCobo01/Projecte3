@@ -63,15 +63,15 @@ public class BattleUI : MonoBehaviour
 
     private readonly struct ListOption
     {
-        public readonly string Label;
-        public readonly Action OnClick;
-        public readonly bool Interactable;
+        public readonly string label;
+        public readonly Action onClick;
+        public readonly bool interactable;
 
         public ListOption(string label, Action onClick, bool interactable = true)
         {
-            Label = label;
-            OnClick = onClick;
-            Interactable = interactable;
+            this.label = label;
+            this.onClick = onClick;
+            this.interactable = interactable;
         }
     }
 
@@ -216,7 +216,7 @@ public class BattleUI : MonoBehaviour
 
     private void BuildSkills()
     {
-        var skills = (_player?.Data.skills ?? Array.Empty<SkillData>())
+        var skills = (_player?.Data.skills ?? new List<SkillData>())
             .Where(s => s != null)
             .Select(s => new ListOption($"{s.skillName} ({s.spCost} SP)", () => PickSkill(s), _player.CurrentSp >= s.spCost));
 
@@ -249,8 +249,8 @@ public class BattleUI : MonoBehaviour
         foreach (var option in options ?? Enumerable.Empty<ListOption>())
         {
             hasAny = true;
-            var button = CreateButton(root, option.Label, option.OnClick);
-            button.interactable = option.Interactable;
+            var button = CreateButton(root, option.label, option.onClick);
+            button.interactable = option.interactable;
         }
 
         if (!hasAny && !string.IsNullOrEmpty(emptyMessage)) CreateDisabledRow(root, emptyMessage);
@@ -385,7 +385,7 @@ public class BattleUI : MonoBehaviour
     {
         var canUse = !_inputLockedByFeedback;
         attackButton.interactable = canUse && _enemies.Any(e => !e.IsDead);
-        skillButton.interactable = canUse && _player != null && (_player.Data.skills?.Length ?? 0) > 0;
+        skillButton.interactable = canUse && _player != null && (_player.Data.skills?.Count ?? 0) > 0;
         itemButton.interactable = canUse && PlayerStatsManager.Instance != null;
         fleeButton.interactable = canUse;
     }

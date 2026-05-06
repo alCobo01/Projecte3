@@ -44,6 +44,9 @@ TagManager:
   - name: Terrain
     uniqueID: 2046251113
     locked: 0
+  - name: Elements
+    uniqueID: 3634982733
+    locked: 0
   - name: GrayPanel
     uniqueID: 4277049819
     locked: 0

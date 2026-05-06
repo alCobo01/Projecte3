@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "CharacterData", menuName = "RPG/CharacterData")]
@@ -14,6 +15,6 @@ public class CharacterData : ScriptableObject
 
     [Header("Combat mechanics")] 
     public int spGainPerHit = 10;
-    public SkillData[] skills;
+    public List<SkillData> skills;
     public Sprite portrait;
 }

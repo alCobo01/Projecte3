@@ -32,7 +32,7 @@ public class PlayerInteractionController : MonoBehaviour
         }
     }
     
-private void OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected()
     {
         var originTransform = transform;
         var origin = originTransform.position;

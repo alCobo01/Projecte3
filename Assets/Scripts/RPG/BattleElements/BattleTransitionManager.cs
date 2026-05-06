@@ -11,7 +11,7 @@ public class BattleTransitionManager : MonoBehaviour
     [SerializeField] private Vector2 enemyViewportPoint = new(0.7f, 0.35f);
     [SerializeField] private GameObject transitionPanel;
     [SerializeField] private BattleCameraManager battleCameraManager;
-    [SerializeField] private BattleCameraShake battleCameraShake;
+    [SerializeField] private CameraShake cameraShake;
     [SerializeField] private List<SpriteRenderer> transitionSprites = new();
 
     private CanvasGroup _transitionCanvasGroup;
@@ -49,7 +49,7 @@ public class BattleTransitionManager : MonoBehaviour
     public IEnumerator ExecuteBattleEntry()
     {
         SetPhysicsSimulation(false);
-        battleCameraShake.TriggerShake();
+        cameraShake.TriggerShake();
 
         battleCameraManager.PositionBattleCamera(_player, _enemy);
         battleCameraManager.GetBattleTargetPositions(_player, _enemy, playerViewportPoint, enemyViewportPoint, out var playerTarget, out var enemyTarget);
