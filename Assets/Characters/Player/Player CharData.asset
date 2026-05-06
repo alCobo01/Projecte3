@@ -19,5 +19,6 @@ MonoBehaviour:
   defense: 10
   speed: 20
   spGainPerHit: 10
-  skills: []
+  skills:
+  - {fileID: 11400000, guid: 08ea3a60ac2fe47f9b1d611ee9e056e3, type: 2}
   portrait: {fileID: 0}
