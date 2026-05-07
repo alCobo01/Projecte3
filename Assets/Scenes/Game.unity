@@ -1195,12 +1195,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 518798231}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.79, y: -2.84, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.1843, y: 0.017719984, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 4171644023782997357}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &518798234
 PolygonCollider2D:
@@ -34428,7 +34428,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1337956247657630507}
-  - {fileID: 5233003803055477687}
   - {fileID: 6093651290594324617}
   - {fileID: 7605647071473182507}
   - {fileID: 4482405628065447665}
@@ -35002,6 +35001,7 @@ Transform:
   - {fileID: 392028953312894949}
   - {fileID: 4384458522918446034}
   - {fileID: 2946526041628105362}
+  - {fileID: 518798233}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4213308628645744828 stripped
@@ -35072,8 +35072,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 43a7d98bd4222b64e933596512dc09ad, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 7025407786523390072, guid: 8a4a0eec8d425a840979100f7d476967, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -35968,16 +35968,16 @@ RectTransform:
   m_GameObject: {fileID: 5706234070230131525}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.2, y: 0.59999996, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1224146933701859686}
-  m_Father: {fileID: 3357101636230508071}
+  m_Father: {fileID: 7455408936154972476}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.000012398, y: -219}
-  m_SizeDelta: {x: 211.7555, y: 191.2837}
+  m_AnchoredPosition: {x: 941.9202, y: 845.1886}
+  m_SizeDelta: {x: 427.2953, y: 158.7493}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!224 &5238008489686635794
 RectTransform:
@@ -36237,7 +36237,7 @@ RectTransform:
   m_GameObject: {fileID: 1906290044787461523}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.2, y: 0.59999996, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6431198829685722796}
@@ -36245,8 +36245,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -103.16}
-  m_SizeDelta: {x: 116.41, y: 165.8448}
+  m_AnchoredPosition: {x: -0.000019073, y: -96}
+  m_SizeDelta: {x: 184.9857, y: 55.7838}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &5593557716798822255
 GameObject:
@@ -36309,7 +36309,7 @@ GameObject:
   - component: {fileID: 5307263243272878989}
   - component: {fileID: 9066315590170894307}
   m_Layer: 5
-  m_Name: Feedback Image
+  m_Name: Feedback Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36977,7 +36977,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6634985081896275439 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5870802244680562195, guid: d35ae5786bc2b498a8c7365136404276, type: 3}
@@ -37416,6 +37416,7 @@ Transform:
   m_Children:
   - {fileID: 791589416607799308}
   - {fileID: 3507535905934648278}
+  - {fileID: 5233003803055477687}
   m_Father: {fileID: 4268910712395677189}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7470443981431751739
@@ -43471,6 +43472,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleTransitionManager
   transitionDuration: 2
+  enemyDefeatFlickerDuration: 0.6
+  enemyDefeatFlickerInterval: 0.08
   playerViewportPoint: {x: 0.4, y: 0.39}
   enemyViewportPoint: {x: 0.75, y: 0.56}
   transitionPanel: {fileID: 6663691713361032364}
@@ -43626,7 +43629,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1827731431}
-  - {fileID: 518798233}
   - {fileID: 699307149}
   - {fileID: 1142832257}
   - {fileID: 7963749229723394607}

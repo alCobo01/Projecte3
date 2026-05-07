@@ -27,6 +27,7 @@ public class BattleManager : MonoBehaviour
     public event UnityAction OnBattleStarted, OnBattleStateChanged;
     public event UnityAction<BattleUnit> OnTurnStarted, OnDamageTaken;
     public event UnityAction<bool> OnBattleEnded, OnFleeAttempted;
+    public event UnityAction OnPlayerDied;
     public event UnityAction<string> OnCombatMessage;
     public event UnityAction<int> OnRoundStarted;
 
@@ -253,11 +254,15 @@ public class BattleManager : MonoBehaviour
         _endNotified = true;
         IsBattleRunning = false;
 
+        var playerDied = PlayerUnit != null && PlayerUnit.IsDead;
+
         if (PlayerUnit != null && PlayerStatsManager.Instance != null)
         {
             PlayerStatsManager.Instance.currentHp = PlayerUnit.CurrentHp;
             PlayerStatsManager.Instance.currentSp = PlayerUnit.CurrentSp;
         }
+
+        if (playerDied) OnPlayerDied?.Invoke();
 
         OnBattleStateChanged?.Invoke();
         OnBattleEnded?.Invoke(playerWon);
@@ -265,12 +270,12 @@ public class BattleManager : MonoBehaviour
         if (_battleLoop != null) StopCoroutine(_battleLoop);
         _battleLoop = null;
 
-        StartCoroutine(BattleExitSequence());
+        StartCoroutine(BattleExitSequence(playerWon));
     }
 
-    private IEnumerator BattleExitSequence()
+    private IEnumerator BattleExitSequence(bool playerWon)
     {
-        yield return BattleTransitionManager.Instance?.ExecuteBattleExit();
+        yield return BattleTransitionManager.Instance?.ExecuteBattleExit(playerWon);
     }
 
     private void ForceCleanupIfNeeded()

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Gorgona
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   characterName: Gorgona
-  maxHp: 100
+  maxHp: 1
   maxSp: 20
   attack: 0
   defense: 0

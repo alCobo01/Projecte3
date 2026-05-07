@@ -54,6 +54,7 @@ public class BattleUI : MonoBehaviour
     private BattleUnit _player;
     private List<BattleUnit> _enemies = new();
     private SkillData _selectedSkill;
+
     
     private Mode _backFromTargetMode = Mode.Action, _mode;
     private bool _inputLockedByFeedback, _fleeSuccess;
@@ -82,6 +83,7 @@ public class BattleUI : MonoBehaviour
         itemButton.onClick.AddListener(ShowItems);
         fleeButton.onClick.AddListener(RequestFlee);
         battleEndButton.onClick.AddListener(CloseBattleUi);
+
 
         feedbackPanel.SetActive(false);
         SetMode(Mode.Hidden);
@@ -305,13 +307,12 @@ public class BattleUI : MonoBehaviour
     private void HandleBattleEnded(bool playerWon)
     {
         HideInputPanels();
-        SetMode(Mode.Ended);
-        battleEndText.text = playerWon ? "Victory" : (_fleeSuccess ? "Fled" : "Defeat");
+        ShowFeedbackOnly();
         turnText.text = string.Empty;
 
         ClearFeedback();
         StopFeedbackCoroutines();
-        _inputLockedByFeedback = false;
+        ShowFeedback(playerWon ? "Victory" : (_fleeSuccess ? "Fled" : "Defeat"), postBattleFeedbackDelay, blockInput: false);
         _fleeSuccess = false;
     }
 
@@ -407,6 +408,19 @@ public class BattleUI : MonoBehaviour
         ClearButtons(skillListRoot);
         ClearButtons(itemListRoot);
         ClearButtons(targetListRoot);
+    }
+
+
+    private void ShowFeedbackOnly()
+    {
+        _mode = Mode.Hidden;
+        rootPanel.SetActive(false);
+        actionPanel.SetActive(false);
+        skillPanel.SetActive(false);
+        itemPanel.SetActive(false);
+        targetPanel.SetActive(false);
+        battleEndPanel.SetActive(false);
+        feedbackPanel.SetActive(true);
     }
 
     private void RefreshHud()
