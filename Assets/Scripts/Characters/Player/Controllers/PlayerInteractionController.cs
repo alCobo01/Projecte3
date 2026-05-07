@@ -17,7 +17,7 @@ public class PlayerInteractionController : MonoBehaviour
     private void OnDisable() => _inputController.OnInteractEvent -= HandleInteraction;
 
     private void Update() => DetectInteractable();
-    private void HandleInteraction() => _currentInteractable?.Interact();
+    private void HandleInteraction() => _currentInteractable?.Interact(gameObject);
     private void DetectInteractable()
     {
         Vector2 origin = transform.position;
