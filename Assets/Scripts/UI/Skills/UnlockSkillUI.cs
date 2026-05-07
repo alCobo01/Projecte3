@@ -19,10 +19,11 @@ public class UnlockSkillUI : MonoBehaviour
     
     private void OnDisable() => SkillEvents.OnSkillUnlocked -= Toggle;
     
-    public void ChooseSkill(int index)
+    private void ChooseSkill(int index)
     {
         var selectedSkill = skills[index];
         PlayerStatsManager.Instance.AddSkill(selectedSkill);
+        skills.Remove(selectedSkill);
         Toggle();
     }
     

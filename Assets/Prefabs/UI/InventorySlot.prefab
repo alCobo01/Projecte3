@@ -406,7 +406,6 @@ MonoBehaviour:
   quantityText: {fileID: 3211794279670114952}
   itemNameText: {fileID: 975681989234393030}
   descriptionText: {fileID: 8965076294317924306}
-  useButton: {fileID: 0}
 --- !u!1 &6964529800034731597
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,7 +608,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3213338478731498277, guid: 0db70414872244234b7c7f8bd658ab0c, type: 3}
+  m_Sprite: {fileID: -3213338478731498277, guid: d7317f47c97744ac997dd8e1842c9e10, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
