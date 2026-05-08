@@ -15,8 +15,7 @@ public class BattleStarter : MonoBehaviour, IBattleStarter
     public BattleInitiator BattleInitiator => battleInitiator;
     public CharacterData[] BattleParty => battleParty;
 
-    private int _playerLayer;
-    private int _enemyLayer;
+    private int _playerLayer, _enemyLayer;
     private float _nextAllowedBattleTime;
     
     private void Awake()
@@ -49,7 +48,7 @@ public class BattleStarter : MonoBehaviour, IBattleStarter
         if (BattleManager.Instance.IsBattleRunning) return false;
         
         var target = other.GetComponentInParent<IBattleStarter>();
-        if (target == null || ReferenceEquals(target, this)) return false;
+        if (target == null) return false;
 
         var ownParty = GetAliveParty(BattleParty);
         var targetParty = GetAliveParty(target.BattleParty);

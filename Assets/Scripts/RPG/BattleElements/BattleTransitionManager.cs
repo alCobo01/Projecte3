@@ -7,6 +7,8 @@ public class BattleTransitionManager : MonoBehaviour
     public static BattleTransitionManager Instance { get; private set; }
 
     [SerializeField] private float transitionDuration = 0.5f;
+    [SerializeField] private float enemyDefeatFlickerDuration = 0.6f;
+    [SerializeField] private float enemyDefeatFlickerInterval = 0.08f;
     [SerializeField] private Vector2 playerViewportPoint = new(0.3f, 0.35f);
     [SerializeField] private Vector2 enemyViewportPoint = new(0.7f, 0.35f);
     [SerializeField] private GameObject transitionPanel;
@@ -19,6 +21,7 @@ public class BattleTransitionManager : MonoBehaviour
     private Rigidbody2D _playerRb, _enemyRb;
     private bool _playerRbSimulated, _enemyRbSimulated;
     private Vector3 _playerOriginalPos, _enemyOriginalPos;
+    private GameObject _pendingEnemyDestroy;
     
     private void Awake()
     {
@@ -63,13 +66,19 @@ public class BattleTransitionManager : MonoBehaviour
         yield return MoveToPositions(playerTarget, enemyTarget, 0f, 1f);
     }
 
-    public IEnumerator ExecuteBattleExit()
+    public IEnumerator ExecuteBattleExit(bool playerWon)
     {
+        _pendingEnemyDestroy = null;
+        if (playerWon) yield return FlickerAndHideEnemy();
+
         yield return MoveToPositions(_playerOriginalPos, _enemyOriginalPos, 1f, 0f);
         SetPhysicsSimulation(true);
 
         transitionPanel.SetActive(false);
         battleCameraManager.SwitchToWorldCam();
+
+        if (_pendingEnemyDestroy) Destroy(_pendingEnemyDestroy);
+        _pendingEnemyDestroy = null;
 
         _player = null;
         _enemy = null;
@@ -77,10 +86,40 @@ public class BattleTransitionManager : MonoBehaviour
         _enemyRb = null;
     }
 
+    private IEnumerator FlickerAndHideEnemy()
+    {
+        if (_enemy) yield break;
+
+        var renderers = _enemy.GetComponentsInChildren<SpriteRenderer>(true);
+        if (renderers.Length == 0) yield break;
+
+        var elapsed = 0f;
+        var visible = true;
+
+        while (elapsed < enemyDefeatFlickerDuration)
+        {
+            visible = !visible;
+            SetRenderersVisible(renderers, visible);
+            yield return new WaitForSeconds(enemyDefeatFlickerInterval);
+            elapsed += enemyDefeatFlickerInterval;
+        }
+
+        SetRenderersVisible(renderers, false);
+
+        _pendingEnemyDestroy = _enemy.gameObject;
+        _enemy = null;
+    }
+
+    private static void SetRenderersVisible(SpriteRenderer[] renderers, bool isVisible)
+    {
+        foreach (var renderer in renderers)
+            renderer.enabled = isVisible;
+    }
+
     private IEnumerator MoveToPositions(Vector3 playerTarget, Vector3 enemyTarget, float alphaFrom, float alphaTo)
     {
         var playerStart = _player.position;
-        var enemyStart = _enemy.position;
+        var enemyStart =  _enemy.position;
         var elapsed = 0f;
 
         SetPanelAlpha(alphaFrom);
