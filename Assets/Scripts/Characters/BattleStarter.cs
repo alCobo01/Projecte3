@@ -8,15 +8,22 @@ public class BattleStarter : MonoBehaviour, IBattleStarter
     [Header("Batlle config")]
     [SerializeField] private BattleInitiator battleInitiator = BattleInitiator.Player;
     [SerializeField] private CharacterData[] battleParty;
+    [SerializeField] private OwnerType ownerType = OwnerType.Self;
+    [SerializeField] private BattleStarter projectileOwner;
     
     [Header("Runtime")]
     [SerializeField] private float reenterCooldown = 0.2f;
 
     public BattleInitiator BattleInitiator => battleInitiator;
-    public CharacterData[] BattleParty => battleParty;
+
+    public CharacterData[] BattleParty => ownerType == OwnerType.Projectile
+                                            ? projectileOwner.BattleParty
+                                            : battleParty;
 
     private int _playerLayer, _enemyLayer;
     private float _nextAllowedBattleTime;
+    
+    private enum OwnerType { Self, Projectile }
     
     private void Awake()
     {
@@ -50,7 +57,11 @@ public class BattleStarter : MonoBehaviour, IBattleStarter
         var target = other.GetComponentInParent<IBattleStarter>();
         if (target == null) return false;
 
-        var ownParty = GetAliveParty(BattleParty);
+        var actualSelf = ownerType == OwnerType.Projectile && projectileOwner != null
+            ? projectileOwner
+            : this;
+        
+        var ownParty = GetAliveParty(actualSelf.BattleParty);
         var targetParty = GetAliveParty(target.BattleParty);
         if (ownParty.Length == 0 || targetParty.Length == 0) return false;
         
@@ -61,7 +72,7 @@ public class BattleStarter : MonoBehaviour, IBattleStarter
         {
             playerData = ownParty[0];
             enemies = targetParty;
-            var playerTransform = GetComponentInParent<Transform>();
+            var playerTransform = actualSelf.transform.root;
             var enemyTransform = other.transform.root;
             BattleTransitionManager.Instance?.PrepareBattle(playerTransform, enemyTransform);
         }
@@ -70,12 +81,12 @@ public class BattleStarter : MonoBehaviour, IBattleStarter
             playerData = targetParty[0];
             enemies = ownParty;
             var playerTransform = other.transform.root;
-            var enemyTransform = GetComponentInParent<Transform>();
+            var enemyTransform = actualSelf.transform.root;
             BattleTransitionManager.Instance?.PrepareBattle(playerTransform, enemyTransform);
         }
 
         BattleManager.Instance.StartBattle(playerData, enemies, BattleInitiator);
-        _nextAllowedBattleTime = Time.time + Mathf.Max(0.01f, reenterCooldown);
+        actualSelf._nextAllowedBattleTime = Time.time + Mathf.Max(0.01f, reenterCooldown);
         return true;
     }
 

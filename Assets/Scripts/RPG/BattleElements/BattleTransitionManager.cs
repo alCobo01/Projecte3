@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -62,11 +63,8 @@ public class BattleTransitionManager : MonoBehaviour
         SetPanelAlpha(0f);
         transitionPanel.SetActive(true);
 
-        var playerSr = _player.gameObject.GetComponent<SpriteRenderer>();
-        playerSr.sortingLayerName = "TemporalCharacters";
-        
-        var enemySr = _enemy.gameObject.GetComponent<SpriteRenderer>();
-        enemySr.sortingLayerName = "TemporalCharacters";
+        SetSortingLayer(_player.gameObject, "TemporalCharacters");
+        SetSortingLayer(_enemy.gameObject, "TemporalCharacters");
         
         yield return new WaitWhile(() => battleCameraManager.IsBlending);
 
@@ -81,11 +79,8 @@ public class BattleTransitionManager : MonoBehaviour
         yield return MoveToPositions(_playerOriginalPos, _enemyOriginalPos, 1f, 0f);
         SetPhysicsSimulation(true);
 
-        var playerSr = _player.gameObject.GetComponent<SpriteRenderer>();
-        playerSr.sortingLayerName = "Characters";
-        
-        var enemySr = _enemy.gameObject.GetComponent<SpriteRenderer>();
-        enemySr.sortingLayerName = "Characters";
+        SetSortingLayer(_player.gameObject, "Characters");
+        SetSortingLayer(_player.gameObject, "Characters");
         
         transitionPanel.SetActive(false);
         battleCameraManager.SwitchToWorldCam();
@@ -191,13 +186,18 @@ public class BattleTransitionManager : MonoBehaviour
             _enemyRb.linearVelocity = Vector2.zero;
             _enemyRb.angularVelocity = 0f;
         }
-        
     }
 
     private static float Smooth01(float t)
     {
         t = Mathf.Clamp01(t);
         return t * t * (3f - 2f * t);
+    }
+
+    private static void SetSortingLayer(GameObject go, string layerName)
+    {
+        var sr = go.GetComponent<SpriteRenderer>();
+        sr.sortingLayerName = layerName;
     }
 
     private static Vector3 ViewportToWorld(Camera cam, Vector2 viewport, float targetZ)
@@ -207,8 +207,12 @@ public class BattleTransitionManager : MonoBehaviour
         world.z = targetZ;
         return world;
     }
-    
-    
+
+    private void OnDestroy()
+    {
+        SetSortingLayer(_player.gameObject, "Characters");
+        SetSortingLayer(_enemy.gameObject, "Characters");
+    }
 
     private void OnDrawGizmosSelected()
     {
