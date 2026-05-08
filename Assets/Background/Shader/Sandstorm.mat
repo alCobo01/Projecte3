@@ -42,11 +42,11 @@ Material:
     m_Ints: []
     m_Floats:
     - _fogSize: 194
-    - _sandstormSize: 1
+    - _sandstormSize: 23
     m_Colors:
     - White: {r: 1, g: 1, b: 1, a: 1}
-    - _colorSandstorm: {r: 1, g: 0.49459833, b: 0, a: 0.11764706}
-    - _sandstormSpeed: {r: 2.69, g: 0, b: 0, a: 0}
+    - _colorSandstorm: {r: 1, g: 0.5012764, b: 0.0141509175, a: 0.11764706}
+    - _sandstormSpeed: {r: 3.44, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &7422998397091159438
