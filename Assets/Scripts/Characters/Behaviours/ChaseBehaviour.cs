@@ -4,12 +4,9 @@ public class ChaseBehaviour : MonoBehaviour
 {
     private Rigidbody2D rb;
 
-    [Header("Ground Detection")]
+    [Header("Detection")]
     [SerializeField] public GameObject target;
-    [SerializeField] private GroundCheck groundCheck;
-    [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private float edgeCheckDistance = 0.5f;
-    [SerializeField] private float groundDetectionDistance = 0.5f;
+    [SerializeField] private GroundEdgeDetector edgeDetector;
     private CharacterAnimationController animController;
     private ObstacleAvoidance obstacleAvoidance;
 
@@ -18,7 +15,7 @@ public class ChaseBehaviour : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animController = GetComponent<CharacterAnimationController>();
         obstacleAvoidance = GetComponent<ObstacleAvoidance>();
-        if (groundCheck == null) groundCheck = GetComponentInChildren<GroundCheck>();
+        if (edgeDetector == null) edgeDetector = GetComponent<GroundEdgeDetector>();
     }
 
     public void Chase(Transform target,float speed)
@@ -27,11 +24,7 @@ public class ChaseBehaviour : MonoBehaviour
         float directionX = Mathf.Sign(dir.x);
         animController.SetWalking(Mathf.Abs(dir.x));
 
-        // Check for ground ahead with a much shorter ray
-        Vector2 checkOrigin = (Vector2)transform.position + new Vector2(directionX * edgeCheckDistance, 0);
-        RaycastHit2D hit = Physics2D.Raycast(checkOrigin, Vector2.down, groundDetectionDistance, groundLayer);
-
-        if (hit.collider != null)
+        if (edgeDetector == null || edgeDetector.HasGroundAhead(directionX))
         {
             rb.linearVelocity = new Vector2(directionX * speed, rb.linearVelocity.y);
             
@@ -67,19 +60,5 @@ public class ChaseBehaviour : MonoBehaviour
     {
         if (rb != null)
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        // Detectar dirección basada en la rotación Y (0 es derecha, 180 es izquierda)
-        float directionX = (Mathf.Abs(transform.eulerAngles.y - 180f) < 0.1f) ? -1f : 1f;
-        
-        Vector2 checkOrigin = (Vector2)transform.position + new Vector2(directionX * edgeCheckDistance, 0);
-        // Dibujar la línea con la distancia exacta de detección
-        Gizmos.DrawLine(checkOrigin, checkOrigin + Vector2.down * groundDetectionDistance);
-        
-        // Dibujar una pequeña esfera al final para marcar el límite
-        Gizmos.DrawWireSphere(checkOrigin + Vector2.down * groundDetectionDistance, 0.05f);
     }
 }
