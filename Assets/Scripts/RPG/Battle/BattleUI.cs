@@ -54,6 +54,7 @@ public class BattleUI : MonoBehaviour
     private BattleUnit _player;
     private List<BattleUnit> _enemies = new();
     private SkillData _selectedSkill;
+    private bool _isPlayerTurn;
 
     
     private Mode _backFromTargetMode = Mode.Action, _mode;
@@ -116,8 +117,10 @@ public class BattleUI : MonoBehaviour
 
         _fleeSuccess = false;
         _inputLockedByFeedback = false;
+        _isPlayerTurn = false;
         ClearFeedback();
-        SetMode(Mode.Hidden);
+        SetMode(Mode.Action);
+        ApplyActionInteractivity();
         RefreshHud();
     }
 
@@ -300,7 +303,9 @@ public class BattleUI : MonoBehaviour
     private void HandleTurnStarted(BattleUnit unit)
     {
         turnText.text = unit.IsPlayer ? "Your turn" : $"{unit.Data.characterName} turn";
-        if (!unit.IsPlayer) HideInputPanels();
+        _isPlayerTurn = unit.IsPlayer;
+        SetMode(Mode.Action);
+        ApplyActionInteractivity();
         RefreshHud();
     }
 
@@ -384,7 +389,7 @@ public class BattleUI : MonoBehaviour
 
     private void ApplyActionInteractivity()
     {
-        var canUse = !_inputLockedByFeedback;
+        var canUse = !_inputLockedByFeedback && _isPlayerTurn;
         attackButton.interactable = canUse && _enemies.Any(e => !e.IsDead);
         skillButton.interactable = canUse && _player != null && (_player.Data.skills?.Count ?? 0) > 0;
         itemButton.interactable = canUse && PlayerStatsManager.Instance != null;
@@ -404,7 +409,7 @@ public class BattleUI : MonoBehaviour
 
     private void HideInputPanels()
     {
-        SetMode(Mode.Hidden);
+        SetMode(Mode.Action);
         ClearButtons(skillListRoot);
         ClearButtons(itemListRoot);
         ClearButtons(targetListRoot);

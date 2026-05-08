@@ -77,7 +77,7 @@ public class BattleTransitionManager : MonoBehaviour
         transitionPanel.SetActive(false);
         battleCameraManager.SwitchToWorldCam();
 
-        if (_pendingEnemyDestroy != null) Destroy(_pendingEnemyDestroy);
+        if (_pendingEnemyDestroy) Destroy(_pendingEnemyDestroy);
         _pendingEnemyDestroy = null;
 
         _player = null;
@@ -88,7 +88,7 @@ public class BattleTransitionManager : MonoBehaviour
 
     private IEnumerator FlickerAndHideEnemy()
     {
-        if (_enemy == null) yield break;
+        if (_enemy) yield break;
 
         var renderers = _enemy.GetComponentsInChildren<SpriteRenderer>(true);
         if (renderers.Length == 0) yield break;
@@ -119,8 +119,7 @@ public class BattleTransitionManager : MonoBehaviour
     private IEnumerator MoveToPositions(Vector3 playerTarget, Vector3 enemyTarget, float alphaFrom, float alphaTo)
     {
         var playerStart = _player.position;
-        var hasEnemy = _enemy != null;
-        var enemyStart = hasEnemy ? _enemy.position : enemyTarget;
+        var enemyStart =  _enemy.position;
         var elapsed = 0f;
 
         SetPanelAlpha(alphaFrom);
@@ -131,15 +130,14 @@ public class BattleTransitionManager : MonoBehaviour
             var t = Smooth01(elapsed / transitionDuration);
 
             _player.position = Vector3.Lerp(playerStart, playerTarget, t);
-            if (hasEnemy && _enemy != null)
-                _enemy.position = Vector3.Lerp(enemyStart, enemyTarget, t);
+            _enemy.position = Vector3.Lerp(enemyStart, enemyTarget, t);
             SetPanelAlpha(Mathf.Lerp(alphaFrom, alphaTo, t));
 
             yield return null;
         }
 
         _player.position = playerTarget;
-        if (hasEnemy && _enemy != null) _enemy.position = enemyTarget;
+        _enemy.position = enemyTarget;
         SetPanelAlpha(alphaTo);
     }
     

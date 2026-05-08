@@ -16,6 +16,8 @@ public class BattleManager : MonoBehaviour
 
     [SerializeField] private BattleUI ui;
 
+    [SerializeField] private float enemyTurnDelay = 1f;
+
     private readonly TurnStack _turnStack = new();
     private readonly List<BattleUnit> _allUnits = new();
 
@@ -172,7 +174,8 @@ public class BattleManager : MonoBehaviour
 
     private IEnumerator ExecuteEnemyAction(BattleUnit enemy)
     {
-        yield return new WaitForSeconds(1f);
+        OnCombatMessage?.Invoke($"{enemy.Data.characterName} is going to attack.");
+        yield return new WaitForSeconds(Mathf.Max(0f, enemyTurnDelay));
 
         var affordable = enemy.Data.skills.Where(s => s.spCost > 0 && enemy.CurrentSp >= s.spCost).ToList();
         var useSkill = affordable.Count > 0 && Random.value < 0.6f;
