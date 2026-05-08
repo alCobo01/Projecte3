@@ -40,17 +40,29 @@ public class SearchState : Node
                 
                 // Aplicamos movimiento similar al de ChaseBehaviour
                 Rigidbody2D rb = ec.GetComponent<Rigidbody2D>();
+                GroundEdgeDetector edgeDetector = ec.GetComponent<GroundEdgeDetector>();
+
                 if (rb != null)
                 {
-                    rb.linearVelocity = new Vector2(directionX * speed, rb.linearVelocity.y);
-                    
-                    // Girar el personaje
-                    if (directionX > 0) ec.transform.rotation = Quaternion.Euler(0, 0, 0);
-                    else if (directionX < 0) ec.transform.rotation = Quaternion.Euler(0, 180, 0);
+                    if (edgeDetector == null || edgeDetector.HasGroundAhead(directionX))
+                    {
+                        rb.linearVelocity = new Vector2(directionX * speed, rb.linearVelocity.y);
+                        
+                        // Girar el personaje
+                        if (directionX > 0) ec.transform.rotation = Quaternion.Euler(0, 0, 0);
+                        else if (directionX < 0) ec.transform.rotation = Quaternion.Euler(0, 180, 0);
+
+                        var anim = ec.GetComponent<CharacterAnimationController>();
+                        if (anim != null) anim.SetWalking(1f);
+                    }
+                    else
+                    {
+                        // Si hay un borde, nos detenemos
+                        rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+                        var anim = ec.GetComponent<CharacterAnimationController>();
+                        if (anim != null) anim.SetWalking(0f);
+                    }
                 }
-                
-                var anim = ec.GetComponent<CharacterAnimationController>();
-                if (anim != null) anim.SetWalking(1f);
             }
             else
             {
