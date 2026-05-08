@@ -61,6 +61,13 @@ public class BattleTransitionManager : MonoBehaviour
 
         SetPanelAlpha(0f);
         transitionPanel.SetActive(true);
+
+        var playerSr = _player.gameObject.GetComponent<SpriteRenderer>();
+        playerSr.sortingLayerName = "TemporalCharacters";
+        
+        var enemySr = _enemy.gameObject.GetComponent<SpriteRenderer>();
+        enemySr.sortingLayerName = "TemporalCharacters";
+        
         yield return new WaitWhile(() => battleCameraManager.IsBlending);
 
         yield return MoveToPositions(playerTarget, enemyTarget, 0f, 1f);
@@ -74,6 +81,12 @@ public class BattleTransitionManager : MonoBehaviour
         yield return MoveToPositions(_playerOriginalPos, _enemyOriginalPos, 1f, 0f);
         SetPhysicsSimulation(true);
 
+        var playerSr = _player.gameObject.GetComponent<SpriteRenderer>();
+        playerSr.sortingLayerName = "Characters";
+        
+        var enemySr = _enemy.gameObject.GetComponent<SpriteRenderer>();
+        enemySr.sortingLayerName = "Characters";
+        
         transitionPanel.SetActive(false);
         battleCameraManager.SwitchToWorldCam();
 
@@ -194,6 +207,8 @@ public class BattleTransitionManager : MonoBehaviour
         world.z = targetZ;
         return world;
     }
+    
+    
 
     private void OnDrawGizmosSelected()
     {

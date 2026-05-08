@@ -44,7 +44,10 @@ TagManager:
   - name: Terrain
     uniqueID: 2046251113
     locked: 0
-  - name: Elements
+  - name: Characters
+    uniqueID: 2274138289
+    locked: 0
+  - name: FrontElements
     uniqueID: 3634982733
     locked: 0
   - name: GrayPanel
@@ -53,8 +56,8 @@ TagManager:
   - name: Platforms
     uniqueID: 991225815
     locked: 0
-  - name: Characters
-    uniqueID: 2274138289
+  - name: TemporalCharacters
+    uniqueID: 1242836441
     locked: 0
   m_RenderingLayers:
   - Default

@@ -20,7 +20,5 @@ MonoBehaviour:
   speed: 20
   spGainPerHit: 10
   skills:
-  - {fileID: 11400000, guid: 36d50131e25604671903b21ae4757c9c, type: 2}
   - {fileID: 11400000, guid: 21ed86d250921488e8784b9d8920bc76, type: 2}
-  - {fileID: 11400000, guid: 36d50131e25604671903b21ae4757c9c, type: 2}
   portrait: {fileID: 0}
