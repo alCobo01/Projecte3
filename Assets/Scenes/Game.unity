@@ -26945,6 +26945,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleManager
   ui: {fileID: 3814181586235929685}
+  enemyTurnDelay: 1
 --- !u!223 &37513666342340395
 Canvas:
   m_ObjectHideFlags: 0
