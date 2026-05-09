@@ -13,37 +13,35 @@ public class ObstacleAvoidance : MonoBehaviour
     {
         if (currentDirection == Vector2.zero) return Vector2.zero;
 
-        Vector2 resultDirection = currentDirection;
-        bool obstacleDetected = false;
+        var resultDirection = currentDirection;
+        var obstacleDetected = false;
 
         // Lanzar rayos en abanico
-        for (int i = 0; i < sensorCount; i++)
+        for (var i = 0; i < sensorCount; i++)
         {
             // Calcular el ángulo del sensor actual respecto a la dirección de movimiento
-            float angleOffset = (i - (sensorCount - 1) / 2f) * (sensorAngle / (sensorCount - 1));
-            float currentAngle = Mathf.Atan2(currentDirection.y, currentDirection.x) * Mathf.Rad2Deg;
-            float finalAngle = (currentAngle + angleOffset) * Mathf.Deg2Rad;
+            var angleOffset = (i - (sensorCount - 1) / 2f) * (sensorAngle / (sensorCount - 1));
+            var currentAngle = Mathf.Atan2(currentDirection.y, currentDirection.x) * Mathf.Rad2Deg;
+            var finalAngle = (currentAngle + angleOffset) * Mathf.Deg2Rad;
 
-            Vector2 sensorDir = new Vector2(Mathf.Cos(finalAngle), Mathf.Sin(finalAngle));
+            var sensorDir = new Vector2(Mathf.Cos(finalAngle), Mathf.Sin(finalAngle));
             
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, sensorDir, detectionRange, obstacleLayer);
+            var hit = Physics2D.Raycast(transform.position, sensorDir, detectionRange, obstacleLayer);
 
-            if (hit.collider != null)
+            if (hit.collider)
             {
                 obstacleDetected = true;
                 // Cuanto más cerca esté el obstáculo, más fuerte es la repulsión
-                float distanceWeight = 1f - (hit.distance / detectionRange);
+                var distanceWeight = 1f - (hit.distance / detectionRange);
                 
                 // La fuerza de repulsión es perpendicular al obstáculo o contraria al rayo
-                Vector2 repulsion = (Vector2)transform.position - hit.point;
-                resultDirection += repulsion.normalized * avoidForce * distanceWeight;
+                var repulsion = (Vector2)transform.position - hit.point;
+                resultDirection += repulsion.normalized * (avoidForce * distanceWeight);
                 
                 Debug.DrawLine(transform.position, hit.point, Color.red);
             }
             else
-            {
                 Debug.DrawRay(transform.position, sensorDir * detectionRange, Color.green);
-            }
         }
 
         return obstacleDetected ? resultDirection.normalized : currentDirection;

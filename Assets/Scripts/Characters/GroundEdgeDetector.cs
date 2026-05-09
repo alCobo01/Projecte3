@@ -9,18 +9,18 @@ public class GroundEdgeDetector : MonoBehaviour
 
     public bool HasGroundAhead(float directionX)
     {
-        Vector2 checkOrigin = (Vector2)transform.position + new Vector2(directionX * edgeCheckDistance, 0);
-        RaycastHit2D hit = Physics2D.Raycast(checkOrigin, Vector2.down, groundDetectionDistance, groundLayer);
-        return hit.collider != null;
+        var checkOrigin = (Vector2)transform.position + new Vector2(directionX * edgeCheckDistance, 0);
+        var hit = Physics2D.Raycast(checkOrigin, Vector2.down, groundDetectionDistance, groundLayer);
+        return hit.collider;
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        // Detectar dirección basada en la rotación Y (0 es derecha, 180 es izquierda)
-        float directionX = (Mathf.Abs(transform.eulerAngles.y - 180f) < 0.1f) ? -1f : 1f;
         
-        Vector2 checkOrigin = (Vector2)transform.position + new Vector2(directionX * edgeCheckDistance, 0);
+        // Detectar dirección basada en la rotación Y (0 es derecha, 180 es izquierda)
+        var directionX = (Mathf.Abs(transform.eulerAngles.y - 180f) < 0.1f) ? -1f : 1f;
+        var checkOrigin = (Vector2)transform.position + new Vector2(directionX * edgeCheckDistance, 0);
         Gizmos.DrawLine(checkOrigin, checkOrigin + Vector2.down * groundDetectionDistance);
         Gizmos.DrawWireSphere(checkOrigin + Vector2.down * groundDetectionDistance, 0.05f);
     }

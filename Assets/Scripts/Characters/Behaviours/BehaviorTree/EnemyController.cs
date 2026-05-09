@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -97,30 +98,20 @@ public class EnemyController : MonoBehaviour
             }
         }
 
-        if (currentState != null)
-            currentState.OnUpdate(this);
+        if (currentState) currentState.OnUpdate(this);
     }
 
-    public void ChangeState()
-    {
-        StartCoroutine(WaitToTheEndOfFrame());
-    }
+    public void ChangeState() => StartCoroutine(WaitToTheEndOfFrame());
 
     private IEnumerator WaitToTheEndOfFrame()
     {
         yield return new WaitForEndOfFrame();
-
-        foreach (var node in root.children)
+        foreach (var node in root.children.Where(node => node.EnterCondition(this)))
         {
-            if (node.EnterCondition(this))
-            {
-                if (currentState != null)
-                    currentState.OnExit(this);
-
-                currentState = node;
-                node.OnStart(this);
-                break;
-            }
+            if (currentState) currentState.OnExit(this);
+            currentState = node;
+            node.OnStart(this);
+            break;
         }
     }
 }

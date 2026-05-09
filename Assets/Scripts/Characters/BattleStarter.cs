@@ -15,16 +15,16 @@ public class BattleStarter : MonoBehaviour, IBattleStarter
     [SerializeField] private float reenterCooldown = 0.2f;
 
     public BattleInitiator BattleInitiator => battleInitiator;
-
     public CharacterData[] BattleParty => ownerType == OwnerType.Projectile
                                             ? projectileOwner.BattleParty
                                             : battleParty;
 
     private int _playerLayer, _enemyLayer;
     private float _nextAllowedBattleTime;
-    
     private enum OwnerType { Self, Projectile }
     
+    public void SetProjectileOwner(BattleStarter owner) => projectileOwner = owner;
+
     private void Awake()
     {
         _playerLayer = LayerMask.NameToLayer("Player");
