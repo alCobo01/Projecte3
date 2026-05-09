@@ -7,10 +7,10 @@ public class PatrolBehaviour : MonoBehaviour
     [SerializeField] private Transform[] patrolPoints;
     [SerializeField] private GroundEdgeDetector edgeDetector;
     
-    private int _currentPointIndex = 0;
+    private int _currentPointIndex;
     private Rigidbody2D _rb;
-    private float _waitTimer = 0f;
-    private bool _isWaiting = false;
+    private float _waitTimer;
+    private bool _isWaiting;
     private CharacterAnimationController _animController;
     private ObstacleAvoidance _obstacleAvoidance;
 
@@ -19,7 +19,7 @@ public class PatrolBehaviour : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _animController = GetComponent<CharacterAnimationController>();
         _obstacleAvoidance = GetComponent<ObstacleAvoidance>();
-        if (edgeDetector == null) edgeDetector = GetComponent<GroundEdgeDetector>();
+        if (!edgeDetector) edgeDetector = GetComponent<GroundEdgeDetector>();
     }
 
     public void Patrol(float speed, float minWaitTime, float maxWaitTime)
@@ -42,7 +42,7 @@ public class PatrolBehaviour : MonoBehaviour
         }
 
         var targetPoint = patrolPoints[_currentPointIndex];
-        if (targetPoint == null) return;
+        if (!targetPoint) return;
 
         Vector2 targetPosition = targetPoint.position;
         Vector2 currentPosition = transform.position;
@@ -59,7 +59,7 @@ public class PatrolBehaviour : MonoBehaviour
         {
             var directionX = Mathf.Sign(targetPosition.x - currentPosition.x);
             
-            if (edgeDetector == null || edgeDetector.HasGroundAhead(directionX))
+            if (!edgeDetector || edgeDetector.HasGroundAhead(directionX))
             {
                 _animController.SetWalking(Mathf.Abs(directionX));
                 _rb.linearVelocity = new Vector2(directionX * speed, _rb.linearVelocity.y);
@@ -82,6 +82,7 @@ public class PatrolBehaviour : MonoBehaviour
             }
         }
     }
+    
     public void FlyingPatrol(float speed, float minWaitTime, float maxWaitTime)
     {
         if (patrolPoints == null || patrolPoints.Length == 0)
@@ -96,21 +97,19 @@ public class PatrolBehaviour : MonoBehaviour
             _rb.linearVelocity = Vector2.zero;
             _animController.SetWalking(0f);
 
-            if (_waitTimer <= 0)
-            {
-                _isWaiting = false;
-                _currentPointIndex = (_currentPointIndex + 1) % patrolPoints.Length;
-            }
+            if (!(_waitTimer <= 0)) return;
+            _isWaiting = false;
+            _currentPointIndex = (_currentPointIndex + 1) % patrolPoints.Length;
             return;
         }
 
-        Transform targetPoint = patrolPoints[_currentPointIndex];
-        if (targetPoint == null) return;
+        var targetPoint = patrolPoints[_currentPointIndex];
+        if (!targetPoint) return;
 
         Vector2 targetPos = targetPoint.position;
         Vector2 currentPos = transform.position;
 
-        float distance = Vector2.Distance(currentPos, targetPos);
+        var distance = Vector2.Distance(currentPos, targetPos);
 
         // Si llegó al punto → esperar
         if (distance < 0.2f)
@@ -122,10 +121,10 @@ public class PatrolBehaviour : MonoBehaviour
         }
 
         // Dirección en 2D
-        Vector2 dir = (targetPos - currentPos).normalized;
+        var dir = (targetPos - currentPos).normalized;
 
         // Aplicar evitación de obstáculos si el componente existe
-        if (_obstacleAvoidance != null)
+        if (_obstacleAvoidance)
         {
             dir = _obstacleAvoidance.GetAvoidanceDirection(dir);
         }
@@ -135,10 +134,13 @@ public class PatrolBehaviour : MonoBehaviour
 
         // Animación
         _animController.SetWalking(1f);
-
-        // Rotación opcional (solo horizontal)
-        if (dir.x > 0.1f) transform.rotation = Quaternion.Euler(0, 0, 0);
-        else if (dir.x < -0.1f) transform.rotation = Quaternion.Euler(0, 180, 0);
+        transform.rotation = dir.x switch
+        {
+            // Rotación opcional (solo horizontal)
+            > 0.1f => Quaternion.Euler(0, 0, 0),
+            < -0.1f => Quaternion.Euler(0, 180, 0),
+            _ => transform.rotation
+        };
     }
 
     public void StopPatrol()

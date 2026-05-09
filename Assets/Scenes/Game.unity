@@ -466,27 +466,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9176969200959277752, guid: b1f44c58c93d7604a9208c9973893386, type: 3}
   m_PrefabInstance: {fileID: 286313982}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &112721129 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7931461823127551002, guid: 417233b49c1f2c7428592785176da919, type: 3}
-  m_PrefabInstance: {fileID: 7963749229723394607}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &112721141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 112721129}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0454d7f62a306d445b05aa1a9f08e97d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AttackDistanceBeahviour
-  _gameObjecjtBullet: {fileID: 8633189765614261655, guid: 9cc7ceac100fbf249a5e33f9744040a9, type: 3}
-  _shootPoint: {fileID: 0}
-  speedProjectile: 2
-  timeSpawn: 1.5
 --- !u!1 &122222513
 GameObject:
   m_ObjectHideFlags: 0
@@ -33862,30 +33841,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 168355103977473067, guid: 417233b49c1f2c7428592785176da919, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 168355103977473067, guid: 417233b49c1f2c7428592785176da919, type: 3}
-      propertyPath: searchDuration
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1680349104009673772, guid: 417233b49c1f2c7428592785176da919, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1984097937166683761, guid: 417233b49c1f2c7428592785176da919, type: 3}
-      propertyPath: avoidForce
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1984097937166683761, guid: 417233b49c1f2c7428592785176da919, type: 3}
-      propertyPath: sensorAngle
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 1984097937166683761, guid: 417233b49c1f2c7428592785176da919, type: 3}
-      propertyPath: detectionRange
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 3208280580169900245, guid: 417233b49c1f2c7428592785176da919, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.8022165
@@ -33946,21 +33901,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Golem
       objectReference: {fileID: 0}
-    - target: {fileID: 9157551367449144743, guid: 417233b49c1f2c7428592785176da919, type: 3}
-      propertyPath: m_SortingLayer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9157551367449144743, guid: 417233b49c1f2c7428592785176da919, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -2020829007
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7931461823127551002, guid: 417233b49c1f2c7428592785176da919, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 112721141}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 417233b49c1f2c7428592785176da919, type: 3}
 --- !u!114 &8069742414219237420
 MonoBehaviour:
