@@ -84,7 +84,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -2020829007
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8020143640844766479, guid: 4e4c0372dbebbeb488ce7d599423c563, type: 3}
@@ -210,8 +210,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleStarter
   battleInitiator: 1
-  battleParty:
-  - {fileID: 11400000, guid: 7de07867f44284b23a0ff89541cef7e2, type: 2}
+  battleParty: []
+  ownerType: 1
+  projectileOwner: {fileID: 5244532034458289752, guid: 417233b49c1f2c7428592785176da919, type: 3}
   reenterCooldown: 0.2
 --- !u!70 &8191676851442857288
 CapsuleCollider2D:

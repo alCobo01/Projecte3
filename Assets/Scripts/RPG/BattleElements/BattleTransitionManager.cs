@@ -20,9 +20,8 @@ public class BattleTransitionManager : MonoBehaviour
     private CanvasGroup _transitionCanvasGroup;
     private Transform _player, _enemy;
     private Rigidbody2D _playerRb, _enemyRb;
-    private bool _playerRbSimulated, _enemyRbSimulated;
     private Vector3 _playerOriginalPos, _enemyOriginalPos;
-    private GameObject _pendingEnemyDestroy;
+    private bool _playerRbSimulated, _enemyRbSimulated, _enemyFlickerDone;
     
     private void Awake()
     {
@@ -57,7 +56,6 @@ public class BattleTransitionManager : MonoBehaviour
 
         battleCameraManager.PositionBattleCamera(_player, _enemy);
         battleCameraManager.GetBattleTargetPositions(_player, _enemy, playerViewportPoint, enemyViewportPoint, out var playerTarget, out var enemyTarget);
-
         battleCameraManager.SwitchToBattleCam();
 
         SetPanelAlpha(0f);
@@ -67,14 +65,17 @@ public class BattleTransitionManager : MonoBehaviour
         SetSortingLayer(_enemy.gameObject, "TemporalCharacters");
         
         yield return new WaitWhile(() => battleCameraManager.IsBlending);
-
         yield return MoveToPositions(playerTarget, enemyTarget, 0f, 1f);
     }
 
     public IEnumerator ExecuteBattleExit(bool playerWon)
     {
-        _pendingEnemyDestroy = null;
-        if (playerWon) yield return FlickerAndHideEnemy();
+        _enemyFlickerDone = true;
+        if (playerWon)
+        {
+            _enemyFlickerDone = false;
+            StartCoroutine(FlickerAndHideEnemy());
+        }
 
         yield return MoveToPositions(_playerOriginalPos, _enemyOriginalPos, 1f, 0f);
         SetPhysicsSimulation(true);
@@ -85,8 +86,10 @@ public class BattleTransitionManager : MonoBehaviour
         transitionPanel.SetActive(false);
         battleCameraManager.SwitchToWorldCam();
 
-        if (_pendingEnemyDestroy) Destroy(_pendingEnemyDestroy);
-        _pendingEnemyDestroy = null;
+        if (playerWon && !_enemyFlickerDone)
+            yield return new WaitUntil(() => _enemyFlickerDone);
+
+        if (playerWon) Destroy(_enemy.gameObject);
 
         _player = null;
         _enemy = null;
@@ -96,7 +99,7 @@ public class BattleTransitionManager : MonoBehaviour
 
     private IEnumerator FlickerAndHideEnemy()
     {
-        if (_enemy) yield break;
+        if (_enemy is null) yield break;
 
         var renderers = _enemy.GetComponentsInChildren<SpriteRenderer>(true);
         if (renderers.Length == 0) yield break;
@@ -113,21 +116,18 @@ public class BattleTransitionManager : MonoBehaviour
         }
 
         SetRenderersVisible(renderers, false);
-
-        _pendingEnemyDestroy = _enemy.gameObject;
-        _enemy = null;
+        _enemyFlickerDone = true;
     }
 
     private static void SetRenderersVisible(SpriteRenderer[] renderers, bool isVisible)
     {
-        foreach (var renderer in renderers)
-            renderer.enabled = isVisible;
+        foreach (var renderer in renderers) renderer.enabled = isVisible;
     }
 
     private IEnumerator MoveToPositions(Vector3 playerTarget, Vector3 enemyTarget, float alphaFrom, float alphaTo)
     {
         var playerStart = _player.position;
-        var enemyStart =  _enemy.position;
+        var enemyStart = _enemy ? _enemy.position : enemyTarget;
         var elapsed = 0f;
 
         SetPanelAlpha(alphaFrom);
@@ -135,7 +135,7 @@ public class BattleTransitionManager : MonoBehaviour
         while (elapsed < transitionDuration)
         {
             elapsed += Time.deltaTime;
-            var t = Smooth01(elapsed / transitionDuration);
+            var t = Mathf.SmoothStep(0f, 1f, elapsed / transitionDuration);
 
             _player.position = Vector3.Lerp(playerStart, playerTarget, t);
             _enemy.position = Vector3.Lerp(enemyStart, enemyTarget, t);
@@ -152,7 +152,6 @@ public class BattleTransitionManager : MonoBehaviour
     private void SetPanelAlpha(float value)
     {
         _transitionCanvasGroup.alpha = value;
-
         foreach (var sprite in transitionSprites)
         {
             var c = sprite.color;
@@ -163,37 +162,25 @@ public class BattleTransitionManager : MonoBehaviour
 
     private void SetPhysicsSimulation(bool isEnabled)
     {
-        //Player rigidbody
-        if (!isEnabled)
-            _playerRbSimulated = _playerRb.simulated;
-        else
-            _playerRb.simulated = _playerRbSimulated;
-
         if (!isEnabled)
         {
+            _playerRbSimulated = _playerRb.simulated;
             _playerRb.simulated = false;
             _playerRb.linearVelocity = Vector2.zero;
             _playerRb.angularVelocity = 0f;
-        }
-        
-        //Enemies rigidbody
-        if (!isEnabled) _enemyRbSimulated = _enemyRb.simulated;
-        else _enemyRb.simulated = _enemyRbSimulated;
-
-        if (!isEnabled)
-        {
+            
+            _enemyRbSimulated = _enemyRb.simulated;
             _enemyRb.simulated = false;
             _enemyRb.linearVelocity = Vector2.zero;
             _enemyRb.angularVelocity = 0f;
         }
+        else
+        {
+            _playerRb.simulated = _playerRbSimulated;
+            _enemyRb.simulated = _enemyRbSimulated;
+        }
     }
-
-    private static float Smooth01(float t)
-    {
-        t = Mathf.Clamp01(t);
-        return t * t * (3f - 2f * t);
-    }
-
+    
     private static void SetSortingLayer(GameObject go, string layerName)
     {
         var sr = go.GetComponent<SpriteRenderer>();
@@ -207,13 +194,7 @@ public class BattleTransitionManager : MonoBehaviour
         world.z = targetZ;
         return world;
     }
-
-    private void OnDestroy()
-    {
-        SetSortingLayer(_player.gameObject, "Characters");
-        SetSortingLayer(_enemy.gameObject, "Characters");
-    }
-
+    
     private void OnDrawGizmosSelected()
     {
         var cam = Camera.main;
