@@ -93,7 +93,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -2020829007
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 4949072209526117976, guid: c42e4bed8a52a864ea7ba833b24ca46a, type: 3}
@@ -217,8 +217,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11438e9c717747e3bbaa70409971f538, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovementController
-  runMultiplier: 1.75
-  canRun: 0
+  runMultiplier: 1.5
+  canRun: 1
 --- !u!70 &4737651204634548860
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -344,6 +344,8 @@ MonoBehaviour:
   battleInitiator: 0
   battleParty:
   - {fileID: 11400000, guid: 94fb8e985149a49e385cdf1821994a0a, type: 2}
+  ownerType: 0
+  projectileOwner: {fileID: 0}
   reenterCooldown: 0.2
 --- !u!114 &1094590479056723389
 MonoBehaviour:

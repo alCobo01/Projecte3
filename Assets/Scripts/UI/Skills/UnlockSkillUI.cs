@@ -12,7 +12,7 @@ public class UnlockSkillUI : MonoBehaviour
     [SerializeField] private float fadeDuration = 0.3f;
     
     [Header("Skill data")]
-    [SerializeField] private List<SkillData> skills;
+    [SerializeField] private AvailableSkills availableSkills;
 
     private CanvasGroup _canvasGroup;
     private Coroutine _fadeCoroutine;    
@@ -29,9 +29,9 @@ public class UnlockSkillUI : MonoBehaviour
     
     private void ChooseSkill(int index)
     {
-        var selectedSkill = skills[index];
+        var selectedSkill = availableSkills.skills[index];
         PlayerStatsManager.Instance.AddSkill(selectedSkill);
-        skills.Remove(selectedSkill);
+        availableSkills.skills.Remove(selectedSkill);
         Toggle();
     }
     
@@ -40,12 +40,12 @@ public class UnlockSkillUI : MonoBehaviour
         foreach (Transform child in gridContainer)
             Destroy(child.gameObject);
 
-        for (var i = 0; i < skills.Count; i++)
+        for (var i = 0; i < availableSkills.skills.Count; i++)
         {
-            var index = i; 
+            var index = i;
+            if (!availableSkills.skills[index]) continue;
             var newSlot = Instantiate(slotPrefab, gridContainer);
-            
-            newSlot.Setup(skills[index], () => ChooseSkill(index));
+            newSlot.Setup(availableSkills.skills[index], () => ChooseSkill(index));
         }
     }
     

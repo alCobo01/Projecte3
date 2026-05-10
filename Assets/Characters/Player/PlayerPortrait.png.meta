@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 300aa3bafcc6ae348965a64d62dd06c7
+guid: fce78d19a20c74670be94acec3615bc1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2699945529478997142
-    second: BorderExtra_0
+      213: 7255003796024305070
+    second: andar-pajaro1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -74,8 +74,8 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
+    textureFormat: 4
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BorderExtra_0
+      name: andar-pajaro1_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 1
-        width: 62
-        height: 62
+        x: 16
+        y: 40
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 14, y: 14, z: 14, w: 14}
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 694ef757722287520800000000000000
-      internalID: 2699945529478997142
+      spriteID: ea5a32a8383fea460800000000000000
+      internalID: 7255003796024305070
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 1c79ab30a1ff4498d8451efef95d3282
     internalID: 0
     vertices: []
     indices: 
@@ -135,9 +135,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      BorderExtra_0: 2699945529478997142
+      andar-pajaro1_0: 7255003796024305070
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

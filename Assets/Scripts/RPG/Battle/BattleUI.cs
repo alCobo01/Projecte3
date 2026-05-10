@@ -14,14 +14,12 @@ public class BattleUI : MonoBehaviour
     [SerializeField] private GameObject skillPanel;
     [SerializeField] private GameObject itemPanel;
     [SerializeField] private GameObject targetPanel;
-    [SerializeField] private GameObject battleEndPanel;
 
     [Header("Action Buttons")]
     [SerializeField] private Button attackButton;
     [SerializeField] private Button skillButton;
     [SerializeField] private Button itemButton;
     [SerializeField] private Button fleeButton;
-    [SerializeField] private Button battleEndButton;
 
     [Header("HUD")]
     [SerializeField] private TMP_Text playerNameText;
@@ -30,7 +28,6 @@ public class BattleUI : MonoBehaviour
     [SerializeField] private Transform enemyListRoot;
     [SerializeField] private TMP_Text turnText;
     [SerializeField] private TMP_Text roundText;
-    [SerializeField] private TMP_Text battleEndText;
     [SerializeField] private GameObject feedbackPanel;
     [SerializeField] private TMP_Text feedbackText;
 
@@ -45,20 +42,22 @@ public class BattleUI : MonoBehaviour
     [SerializeField] private Transform targetListRoot;
     [SerializeField] private Button listButtonPrefab;
 
+    [Header("Turn Stack")]
+    [SerializeField] private Transform turnStackRoot; 
+    [SerializeField] private TurnOrderSlot turnSlotPrefab;
+    
     private BattleManager _manager;
     private Action<BattleUnit> _onAttack;
     private Action<SkillData, BattleUnit> _onSkill;
     private Action<ItemData> _onItem;
     private Action _onFlee;
 
-    private BattleUnit _player;
+    private BattleUnit _player, _currentUnit;
     private List<BattleUnit> _enemies = new();
     private SkillData _selectedSkill;
-    private bool _isPlayerTurn;
-
+    private bool _isPlayerTurn, _inputLockedByFeedback, _fleeSuccess;
     
     private Mode _backFromTargetMode = Mode.Action, _mode;
-    private bool _inputLockedByFeedback, _fleeSuccess;
     private Coroutine _feedbackClearCoroutine, _feedbackUnlockCoroutine;
 
     private enum Mode { Hidden, Action, Skill, Item, Target, Ended }
@@ -83,9 +82,7 @@ public class BattleUI : MonoBehaviour
         skillButton.onClick.AddListener(ShowSkills);
         itemButton.onClick.AddListener(ShowItems);
         fleeButton.onClick.AddListener(RequestFlee);
-        battleEndButton.onClick.AddListener(CloseBattleUi);
-
-
+        
         feedbackPanel.SetActive(false);
         SetMode(Mode.Hidden);
     }
@@ -222,7 +219,7 @@ public class BattleUI : MonoBehaviour
     private void BuildSkills()
     {
         var skills = (_player?.Data.skills ?? new List<SkillData>())
-            .Where(s => s != null)
+            .Where(s => s)
             .Select(s => new ListOption($"{s.skillName} ({s.spCost} SP)", () => PickSkill(s), _player.CurrentSp >= s.spCost));
 
         BuildList(skillListRoot, skills, "No skills available", () => SetMode(Mode.Action));
@@ -273,7 +270,7 @@ public class BattleUI : MonoBehaviour
         rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, actionRect.rect.height);
 
         var layoutElement = button.GetComponent<LayoutElement>();
-        if (layoutElement == null) layoutElement = button.gameObject.AddComponent<LayoutElement>();
+        if (!layoutElement) layoutElement = button.gameObject.AddComponent<LayoutElement>();
         layoutElement.minHeight = actionRect.rect.height;
         layoutElement.preferredHeight = actionRect.rect.height;
         layoutElement.flexibleWidth = 1f;
@@ -302,6 +299,7 @@ public class BattleUI : MonoBehaviour
 
     private void HandleTurnStarted(BattleUnit unit)
     {
+        _currentUnit = unit;
         turnText.text = unit.IsPlayer ? "Your turn" : $"{unit.Data.characterName} turn";
         _isPlayerTurn = unit.IsPlayer;
         SetMode(Mode.Action);
@@ -317,7 +315,7 @@ public class BattleUI : MonoBehaviour
 
         ClearFeedback();
         StopFeedbackCoroutines();
-        ShowFeedback(playerWon ? "Victory" : (_fleeSuccess ? "Fled" : "Defeat"), postBattleFeedbackDelay, blockInput: false);
+        ShowFeedback(playerWon ? "Victory" : (_fleeSuccess ? "Fled" : "Defeat"), 3f, blockInput: false);
         _fleeSuccess = false;
     }
 
@@ -378,7 +376,7 @@ public class BattleUI : MonoBehaviour
         }
     }
 
-    private void CloseBattleUi() => SetMode(Mode.Hidden);
+    public void CloseBattleUi() => SetMode(Mode.Hidden);
 
     private void ClearFeedback()
     {
@@ -392,7 +390,7 @@ public class BattleUI : MonoBehaviour
         var canUse = !_inputLockedByFeedback && _isPlayerTurn;
         attackButton.interactable = canUse && _enemies.Any(e => !e.IsDead);
         skillButton.interactable = canUse && _player != null && (_player.Data.skills?.Count ?? 0) > 0;
-        itemButton.interactable = canUse && PlayerStatsManager.Instance != null;
+        itemButton.interactable = canUse;
         fleeButton.interactable = canUse;
     }
 
@@ -404,7 +402,6 @@ public class BattleUI : MonoBehaviour
         skillPanel.SetActive(mode == Mode.Skill);
         itemPanel.SetActive(mode == Mode.Item);
         targetPanel.SetActive(mode == Mode.Target);
-        battleEndPanel.SetActive(mode == Mode.Ended);
     }
 
     private void HideInputPanels()
@@ -419,13 +416,31 @@ public class BattleUI : MonoBehaviour
     private void ShowFeedbackOnly()
     {
         _mode = Mode.Hidden;
-        rootPanel.SetActive(false);
+        rootPanel.SetActive(true);
         actionPanel.SetActive(false);
         skillPanel.SetActive(false);
         itemPanel.SetActive(false);
         targetPanel.SetActive(false);
-        battleEndPanel.SetActive(false);
         feedbackPanel.SetActive(true);
+    }
+
+    private void RefreshTurnStack()
+    {
+        if (!turnStackRoot || !turnSlotPrefab) return;
+        ClearButtons(turnStackRoot);
+        
+        if (_currentUnit is { IsDead: false })
+        {
+            var currentSlot = Instantiate(turnSlotPrefab, turnStackRoot);
+            currentSlot.Setup(_currentUnit, true);
+        }
+
+        var upcoming = _manager.GetUpcomingTurns(4);
+        foreach (var unit in upcoming)
+        {
+            var slot = Instantiate(turnSlotPrefab, turnStackRoot);
+            slot.Setup(unit, false);
+        }
     }
 
     private void RefreshHud()
@@ -443,6 +458,8 @@ public class BattleUI : MonoBehaviour
                 ? $"{enemy.Data.characterName} - HP 0/{enemy.Data.maxHp} - DEAD"
                 : $"{enemy.Data.characterName} - HP {enemy.CurrentHp}/{enemy.Data.maxHp}";
         }
+
+        RefreshTurnStack();
     }
 
     private TMP_Text CreateEnemyRow(Transform parent)
