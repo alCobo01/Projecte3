@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 4169009493835137766}
   - component: {fileID: 6702519192736083820}
   - component: {fileID: 6637487383382540172}
+  - component: {fileID: 8599614233730502402}
   m_Layer: 0
   m_Name: Gorgona
   m_TagString: Untagged
@@ -88,7 +89,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -2020829007
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 4723107735738678597, guid: 45f8eb1240f7458438a4e4ebbafde7fc, type: 3}
@@ -184,7 +185,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.03920892, y: -0.26}
+  m_Offset: {x: 0.03920892, y: -0.245}
   m_Size: {x: 0.49625736, y: 0.78}
   m_Direction: 0
 --- !u!70 &6309475513752870262
@@ -237,12 +238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChaseBehaviour
   target: {fileID: 0}
-  groundCheck: {fileID: 0}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  edgeCheckDistance: 0.4
-  groundDetectionDistance: 0.85
+  edgeDetector: {fileID: 0}
 --- !u!114 &4689014238010172578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,6 +254,7 @@ MonoBehaviour:
   patrolPoints:
   - {fileID: 0}
   - {fileID: 0}
+  edgeDetector: {fileID: 0}
 --- !u!114 &103783733308554843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,4 +312,23 @@ MonoBehaviour:
   battleInitiator: 1
   battleParty:
   - {fileID: 11400000, guid: dbc116fa9ed5340e4aa518185d1e6579, type: 2}
+  ownerType: 0
+  projectileOwner: {fileID: 0}
   reenterCooldown: 0.2
+--- !u!114 &8599614233730502402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5311911019246676495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 449c0daa0741b0a4e9c5bf452e997f00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GroundEdgeDetector
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  edgeCheckDistance: 0.31
+  groundDetectionDistance: 0.75

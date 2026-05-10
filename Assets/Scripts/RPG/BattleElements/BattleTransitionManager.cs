@@ -81,7 +81,7 @@ public class BattleTransitionManager : MonoBehaviour
         SetPhysicsSimulation(true);
 
         SetSortingLayer(_player.gameObject, "Characters");
-        SetSortingLayer(_player.gameObject, "Characters");
+        if (_enemy) SetSortingLayer(_enemy.gameObject, "Characters");
         
         transitionPanel.SetActive(false);
         battleCameraManager.SwitchToWorldCam();
@@ -183,8 +183,10 @@ public class BattleTransitionManager : MonoBehaviour
     
     private static void SetSortingLayer(GameObject go, string layerName)
     {
-        var sr = go.GetComponent<SpriteRenderer>();
-        sr.sortingLayerName = layerName;
+        var renderers = go.GetComponentsInChildren<SpriteRenderer>(true);
+         
+        foreach (var sr in renderers)
+            sr.sortingLayerName = layerName;
     }
 
     private static Vector3 ViewportToWorld(Camera cam, Vector2 viewport, float targetZ)

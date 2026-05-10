@@ -278,6 +278,8 @@ public class BattleManager : MonoBehaviour
 
     private IEnumerator BattleExitSequence(bool playerWon)
     {
+        yield return new WaitForSeconds(3f);
+        ui.CloseBattleUi();
         yield return BattleTransitionManager.Instance?.ExecuteBattleExit(playerWon);
     }
 

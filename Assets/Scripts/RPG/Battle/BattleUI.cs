@@ -222,7 +222,7 @@ public class BattleUI : MonoBehaviour
     private void BuildSkills()
     {
         var skills = (_player?.Data.skills ?? new List<SkillData>())
-            .Where(s => s != null)
+            .Where(s => s)
             .Select(s => new ListOption($"{s.skillName} ({s.spCost} SP)", () => PickSkill(s), _player.CurrentSp >= s.spCost));
 
         BuildList(skillListRoot, skills, "No skills available", () => SetMode(Mode.Action));
@@ -273,7 +273,7 @@ public class BattleUI : MonoBehaviour
         rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, actionRect.rect.height);
 
         var layoutElement = button.GetComponent<LayoutElement>();
-        if (layoutElement == null) layoutElement = button.gameObject.AddComponent<LayoutElement>();
+        if (!layoutElement) layoutElement = button.gameObject.AddComponent<LayoutElement>();
         layoutElement.minHeight = actionRect.rect.height;
         layoutElement.preferredHeight = actionRect.rect.height;
         layoutElement.flexibleWidth = 1f;
@@ -317,7 +317,7 @@ public class BattleUI : MonoBehaviour
 
         ClearFeedback();
         StopFeedbackCoroutines();
-        ShowFeedback(playerWon ? "Victory" : (_fleeSuccess ? "Fled" : "Defeat"), postBattleFeedbackDelay, blockInput: false);
+        ShowFeedback(playerWon ? "Victory" : (_fleeSuccess ? "Fled" : "Defeat"), 3f, blockInput: false);
         _fleeSuccess = false;
     }
 
@@ -378,7 +378,7 @@ public class BattleUI : MonoBehaviour
         }
     }
 
-    private void CloseBattleUi() => SetMode(Mode.Hidden);
+    public void CloseBattleUi() => SetMode(Mode.Hidden);
 
     private void ClearFeedback()
     {
@@ -419,7 +419,7 @@ public class BattleUI : MonoBehaviour
     private void ShowFeedbackOnly()
     {
         _mode = Mode.Hidden;
-        rootPanel.SetActive(false);
+        rootPanel.SetActive(true);
         actionPanel.SetActive(false);
         skillPanel.SetActive(false);
         itemPanel.SetActive(false);
