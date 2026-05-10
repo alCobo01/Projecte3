@@ -18,4 +18,22 @@ public class TurnStack
     public void Rebuild(IEnumerable<BattleUnit> livingUnits) => Build(livingUnits);
     
     public BattleUnit PopCurrent() => _stack.Count > 0 ? _stack.Pop() : null;
+
+    public IEnumerable<BattleUnit> GetUpcomingTurns(int count, IEnumerable<BattleUnit> allLivingUnits)
+    {
+        var result = new List<BattleUnit>();
+        result.AddRange(_stack.Where(u => !u.IsDead));
+
+        var living = allLivingUnits.Where(u => !u.IsDead).ToList();
+        if (living.Count > 0)
+        {
+            var nextRound = living.OrderByDescending(u => u.Data.speed).ToList();
+            while (result.Count < count)
+            {
+                result.AddRange(nextRound);
+            }
+        }
+
+        return result.Take(count);
+    }
 }

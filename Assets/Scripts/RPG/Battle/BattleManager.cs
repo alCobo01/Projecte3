@@ -26,6 +26,8 @@ public class BattleManager : MonoBehaviour
     private int _round;
     
     public IReadOnlyList<BattleUnit> AllUnits => _allUnits;
+    public IEnumerable<BattleUnit> GetUpcomingTurns(int count) => _turnStack.GetUpcomingTurns(count, _allUnits);
+
     public event UnityAction OnBattleStarted, OnBattleStateChanged;
     public event UnityAction<BattleUnit> OnTurnStarted, OnDamageTaken;
     public event UnityAction<bool> OnBattleEnded, OnFleeAttempted;

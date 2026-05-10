@@ -42,9 +42,9 @@ public class UnlockSkillUI : MonoBehaviour
 
         for (var i = 0; i < availableSkills.skills.Count; i++)
         {
-            var index = i; 
+            var index = i;
+            if (!availableSkills.skills[index]) continue;
             var newSlot = Instantiate(slotPrefab, gridContainer);
-            
             newSlot.Setup(availableSkills.skills[index], () => ChooseSkill(index));
         }
     }
