@@ -20,4 +20,4 @@ MonoBehaviour:
   speed: 0
   spGainPerHit: 10
   skills: []
-  portrait: {fileID: 0}
+  portrait: {fileID: -1876605294, guid: 14f3458921a524028944cf71b5b0f401, type: 3}

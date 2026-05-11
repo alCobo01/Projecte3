@@ -26,7 +26,6 @@ public class BattleUI : MonoBehaviour
     [SerializeField] private TMP_Text playerHpText;
     [SerializeField] private TMP_Text playerSpText;
     [SerializeField] private Transform enemyListRoot;
-    [SerializeField] private TMP_Text turnText;
     [SerializeField] private TMP_Text roundText;
     [SerializeField] private GameObject feedbackPanel;
     [SerializeField] private TMP_Text feedbackText;
@@ -60,7 +59,7 @@ public class BattleUI : MonoBehaviour
     private Mode _backFromTargetMode = Mode.Action, _mode;
     private Coroutine _feedbackClearCoroutine, _feedbackUnlockCoroutine;
 
-    private enum Mode { Hidden, Action, Skill, Item, Target, Ended }
+    private enum Mode { Hidden, Action, Skill, Item, Target }
 
     private readonly struct ListOption
     {
@@ -300,7 +299,6 @@ public class BattleUI : MonoBehaviour
     private void HandleTurnStarted(BattleUnit unit)
     {
         _currentUnit = unit;
-        turnText.text = unit.IsPlayer ? "Your turn" : $"{unit.Data.characterName} turn";
         _isPlayerTurn = unit.IsPlayer;
         SetMode(Mode.Action);
         ApplyActionInteractivity();
@@ -311,11 +309,10 @@ public class BattleUI : MonoBehaviour
     {
         HideInputPanels();
         ShowFeedbackOnly();
-        turnText.text = string.Empty;
 
         ClearFeedback();
         StopFeedbackCoroutines();
-        ShowFeedback(playerWon ? "Victory" : (_fleeSuccess ? "Fled" : "Defeat"), 3f, blockInput: false);
+        ShowFeedback(playerWon ? "Victory!" : (_fleeSuccess ? "Fled successfully! Run" : "Defeat"), 3f, blockInput: false);
         _fleeSuccess = false;
     }
 

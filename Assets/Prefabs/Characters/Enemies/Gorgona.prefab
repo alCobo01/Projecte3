@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 6702519192736083820}
   - component: {fileID: 6637487383382540172}
   - component: {fileID: 8599614233730502402}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Gorgona
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -314,7 +314,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dbc116fa9ed5340e4aa518185d1e6579, type: 2}
   ownerType: 0
   projectileOwner: {fileID: 0}
-  reenterCooldown: 0.2
+  reenterCooldown: 5
 --- !u!114 &8599614233730502402
 MonoBehaviour:
   m_ObjectHideFlags: 0

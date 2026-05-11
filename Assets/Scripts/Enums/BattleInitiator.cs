@@ -1,0 +1,1 @@
+public enum BattleInitiator { Player, Enemy }

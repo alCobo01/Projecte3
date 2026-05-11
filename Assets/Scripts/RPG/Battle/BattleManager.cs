@@ -8,14 +8,11 @@ using Random = UnityEngine.Random;
 
 public class BattleManager : MonoBehaviour
 {
-    public enum BattleInitiator { Player, Enemy }
-
     public static BattleManager Instance { get; private set; }
     public bool IsBattleRunning { get; private set; }
     public BattleUnit PlayerUnit { get; private set; }
 
     [SerializeField] private BattleUI ui;
-
     [SerializeField] private float enemyTurnDelay = 1f;
 
     private readonly TurnStack _turnStack = new();

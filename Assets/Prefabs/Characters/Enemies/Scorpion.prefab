@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 3774168049596537703}
   - component: {fileID: 3974258155107425782}
   - component: {fileID: 8970875768857641136}
+  - component: {fileID: 8713493569441043920}
   m_Layer: 7
   m_Name: Scorpion
   m_TagString: Untagged
@@ -88,7 +89,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -2020829007
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -4548549724377486228, guid: 1f184e249e2fcbf41bad678a7fabfb35, type: 3}
@@ -143,6 +144,7 @@ MonoBehaviour:
   patrolPoints:
   - {fileID: 0}
   - {fileID: 0}
+  edgeDetector: {fileID: 0}
 --- !u!114 &1652045540208249625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,12 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChaseBehaviour
   target: {fileID: 0}
-  groundCheck: {fileID: 0}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  edgeCheckDistance: 0.35
-  groundDetectionDistance: 0.3
+  edgeDetector: {fileID: 0}
 --- !u!114 &4463532702743151459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,4 +312,22 @@ MonoBehaviour:
   battleInitiator: 1
   battleParty:
   - {fileID: 11400000, guid: cc89d5829e3014db9a91e1c170569452, type: 2}
+  ownerType: 0
   reenterCooldown: 0.2
+--- !u!114 &8713493569441043920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008345692149492340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 449c0daa0741b0a4e9c5bf452e997f00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GroundEdgeDetector
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  edgeCheckDistance: 0.3
+  groundDetectionDistance: 0.38

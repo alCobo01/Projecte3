@@ -6,17 +6,21 @@ using UnityEngine;
 public class BattleTransitionManager : MonoBehaviour
 {
     public static BattleTransitionManager Instance { get; private set; }
-
-    [SerializeField] private float transitionDuration = 0.5f;
-    [SerializeField] private float enemyDefeatFlickerDuration = 0.6f;
-    [SerializeField] private float enemyDefeatFlickerInterval = 0.08f;
-    [SerializeField] private Vector2 playerViewportPoint = new(0.3f, 0.35f);
-    [SerializeField] private Vector2 enemyViewportPoint = new(0.7f, 0.35f);
+    
+    [Header("References")]
     [SerializeField] private GameObject transitionPanel;
     [SerializeField] private BattleCameraManager battleCameraManager;
     [SerializeField] private CameraShake cameraShake;
     [SerializeField] private List<SpriteRenderer> transitionSprites = new();
-
+    
+    [Header("Config values")]
+    [SerializeField] private float transitionDuration = 0.5f;
+    [SerializeField] private float enemyDefeatFlickerDuration = 0.6f;
+    [SerializeField] private float enemyFleeFlickerDuration = 1.2f;
+    [SerializeField] private float enemyDefeatFlickerInterval = 0.08f;
+    [SerializeField] private Vector2 playerViewportPoint;
+    [SerializeField] private Vector2 enemyViewportPoint;
+    
     private CanvasGroup _transitionCanvasGroup;
     private Transform _player, _enemy;
     private Rigidbody2D _playerRb, _enemyRb;
@@ -74,14 +78,20 @@ public class BattleTransitionManager : MonoBehaviour
         if (playerWon)
         {
             _enemyFlickerDone = false;
-            StartCoroutine(FlickerAndHideEnemy());
+            StartCoroutine(FlickerAndHideEnemy(enemyDefeatFlickerDuration, hideAtEnd: true));
+        }
+        else if (_enemy)
+        {
+            _enemyFlickerDone = false;
+            StartCoroutine(FlickerAndHideEnemy(enemyFleeFlickerDuration, hideAtEnd: false));
+            StartCoroutine(DisableEnemyBattleStarterDuringFlee());
         }
 
         yield return MoveToPositions(_playerOriginalPos, _enemyOriginalPos, 1f, 0f);
         SetPhysicsSimulation(true);
 
         SetSortingLayer(_player.gameObject, "Characters");
-        if (_enemy) SetSortingLayer(_enemy.gameObject, "Characters");
+        SetSortingLayer(_enemy.gameObject, "Characters");
         
         transitionPanel.SetActive(false);
         battleCameraManager.SwitchToWorldCam();
@@ -97,7 +107,7 @@ public class BattleTransitionManager : MonoBehaviour
         _enemyRb = null;
     }
 
-    private IEnumerator FlickerAndHideEnemy()
+    private IEnumerator FlickerAndHideEnemy(float duration, bool hideAtEnd)
     {
         if (_enemy is null) yield break;
 
@@ -107,7 +117,7 @@ public class BattleTransitionManager : MonoBehaviour
         var elapsed = 0f;
         var visible = true;
 
-        while (elapsed < enemyDefeatFlickerDuration)
+        while (elapsed < duration)
         {
             visible = !visible;
             SetRenderersVisible(renderers, visible);
@@ -115,8 +125,16 @@ public class BattleTransitionManager : MonoBehaviour
             elapsed += enemyDefeatFlickerInterval;
         }
 
-        SetRenderersVisible(renderers, false);
+        SetRenderersVisible(renderers, !hideAtEnd);
         _enemyFlickerDone = true;
+    }
+
+    private IEnumerator DisableEnemyBattleStarterDuringFlee()
+    {
+        var starters = _enemy.GetComponentsInChildren<BattleStarter>(true);
+        SetBattleStartersEnabled(starters, false);
+        yield return new WaitUntil(() => _enemyFlickerDone);
+        SetBattleStartersEnabled(starters, true);
     }
 
     private static void SetRenderersVisible(SpriteRenderer[] renderers, bool isVisible)
@@ -124,6 +142,11 @@ public class BattleTransitionManager : MonoBehaviour
         foreach (var renderer in renderers) renderer.enabled = isVisible;
     }
 
+    private static void SetBattleStartersEnabled(BattleStarter[] starters, bool isEnabled)
+    {
+        foreach (var starter in starters) starter.enabled = isEnabled;
+    }
+    
     private IEnumerator MoveToPositions(Vector3 playerTarget, Vector3 enemyTarget, float alphaFrom, float alphaTo)
     {
         var playerStart = _player.position;
