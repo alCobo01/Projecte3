@@ -361,8 +361,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0454d7f62a306d445b05aa1a9f08e97d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AttackDistanceBeahviour
-  bulletPrefab: {fileID: 0}
-  shootPoint: {fileID: 0}
+  bulletPrefab: {fileID: 8633189765614261655, guid: 9cc7ceac100fbf249a5e33f9744040a9, type: 3}
+  shootPoint: {fileID: 1527648028867002870}
   speedProjectile: 2
   timeSpawn: 1.5
 --- !u!114 &5244532034458289752

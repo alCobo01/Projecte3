@@ -18,7 +18,6 @@ public static class ActionResolver
         {
             TargetType.Self        => new List<BattleUnit> { attacker },
             TargetType.AllEnemies  => allEnemies.Where(u => !u.IsDead).ToList(),
-            TargetType.SingleEnemy => new List<BattleUnit> { target },
             _                      => new List<BattleUnit> { target }
         };
 
@@ -27,7 +26,7 @@ public static class ActionResolver
             if (skill.basePower > 0)
                 t.TakeDamage(skill.basePower);
 
-            if (skill.appliedEffect != null && Random.value < skill.effectChance)
+            if (skill.appliedEffect && Random.value < skill.effectChance)
                 t.ApplyEffect(skill.appliedEffect);
         }
     }

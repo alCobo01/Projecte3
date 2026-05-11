@@ -1,5 +1,5 @@
 public interface IBattleStarter
 {
-    BattleManager.BattleInitiator BattleInitiator { get; }
+    BattleInitiator BattleInitiator { get; }
     CharacterData[] BattleParty { get; }
 }

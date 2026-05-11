@@ -1,29 +1,28 @@
 using System;
-using static BattleManager;
 using System.Linq;
 using UnityEngine;
 
 public class BattleStarter : MonoBehaviour, IBattleStarter
 {
+    public BattleInitiator BattleInitiator => battleInitiator;
+    public CharacterData[] BattleParty => ownerType == OwnerType.Projectile
+        ? _owner.BattleParty
+        : battleParty;    
+    
     [Header("Batlle config")]
     [SerializeField] private BattleInitiator battleInitiator = BattleInitiator.Player;
     [SerializeField] private CharacterData[] battleParty;
     [SerializeField] private OwnerType ownerType = OwnerType.Self;
-    [SerializeField] private BattleStarter projectileOwner;
     
     [Header("Runtime")]
     [SerializeField] private float reenterCooldown = 0.2f;
-
-    public BattleInitiator BattleInitiator => battleInitiator;
-    public CharacterData[] BattleParty => ownerType == OwnerType.Projectile
-                                            ? projectileOwner.BattleParty
-                                            : battleParty;
-
+    
+    private BattleStarter _owner;
     private int _playerLayer, _enemyLayer;
     private float _nextAllowedBattleTime;
     private enum OwnerType { Self, Projectile }
     
-    public void SetProjectileOwner(BattleStarter owner) => projectileOwner = owner;
+    public void SetProjectileOwner(BattleStarter owner) => _owner = owner;
 
     private void Awake()
     {
@@ -34,8 +33,10 @@ public class BattleStarter : MonoBehaviour, IBattleStarter
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        if (!enabled) return;
         if (Time.time < _nextAllowedBattleTime) return;
-
+        
+        Debug.Log(other.gameObject.name);
         var otherLayer = other.gameObject.layer;
         var validTargetLayer = battleInitiator == BattleInitiator.Player
             ? otherLayer == _enemyLayer
@@ -47,23 +48,25 @@ public class BattleStarter : MonoBehaviour, IBattleStarter
         TryStartBattleWith(other.gameObject);
     } 
 
-    private bool TryStartBattleWith(GameObject other)
+    private void TryStartBattleWith(GameObject other)
     {
-        if (Time.time < _nextAllowedBattleTime)
-            return false;
-
-        if (BattleManager.Instance.IsBattleRunning) return false;
+        if (Time.time < _nextAllowedBattleTime) return;
+        if (BattleManager.Instance.IsBattleRunning) return;
         
         var target = other.GetComponentInParent<IBattleStarter>();
-        if (target == null) return false;
-
-        var actualSelf = ownerType == OwnerType.Projectile && projectileOwner != null
-            ? projectileOwner
+        if (target == null) return;
+        
+        //In case that the collided battlestarter scripts is disabled, dont start the battle
+        if (target is MonoBehaviour mb)
+            if (!mb.enabled || !mb.gameObject.activeInHierarchy) return;
+        
+        var actualSelf = ownerType == OwnerType.Projectile && _owner
+            ? _owner
             : this;
         
         var ownParty = GetAliveParty(actualSelf.BattleParty);
         var targetParty = GetAliveParty(target.BattleParty);
-        if (ownParty.Length == 0 || targetParty.Length == 0) return false;
+        if (ownParty.Length == 0 || targetParty.Length == 0) return;
         
         CharacterData playerData;
         CharacterData[] enemies;
@@ -87,7 +90,6 @@ public class BattleStarter : MonoBehaviour, IBattleStarter
 
         BattleManager.Instance.StartBattle(playerData, enemies, BattleInitiator);
         actualSelf._nextAllowedBattleTime = Time.time + Mathf.Max(0.01f, reenterCooldown);
-        return true;
     }
 
     private static CharacterData[] GetAliveParty(CharacterData[] party)
