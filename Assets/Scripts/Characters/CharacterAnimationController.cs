@@ -11,6 +11,7 @@ public class CharacterAnimationController : MonoBehaviour
     private static readonly int AttackHash = Animator.StringToHash("Attack");
     private static readonly int HurtHash = Animator.StringToHash("Hurt");
     private static readonly int IsRunningHash = Animator.StringToHash("IsRunning");
+    private static readonly int IsBattleHash = Animator.StringToHash("IsBattle");
     
     private AnimationBehaviour _animationBehaviour;
     private Rigidbody2D _rb;
@@ -39,5 +40,6 @@ public class CharacterAnimationController : MonoBehaviour
     public void TriggerAttack() => _animationBehaviour.Trigger(AttackHash);
     public void TriggerHurt() => _animationBehaviour.Trigger(HurtHash);
     public void SetRunning(bool isRunning) => _animationBehaviour.SetBool(IsRunningHash, isRunning);
+    public void SetBattle(bool isBattle) => _animationBehaviour.SetBool(IsBattleHash, isBattle);
     public void TriggerHash(int hash) => _animationBehaviour.Trigger(hash);
 }

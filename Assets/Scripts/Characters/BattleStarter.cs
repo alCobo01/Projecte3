@@ -78,6 +78,10 @@ public class BattleStarter : MonoBehaviour, IBattleStarter
             var playerTransform = actualSelf.transform.root;
             var enemyTransform = other.transform.root;
             BattleTransitionManager.Instance?.PrepareBattle(playerTransform, enemyTransform);
+            
+            var playerAnim = playerTransform.GetComponentInChildren<CharacterAnimationController>();
+            var enemyAnim = enemyTransform.GetComponentInChildren<CharacterAnimationController>();
+            BattleManager.Instance.StartBattle(playerData, enemies, BattleInitiator, playerAnim, enemyAnim);
         }
         else
         {
@@ -86,9 +90,12 @@ public class BattleStarter : MonoBehaviour, IBattleStarter
             var playerTransform = other.transform.root;
             var enemyTransform = actualSelf.transform.root;
             BattleTransitionManager.Instance?.PrepareBattle(playerTransform, enemyTransform);
+            
+            var playerAnim = playerTransform.GetComponentInChildren<CharacterAnimationController>();
+            var enemyAnim = enemyTransform.GetComponentInChildren<CharacterAnimationController>();
+            BattleManager.Instance.StartBattle(playerData, enemies, BattleInitiator, playerAnim, enemyAnim);
         }
-
-        BattleManager.Instance.StartBattle(playerData, enemies, BattleInitiator);
+        
         actualSelf._nextAllowedBattleTime = Time.time + Mathf.Max(0.01f, reenterCooldown);
     }
 

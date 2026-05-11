@@ -13,10 +13,22 @@ public class PlayerBattleController : MonoBehaviour
         _dashController = GetComponent<PlayerDashController>();
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        BattleManager.Instance.OnBattleStarted += OnBattleStarted;
-        BattleManager.Instance.OnBattleEnded += OnBattleEnded;
+        if (BattleManager.Instance != null)
+        {
+            BattleManager.Instance.OnBattleStarted += OnBattleStarted;
+            BattleManager.Instance.OnBattleEnded += OnBattleEnded;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (BattleManager.Instance != null)
+        {
+            BattleManager.Instance.OnBattleStarted -= OnBattleStarted;
+            BattleManager.Instance.OnBattleEnded -= OnBattleEnded;
+        }
     }
     
     private void OnBattleStarted() => SetMovement(false);

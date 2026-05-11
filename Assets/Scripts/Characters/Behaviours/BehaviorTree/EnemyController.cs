@@ -4,26 +4,32 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public Condition attack;
-    public Condition chase;
-    public Condition combat;
-    public Condition search;
+    public Condition attack, chase, search, battle;
     public GameObject target;
     [HideInInspector] public Vector3 lastKnownPosition;
-    public float searchDuration = 4f;
-    private float _currentSearchTimer;
-    public Node root;
-    public Node currentState;
+    public Node root, currentState;
     public EnemySO enemyData;
+    public float searchDuration = 4f;
+    
     private CharacterAnimationController _animController;
+    private float _currentSearchTimer;
 
     private void Awake()
     {
         _animController = GetComponent<CharacterAnimationController>();
         attack = new Condition("Attack");
         chase = new Condition("Chase");
-        combat = new Condition("Combat");
         search = new Condition("Search");
+        battle = new Condition("Battle");
+        ChangeState();
+    }
+
+    private void Start() => BattleManager.Instance.OnBattleEnded += OnBattleEnded;
+    private void OnDestroy() => BattleManager.Instance.OnBattleEnded -= OnBattleEnded;
+
+    private void OnBattleEnded(bool playerWon)
+    {
+        battle.check = false;
         ChangeState();
     }
 
@@ -43,27 +49,23 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
-        {
-            if (target != null)
-            {
-                lastKnownPosition = target.transform.position;
-            }
-            chase.check = false;
-            attack.check = false;
-            search.check = true;
-            _currentSearchTimer = searchDuration;
-            target = null;
+        if (collision.gameObject.layer != LayerMask.NameToLayer("Player")) return;
+        if (target) lastKnownPosition = target.transform.position;
+        
+        chase.check = false;
+        attack.check = false;
+        search.check = true;
+        _currentSearchTimer = searchDuration;
+        target = null;
             
-            if (_animController != null) _animController.SetRunning(false);
-            Debug.Log("Chase = false, Search = true");
-            ChangeState();
-        }
+        if (_animController) _animController.SetRunning(false);
+        Debug.Log("Chase = false, Search = true");
+        ChangeState();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player") && target != null)
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player") && target)
         {
             attack.check = (target.transform.position - transform.position).magnitude <= enemyData.attackDistance;
         }
@@ -71,18 +73,17 @@ public class EnemyController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
-        {
-            if (_animController != null) _animController.TriggerAttack();
-            //Aqui ira la funcion para inicar combate :*
-            Debug.Log("Enemigo ataca al jugador!");
-        }
+        if (collision.gameObject.layer != LayerMask.NameToLayer("Player")) return;
+        battle.check = true;
+        if (_animController) _animController.TriggerAttack();
+        Debug.Log("Enemigo ataca al jugador!");
+        ChangeState();
     }
 
     public void OnHurt()
     {
-        combat.check = true;
-        if (_animController != null) _animController.TriggerHurt();
+        battle.check = true;
+        if (_animController) _animController.TriggerHurt();
         ChangeState();
     }
 
