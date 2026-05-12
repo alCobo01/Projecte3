@@ -13,6 +13,7 @@ public class EnemyController : MonoBehaviour
     
     private CharacterAnimationController _animController;
     private float _currentSearchTimer;
+    private Coroutine _changeStateCoroutine;
 
     private void Awake()
     {
@@ -24,12 +25,26 @@ public class EnemyController : MonoBehaviour
         ChangeState();
     }
 
-    private void Start() => BattleManager.Instance.OnBattleEnded += OnBattleEnded;
-    private void OnDestroy() => BattleManager.Instance.OnBattleEnded -= OnBattleEnded;
+    private void Start()
+    {
+        if (BattleManager.Instance != null)
+            BattleManager.Instance.OnBattleEnded += OnBattleEnded;
+    }
+
+    private void OnDestroy()
+    {
+        if (BattleManager.Instance != null)
+            BattleManager.Instance.OnBattleEnded -= OnBattleEnded;
+    }
 
     private void OnBattleEnded(bool playerWon)
     {
-        battle.check = false;
+        SetBattleMode(false);
+    }
+
+    public void SetBattleMode(bool active)
+    {
+        battle.check = active;
         ChangeState();
     }
 
@@ -74,17 +89,16 @@ public class EnemyController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer != LayerMask.NameToLayer("Player")) return;
-        battle.check = true;
+        
         if (_animController) _animController.TriggerAttack();
-        Debug.Log("Enemigo ataca al jugador!");
-        ChangeState();
+        Debug.Log("Enemigo colisiona con el jugador!");
+        // La batalla se inicia desde BattleStarter
     }
 
     public void OnHurt()
     {
-        battle.check = true;
         if (_animController) _animController.TriggerHurt();
-        ChangeState();
+        SetBattleMode(true);
     }
 
     private void Update()
@@ -102,17 +116,24 @@ public class EnemyController : MonoBehaviour
         if (currentState) currentState.OnUpdate(this);
     }
 
-    public void ChangeState() => StartCoroutine(WaitToTheEndOfFrame());
+    public void ChangeState()
+    {
+        if (_changeStateCoroutine != null) StopCoroutine(_changeStateCoroutine);
+        _changeStateCoroutine = StartCoroutine(WaitToTheEndOfFrame());
+    }
 
     private IEnumerator WaitToTheEndOfFrame()
     {
         yield return new WaitForEndOfFrame();
         foreach (var node in root.children.Where(node => node.EnterCondition(this)))
         {
+            if (currentState == node) break;
+
             if (currentState) currentState.OnExit(this);
             currentState = node;
             node.OnStart(this);
             break;
         }
+        _changeStateCoroutine = null;
     }
 }
