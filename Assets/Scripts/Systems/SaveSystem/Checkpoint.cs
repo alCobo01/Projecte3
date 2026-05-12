@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Checkpoint : MonoBehaviour
+public class Checkpoint : MonoBehaviour, IInteractable
 {
     [Header("Settings")]
     public string checkpointId;
@@ -41,14 +41,6 @@ public class Checkpoint : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
-        {
-            CheckpointMenu.Instance.OpenMenu();
-        }
-    }
-
     private void UpdateVisuals()
     {
         if (activeVisuals != null) activeVisuals.SetActive(_isDiscovered);
@@ -56,4 +48,9 @@ public class Checkpoint : MonoBehaviour
     }
 
     public Vector3 GetSpawnPosition() => spawnPoint.position;
+
+    public void Interact()
+    {
+        CheckpointMenu.Instance.OpenMenu();
+    }
 }

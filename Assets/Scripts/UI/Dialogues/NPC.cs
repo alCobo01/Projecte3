@@ -23,7 +23,7 @@ public class NPC : MonoBehaviour, IInteractable
     private bool _isDialogueActive;
     private float _lastInteractionTime;
 
-    public void Interact(GameObject _)
+    public void Interact()
     {
         if (Time.time < _lastInteractionTime + interactionCooldown) return;
         _lastInteractionTime = Time.time;

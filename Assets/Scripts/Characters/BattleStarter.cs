@@ -36,7 +36,6 @@ public class BattleStarter : MonoBehaviour, IBattleStarter
         if (!enabled) return;
         if (Time.time < _nextAllowedBattleTime) return;
         
-        Debug.Log(other.gameObject.name);
         var otherLayer = other.gameObject.layer;
         var validTargetLayer = battleInitiator == BattleInitiator.Player
             ? otherLayer == _enemyLayer
