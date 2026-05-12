@@ -16,8 +16,8 @@ public class NPC : MonoBehaviour, IInteractable
     [Header("Settings")]
     [SerializeField] private float interactionCooldown = 0.5f;
 
-    private int _currentDialogueIndex = 0; 
-    private int _lineIndex = 0;
+    private int _currentDialogueIndex; 
+    private int _lineIndex;
 
     private bool _isTyping;
     private bool _isDialogueActive;
@@ -77,7 +77,7 @@ public class NPC : MonoBehaviour, IInteractable
         _isTyping = true;
         dialogueText.SetText("");
 
-        foreach (char letter in block.lines[_lineIndex])
+        foreach (var letter in block.lines[_lineIndex])
         {
             dialogueText.text += letter;
             yield return new WaitForSeconds(block.typingSpeed);

@@ -89,10 +89,7 @@ public class EnemyController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer != LayerMask.NameToLayer("Player")) return;
-        
         if (_animController) _animController.TriggerAttack();
-        Debug.Log("Enemigo colisiona con el jugador!");
-        // La batalla se inicia desde BattleStarter
     }
 
     public void OnHurt()

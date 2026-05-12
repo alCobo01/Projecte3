@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 4938062050298126884}
   - component: {fileID: 6711172747472783929}
   - component: {fileID: 1094590479056723389}
+  - component: {fileID: -1782429871551058286}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -345,7 +346,6 @@ MonoBehaviour:
   battleParty:
   - {fileID: 11400000, guid: 94fb8e985149a49e385cdf1821994a0a, type: 2}
   ownerType: 0
-  projectileOwner: {fileID: 0}
   reenterCooldown: 0.2
 --- !u!114 &1094590479056723389
 MonoBehaviour:
@@ -363,3 +363,15 @@ MonoBehaviour:
   interactionLayer:
     serializedVersion: 2
     m_Bits: 1024
+--- !u!114 &-1782429871551058286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2979194186806989327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cb3623d7dfed4799ac9a60437ca3924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterFlip

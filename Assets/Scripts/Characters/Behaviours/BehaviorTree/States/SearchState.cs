@@ -28,7 +28,6 @@ public class SearchState : Node
         if (!chase) return;
         
         var distanceToLastPos = Mathf.Abs(ec.lastKnownPosition.x - ec.transform.position.x);
-            
         if (distanceToLastPos > 0.5f)
         {
             // Nos movemos hacia la última posición conocida
