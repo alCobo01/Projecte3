@@ -2,7 +2,6 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-
 [RequireComponent(typeof(Collider2D))]
 public class NPC : MonoBehaviour, IInteractable
 {
@@ -16,12 +15,9 @@ public class NPC : MonoBehaviour, IInteractable
     [Header("Settings")]
     [SerializeField] private float interactionCooldown = 0.5f;
 
-    private int _currentDialogueIndex; 
-    private int _lineIndex;
-
-    private bool _isTyping;
-    private bool _isDialogueActive;
+    private int _currentDialogueIndex, _lineIndex; 
     private float _lastInteractionTime;
+    private bool _isTyping, _isDialogueActive;
 
     public void Interact(GameObject _)
     {

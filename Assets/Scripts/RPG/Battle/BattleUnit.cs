@@ -6,6 +6,7 @@ public class BattleUnit
 {
     public CharacterData Data { get; }
     public CharacterAnimationController Animator { get; set; }
+    public Transform Transform { get; set; }
     public int CurrentHp { get; private set; }
     public int CurrentSp { get; private set; }
     public bool SkipNextAction { get; set; }

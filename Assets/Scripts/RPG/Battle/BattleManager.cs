@@ -14,6 +14,8 @@ public class BattleManager : MonoBehaviour
 
     [SerializeField] private BattleUI ui;
     [SerializeField] private float enemyTurnDelay = 1f;
+    [SerializeField] private float lungeDuration = 0.25f;
+    [SerializeField] private float returnDuration = 0.35f;
 
     private readonly TurnStack _turnStack = new();
     private readonly List<BattleUnit> _allUnits = new();
@@ -44,7 +46,8 @@ public class BattleManager : MonoBehaviour
     }
 
     public void StartBattle(CharacterData playerData, CharacterData[] enemies, BattleInitiator initiator = BattleInitiator.Player, 
-        CharacterAnimationController playerAnim = null, CharacterAnimationController enemyAnim = null)
+        CharacterAnimationController playerAnim = null, CharacterAnimationController enemyAnim = null,
+        Transform playerTransform = null, Transform enemyTransform = null)
     {
         if (IsBattleRunning) return;
         if (playerData == null || enemies == null || PlayerStatsManager.Instance == null) return;
@@ -62,12 +65,20 @@ public class BattleManager : MonoBehaviour
         var savedHp = PlayerStatsManager.Instance.currentHp <= 0 ? playerData.maxHp : PlayerStatsManager.Instance.currentHp;
         var savedSp = Mathf.Clamp(PlayerStatsManager.Instance.currentSp, 0, playerData.maxSp);
 
-        PlayerUnit = new BattleUnit(playerData, isPlayer: true, startingSp: savedSp) { Animator = playerAnim };
+        PlayerUnit = new BattleUnit(playerData, isPlayer: true, startingSp: savedSp) 
+        { 
+            Animator = playerAnim,
+            Transform = playerTransform
+        };
         PlayerUnit.SetHp(Mathf.Clamp(savedHp, 1, playerData.maxHp));
 
         _allUnits.Clear();
         _allUnits.Add(PlayerUnit);
-        _allUnits.AddRange(enemyData.Select(e => new BattleUnit(e, isPlayer: false, startingSp: 0) { Animator = enemyAnim }));
+        _allUnits.AddRange(enemyData.Select(e => new BattleUnit(e, isPlayer: false, startingSp: 0) 
+        { 
+            Animator = enemyAnim,
+            Transform = enemyTransform
+        }));
 
         var first = initiator == BattleInitiator.Enemy
             ? _allUnits.FirstOrDefault(u => !u.IsPlayer && !u.IsDead)
@@ -77,6 +88,34 @@ public class BattleManager : MonoBehaviour
         ui.Initialize(this);
 
         StartCoroutine(BattleEntrySequence());
+    }
+
+    private IEnumerator PerformAttackMovement(BattleUnit attacker, BattleUnit target)
+    {
+        var startPos = attacker.Transform.position;
+        var targetDir = (target.Transform.position - startPos).normalized;
+        var peakPos = startPos + targetDir * 0.75f;
+
+        var elapsed = 0f;
+
+        while (elapsed < lungeDuration)
+        {
+            attacker.Transform.position = Vector3.Lerp(startPos, peakPos, elapsed / lungeDuration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        attacker.Transform.position = peakPos;
+        elapsed = 0f;
+
+        while (elapsed < returnDuration)
+        {
+            attacker.Transform.position = Vector3.Lerp(peakPos, startPos, elapsed / returnDuration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        attacker.Transform.position = startPos;
     }
 
     private IEnumerator BattleEntrySequence()
@@ -140,6 +179,7 @@ public class BattleManager : MonoBehaviour
             onAttack: target =>
             {
                 player.Animator.TriggerAttack();
+                StartCoroutine(PerformAttackMovement(player, target));
                 var hp = target.CurrentHp;
                 ActionResolver.ResolveAttack(player, target);
                 NotifyHpChange(target, hp);
@@ -151,6 +191,7 @@ public class BattleManager : MonoBehaviour
             {
                 if (!player.SpendSp(skill.spCost)) return;
                 player.Animator.TriggerAttack();
+                StartCoroutine(PerformAttackMovement(player, target));
                 var before = CaptureHp();
                 ActionResolver.ResolveSkill(player, target, skill, enemies);
                 NotifyHpChanges(before);
@@ -181,6 +222,7 @@ public class BattleManager : MonoBehaviour
         yield return new WaitForSeconds(Mathf.Max(0f, enemyTurnDelay));
 
         enemy.Animator.TriggerAttack();
+        StartCoroutine(PerformAttackMovement(enemy, PlayerUnit));
 
         var affordable = enemy.Data.skills.Where(s => s.spCost > 0 && enemy.CurrentSp >= s.spCost).ToList();
         var useSkill = affordable.Count > 0 && Random.value < 0.6f;

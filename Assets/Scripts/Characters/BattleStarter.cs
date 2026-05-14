@@ -80,7 +80,7 @@ public class BattleStarter : MonoBehaviour, IBattleStarter
             
             var playerAnim = playerTransform.GetComponentInChildren<CharacterAnimationController>();
             var enemyAnim = enemyTransform.GetComponentInChildren<CharacterAnimationController>();
-            BattleManager.Instance.StartBattle(playerData, enemies, BattleInitiator, playerAnim, enemyAnim);
+            BattleManager.Instance.StartBattle(playerData, enemies, BattleInitiator, playerAnim, enemyAnim, playerTransform, enemyTransform);
             
             // Notify enemies to enter BattleState
             playerTransform.GetComponentInChildren<EnemyController>()?.SetBattleMode(true);
@@ -96,7 +96,7 @@ public class BattleStarter : MonoBehaviour, IBattleStarter
             
             var playerAnim = playerTransform.GetComponentInChildren<CharacterAnimationController>();
             var enemyAnim = enemyTransform.GetComponentInChildren<CharacterAnimationController>();
-            BattleManager.Instance.StartBattle(playerData, enemies, BattleInitiator, playerAnim, enemyAnim);
+            BattleManager.Instance.StartBattle(playerData, enemies, BattleInitiator, playerAnim, enemyAnim, playerTransform, enemyTransform);
 
             // Notify enemies to enter BattleState
             playerTransform.GetComponentInChildren<EnemyController>()?.SetBattleMode(true);
