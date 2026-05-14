@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 6702519192736083820}
   - component: {fileID: 6637487383382540172}
   - component: {fileID: 8599614233730502402}
+  - component: {fileID: 2800940211250030508}
   m_Layer: 7
   m_Name: Gorgona
   m_TagString: Untagged
@@ -269,10 +270,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
   target: {fileID: 0}
   lastKnownPosition: {x: 0, y: 0, z: 0}
-  searchDuration: 4
   root: {fileID: 11400000, guid: a8da72026ca90834585cc8d9b6f82905, type: 2}
   currentState: {fileID: 0}
   enemyData: {fileID: 11400000, guid: c18b115343cb1dd4ab4160fc62d23f86, type: 2}
+  searchDuration: 4
 --- !u!114 &4169009493835137766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,7 +314,6 @@ MonoBehaviour:
   battleParty:
   - {fileID: 11400000, guid: dbc116fa9ed5340e4aa518185d1e6579, type: 2}
   ownerType: 0
-  projectileOwner: {fileID: 0}
   reenterCooldown: 5
 --- !u!114 &8599614233730502402
 MonoBehaviour:
@@ -332,3 +332,15 @@ MonoBehaviour:
     m_Bits: 64
   edgeCheckDistance: 0.31
   groundDetectionDistance: 0.75
+--- !u!114 &2800940211250030508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5311911019246676495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cb3623d7dfed4799ac9a60437ca3924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterFlip

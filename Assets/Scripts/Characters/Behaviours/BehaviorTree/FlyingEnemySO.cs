@@ -7,6 +7,7 @@ public class FlyingEnemySO : EnemySO
     {
         chaseBehaviour.FlyingChase(target.transform, chaseSpeed);
     }
+    
     public override void Patrol(PatrolBehaviour patrolBehaviour)
     {
         patrolBehaviour.FlyingPatrol(walkingSpeed, minWaitTime, maxWaitTime);

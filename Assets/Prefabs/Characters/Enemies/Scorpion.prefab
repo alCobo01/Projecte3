@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 3974258155107425782}
   - component: {fileID: 8970875768857641136}
   - component: {fileID: 8713493569441043920}
+  - component: {fileID: 7060670141538189296}
   m_Layer: 7
   m_Name: Scorpion
   m_TagString: Untagged
@@ -173,10 +174,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
   target: {fileID: 0}
   lastKnownPosition: {x: 0, y: 0, z: 0}
-  searchDuration: 1
   root: {fileID: 11400000, guid: 6c912b1d732150048ae1f7e4b3aa96b3, type: 2}
   currentState: {fileID: 0}
   enemyData: {fileID: 11400000, guid: ec20a1a340c7fbd41a7c9ce195aec1da, type: 2}
+  searchDuration: 1
 --- !u!70 &6466941932763533313
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -331,3 +332,15 @@ MonoBehaviour:
     m_Bits: 64
   edgeCheckDistance: 0.3
   groundDetectionDistance: 0.38
+--- !u!114 &7060670141538189296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008345692149492340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cb3623d7dfed4799ac9a60437ca3924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterFlip

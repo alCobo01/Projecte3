@@ -36,7 +36,6 @@ public class BattleStarter : MonoBehaviour, IBattleStarter
         if (!enabled) return;
         if (Time.time < _nextAllowedBattleTime) return;
         
-        Debug.Log(other.gameObject.name);
         var otherLayer = other.gameObject.layer;
         var validTargetLayer = battleInitiator == BattleInitiator.Player
             ? otherLayer == _enemyLayer
@@ -78,6 +77,14 @@ public class BattleStarter : MonoBehaviour, IBattleStarter
             var playerTransform = actualSelf.transform.root;
             var enemyTransform = other.transform.root;
             BattleTransitionManager.Instance?.PrepareBattle(playerTransform, enemyTransform);
+            
+            var playerAnim = playerTransform.GetComponentInChildren<CharacterAnimationController>();
+            var enemyAnim = enemyTransform.GetComponentInChildren<CharacterAnimationController>();
+            BattleManager.Instance.StartBattle(playerData, enemies, BattleInitiator, playerAnim, enemyAnim, playerTransform, enemyTransform);
+            
+            // Notify enemies to enter BattleState
+            playerTransform.GetComponentInChildren<EnemyController>()?.SetBattleMode(true);
+            enemyTransform.GetComponentInChildren<EnemyController>()?.SetBattleMode(true);
         }
         else
         {
@@ -86,9 +93,16 @@ public class BattleStarter : MonoBehaviour, IBattleStarter
             var playerTransform = other.transform.root;
             var enemyTransform = actualSelf.transform.root;
             BattleTransitionManager.Instance?.PrepareBattle(playerTransform, enemyTransform);
-        }
+            
+            var playerAnim = playerTransform.GetComponentInChildren<CharacterAnimationController>();
+            var enemyAnim = enemyTransform.GetComponentInChildren<CharacterAnimationController>();
+            BattleManager.Instance.StartBattle(playerData, enemies, BattleInitiator, playerAnim, enemyAnim, playerTransform, enemyTransform);
 
-        BattleManager.Instance.StartBattle(playerData, enemies, BattleInitiator);
+            // Notify enemies to enter BattleState
+            playerTransform.GetComponentInChildren<EnemyController>()?.SetBattleMode(true);
+            enemyTransform.GetComponentInChildren<EnemyController>()?.SetBattleMode(true);
+        }
+        
         actualSelf._nextAllowedBattleTime = Time.time + Mathf.Max(0.01f, reenterCooldown);
     }
 

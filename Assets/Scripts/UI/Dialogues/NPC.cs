@@ -2,7 +2,6 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-
 [RequireComponent(typeof(Collider2D))]
 public class NPC : MonoBehaviour, IInteractable
 {
@@ -16,12 +15,9 @@ public class NPC : MonoBehaviour, IInteractable
     [Header("Settings")]
     [SerializeField] private float interactionCooldown = 0.5f;
 
-    private int _currentDialogueIndex = 0; 
-    private int _lineIndex = 0;
-
-    private bool _isTyping;
-    private bool _isDialogueActive;
+    private int _currentDialogueIndex, _lineIndex; 
     private float _lastInteractionTime;
+    private bool _isTyping, _isDialogueActive;
 
     public void Interact(GameObject _)
     {
@@ -77,7 +73,7 @@ public class NPC : MonoBehaviour, IInteractable
         _isTyping = true;
         dialogueText.SetText("");
 
-        foreach (char letter in block.lines[_lineIndex])
+        foreach (var letter in block.lines[_lineIndex])
         {
             dialogueText.text += letter;
             yield return new WaitForSeconds(block.typingSpeed);

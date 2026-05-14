@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GolemNode
   m_EditorClassIdentifier: Assembly-CSharp::Node
   children:
-  - {fileID: 11400000, guid: ba099505c70775f468271c7899bec8ff, type: 2}
+  - {fileID: 11400000, guid: 47f587ee7a4c3457085e86d2b18b1e48, type: 2}
   - {fileID: 11400000, guid: 66e645b466941f64f837b49f079c1ef6, type: 2}
   - {fileID: 11400000, guid: e560fe6d6e633934f81f5f2a64c3a5e3, type: 2}
   - {fileID: 11400000, guid: 6809d96325aa9dc4d862686fdd7b7ec6, type: 2}

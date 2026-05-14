@@ -7,11 +7,14 @@ public class MoveBehaviour : MonoBehaviour
     [SerializeField] private float acceleration = 20f;
     [SerializeField] private float deceleration = 25f;
     
-    private bool _isFacingRight;
     private Rigidbody2D _rb;
+    private CharacterFlipBehaviour flipBehaviour;
 
-    private void Awake() => _rb = GetComponent<Rigidbody2D>();
-    private void Start() => Flip();
+    private void Awake()
+    {
+        _rb = GetComponent<Rigidbody2D>();
+        flipBehaviour = GetComponent<CharacterFlipBehaviour>();
+    }
 
     public void MoveCharacter(Vector2 direction)
     {
@@ -23,21 +26,17 @@ public class MoveBehaviour : MonoBehaviour
 
         _rb.linearVelocity = new Vector2(newVelocityX, _rb.linearVelocity.y);
 
+        if (flipBehaviour == null) return;
+
         //Flip sprite direction
         switch (direction.x)
         {
-            case > 0 when !_isFacingRight:
-            case < 0 when _isFacingRight:
-                Flip();
+            case > 0 when !flipBehaviour.IsFacingRight:
+                flipBehaviour.SetOrientation(true);
+                break;
+            case < 0 when flipBehaviour.IsFacingRight:
+                flipBehaviour.SetOrientation(false);
                 break;
         }
-    }
-    
-    private void Flip()
-    {
-        _isFacingRight = !_isFacingRight;
-        var localScale = transform.localScale;
-        localScale.x *= -1f;
-        transform.localScale = localScale;
     }
 }

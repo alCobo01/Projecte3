@@ -2,63 +2,65 @@ using UnityEngine;
 
 public class ChaseBehaviour : MonoBehaviour
 {
-    private Rigidbody2D rb;
-
     [Header("Detection")]
     [SerializeField] public GameObject target;
     [SerializeField] private GroundEdgeDetector edgeDetector;
-    private CharacterAnimationController animController;
-    private ObstacleAvoidance obstacleAvoidance;
+    
+    private Rigidbody2D _rb;
+    private CharacterAnimationController _animController;
+    private ObstacleAvoidance _obstacleAvoidance;
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
-        animController = GetComponent<CharacterAnimationController>();
-        obstacleAvoidance = GetComponent<ObstacleAvoidance>();
-        if (edgeDetector == null) edgeDetector = GetComponent<GroundEdgeDetector>();
+        _rb = GetComponent<Rigidbody2D>();
+        _animController = GetComponent<CharacterAnimationController>();
+        _obstacleAvoidance = GetComponent<ObstacleAvoidance>();
+        if (!edgeDetector) edgeDetector = GetComponent<GroundEdgeDetector>();
     }
 
     public void Chase(Transform target,float speed)
     {
         Vector2 dir = (target.position - transform.position).normalized;
-        float directionX = Mathf.Sign(dir.x);
-        animController.SetWalking(Mathf.Abs(dir.x));
+        var directionX = Mathf.Sign(dir.x);
+        _animController.SetWalking(Mathf.Abs(dir.x));
 
-        if (edgeDetector == null || edgeDetector.HasGroundAhead(directionX))
+        if (!edgeDetector || edgeDetector.HasGroundAhead(directionX))
         {
-            rb.linearVelocity = new Vector2(directionX * speed, rb.linearVelocity.y);
-            
-            // Flip character
-            if (directionX > 0) transform.rotation = Quaternion.Euler(0, 0, 0);
-            else if (directionX < 0) transform.rotation = Quaternion.Euler(0, 180, 0);
+            _rb.linearVelocity = new Vector2(directionX * speed, _rb.linearVelocity.y);
+
+            transform.rotation = directionX switch
+            {
+                // Flip character
+                > 0 => Quaternion.Euler(0, 0, 0),
+                < 0 => Quaternion.Euler(0, 180, 0),
+                _ => transform.rotation
+            };
         }
         else
         {
             // Stop if there's no ground immediately ahead
-            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+            _rb.linearVelocity = new Vector2(0, _rb.linearVelocity.y);
         } 
     }
-    public void FlyingChase(Transform target, float speed)
+    public void FlyingChase(Transform flyTarget, float speed)
     {
-        Vector2 dir = (target.position - transform.position).normalized;
+        Vector2 dir = (flyTarget.position - transform.position).normalized;
         
         // Aplicar evitación de obstáculos si el componente existe
-        if (obstacleAvoidance != null)
+        if (_obstacleAvoidance)
+            dir = _obstacleAvoidance.GetAvoidanceDirection(dir);
+
+        _animController.SetWalking(Mathf.Abs(dir.x));
+        _rb.linearVelocity = dir * speed;
+
+        transform.rotation = dir.x switch
         {
-            dir = obstacleAvoidance.GetAvoidanceDirection(dir);
-        }
-
-        animController.SetWalking(Mathf.Abs(dir.x));
-        rb.linearVelocity = dir * speed;
-
-        // Rotación para mirar hacia el objetivo (basada en la dirección final)
-        if (dir.x > 0.1f) transform.rotation = Quaternion.Euler(0, 0, 0);
-        else if (dir.x < -0.1f) transform.rotation = Quaternion.Euler(0, 180, 0);
+            // Rotación para mirar hacia el objetivo (basada en la dirección final)
+            > 0.1f => Quaternion.Euler(0, 0, 0),
+            < -0.1f => Quaternion.Euler(0, 180, 0),
+            _ => transform.rotation
+        };
     }
 
-    public void StopChasing()
-    {
-        if (rb != null)
-            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
-    }
+    public void StopChasing() => _rb.linearVelocity = new Vector2(0, _rb.linearVelocity.y);
 }

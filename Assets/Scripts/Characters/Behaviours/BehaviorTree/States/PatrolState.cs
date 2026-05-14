@@ -7,10 +7,12 @@ public class PatrolState : Node
     {
         return true;
     }
+    
     public override bool ExitCondition(EnemyController ec)
     {
         return ec.chase.check || ec.attack.check;
     }
+    
     public override void OnStart(EnemyController ec)
     {
         var anim = ec.GetComponent<CharacterAnimationController>();

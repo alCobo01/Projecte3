@@ -56,6 +56,7 @@ public class BattleTransitionManager : MonoBehaviour
     public IEnumerator ExecuteBattleEntry()
     {
         SetPhysicsSimulation(false);
+        SetBattleOrientation();
         cameraShake.TriggerShake();
 
         battleCameraManager.PositionBattleCamera(_player, _enemy);
@@ -70,6 +71,12 @@ public class BattleTransitionManager : MonoBehaviour
         
         yield return new WaitWhile(() => battleCameraManager.IsBlending);
         yield return MoveToPositions(playerTarget, enemyTarget, 0f, 1f);
+    }
+
+    private void SetBattleOrientation()
+    {
+        _player.GetComponent<CharacterFlipBehaviour>().ForceOrientation(true);
+        _enemy.GetComponent<CharacterFlipBehaviour>().ForceOrientation(false);
     }
 
     public IEnumerator ExecuteBattleExit(bool playerWon)
