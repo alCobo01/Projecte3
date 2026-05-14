@@ -54,7 +54,7 @@ public class CheckpointManager : MonoBehaviour
         allCheckpoints = Object.FindObjectsByType<Checkpoint>(FindObjectsSortMode.None).ToList();
     }
 
-    public void RegisterAndSave(Checkpoint checkpoint)
+    public void RegisterDiscovery(Checkpoint checkpoint)
     {
         bool isNew = !discoveredIds.Contains(checkpoint.checkpointId);
         if (isNew)
@@ -65,7 +65,7 @@ public class CheckpointManager : MonoBehaviour
         }
 
         lastCheckpointId = checkpoint.checkpointId;
-        SaveGame();
+        // SaveGame() removed - Saving is now manual via Interaction Menu
     }
 
     private void UpdateCheckpointsState()

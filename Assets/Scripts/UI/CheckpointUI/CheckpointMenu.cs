@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CheckpointMenu : MonoBehaviour
+public class CheckpointMenu : BaseMenu
 {
     public static CheckpointMenu Instance { get; private set; }
 
@@ -15,16 +15,15 @@ public class CheckpointMenu : MonoBehaviour
         menuPanel.SetActive(false);
     }
 
+    public override void Open()
+    {
+        base.Open();
+        RefreshList();
+    }
+
     public void OpenMenu()
     {
-        menuPanel.SetActive(true);
-        RefreshList();
-        
-        // Pausar el juego si es necesario
-        if (PauseManager.Instance != null)
-        {
-            // Podrías llamar a PauseManager.Instance.TogglePause() o similar
-        }
+        Open();
     }
 
     public void CloseMenu()

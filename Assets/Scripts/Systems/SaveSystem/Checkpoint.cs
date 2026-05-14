@@ -35,10 +35,8 @@ public class Checkpoint : MonoBehaviour, IInteractable
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
-        {
-            CheckpointManager.Instance.RegisterAndSave(this);
-        }
+        // El trigger ahora solo podría servir para mostrar un mensaje de "Pulsar E para interactuar"
+        // pero ya no registra ni descubre nada automáticamente.
     }
 
     private void UpdateVisuals()
@@ -51,6 +49,13 @@ public class Checkpoint : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        CheckpointMenu.Instance.OpenMenu();
+        if (CheckpointInteractionMenu.Instance != null)
+        {
+            CheckpointInteractionMenu.Instance.Open(this);
+        }
+        else
+        {
+            CheckpointMenu.Instance.OpenMenu();
+        }
     }
 }
