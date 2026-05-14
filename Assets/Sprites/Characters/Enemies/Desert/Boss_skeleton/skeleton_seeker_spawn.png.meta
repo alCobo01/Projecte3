@@ -76,7 +76,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -142,12 +142,12 @@ TextureImporter:
       name: skeleton_seeker_spawn_0
       rect:
         serializedVersion: 2
-        x: 38
-        y: 1212
-        width: 47
-        height: 37
+        x: 0
+        y: 1200
+        width: 120
+        height: 120
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -164,12 +164,12 @@ TextureImporter:
       name: skeleton_seeker_spawn_1
       rect:
         serializedVersion: 2
-        x: 12
-        y: 1092
-        width: 91
-        height: 37
+        x: 0
+        y: 1080
+        width: 120
+        height: 120
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -186,12 +186,12 @@ TextureImporter:
       name: skeleton_seeker_spawn_2
       rect:
         serializedVersion: 2
-        x: 11
-        y: 972
-        width: 96
-        height: 37
+        x: 0
+        y: 960
+        width: 120
+        height: 120
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -208,12 +208,12 @@ TextureImporter:
       name: skeleton_seeker_spawn_3
       rect:
         serializedVersion: 2
-        x: 11
-        y: 852
-        width: 13
-        height: 12
+        x: 0
+        y: 840
+        width: 120
+        height: 120
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -230,12 +230,12 @@ TextureImporter:
       name: skeleton_seeker_spawn_4
       rect:
         serializedVersion: 2
-        x: 15
-        y: 852
-        width: 89
-        height: 49
+        x: 0
+        y: 720
+        width: 120
+        height: 120
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -252,12 +252,12 @@ TextureImporter:
       name: skeleton_seeker_spawn_5
       rect:
         serializedVersion: 2
-        x: 97
-        y: 852
-        width: 12
-        height: 12
+        x: 0
+        y: 600
+        width: 120
+        height: 120
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -274,12 +274,12 @@ TextureImporter:
       name: skeleton_seeker_spawn_6
       rect:
         serializedVersion: 2
-        x: 13
-        y: 732
-        width: 90
-        height: 40
+        x: 0
+        y: 480
+        width: 120
+        height: 120
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -296,12 +296,12 @@ TextureImporter:
       name: skeleton_seeker_spawn_7
       rect:
         serializedVersion: 2
-        x: 98
-        y: 732
-        width: 11
-        height: 6
+        x: 0
+        y: 360
+        width: 120
+        height: 120
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -318,12 +318,12 @@ TextureImporter:
       name: skeleton_seeker_spawn_8
       rect:
         serializedVersion: 2
-        x: 11
-        y: 612
-        width: 98
-        height: 37
+        x: 0
+        y: 240
+        width: 120
+        height: 120
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -340,12 +340,12 @@ TextureImporter:
       name: skeleton_seeker_spawn_9
       rect:
         serializedVersion: 2
-        x: 11
-        y: 492
-        width: 93
-        height: 46
+        x: 0
+        y: 120
+        width: 120
+        height: 120
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -362,12 +362,12 @@ TextureImporter:
       name: skeleton_seeker_spawn_10
       rect:
         serializedVersion: 2
-        x: 12
-        y: 372
-        width: 89
-        height: 61
+        x: 0
+        y: 0
+        width: 120
+        height: 120
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -380,77 +380,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: skeleton_seeker_spawn_11
-      rect:
-        serializedVersion: 2
-        x: 15
-        y: 252
-        width: 86
-        height: 73
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 970d97ff858b90780800000000000000
-      internalID: -8716232911416078215
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: skeleton_seeker_spawn_12
-      rect:
-        serializedVersion: 2
-        x: 19
-        y: 132
-        width: 82
-        height: 89
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bba26e62c30a14680800000000000000
-      internalID: -8772554418929915205
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: skeleton_seeker_spawn_13
-      rect:
-        serializedVersion: 2
-        x: 19
-        y: 13
-        width: 82
-        height: 88
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 53fc08642eb6a6950800000000000000
-      internalID: 6443080836496543541
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: fc853e6d8a355ba4a87f54259b216a54
     internalID: 0
     vertices: []
     indices: 
@@ -458,14 +392,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":11.0},"gridSpriteSize":{"x":120.0,"y":120.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       skeleton_seeker_spawn_0: 4545535178563740114
       skeleton_seeker_spawn_1: 2334911824761055232
       skeleton_seeker_spawn_10: -1009738412885580642
-      skeleton_seeker_spawn_11: -8716232911416078215
-      skeleton_seeker_spawn_12: -8772554418929915205
-      skeleton_seeker_spawn_13: 6443080836496543541
       skeleton_seeker_spawn_2: -1747196357608597081
       skeleton_seeker_spawn_3: 5481444850429524030
       skeleton_seeker_spawn_4: 2218100200780680496

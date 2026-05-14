@@ -118,12 +118,12 @@ TextureImporter:
       name: skeleton_seeker_walk_0
       rect:
         serializedVersion: 2
-        x: 20
-        y: 613
-        width: 94
-        height: 85
+        x: 0
+        y: 600
+        width: 120
+        height: 120
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -140,12 +140,12 @@ TextureImporter:
       name: skeleton_seeker_walk_1
       rect:
         serializedVersion: 2
-        x: 31
-        y: 493
-        width: 64
-        height: 87
+        x: 0
+        y: 480
+        width: 120
+        height: 120
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -162,12 +162,12 @@ TextureImporter:
       name: skeleton_seeker_walk_2
       rect:
         serializedVersion: 2
-        x: 35
-        y: 373
-        width: 52
-        height: 86
+        x: 0
+        y: 360
+        width: 120
+        height: 120
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -184,12 +184,12 @@ TextureImporter:
       name: skeleton_seeker_walk_3
       rect:
         serializedVersion: 2
-        x: 35
-        y: 254
-        width: 52
-        height: 84
+        x: 0
+        y: 240
+        width: 120
+        height: 120
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -206,12 +206,12 @@ TextureImporter:
       name: skeleton_seeker_walk_4
       rect:
         serializedVersion: 2
-        x: 32
-        y: 133
-        width: 68
-        height: 86
+        x: 0
+        y: 120
+        width: 120
+        height: 120
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -228,12 +228,12 @@ TextureImporter:
       name: skeleton_seeker_walk_5
       rect:
         serializedVersion: 2
-        x: 20
-        y: 13
-        width: 93
-        height: 85
+        x: 0
+        y: 0
+        width: 120
+        height: 120
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -250,7 +250,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 8306d0a5ad3c68e40823e0d6cc65c832
     internalID: 0
     vertices: []
     indices: 
@@ -258,7 +258,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":6.0},"gridSpriteSize":{"x":120.0,"y":120.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       skeleton_seeker_walk_0: 1843118504893400886
       skeleton_seeker_walk_1: 2902860917087766669
