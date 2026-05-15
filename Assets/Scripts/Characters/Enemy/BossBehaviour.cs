@@ -5,6 +5,7 @@ public class BossBehaviour : MonoBehaviour
 
     [Header("References")]
     private Animator bossAnimator;
+    public GameObject mainVfxObject;
     public GameObject vfxObject;
     private CameraShake cameraShake;
 
@@ -21,6 +22,8 @@ public class BossBehaviour : MonoBehaviour
     }
     private void Start()
     {
+        if (mainVfxObject != null)
+            mainVfxObject.SetActive(false);
         if (vfxObject != null)
             vfxObject.SetActive(false);
     }
@@ -40,7 +43,7 @@ public class BossBehaviour : MonoBehaviour
     {
         bossAnimator.SetTrigger("Awake");
 
-        if (vfxObject != null)
+        if (mainVfxObject != null)
             StartCoroutine(PlayVFX());
 
         cameraShake.TriggerShake();
