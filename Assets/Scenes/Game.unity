@@ -27066,8 +27066,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1985035993}
   m_Enabled: 1
-  m_SortingLayerID: -659984563
-  m_SortingLayer: 3
+  m_SortingLayerID: 2046251113
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_SortAtRoot: 0
   m_Sort3DAs2D: 0
@@ -42332,10 +42332,6 @@ PrefabInstance:
     - target: {fileID: 5870802244680562195, guid: d35ae5786bc2b498a8c7365136404276, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6343242891090062825, guid: d35ae5786bc2b498a8c7365136404276, type: 3}
-      propertyPath: dashSpeed
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
