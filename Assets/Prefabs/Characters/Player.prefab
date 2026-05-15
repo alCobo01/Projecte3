@@ -320,6 +320,7 @@ MonoBehaviour:
   glidingGravityScale: 0.5
   defaultGravityScale: 1
   maxFallSpeed: -2
+  maxRiseSpeed: 2
 --- !u!114 &4938062050298126884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389,7 +390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1de26cd914f415a8ef7c22e20f3ec8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DashBehaviour
-  dashSpeed: 14
+  dashSpeed: 10
   dashDuration: 0.2
 --- !u!114 &8136411275181926775
 MonoBehaviour:
