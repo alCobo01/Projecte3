@@ -1507,11 +1507,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1207887978}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &549534981 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7680304465247546888, guid: 67fef704195b8bb4f924b77baf6e74a4, type: 3}
-  m_PrefabInstance: {fileID: 7305125215074963290}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &563631558
 GameObject:
   m_ObjectHideFlags: 0
@@ -27152,11 +27147,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7570629}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2107543279 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7385950635239666728, guid: 67fef704195b8bb4f924b77baf6e74a4, type: 3}
-  m_PrefabInstance: {fileID: 7305125215074963290}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2139895824
 GameObject:
   m_ObjectHideFlags: 0
@@ -27451,7 +27441,7 @@ Transform:
   m_GameObject: {fileID: 8258524397291733984}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.062300205, y: -0.22328019, z: -10}
+  m_LocalPosition: {x: 0.37433863, y: -0.22277999, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -41904,25 +41894,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Final_Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 2944604478547129227, guid: 67fef704195b8bb4f924b77baf6e74a4, type: 3}
+      propertyPath: shakeForce
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5610271301290722737, guid: 67fef704195b8bb4f924b77baf6e74a4, type: 3}
-      propertyPath: vfxObject
-      value: 
-      objectReference: {fileID: 2107543279}
-    - target: {fileID: 5610271301290722737, guid: 67fef704195b8bb4f924b77baf6e74a4, type: 3}
-      propertyPath: mainVfxObject
-      value: 
-      objectReference: {fileID: 549534981}
+      propertyPath: vfxDuration
+      value: 3.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7511998587355957944, guid: 67fef704195b8bb4f924b77baf6e74a4, type: 3}
       propertyPath: DefaultVelocity.x
-      value: -0.3
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7511998587355957944, guid: 67fef704195b8bb4f924b77baf6e74a4, type: 3}
       propertyPath: DefaultVelocity.y
-      value: 0.3
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 7511998587355957944, guid: 67fef704195b8bb4f924b77baf6e74a4, type: 3}
       propertyPath: ImpulseDefinition.ImpulseDuration
-      value: 4.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7957310051121899996, guid: 67fef704195b8bb4f924b77baf6e74a4, type: 3}
       propertyPath: m_LocalPosition.x

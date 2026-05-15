@@ -15,6 +15,10 @@ GameObject:
   - component: {fileID: 5610271301290722737}
   - component: {fileID: 7511998587355957944}
   - component: {fileID: 2944604478547129227}
+  - component: {fileID: 2323966240543784169}
+  - component: {fileID: 7525127861565674348}
+  - component: {fileID: 3850767818755880286}
+  - component: {fileID: 5908294848176573628}
   m_Layer: 0
   m_Name: Final_Boss
   m_TagString: Untagged
@@ -180,7 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossBehaviour
   mainVfxObject: {fileID: 7680304465247546888}
   vfxObject: {fileID: 7385950635239666728}
-  vfxDuration: 3
+  vfxDuration: 3.5
 --- !u!114 &7511998587355957944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,7 +206,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    ImpulseDuration: 4.5
+    ImpulseDuration: 5
     ImpulseType: 0
     DissipationRate: 0.25
     RawSignal: {fileID: 0}
@@ -233,7 +237,7 @@ MonoBehaviour:
     DissipationMode: 2
     DissipationDistance: 100
     PropagationSpeed: 343
-  DefaultVelocity: {x: -0.3, y: 0.3, z: 0}
+  DefaultVelocity: {x: -0.1, y: -0.3, z: 0}
 --- !u!114 &2944604478547129227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,7 +250,75 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 209bc149f0594a06a0f5cfc77503daac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraShake
-  shakeForce: 1
+  shakeForce: 1.5
+--- !u!114 &2323966240543784169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2846447725317661693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 722961260fbd4215b9d1d80369ae21ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationBehaviour
+--- !u!114 &7525127861565674348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2846447725317661693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d6c4c2d7f6b4136a14c34f20e11b04b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BattleStarter
+  battleInitiator: 0
+  battleParty:
+  - {fileID: 11400000, guid: 34c99dd9ec1c50445bb4f1272784bfc0, type: 2}
+  ownerType: 0
+  reenterCooldown: 0.2
+--- !u!114 &3850767818755880286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2846447725317661693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9daf393c1d6a4fe8a07d5dbaab044e9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterAnimationController
+--- !u!50 &5908294848176573628
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2846447725317661693}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &5970462372421980261
 PrefabInstance:
   m_ObjectHideFlags: 0
