@@ -6,7 +6,7 @@ public class ItemPickup : MonoBehaviour, IInteractable
     
     public void Interact(GameObject _)
     {
-        if (stack == null || stack.item == null || stack.quantity <= 0) return;
+        if (stack == null || !stack.item || stack.quantity <= 0) return;
         PlayerStatsManager.Instance.AddItem(stack);
         Destroy(gameObject);
     }
