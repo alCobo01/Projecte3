@@ -4,11 +4,12 @@ public class BossBehaviour : MonoBehaviour
 {
 
     [Header("References")]
-    public Animator bossAnimator;
-    public GameObject vfxObject;         
+    private Animator bossAnimator;
+    public GameObject vfxObject;
+    private CameraShake cameraShake;
 
     [Header("Settings")]
-    public float vfxDuration = 2f;       
+    public float vfxDuration = 4f;       
 
 
     private bool activated = false;
@@ -16,6 +17,7 @@ public class BossBehaviour : MonoBehaviour
     private void Awake()
     {
         bossAnimator = GetComponent<Animator>();
+        cameraShake=GetComponent<CameraShake>();
     }
     private void Start()
     {
@@ -37,12 +39,17 @@ public class BossBehaviour : MonoBehaviour
     private void ActivateBoss()
     {
         bossAnimator.SetTrigger("Awake");
+
         if (vfxObject != null)
             StartCoroutine(PlayVFX());
+
+        cameraShake.TriggerShake();
     }
 
     private System.Collections.IEnumerator PlayVFX()
     {
+        yield return new WaitForSeconds(2);
+
         vfxObject.SetActive(true);
         yield return new WaitForSeconds(vfxDuration);
         vfxObject.SetActive(false);
