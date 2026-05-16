@@ -11,6 +11,7 @@ public class PlayerStatsManager : MonoBehaviour
     public int currentHp;
     public int currentSp;
     public int maxSp;
+    public int currentCoins;
     public List<ItemStack> inventory = new();
 
     [SerializeField] private CharacterData characterData;
@@ -60,4 +61,17 @@ public class PlayerStatsManager : MonoBehaviour
     }
 
     public void AddSkill(SkillData skillToAdd) => characterData.skills.Add(skillToAdd);
+
+    public void AddCoins(int amount) => currentCoins += amount;
+
+    public void SubstractCoins(int amount)
+    {
+        if (currentCoins <= 0 || amount <= 0) return;
+
+        if (currentCoins - amount < 0)
+            currentCoins = 0;
+        else
+            currentCoins -= amount;
+    }
+    
 }

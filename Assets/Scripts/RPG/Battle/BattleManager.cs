@@ -12,10 +12,17 @@ public class BattleManager : MonoBehaviour
     public bool IsBattleRunning { get; private set; }
     public BattleUnit PlayerUnit { get; private set; }
 
+    [Header("References")]
     [SerializeField] private BattleUI ui;
+    
+    [Header("Durations")]
     [SerializeField] private float enemyTurnDelay = 1f;
     [SerializeField] private float lungeDuration = 0.25f;
     [SerializeField] private float returnDuration = 0.35f;
+    
+    [Header("Coin rewards")]
+    [SerializeField] private int minCoinReward = 10;
+    [SerializeField] private int maxCoinReward = 50;
 
     private readonly TurnStack _turnStack = new();
     private readonly List<BattleUnit> _allUnits = new();
@@ -309,6 +316,13 @@ public class BattleManager : MonoBehaviour
         PlayerStatsManager.Instance.currentSp = PlayerUnit.CurrentSp;
         
         if (playerDied) OnPlayerDied?.Invoke();
+
+        if (playerWon)
+        {
+            int coinsToReward = Random.Range(minCoinReward, maxCoinReward + 1);
+            PlayerStatsManager.Instance.AddCoins(coinsToReward);
+            OnCombatMessage?.Invoke($"You won the battle and found {coinsToReward} coins!");
+        }
 
         OnBattleStateChanged?.Invoke();
         OnBattleEnded?.Invoke(playerWon);
