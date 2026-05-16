@@ -191,7 +191,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &2505521555516864664
 MonoBehaviour:
@@ -404,4 +404,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbcbf82c07534863b74018d641531ecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDashController
-  dashCooldown: 2
+  landingDashCooldown: 0.5
