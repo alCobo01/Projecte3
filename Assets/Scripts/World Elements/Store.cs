@@ -17,11 +17,36 @@ public class Store : NPC
     [Header("Items to buy data")]
     [SerializeField] private List<ItemStack> itemsToBuy;
 
-    private CanvasGroup _canvasGroup;
-    private Coroutine _fadeCoroutine;
+    [Header("Feedback UI")]
+    [SerializeField] private GameObject feedbackPanel;
+    [SerializeField] private TMP_Text feedbackText;
+    [SerializeField] private float feedbackDisplayTime = 2f;
+
+    private CanvasGroup _canvasGroup, _feedbackCanvasGroup;
+    private Coroutine _fadeCoroutine, _feedbackCoroutine;
     private bool _hasTalkedOnce;
 
-    private void Awake() => _canvasGroup = storePanel.GetComponent<CanvasGroup>();
+    private void Awake() 
+    {
+        _canvasGroup = storePanel.GetComponent<CanvasGroup>();
+        _feedbackCanvasGroup = feedbackPanel.GetComponent<CanvasGroup>();
+        feedbackPanel.SetActive(false);
+    }
+
+    public void ShowFeedback(string message)
+    {
+        if (_feedbackCoroutine != null) StopCoroutine(_feedbackCoroutine);
+        _feedbackCoroutine = StartCoroutine(HandleFeedback(message));
+    }
+
+    private IEnumerator HandleFeedback(string message)
+    {
+        feedbackText.text = message;
+        feedbackPanel.SetActive(true);
+        yield return Fade(_feedbackCanvasGroup, 0f, 1f);
+        yield return new WaitForSecondsRealtime(feedbackDisplayTime);
+        yield return Fade(_feedbackCanvasGroup, 1f, 0f, onComplete: () => feedbackPanel.SetActive(false));
+    }
 
     public override void Interact()
     {
@@ -45,16 +70,19 @@ public class Store : NPC
     private void ToggleStore()
     {
         var isActive = !storePanel.activeSelf;
-        storePanel.SetActive(isActive);
-        PauseManager.Instance.TogglePause();
+        if (isActive) 
+        {
+            storePanel.SetActive(true);
+            RefreshUI();
+        }
         
-        if (isActive) RefreshUI();
-        if (_fadeCoroutine is not null) StopCoroutine(_fadeCoroutine);
+        PauseManager.Instance.TogglePause();
 
-        _fadeCoroutine = StartCoroutine(isActive ? Fade(0f, 1f) : Fade(1f, 0f, onComplete: () => storePanel.SetActive(false)));
+        if (_fadeCoroutine is not null) StopCoroutine(_fadeCoroutine);
+        _fadeCoroutine = StartCoroutine(isActive ? Fade(_canvasGroup, 0f, 1f) : Fade(_canvasGroup, 1f, 0f, onComplete: () => storePanel.SetActive(false)));
     }
     
-    private void RefreshUI()
+    public void RefreshUI()
     {
         //Coins
         coinAmountText.text = PlayerStatsManager.Instance.currentCoins.ToString();
@@ -63,25 +91,26 @@ public class Store : NPC
         foreach (Transform child in itemsContainer) Destroy(child.gameObject);
         foreach (var stack in itemsToBuy)
         {
+            if (stack.quantity <= 0) continue;
             var obj = Instantiate(slotPrefab, itemsContainer, false);
-            obj.GetComponent<InventorySlotUI>().SetData(stack);
+            obj.GetComponent<StoreSlotUI>().SetData(stack, this);
         }
         LayoutRebuilder.ForceRebuildLayoutImmediate(itemsContainer);
     }
 
-    private IEnumerator Fade(float from, float to, UnityAction onComplete = null)
+    private IEnumerator Fade(CanvasGroup cg, float from, float to, UnityAction onComplete = null)
     {
         var elapsed = 0f;
-        _canvasGroup.alpha = from;
+        cg.alpha = from;
 
         while (elapsed < fadeDuration)
         {
             elapsed += Time.unscaledDeltaTime;
-            _canvasGroup.alpha = Mathf.Lerp(from, to, elapsed / fadeDuration);
+            cg.alpha = Mathf.Lerp(from, to, elapsed / fadeDuration);
             yield return null;
         }
 
-        _canvasGroup.alpha = to;
+        cg.alpha = to;
         onComplete?.Invoke();
     }
 }
