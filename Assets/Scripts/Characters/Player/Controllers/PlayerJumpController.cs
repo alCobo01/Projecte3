@@ -11,6 +11,7 @@ public class PlayerJumpController : MonoBehaviour
     [SerializeField] private int maxJumps = 2;
     
     private PlayerInputController _inputController;
+    private CharacterAnimationController _animController;
     private JumpBehaviour _jumpBehaviour;
     private GroundCheck _groundCheck;
     private int _jumpsRemaining;
@@ -19,6 +20,7 @@ public class PlayerJumpController : MonoBehaviour
     private void Awake()
     {
         _inputController = GetComponent<PlayerInputController>();
+        _animController = GetComponent<CharacterAnimationController>();
         _jumpBehaviour = GetComponent<JumpBehaviour>();
         _groundCheck = GetComponent<GroundCheck>();
     }
@@ -53,6 +55,7 @@ public class PlayerJumpController : MonoBehaviour
         if (isPressed)
         {
             if (_jumpsRemaining <= 0) return;
+            _animController.TriggerJump();
             _jumpBehaviour.Jump();
             _jumpsRemaining--;
         }
