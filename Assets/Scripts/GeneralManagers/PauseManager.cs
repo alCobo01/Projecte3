@@ -14,7 +14,7 @@ public class PauseManager : MonoBehaviour
     
     public void TogglePause() => SetPaused(!IsPaused);
     
-    private void SetPaused(bool paused)
+    public void SetPaused(bool paused)
     {
         if (IsPaused == paused) return;
         IsPaused = paused;

@@ -14,6 +14,7 @@ public class PlayerStatsManager : MonoBehaviour
     public List<ItemStack> inventory = new();
 
     [SerializeField] private CharacterData characterData;
+    public CharacterData CharacterData => characterData;
 
     private void Awake()
     {

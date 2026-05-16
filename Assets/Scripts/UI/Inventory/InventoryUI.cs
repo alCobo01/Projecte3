@@ -26,7 +26,7 @@ public class InventoryUI : MonoBehaviour
     {
         var isActive = !inventoryPanel.activeSelf;
         inventoryPanel.SetActive(isActive);
-        PauseManager.Instance.TogglePause();
+        PauseManager.Instance.SetPaused(isActive);
         
         if (isActive)
             RefreshUI();
