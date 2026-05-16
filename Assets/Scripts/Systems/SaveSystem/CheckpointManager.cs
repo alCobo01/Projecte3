@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -120,44 +121,80 @@ public class CheckpointManager : MonoBehaviour
     [ContextMenu("Load Game")]
     public void LoadGame()
     {
+        StartCoroutine(LoadGameRoutine());
+    }
+
+    private IEnumerator LoadGameRoutine()
+    {
+        if (ScreenFader.Instance != null)
+            yield return ScreenFader.Instance.FadeOut();
+
+        yield return new WaitForSeconds(0.5f); // 0.5s delay before loading
+
         SaveData data = SaveSystem.Load();
-        if (data == null) return;
-
-        discoveredIds = new HashSet<string>(data.discoveredCheckpointIds);
-        lastCheckpointId = data.lastCheckpointId;
-
-        // Restore Player Stats
-        var stats = PlayerStatsManager.Instance;
-        stats.currentHp = data.currentHp;
-        stats.currentSp = data.currentSp;
-
-        // Restore Inventory
-        stats.inventory.Clear();
-        foreach (var itemData in data.inventory)
+        if (data != null)
         {
-            ItemData asset = itemDatabase.Find(i => i.itemName == itemData.itemName);
-            if (asset != null)
+            discoveredIds = new HashSet<string>(data.discoveredCheckpointIds);
+            lastCheckpointId = data.lastCheckpointId;
+
+            // Restore Player Stats
+            var stats = PlayerStatsManager.Instance;
+            stats.currentHp = data.currentHp;
+            stats.currentSp = data.currentSp;
+
+            // Restore Inventory
+            stats.inventory.Clear();
+            foreach (var itemData in data.inventory)
             {
-                stats.inventory.Add(new ItemStack { item = asset, quantity = itemData.quantity });
+                ItemData asset = itemDatabase.Find(i => i.itemName == itemData.itemName);
+                if (asset != null)
+                {
+                    stats.inventory.Add(new ItemStack { item = asset, quantity = itemData.quantity });
+                }
+            }
+
+            // Restore Skills
+            stats.CharacterData.skills.Clear();
+            foreach (var skillName in data.unlockedSkills)
+            {
+                SkillData asset = skillDatabase.Find(s => s.skillName == skillName);
+                if (asset != null)
+                {
+                    stats.CharacterData.skills.Add(asset);
+                }
+            }
+            
+            UpdateCheckpointsState();
+            
+            if (!string.IsNullOrEmpty(lastCheckpointId))
+            {
+                ExecuteTeleport(lastCheckpointId);
             }
         }
 
-        // Restore Skills
-        stats.CharacterData.skills.Clear();
-        foreach (var skillName in data.unlockedSkills)
-        {
-            SkillData asset = skillDatabase.Find(s => s.skillName == skillName);
-            if (asset != null)
-            {
-                stats.CharacterData.skills.Add(asset);
-            }
-        }
-        
-        UpdateCheckpointsState();
-        TeleportToLastCheckpoint();
+        if (ScreenFader.Instance != null)
+            yield return ScreenFader.Instance.FadeIn();
     }
 
     public void TeleportToCheckpoint(string id)
+    {
+        StartCoroutine(TeleportRoutine(id));
+    }
+
+    private IEnumerator TeleportRoutine(string id)
+    {
+        if (ScreenFader.Instance != null)
+            yield return ScreenFader.Instance.FadeOut();
+
+        yield return new WaitForSeconds(0.5f); // 0.5s delay before teleporting
+
+        ExecuteTeleport(id);
+
+        if (ScreenFader.Instance != null)
+            yield return ScreenFader.Instance.FadeIn();
+    }
+
+    private void ExecuteTeleport(string id)
     {
         Checkpoint target = allCheckpoints.Find(c => c.checkpointId == id);
         if (target != null)
