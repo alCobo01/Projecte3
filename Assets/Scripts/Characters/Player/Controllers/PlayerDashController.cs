@@ -1,23 +1,28 @@
 using UnityEngine;
 
 [RequireComponent(typeof(DashBehaviour))]
+[RequireComponent(typeof(GroundCheck))]
 public class PlayerDashController : MonoBehaviour
 {
     public bool CanDash { get; set; }
     
-    [SerializeField] private float dashCooldown = 2f;
+    [SerializeField] private float landingDashCooldown = 0.2f;
     
     private PlayerInputController _inputController;
     private DashBehaviour _dashBehaviour;
+    private GroundCheck _groundCheck;
     
     private Vector2 _currentMoveInput;
-    private float _lastDashTime;
-    private float _lastFacingDirectionX = 1f;
+    private float _lastFacingDirectionX = -1f;
+    private bool _hasDashAvailable;
+    private bool _wasGrounded;
+    private float _dashReadyTime;
     
     private void Awake()
     {
         _inputController = GetComponent<PlayerInputController>();
         _dashBehaviour = GetComponent<DashBehaviour>();
+        _groundCheck = GetComponent<GroundCheck>();
     }
 
     private void Start()
@@ -26,6 +31,9 @@ public class PlayerDashController : MonoBehaviour
         _inputController.OnDashEvent += HandleDash;
 
         CanDash = true;
+        _wasGrounded = _groundCheck.IsGrounded;
+        _hasDashAvailable = _wasGrounded;
+        _dashReadyTime = _wasGrounded ? Time.time + landingDashCooldown : float.MaxValue;
     }
 
     private void OnDisable()
@@ -39,16 +47,34 @@ public class PlayerDashController : MonoBehaviour
         _currentMoveInput = moveInput;
         if (moveInput.x != 0) _lastFacingDirectionX = Mathf.Sign(moveInput.x);
     }
+
+    private void Update()
+    {
+        var isGrounded = _groundCheck.IsGrounded;
+        if (isGrounded && !_wasGrounded)
+        {
+            _hasDashAvailable = true;
+            _dashReadyTime = Time.time + landingDashCooldown;
+        }
+
+        _wasGrounded = isGrounded;
+    }
     
     private void HandleDash()
     {
         if (!CanDash) return;
-        if (!(Time.time >= _lastDashTime + dashCooldown) || _dashBehaviour.IsDashing) return;
+        if (!_hasDashAvailable || Time.time < _dashReadyTime || _dashBehaviour.IsDashing) return;
         
         var targetDirectionX = _currentMoveInput.x != 0 ? Mathf.Sign(_currentMoveInput.x) : _lastFacingDirectionX;
         var dashDirection = new Vector2(targetDirectionX, 0f);
 
         _dashBehaviour.ExecuteDash(dashDirection);
-        _lastDashTime = Time.time;
+        _hasDashAvailable = false;
+
+        if (_groundCheck.IsGrounded)
+        {
+            _hasDashAvailable = true;
+            _dashReadyTime = Time.time + landingDashCooldown;
+        }
     }
 }
