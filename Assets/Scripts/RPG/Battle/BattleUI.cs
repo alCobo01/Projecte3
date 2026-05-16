@@ -480,7 +480,7 @@ public class BattleUI : MonoBehaviour
 
     private void Unsubscribe()
     {
-        if (_manager == null) return;
+        if (!_manager) return;
 
         _manager.OnTurnStarted -= HandleTurnStarted;
         _manager.OnDamageTaken -= HandleDamageTaken;
