@@ -1,0 +1,27 @@
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+[Serializable]
+public class SaveData
+{
+    // Datos del Jugador
+    public int currentHp;
+    public int currentSp;
+    public List<InventoryItemData> inventory = new();
+    public List<string> unlockedSkills = new();
+
+    // Datos del Mundo/Checkpoints
+    public string lastCheckpointId;
+    public List<string> discoveredCheckpointIds = new();
+    
+    // Posición por si acaso (aunque los checkpoints suelen ser el punto de spawn)
+    public float[] playerPosition = new float[3];
+
+    [Serializable]
+    public class InventoryItemData
+    {
+        public string itemName;
+        public int quantity;
+    }
+}

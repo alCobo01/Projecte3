@@ -11,6 +11,6 @@ public class PauseMenu : BaseMenu
     {
         var isActive = !pausePanel.activeSelf;
         pausePanel.SetActive(isActive);
-        PauseManager.Instance.TogglePause();
+        PauseManager.Instance.SetPaused(isActive);
     }
 }
