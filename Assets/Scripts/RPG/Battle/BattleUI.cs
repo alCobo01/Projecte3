@@ -238,7 +238,7 @@ public class BattleUI : MonoBehaviour
     {
         var targetOptions = (targets ?? new List<BattleUnit>())
             .Where(t => t is { IsDead: false })
-            .Select(t => new ListOption($"{t.Data.characterName} HP {t.CurrentHp}/{t.Data.maxHp}", () => onPick?.Invoke(t)));
+            .Select(t => new ListOption($"{t.Data.characterName}", () => onPick?.Invoke(t)));
 
         BuildList(targetListRoot, targetOptions, emptyMessage: null, onBack: BackFromTarget);
     }
@@ -466,12 +466,13 @@ public class BattleUI : MonoBehaviour
 
         var row = go.AddComponent<TextMeshProUGUI>();
         row.font = playerNameText.font;
+        row.autoSizeTextContainer = false;
         row.fontSharedMaterial = playerNameText.fontSharedMaterial;
         row.fontSize = playerNameText.fontSize;
         row.color = playerNameText.color;
+        row.characterHorizontalScale = 1.65f;
         row.alignment = playerNameText.alignment;
         row.textWrappingMode = TextWrappingModes.Normal;
-        row.enableAutoSizing = true;
         row.fontSize = playerNameText.fontSize;
         row.overflowMode = TextOverflowModes.Ellipsis;
         return row;

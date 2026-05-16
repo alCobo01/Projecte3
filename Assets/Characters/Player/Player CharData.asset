@@ -17,7 +17,7 @@ MonoBehaviour:
   maxSp: 100
   attack: 11
   defense: 10
-  speed: 20
+  speed: 10
   spGainPerHit: 10
   skills: []
   portrait: {fileID: 7255003796024305070, guid: fce78d19a20c74670be94acec3615bc1, type: 3}
