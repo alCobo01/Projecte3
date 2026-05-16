@@ -32,11 +32,17 @@ public class CheckpointInteractionMenu : BaseMenu
         Debug.Log("Game Saved via Checkpoint!");
         Close();
     }
+    public void OnLoadClicked()
+    {
+
+        CheckpointManager.Instance.LoadGame();
+        Close();
+    }
 
     public void OnTeleportClicked()
     {
-        Close(); // Cerramos este (despausará brevemente)
-        CheckpointMenu.Instance.OpenMenu(); // Abrimos el otro (volverá a pausar)
+        Close(); 
+        CheckpointMenu.Instance.OpenMenu(); 
     }
 
     public void OnCancelClicked()

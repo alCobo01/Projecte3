@@ -20,7 +20,6 @@ public class CheckpointUIElement : MonoBehaviour
     private void OnTeleportClicked()
     {
         CheckpointManager.Instance.TeleportToCheckpoint(_checkpointId);
-        // Opcionalmente cerrar el menú después de teletransportarse
         CheckpointMenu.Instance.CloseMenu();
     }
 }
