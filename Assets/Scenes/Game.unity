@@ -12944,6 +12944,7 @@ GameObject:
   - component: {fileID: 1567506781}
   - component: {fileID: 1567506783}
   - component: {fileID: 1567506782}
+  - component: {fileID: 1567506784}
   m_Layer: 5
   m_Name: Feedback Image
   m_TagString: Untagged
@@ -12966,11 +12967,11 @@ RectTransform:
   - {fileID: 108460010}
   m_Father: {fileID: 1908134966}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -757}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 75}
   m_SizeDelta: {x: 216.95, y: 60}
-  m_Pivot: {x: 0.5, y: 1}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1567506782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13009,6 +13010,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1567506780}
   m_CullTransparentMesh: 1
+--- !u!225 &1567506784
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567506780}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1589129748
 GameObject:
   m_ObjectHideFlags: 0
@@ -27821,7 +27834,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1908134966
 RectTransform:
   m_ObjectHideFlags: 0
@@ -44517,12 +44530,8 @@ MonoBehaviour:
   itemsContainer: {fileID: 105349664}
   slotPrefab: {fileID: 5831580383326487726, guid: acd9848bd49bf4c00b612edb4a0e97d8, type: 3}
   coinAmountText: {fileID: 1605352752}
-  fadeDuration: 2
-  itemsToBuy:
-  - item: {fileID: 11400000, guid: 5434996231f724537b0f6dba58965eba, type: 2}
-    quantity: 1
-  - item: {fileID: 11400000, guid: 1151437b315864de4a128fa59ea8c6d7, type: 2}
-    quantity: 1
+  fadeDuration: 1
+  itemsToBuy: {fileID: 11400000, guid: 8853adf2d2da14994838a6872d6de3a5, type: 2}
   feedbackPanel: {fileID: 1567506780}
   feedbackText: {fileID: 108460008}
   feedbackDisplayTime: 2

@@ -15,7 +15,7 @@ public class Store : NPC
     [SerializeField] private float fadeDuration = 2f;
     
     [Header("Items to buy data")]
-    [SerializeField] private List<ItemStack> itemsToBuy;
+    [SerializeField] private AvailableItems itemsToBuy;
 
     [Header("Feedback UI")]
     [SerializeField] private GameObject feedbackPanel;
@@ -89,7 +89,7 @@ public class Store : NPC
         
         //Items
         foreach (Transform child in itemsContainer) Destroy(child.gameObject);
-        foreach (var stack in itemsToBuy)
+        foreach (var stack in itemsToBuy.items)
         {
             if (stack.quantity <= 0) continue;
             var obj = Instantiate(slotPrefab, itemsContainer, false);

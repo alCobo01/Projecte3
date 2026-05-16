@@ -28,12 +28,11 @@ public class StoreSlotUI : MonoBehaviour
         buyButton.onClick.RemoveAllListeners();
         buyButton.onClick.AddListener(OnBuyClicked);
         
-        UpdateButtonState();
+        // El botón solo se desactiva si no hay stock. 
+        // Si no hay monedas, lo dejamos activo para mostrar el mensaje de error.
+        buyButton.interactable = stack.quantity > 0;
     }
 
-    private void UpdateButtonState()
-        => buyButton.interactable = PlayerStatsManager.Instance.currentCoins >= _stack.item.value;
-    
     private void OnBuyClicked()
     {
         var price = _stack.item.value;
@@ -49,7 +48,6 @@ public class StoreSlotUI : MonoBehaviour
             
         // Substract from store stock and refresh UI
         _stack.quantity--;
-        quantityText.text = _stack.quantity.ToString();
         _store.RefreshUI();
 
         _store.ShowFeedback($"You just bought {_stack.item.itemName} for {price} coins!");
