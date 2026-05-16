@@ -13,13 +13,13 @@ public class NPC : MonoBehaviour, IInteractable
     [SerializeField] private TMP_Text dialogueText;
 
     [Header("Settings")]
-    [SerializeField] private float interactionCooldown = 0.5f;
+    [SerializeField] protected float interactionCooldown = 0.5f;
 
-    private int _currentDialogueIndex, _lineIndex; 
-    private float _lastInteractionTime;
-    private bool _isTyping, _isDialogueActive;
+    protected int _currentDialogueIndex, _lineIndex; 
+    protected float _lastInteractionTime;
+    protected bool _isTyping, _isDialogueActive;
 
-    public void Interact()
+    public virtual void Interact()
     {
         if (Time.time < _lastInteractionTime + interactionCooldown) return;
         _lastInteractionTime = Time.time;
@@ -82,7 +82,7 @@ public class NPC : MonoBehaviour, IInteractable
         _isTyping = false;
     }
 
-    private void EndDialogue(bool completed)
+    protected virtual void EndDialogue(bool completed)
     {
         StopAllCoroutines();
         _isDialogueActive = false;
