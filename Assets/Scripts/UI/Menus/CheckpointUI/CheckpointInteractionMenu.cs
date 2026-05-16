@@ -35,8 +35,8 @@ public class CheckpointInteractionMenu : BaseMenu
 
     public void OnTeleportClicked()
     {
-        gameObject.SetActive(false); // Cerramos este para abrir el otro
-        CheckpointMenu.Instance.OpenMenu();
+        Close(); // Cerramos este (despausará brevemente)
+        CheckpointMenu.Instance.OpenMenu(); // Abrimos el otro (volverá a pausar)
     }
 
     public void OnCancelClicked()

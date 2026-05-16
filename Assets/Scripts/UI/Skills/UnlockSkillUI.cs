@@ -52,7 +52,7 @@ public class UnlockSkillUI : MonoBehaviour
     private void Toggle()
     {
         var isActive = !panel.activeSelf;
-        PauseManager.Instance.TogglePause();
+        PauseManager.Instance.SetPaused(isActive);
         
         if (_fadeCoroutine is not null) StopCoroutine(_fadeCoroutine);
 

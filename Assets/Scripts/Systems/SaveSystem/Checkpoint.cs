@@ -55,7 +55,7 @@ public class Checkpoint : MonoBehaviour, IInteractable
         }
         else
         {
-            CheckpointMenu.Instance.OpenMenu();
+            Debug.LogError("No se encuentra CheckpointInteractionMenu en la escena.");
         }
     }
 }

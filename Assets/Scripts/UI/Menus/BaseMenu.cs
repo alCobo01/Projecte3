@@ -7,13 +7,13 @@ public abstract class BaseMenu : MonoBehaviour
     public virtual void Open()
     {
         gameObject.SetActive(true);
-        PauseManager.Instance.TogglePause();
+        PauseManager.Instance.SetPaused(true);
     }
 
     public void Close() 
     {
         gameObject.SetActive(false);
-        PauseManager.Instance.TogglePause();
+        PauseManager.Instance.SetPaused(false);
     } 
     
     public void CloseGame()

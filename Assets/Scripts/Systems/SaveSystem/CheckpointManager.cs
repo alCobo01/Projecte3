@@ -65,7 +65,6 @@ public class CheckpointManager : MonoBehaviour
         }
 
         lastCheckpointId = checkpoint.checkpointId;
-        // SaveGame() removed - Saving is now manual via Interaction Menu
     }
 
     private void UpdateCheckpointsState()

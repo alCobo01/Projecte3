@@ -11,13 +11,16 @@ public class CheckpointMenu : BaseMenu
 
     private void Awake()
     {
-        Instance = this;
-        menuPanel.SetActive(false);
+        if (Instance == null) Instance = this;
+        else { Destroy(gameObject); return; }
+
+        if (menuPanel != null) menuPanel.SetActive(false);
     }
 
     public override void Open()
     {
         base.Open();
+        if (menuPanel != null) menuPanel.SetActive(true);
         RefreshList();
     }
 
@@ -28,7 +31,8 @@ public class CheckpointMenu : BaseMenu
 
     public void CloseMenu()
     {
-        menuPanel.SetActive(false);
+        if (menuPanel != null) menuPanel.SetActive(false);
+        Close();
     }
 
     private void RefreshList()
@@ -49,17 +53,6 @@ public class CheckpointMenu : BaseMenu
             {
                 element.Setup(cp);
             }
-        }
-    }
-
-    private void Update()
-    {
-        // Abrir menú con una tecla (ejemplo: 'G' de Guardado/Gate)
-        // O podrías abrirlo solo al interactuar con un checkpoint
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            if (menuPanel.activeSelf) CloseMenu();
-            else OpenMenu();
         }
     }
 }
