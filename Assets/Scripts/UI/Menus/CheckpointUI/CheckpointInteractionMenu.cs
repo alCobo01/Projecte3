@@ -13,11 +13,19 @@ public class CheckpointInteractionMenu : BaseMenu
         gameObject.SetActive(false);
     }
 
+    [SerializeField] private Button teleportButton;
     private Checkpoint _currentCheckpoint;
 
     public void Open(Checkpoint checkpoint)
     {
         _currentCheckpoint = checkpoint;
+        
+        // Disable teleport if no checkpoints discovered
+        if (teleportButton != null)
+        {
+            teleportButton.interactable = CheckpointManager.Instance.GetDiscoveredCheckpoints().Count > 0;
+        }
+        
         Open();
     }
 

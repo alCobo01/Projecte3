@@ -813,8 +813,8 @@ GameObject:
   - component: {fileID: 171906534}
   - component: {fileID: 171906533}
   - component: {fileID: 171906532}
-  - component: {fileID: 171906531}
-  - component: {fileID: 171906530}
+  - component: {fileID: 171906536}
+  - component: {fileID: 171906535}
   m_Layer: 0
   m_Name: Fader
   m_TagString: Untagged
@@ -835,39 +835,13 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1650754038}
-  m_Father: {fileID: 5922961867146576324}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &171906530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 171906528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21d6073e11052ba4197e6d0b4de47cc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ScreenFader
-  canvasGroup: {fileID: 171906531}
-  fadeDuration: 2
---- !u!225 &171906531
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 171906528}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!114 &171906532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -931,6 +905,32 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &171906535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171906528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21d6073e11052ba4197e6d0b4de47cc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScreenFader
+  canvasGroup: {fileID: 171906536}
+  fadeDuration: 1.23
+--- !u!225 &171906536
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171906528}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &194449390
 GameObject:
   m_ObjectHideFlags: 0
@@ -14951,8 +14951,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1960, y: 822}
+  m_AnchoredPosition: {x: 0, y: -0.000026703}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1650754039
 MonoBehaviour:
@@ -27348,6 +27348,57 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &1736104662 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2846447725317661693, guid: 67fef704195b8bb4f924b77baf6e74a4, type: 3}
+  m_PrefabInstance: {fileID: 7305125215074963290}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &1736104674
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1736104662}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.0016874075, y: -0.30544323}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.2, y: 1.2}
+    newSize: {x: 0.47, y: 0.37}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.5418632, y: 0.5891136}
+  m_EdgeRadius: 0
 --- !u!1 &1742897512
 GameObject:
   m_ObjectHideFlags: 0
@@ -29610,7 +29661,7 @@ Transform:
   m_GameObject: {fileID: 8258524397291733984}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.37433863, y: -0.22277999, z: -10}
+  m_LocalPosition: {x: -0.062300205, y: -0.22328019, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -38416,7 +38467,6 @@ Transform:
   - {fileID: 9048294076947980817}
   - {fileID: 149677938}
   - {fileID: 15381449}
-  - {fileID: 171906529}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &5974564296710822066
@@ -44085,6 +44135,10 @@ PrefabInstance:
       propertyPath: vfxDuration
       value: 3.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5908294848176573628, guid: 67fef704195b8bb4f924b77baf6e74a4, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7511998587355957944, guid: 67fef704195b8bb4f924b77baf6e74a4, type: 3}
       propertyPath: DefaultVelocity.x
       value: -0.1
@@ -44140,7 +44194,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2846447725317661693, guid: 67fef704195b8bb4f924b77baf6e74a4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1736104674}
   m_SourcePrefab: {fileID: 100100000, guid: 67fef704195b8bb4f924b77baf6e74a4, type: 3}
 --- !u!114 &7340358768572621389
 MonoBehaviour:
@@ -45542,6 +45599,7 @@ SceneRoots:
   - {fileID: 7707304206070380498}
   - {fileID: 1608254913}
   - {fileID: 5922961867146576324}
+  - {fileID: 171906529}
   - {fileID: 30804753859810016}
   - {fileID: 9087325000547316284}
   - {fileID: 2012393933}
