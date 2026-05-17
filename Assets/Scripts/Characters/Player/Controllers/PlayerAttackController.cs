@@ -1,0 +1,54 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+[RequireComponent(typeof(PlayerInputController))]
+public class PlayerAttackController : MonoBehaviour
+{
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] private float attackRange = 1.5f;
+    [SerializeField] private float attackRadius = 0.75f;
+    [SerializeField] private LayerMask targetLayer = ~0;
+    
+    private PlayerInputController _inputController;
+    private CharacterAnimationController _animController;
+    private PlayerBattleController _battleController;
+    private BattleStarter _battleStarter;
+    
+    private void Awake()
+    {
+        _inputController = GetComponent<PlayerInputController>();
+        _animController = GetComponent<CharacterAnimationController>();
+        _battleController = GetComponent<PlayerBattleController>();
+        _battleStarter = GetComponent<BattleStarter>();
+        
+        _inputController.OnAttackEvent += HandleAttack;
+    }
+
+    private void OnDisable() => _inputController.OnAttackEvent -= HandleAttack;
+    
+    private void HandleAttack()
+    {
+        if (_battleController != null && !_battleController.CanAttack) return;
+        _animController.TriggerAttack();
+        TryStartBattle();
+    }
+    
+    private void TryStartBattle()
+    {
+        var pivot = attackPoint != null ? attackPoint : transform;
+        var origin = pivot.position + pivot.forward * attackRange;
+        var hitColliders = Physics.OverlapSphere(origin, attackRadius, targetLayer, QueryTriggerInteraction.Collide);
+        var damagedTargets = new HashSet<IBattleStarter>();
+
+        foreach (var hit in hitColliders)
+        {
+            var damageable = hit.GetComponentInParent<IBattleStarter>();
+            if (damageable == null || !damagedTargets.Add(damageable)) continue;
+
+            if (!_battleStarter) continue;
+            _battleStarter.TryStartBattleWithTarget(damageable);
+        }
+    }
+
+
+}

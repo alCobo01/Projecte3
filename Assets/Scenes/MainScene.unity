@@ -552,6 +552,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11438e9c717747e3bbaa70409971f538, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovementController
+  runMultiplier: 1.75
+  canRun: 0
 --- !u!114 &969946378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -564,7 +566,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ea5123d0794075b1aedf2f09a05544, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoveBehaviour
-  velocityMultiplier: 8
+  maxSpeed: 2
+  acceleration: 20
+  deceleration: 25
 --- !u!50 &969946379
 Rigidbody2D:
   serializedVersion: 5
@@ -789,6 +793,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   rayLength: 2
+  nearGroundThreshold: 2.25
 --- !u!114 &969946389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -802,6 +807,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JumpBehaviour
   jumpForce: 2
+  holdJumpForce: 6
+  maxHoldTime: 0.2
+  cutJumpModifier: 0.5
 --- !u!114 &969946390
 MonoBehaviour:
   m_ObjectHideFlags: 0

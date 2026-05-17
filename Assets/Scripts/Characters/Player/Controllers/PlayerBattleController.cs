@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerBattleController : MonoBehaviour
 {
+    public bool CanAttack { get; private set; } = true;
+
     private PlayerMovementController _movementController;
     private PlayerJumpController _jumpController;
     private PlayerDashController _dashController;
@@ -36,13 +38,26 @@ public class PlayerBattleController : MonoBehaviour
     private void OnBattleStarted()
     {
         SetMovement(false);
+        CanAttack = false;
         _animationController?.SetBattle(true);
     }
     
     private void OnBattleEnded(bool _)
     {
         SetMovement(true);
+        CanAttack = true;
         _animationController?.SetBattle(false);
+    }
+
+    private void Update()
+    {
+        if (BattleManager.Instance != null && BattleManager.Instance.IsBattleRunning)
+        {
+            CanAttack = false;
+            return;
+        }
+
+        CanAttack = PauseManager.Instance == null || !PauseManager.Instance.IsPaused;
     }
 
     private void SetMovement(bool canMove)

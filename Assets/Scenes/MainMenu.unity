@@ -6408,6 +6408,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2099375824}
   m_CullTransparentMesh: 1
+--- !u!114 &1959867472751995392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6682620488771169373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be5b73d44214149971cebef292bda4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+  sfxVolume: 1
+  musicVolume: 0.5
+  soundFXObject: {fileID: 5278472167116267419, guid: cdec8d69ae14a48c7a57efc8162d59cb, type: 3}
+  soundEffects: []
+  backgroundMusics:
+  - {fileID: 8300000, guid: c3f6a147c479d4c5d901a18f01d856fa, type: 3}
+  - {fileID: 8300000, guid: 9edda411b42b4421987c6e0b6eb94ca0, type: 3}
+  - {fileID: 8300000, guid: 93f2d76654be643d5b919a07e1d8ad2d, type: 3}
+  - {fileID: 8300000, guid: 90140f79344a34102ad45b187365d3e1, type: 3}
+  - {fileID: 8300000, guid: 360e8e103d1554456b77e78b89a1ad36, type: 3}
+  - {fileID: 8300000, guid: b14e38b1a092843e495f0a59dcde3df5, type: 3}
+  loopPlaylist: 1
+--- !u!4 &2583284087115307617
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6682620488771169373}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.83759, y: -2.63217, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6682620488771169373
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2583284087115307617}
+  - component: {fileID: 1959867472751995392}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -6415,3 +6471,4 @@ SceneRoots:
   - {fileID: 565369641}
   - {fileID: 1590471174}
   - {fileID: 730616648}
+  - {fileID: 2583284087115307617}

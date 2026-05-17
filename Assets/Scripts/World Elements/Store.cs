@@ -25,12 +25,14 @@ public class Store : NPC
     private CanvasGroup _canvasGroup, _feedbackCanvasGroup;
     private Coroutine _fadeCoroutine, _feedbackCoroutine;
     private bool _hasTalkedOnce;
+    private PlayerAttackController _playerAttackController;
 
     private void Awake() 
     {
         _canvasGroup = storePanel.GetComponent<CanvasGroup>();
         _feedbackCanvasGroup = feedbackPanel.GetComponent<CanvasGroup>();
         feedbackPanel.SetActive(false);
+        SavePlayerAttackController();
     }
 
     public void ShowFeedback(string message)
@@ -55,6 +57,7 @@ public class Store : NPC
         {
             if (Time.time < _lastInteractionTime + interactionCooldown) return;
             _lastInteractionTime = Time.time;
+            SoundManager.Instance.PlayMusicByIndex(2);
             ToggleStore();
         }
     }
@@ -74,6 +77,12 @@ public class Store : NPC
         {
             storePanel.SetActive(true);
             RefreshUI();
+            SetPlayerAttackEnabled(false);
+        }
+        else
+        {
+            SoundManager.Instance?.PlayMusicByIndex(1);
+            SetPlayerAttackEnabled(true);
         }
         
         PauseManager.Instance.TogglePause();
@@ -112,5 +121,18 @@ public class Store : NPC
 
         cg.alpha = to;
         onComplete?.Invoke();
+    }
+
+    private void SetPlayerAttackEnabled(bool isEnabled)
+    {
+        SavePlayerAttackController();
+        _playerAttackController.enabled = isEnabled;
+    }
+
+    private void SavePlayerAttackController()
+    {
+        var player = GameObject.FindGameObjectWithTag("Player");
+        if (player)
+            _playerAttackController = player.GetComponentInChildren<PlayerAttackController>();
     }
 }

@@ -24,6 +24,7 @@ public class BattleTransitionManager : MonoBehaviour
     private CanvasGroup _transitionCanvasGroup;
     private Transform _player, _enemy;
     private Rigidbody2D _playerRb, _enemyRb;
+    private PlayerAttackController _playerAttackController;
     private Vector3 _playerOriginalPos, _enemyOriginalPos;
     private bool _playerRbSimulated, _enemyRbSimulated, _enemyFlickerDone;
     
@@ -51,10 +52,13 @@ public class BattleTransitionManager : MonoBehaviour
 
         _playerRb = _player.GetComponent<Rigidbody2D>();
         _enemyRb = _enemy.GetComponent<Rigidbody2D>();
+        _playerAttackController = _player.GetComponentInChildren<PlayerAttackController>();
     }
 
     public IEnumerator ExecuteBattleEntry()
     {
+        SoundManager.Instance?.PlayMusicByIndex(4);
+        SetPlayerAttackEnabled(false);
         SetPhysicsSimulation(false);
         SetBattleOrientation();
         cameraShake.TriggerShake();
@@ -102,6 +106,8 @@ public class BattleTransitionManager : MonoBehaviour
         
         transitionPanel.SetActive(false);
         battleCameraManager.SwitchToWorldCam();
+        SoundManager.Instance?.PlayMusicByIndex(1);
+        SetPlayerAttackEnabled(true);
 
         if (playerWon && !_enemyFlickerDone)
             yield return new WaitUntil(() => _enemyFlickerDone);
@@ -112,6 +118,13 @@ public class BattleTransitionManager : MonoBehaviour
         _enemy = null;
         _playerRb = null;
         _enemyRb = null;
+        _playerAttackController = null;
+    }
+
+    private void SetPlayerAttackEnabled(bool isEnabled)
+    {
+        if (_playerAttackController == null) return;
+        _playerAttackController.enabled = isEnabled;
     }
 
     private IEnumerator FlickerAndHideEnemy(float duration, bool hideAtEnd)

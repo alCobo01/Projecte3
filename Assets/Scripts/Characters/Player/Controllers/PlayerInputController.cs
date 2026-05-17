@@ -26,7 +26,11 @@ public class PlayerInputController : MonoBehaviour, IPlayerActions
 
     // Methods
     public void OnMove(InputAction.CallbackContext context) => OnMoveEvent?.Invoke(context.ReadValue<Vector2>());
-    public void OnAttack(InputAction.CallbackContext context) => OnAttackEvent?.Invoke();
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        OnAttackEvent?.Invoke();
+    }
     public void OnInteract(InputAction.CallbackContext context) => OnInteractEvent?.Invoke();
     public void OnDash(InputAction.CallbackContext context) => OnDashEvent?.Invoke();
     public void OnOpenInventory(InputAction.CallbackContext context) => OnOpenInventoryEvent?.Invoke();
