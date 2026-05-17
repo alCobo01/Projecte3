@@ -153,6 +153,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   rayLength: 0.35
+  nearGroundThreshold: 0.5
 --- !u!114 &4002929518274499254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,4 +405,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbcbf82c07534863b74018d641531ecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDashController
-  landingDashCooldown: 0.5
+  dashCooldown: 2

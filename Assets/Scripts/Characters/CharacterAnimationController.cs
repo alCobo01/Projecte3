@@ -19,6 +19,10 @@ public class CharacterAnimationController : MonoBehaviour
     private Rigidbody2D _rb;
     private GroundCheck _groundCheck;
     private bool _aboutToLandTriggered;
+    private float _airborneTime;
+
+    private const float MinAirTimeForLandAnticipation = 0.08f;
+    private const float AboutToLandMinFallSpeed = -0.15f;
 
     protected virtual void Awake()
     {
@@ -33,15 +37,27 @@ public class CharacterAnimationController : MonoBehaviour
         var verticalVelocity = _rb.linearVelocity.y;
         
         _animationBehaviour.SetFloat(HorizontalSpeedHash, speed);
-        _animationBehaviour.SetFloat(VerticalSpeedHash, verticalVelocity);
+        _animationBehaviour.SetFloatImmediate(VerticalSpeedHash, verticalVelocity);
 
         if (!_groundCheck) return;
         
         var isGrounded = _groundCheck.IsGrounded;
         _animationBehaviour.SetBool(IsGroundedHash, isGrounded);
         
-        if (isGrounded) _aboutToLandTriggered = false;
-        if (verticalVelocity <= 0f && _groundCheck.IsNearGround && !isGrounded)
+        if (isGrounded)
+        {
+            _aboutToLandTriggered = false;
+            _airborneTime = 0f;
+        }
+        else
+        {
+            _airborneTime += Time.deltaTime;
+        }
+
+        if (verticalVelocity <= AboutToLandMinFallSpeed &&
+            _groundCheck.IsNearGround &&
+            !isGrounded &&
+            _airborneTime >= MinAirTimeForLandAnticipation)
         {
             if (!_aboutToLandTriggered)
             {
@@ -59,6 +75,7 @@ public class CharacterAnimationController : MonoBehaviour
     {
         _animationBehaviour.Trigger(JumpHash);
         _aboutToLandTriggered = false;
+        _airborneTime = 0f;
     }
     
     public void TriggerDash() => _animationBehaviour.Trigger(DashHash);

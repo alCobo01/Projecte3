@@ -12,6 +12,7 @@ public class PlayerGlideController : MonoBehaviour
     private CharacterAnimationController _animController;
     private GlideBehaviour _glideBehaviour;
     private GroundCheck _groundCheck;
+    private bool _isGlideButtonHeld;
 
     private void Awake()
     {
@@ -29,9 +30,32 @@ public class PlayerGlideController : MonoBehaviour
     
     private void OnDisable() => _inputController.OnFlyEvent -= HandleGlide;
 
+    private void Update()
+    {
+        if (_groundCheck.IsGrounded)
+        {
+            SetGlideState(false);
+            return;
+        }
+
+        SetGlideState(CanGlide && _isGlideButtonHeld);
+    }
+
     private void HandleGlide(bool isButtonPressed)
     {
-        _animController.SetBool(isButtonPressed, IsGlidingHash);
-        _glideBehaviour.IsGliding = isButtonPressed && !_groundCheck.IsGrounded;
+        _isGlideButtonHeld = isButtonPressed;
+        if (_groundCheck.IsGrounded)
+        {
+            SetGlideState(false);
+            return;
+        }
+
+        SetGlideState(CanGlide && _isGlideButtonHeld);
+    }
+
+    private void SetGlideState(bool isGliding)
+    {
+        _animController.SetBool(isGliding, IsGlidingHash);
+        _glideBehaviour.IsGliding = isGliding;
     }
 }
