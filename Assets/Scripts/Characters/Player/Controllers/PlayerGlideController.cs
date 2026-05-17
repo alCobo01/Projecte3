@@ -4,16 +4,20 @@ using UnityEngine;
 [RequireComponent(typeof(GlideBehaviour))]
 public class PlayerGlideController : MonoBehaviour
 {
+    private static readonly int IsGlidingHash = Animator.StringToHash("IsGliding"); 
+    
     public bool CanGlide { get; set; }
     
     private PlayerInputController _inputController;
-    private GlideBehaviour glideBehaviour;
+    private CharacterAnimationController _animController;
+    private GlideBehaviour _glideBehaviour;
     private GroundCheck _groundCheck;
 
     private void Awake()
     {
         _inputController = GetComponent<PlayerInputController>();
-        glideBehaviour = GetComponent<GlideBehaviour>();
+        _animController = GetComponent<CharacterAnimationController>();
+        _glideBehaviour = GetComponent<GlideBehaviour>();
         _groundCheck = GetComponent<GroundCheck>();
     }
 
@@ -27,6 +31,7 @@ public class PlayerGlideController : MonoBehaviour
 
     private void HandleGlide(bool isButtonPressed)
     {
-        glideBehaviour.IsGliding = isButtonPressed && !_groundCheck.IsGrounded;
+        _animController.SetBool(isButtonPressed, IsGlidingHash);
+        _glideBehaviour.IsGliding = isButtonPressed && !_groundCheck.IsGrounded;
     }
 }

@@ -17,6 +17,7 @@ public class BattleManager : MonoBehaviour
     
     [Header("Durations")]
     [SerializeField] private float enemyTurnDelay = 1f;
+    [SerializeField] private float turnCadenceDelay = 0.35f;
     [SerializeField] private float lungeDuration = 0.25f;
     [SerializeField] private float returnDuration = 0.35f;
     
@@ -59,7 +60,7 @@ public class BattleManager : MonoBehaviour
         if (IsBattleRunning) return;
         if (playerData == null || enemies == null || PlayerStatsManager.Instance == null) return;
 
-        var enemyData = enemies.Where(e => e != null).ToArray();
+        var enemyData = enemies.Where(e => e).ToArray();
         if (enemyData.Length == 0) return;
 
         IsBattleRunning = true;
@@ -172,6 +173,8 @@ public class BattleManager : MonoBehaviour
             else yield return ExecuteEnemyAction(current);
 
             if (TryEndIfFinished()) yield break;
+            if (turnCadenceDelay > 0f)
+                yield return new WaitForSeconds(turnCadenceDelay);
         }
 
         ForceCleanupIfNeeded();
@@ -212,6 +215,8 @@ public class BattleManager : MonoBehaviour
                 player.Animator.TriggerAttack();
                 var before = CaptureHp();
                 ActionResolver.ResolveItem(player, item);
+                if (item.type == ItemType.Buff && item.boostedStat == StatType.Speed)
+                    _turnStack.Refresh(_allUnits.Where(u => !u.IsDead));
                 NotifyHpChanges(before);
                 EmitGroupHpDeltaMessages(player.Data.characterName, item.itemName, before);
                 OnBattleStateChanged?.Invoke();
@@ -319,7 +324,7 @@ public class BattleManager : MonoBehaviour
 
         if (playerWon)
         {
-            int coinsToReward = Random.Range(minCoinReward, maxCoinReward + 1);
+            var coinsToReward = Random.Range(minCoinReward, maxCoinReward + 1);
             PlayerStatsManager.Instance.AddCoins(coinsToReward);
             OnCombatMessage?.Invoke($"You won the battle and found {coinsToReward} coins!");
         }

@@ -12,10 +12,13 @@ public class CharacterAnimationController : MonoBehaviour
     private static readonly int HurtHash = Animator.StringToHash("Hurt");
     private static readonly int IsRunningHash = Animator.StringToHash("IsRunning");
     private static readonly int IsBattleHash = Animator.StringToHash("IsBattle");
+    private static readonly int AboutToLandHash = Animator.StringToHash("AboutToLand");
+    private static readonly int IsJumpingHash = Animator.StringToHash("IsJumping");
     
     private AnimationBehaviour _animationBehaviour;
     private Rigidbody2D _rb;
     private GroundCheck _groundCheck;
+    private bool _aboutToLandTriggered;
 
     protected virtual void Awake()
     {
@@ -27,19 +30,42 @@ public class CharacterAnimationController : MonoBehaviour
     protected virtual void Update()
     {
         var speed = Mathf.Abs(_rb.linearVelocity.x);
-        _animationBehaviour.SetFloat(HorizontalSpeedHash, speed);
-        _animationBehaviour.SetFloat(VerticalSpeedHash, _rb.linearVelocity.y);
+        var verticalVelocity = _rb.linearVelocity.y;
         
-        if (_groundCheck)
-            _animationBehaviour.SetBool(IsGroundedHash, _groundCheck.IsGrounded);
+        _animationBehaviour.SetFloat(HorizontalSpeedHash, speed);
+        _animationBehaviour.SetFloat(VerticalSpeedHash, verticalVelocity);
+
+        if (!_groundCheck) return;
+        
+        var isGrounded = _groundCheck.IsGrounded;
+        _animationBehaviour.SetBool(IsGroundedHash, isGrounded);
+        
+        if (isGrounded) _aboutToLandTriggered = false;
+        if (verticalVelocity <= 0f && _groundCheck.IsNearGround && !isGrounded)
+        {
+            if (!_aboutToLandTriggered)
+            {
+                _animationBehaviour.Trigger(AboutToLandHash);
+                _aboutToLandTriggered = true;
+            }
+        }
+        
+        if (verticalVelocity > 0.5f) _aboutToLandTriggered = false;
     }
     
     public void SetWalking(float speed) => _animationBehaviour.SetFloat(HorizontalSpeedHash, speed);
-    public void TriggerJump() => _animationBehaviour.Trigger(JumpHash);
+    
+    public void TriggerJump() 
+    {
+        _animationBehaviour.Trigger(JumpHash);
+        _aboutToLandTriggered = false;
+    }
+    
     public void TriggerDash() => _animationBehaviour.Trigger(DashHash);
     public void TriggerAttack() => _animationBehaviour.Trigger(AttackHash);
     public void TriggerHurt() => _animationBehaviour.Trigger(HurtHash);
     public void SetRunning(bool isRunning) => _animationBehaviour.SetBool(IsRunningHash, isRunning);
     public void SetBattle(bool isBattle) => _animationBehaviour.SetBool(IsBattleHash, isBattle);
+    public void SetIsGrounded(bool isGrounded) => _animationBehaviour.SetBool(IsGroundedHash, isGrounded);    public void SetBool(bool value, int hash) => _animationBehaviour.SetBool(hash, value);
     public void TriggerHash(int hash) => _animationBehaviour.Trigger(hash);
 }

@@ -159,13 +159,9 @@ public class CheckpointManager : MonoBehaviour
 
             // Restore Skills
             stats.CharacterData.skills.Clear();
-            foreach (var skillName in data.unlockedSkills)
+            foreach (var asset in data.unlockedSkills.Select(skillName => skillDatabase.Find(s => s.skillName == skillName)).Where(asset => asset != null))
             {
-                SkillData asset = skillDatabase.Find(s => s.skillName == skillName);
-                if (asset != null)
-                {
-                    stats.CharacterData.skills.Add(asset);
-                }
+                stats.CharacterData.skills.Add(asset);
             }
             
             UpdateCheckpointsState();
