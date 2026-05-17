@@ -15,6 +15,9 @@ public class ScenePortal : MonoBehaviour
         if (_used) return;
         if (!other.CompareTag("Player")) return;
 
+        var movement = other.GetComponent<PlayerMovementController>();
+        if (movement != null) movement.CanMove = false;
+
         _used = true;
         Debug.Log($"Yendo a escena: '{targetScene}' spawnId: '{targetSpawnPointId}'");
         SceneTransitionManager.Instance.GoToScene(targetScene, targetSpawnPointId);

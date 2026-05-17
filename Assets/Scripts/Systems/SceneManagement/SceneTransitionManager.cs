@@ -48,8 +48,6 @@ public class SceneTransitionManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log($"OnSceneLoaded: {scene.name} | pendingSpawnPointId: '{pendingSpawnPointId}'");
-
         if (string.IsNullOrEmpty(pendingSpawnPointId)) return;
 
         Vector3 spawnPos = Vector3.zero;
@@ -57,7 +55,6 @@ public class SceneTransitionManager : MonoBehaviour
 
         foreach (var sp in Object.FindObjectsByType<SpawnPoint>(FindObjectsSortMode.None))
         {
-            Debug.Log($"SpawnPoint encontrado: '{sp.spawnPointId}'");
             if (sp.spawnPointId == pendingSpawnPointId)
             {
                 spawnPos = sp.transform.position;
@@ -66,21 +63,24 @@ public class SceneTransitionManager : MonoBehaviour
             }
         }
 
-        if (!found)
-            Debug.LogWarning($"SpawnPoint '{pendingSpawnPointId}' no encontrado en {scene.name}");
-
         GameObject existing = GameObject.FindGameObjectWithTag("Player");
         if (existing != null) Destroy(existing);
 
         if (playerPrefab != null)
         {
-            Debug.Log($"Instanciando Player en {spawnPos}");
             GameObject player = Instantiate(playerPrefab, spawnPos, Quaternion.identity);
-            CameraFollowHelper.AssignPlayerToCamera(player, this);
-        }
-        else
-        {
-            Debug.LogError("playerPrefab es null en SceneTransitionManager");
+            
+            var vcams = Object.FindObjectsByType<Unity.Cinemachine.CinemachineCamera>(FindObjectsSortMode.None);
+            foreach (var vcam in vcams)
+            {
+                if (vcam.name == "ExplorationCamera")
+                {
+                    vcam.Follow = player.transform;
+                    vcam.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, vcam.transform.position.z);
+                    vcam.OnTargetObjectWarped(player.transform, player.transform.position - vcam.transform.position);
+                    break;
+                }
+            }
         }
 
         pendingSpawnPointId = null;
