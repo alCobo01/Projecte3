@@ -5,6 +5,7 @@ public class Checkpoint : MonoBehaviour, IInteractable
     [Header("Settings")]
     public string checkpointId;
     public string displayName;
+    public string sceneName; // Added to handle cross-scene teleportation
     public Transform spawnPoint;
 
     [Header("Visuals")]
@@ -26,6 +27,21 @@ public class Checkpoint : MonoBehaviour, IInteractable
     private void Awake()
     {
         if (spawnPoint == null) spawnPoint = transform;
+        
+        // Auto-assign scene name if empty
+        if (string.IsNullOrEmpty(sceneName))
+        {
+            sceneName = gameObject.scene.name;
+        }
+    }
+
+    private void OnValidate()
+    {
+        // Helpful for the editor
+        if (string.IsNullOrEmpty(sceneName) && gameObject.scene.name != null)
+        {
+            sceneName = gameObject.scene.name;
+        }
     }
 
     private void Start()

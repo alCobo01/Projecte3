@@ -16,6 +16,7 @@ public class CheckpointManager : MonoBehaviour
     public List<Checkpoint> allCheckpoints = new();
     public HashSet<string> discoveredIds = new();
     public string lastCheckpointId;
+    public string lastSceneName; // Track scene of last checkpoint
 
     private void Awake()
     {
@@ -66,6 +67,7 @@ public class CheckpointManager : MonoBehaviour
         }
 
         lastCheckpointId = checkpoint.checkpointId;
+        lastSceneName = checkpoint.sceneName; // Update current scene name
     }
 
     private void UpdateCheckpointsState()
@@ -104,6 +106,7 @@ public class CheckpointManager : MonoBehaviour
 
         // World Data
         data.lastCheckpointId = lastCheckpointId;
+        data.lastSceneName = lastSceneName;
         data.discoveredCheckpointIds = discoveredIds.ToList();
         
         // Position
@@ -136,6 +139,7 @@ public class CheckpointManager : MonoBehaviour
         {
             discoveredIds = new HashSet<string>(data.discoveredCheckpointIds);
             lastCheckpointId = data.lastCheckpointId;
+            lastSceneName = data.lastSceneName;
 
             // Restore Player Stats
             var stats = PlayerStatsManager.Instance;
@@ -168,7 +172,16 @@ public class CheckpointManager : MonoBehaviour
             
             if (!string.IsNullOrEmpty(lastCheckpointId))
             {
-                ExecuteTeleport(lastCheckpointId);
+                // Use a modified teleport that handles scenes
+                yield return StartCoroutine(TeleportInternal(lastCheckpointId, lastSceneName));
+            }
+
+            // Re-enable player collider in case it was disabled (e.g., by Killer script)
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+            {
+                Collider2D col = player.GetComponent<Collider2D>();
+                if (col != null) col.enabled = true;
             }
         }
 
@@ -178,20 +191,41 @@ public class CheckpointManager : MonoBehaviour
 
     public void TeleportToCheckpoint(string id)
     {
-        StartCoroutine(TeleportRoutine(id));
+        // For menu teleportation, we might not have the scene name immediately.
+        // We'd need a database of all checkpoints in the project.
+        // For now, assume it's in the current scene if not specified, 
+        // OR pass the scene name from the UI element.
+        StartCoroutine(TeleportRoutine(id, "")); 
     }
 
-    private IEnumerator TeleportRoutine(string id)
+    public void TeleportToCheckpoint(string id, string sceneName)
+    {
+        StartCoroutine(TeleportRoutine(id, sceneName));
+    }
+
+    private IEnumerator TeleportRoutine(string id, string sceneName)
     {
         if (ScreenFader.Instance != null)
             yield return ScreenFader.Instance.FadeOut();
 
-        yield return new WaitForSeconds(0.5f); // 0.5s delay before teleporting
+        yield return new WaitForSeconds(0.5f); 
 
-        ExecuteTeleport(id);
+        yield return StartCoroutine(TeleportInternal(id, sceneName));
 
         if (ScreenFader.Instance != null)
             yield return ScreenFader.Instance.FadeIn();
+    }
+
+    private IEnumerator TeleportInternal(string id, string sceneName)
+    {
+        // If sceneName is specified and different from current, load it
+        if (!string.IsNullOrEmpty(sceneName) && SceneManager.GetActiveScene().name != sceneName)
+        {
+            yield return SceneManager.LoadSceneAsync(sceneName);
+            // After scene load, allCheckpoints will be updated via OnSceneLoaded
+        }
+
+        ExecuteTeleport(id);
     }
 
     private void ExecuteTeleport(string id)
@@ -208,7 +242,7 @@ public class CheckpointManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"Checkpoint {id} not found in this scene!");
+            Debug.LogWarning($"Checkpoint {id} not found in scene {SceneManager.GetActiveScene().name}!");
         }
     }
 
@@ -216,7 +250,7 @@ public class CheckpointManager : MonoBehaviour
     {
         if (!string.IsNullOrEmpty(lastCheckpointId))
         {
-            TeleportToCheckpoint(lastCheckpointId);
+            TeleportToCheckpoint(lastCheckpointId, lastSceneName);
         }
     }
 
