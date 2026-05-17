@@ -132,15 +132,10 @@ public class CheckpointManager : MonoBehaviour
         if (playerPrefab != null)
         {
             GameObject player = Instantiate(playerPrefab, target.GetSpawnPosition(), Quaternion.identity);
-            StartCoroutine(AssignCameraNextFrame(player)); // ← igual aquí
+            CameraFollowHelper.AssignPlayerToCamera(player, this); 
         }
     }
 
-    private IEnumerator AssignCameraNextFrame(GameObject player)
-    {
-        yield return null;
-        CameraFollowHelper.AssignPlayerToCamera(player);
-    }
 
     public void RespawnAtLastCheckpoint()
     {
@@ -154,6 +149,8 @@ public class CheckpointManager : MonoBehaviour
     }
 
     public bool HasCheckpoint() => !string.IsNullOrEmpty(lastCheckpointId);
+
+
 
     public void SaveGame()
     {
@@ -245,6 +242,7 @@ public class CheckpointManager : MonoBehaviour
                 stats.CharacterData.skills.Add(asset);
         }
 
+        // TeleportRoutine ya incluye FadeIn al final
         if (!string.IsNullOrEmpty(lastCheckpointId))
             yield return StartCoroutine(TeleportRoutine(lastCheckpointId, lastCheckpointScene));
         else if (ScreenFader.Instance != null)

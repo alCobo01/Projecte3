@@ -10,7 +10,7 @@ public class PlayerSpawner : MonoBehaviour
         if (GameObject.FindGameObjectWithTag("Player") == null)
         {
             GameObject player = Instantiate(playerPrefab, spawnPoint.position, Quaternion.identity);
-            CameraFollowHelper.AssignPlayerToCamera(player); 
+            CameraFollowHelper.AssignPlayerToCamera(player, this);
         }
     }
 }

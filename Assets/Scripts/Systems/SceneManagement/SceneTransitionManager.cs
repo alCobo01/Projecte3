@@ -42,9 +42,8 @@ public class SceneTransitionManager : MonoBehaviour
         if (ScreenFader.Instance != null)
             yield return ScreenFader.Instance.FadeOut();
 
-        Debug.Log("Cargando escena...");
-        SceneManager.LoadScene(sceneName); 
-        Debug.Log("Escena cargada");
+        yield return SceneManager.LoadSceneAsync(sceneName);
+        // OnSceneLoaded se encarga del resto
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -71,26 +70,22 @@ public class SceneTransitionManager : MonoBehaviour
             Debug.LogWarning($"SpawnPoint '{pendingSpawnPointId}' no encontrado en {scene.name}");
 
         GameObject existing = GameObject.FindGameObjectWithTag("Player");
-        Debug.Log($"Player existente antes de instanciar: {existing}");
         if (existing != null) Destroy(existing);
 
-        Debug.Log($"playerPrefab: {playerPrefab}");
         if (playerPrefab != null)
         {
+            Debug.Log($"Instanciando Player en {spawnPos}");
             GameObject player = Instantiate(playerPrefab, spawnPos, Quaternion.identity);
-            Debug.Log($"Player instanciado en {spawnPos}");
-            StartCoroutine(AssignCameraNextFrame(player));
+            CameraFollowHelper.AssignPlayerToCamera(player, this);
+        }
+        else
+        {
+            Debug.LogError("playerPrefab es null en SceneTransitionManager");
         }
 
         pendingSpawnPointId = null;
 
         if (ScreenFader.Instance != null)
             StartCoroutine(ScreenFader.Instance.FadeIn());
-    }
-
-    private IEnumerator AssignCameraNextFrame(GameObject player)
-    {
-        yield return null; // Espera un frame a que la escena termine de inicializarse
-        CameraFollowHelper.AssignPlayerToCamera(player);
     }
 }
