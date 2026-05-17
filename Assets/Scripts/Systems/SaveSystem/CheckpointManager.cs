@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -8,15 +8,18 @@ public class CheckpointManager : MonoBehaviour
 {
     public static CheckpointManager Instance { get; private set; }
 
-    [Header("Databases (Assets for loading)")]
+    [Header("Player")]
+    public GameObject playerPrefab;
+
+    [Header("Databases")]
     public List<ItemData> itemDatabase;
     public List<SkillData> skillDatabase;
 
-    [Header("Runtime Data")]
-    public List<Checkpoint> allCheckpoints = new();
+    private string lastCheckpointId;
+    private string lastCheckpointScene;
     public HashSet<string> discoveredIds = new();
-    public string lastCheckpointId;
-    public string lastSceneName; // Track scene of last checkpoint
+    private List<Checkpoint> sceneCheckpoints = new();
+    private Dictionary<string, string> checkpointSceneMap = new();
 
     private void Awake()
     {
@@ -24,174 +27,70 @@ public class CheckpointManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
         {
             Destroy(gameObject);
-            return;
         }
     }
 
-    private void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    private void OnDisable()
+    private void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        FindAllCheckpoints();
-        UpdateCheckpointsState();
-        
-        // Auto-teleport on load if we just loaded a save
-        // (This could be handled by a specific Menu-to-Game flow)
-    }
+        sceneCheckpoints = Object.FindObjectsByType<Checkpoint>(FindObjectsSortMode.None).ToList();
 
-    private void FindAllCheckpoints()
-    {
-        allCheckpoints = Object.FindObjectsByType<Checkpoint>(FindObjectsSortMode.None).ToList();
-    }
-
-    public void RegisterDiscovery(Checkpoint checkpoint)
-    {
-        bool isNew = !discoveredIds.Contains(checkpoint.checkpointId);
-        if (isNew)
+        foreach (var cp in sceneCheckpoints)
         {
-            discoveredIds.Add(checkpoint.checkpointId);
-            checkpoint.IsDiscovered = true;
-            Debug.Log($"Checkpoint {checkpoint.displayName} discovered!");
-        }
+            if (!string.IsNullOrEmpty(cp.checkpointId))
+                checkpointSceneMap[cp.checkpointId] = scene.name;
 
-        lastCheckpointId = checkpoint.checkpointId;
-        lastSceneName = checkpoint.sceneName; // Update current scene name
-    }
-
-    private void UpdateCheckpointsState()
-    {
-        foreach (var cp in allCheckpoints)
-        {
             cp.IsDiscovered = discoveredIds.Contains(cp.checkpointId);
         }
     }
 
-    [ContextMenu("Save Game")]
-    public void SaveGame()
+    // ─── Registro y descubrimiento ───────────────────────────────────────────
+
+    public void RegisterCheckpoint(Checkpoint checkpoint)
     {
-        SaveData data = new SaveData();
-        
-        // Player Stats
-        var stats = PlayerStatsManager.Instance;
-        data.currentHp = stats.currentHp;
-        data.currentSp = stats.currentSp;
-
-        // Inventory
-        foreach (var itemStack in stats.inventory)
-        {
-            data.inventory.Add(new SaveData.InventoryItemData 
-            { 
-                itemName = itemStack.item.itemName, 
-                quantity = itemStack.quantity 
-            });
-        }
-
-        // Skills
-        foreach (var skill in stats.CharacterData.skills)
-        {
-            data.unlockedSkills.Add(skill.skillName);
-        }
-
-        // World Data
-        data.lastCheckpointId = lastCheckpointId;
-        data.lastSceneName = lastSceneName;
-        data.discoveredCheckpointIds = discoveredIds.ToList();
-        
-        // Position
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
-        {
-            data.playerPosition[0] = player.transform.position.x;
-            data.playerPosition[1] = player.transform.position.y;
-            data.playerPosition[2] = player.transform.position.z;
-        }
-
-        SaveSystem.Save(data);
+        RegisterDiscovery(checkpoint);
     }
 
-    [ContextMenu("Load Game")]
-    public void LoadGame()
+    public void RegisterDiscovery(Checkpoint checkpoint)
     {
-        StartCoroutine(LoadGameRoutine());
-    }
-
-    private IEnumerator LoadGameRoutine()
-    {
-        if (ScreenFader.Instance != null)
-            yield return ScreenFader.Instance.FadeOut();
-
-        yield return new WaitForSeconds(0.5f); // 0.5s delay before loading
-
-        SaveData data = SaveSystem.Load();
-        if (data != null)
+        if (!discoveredIds.Contains(checkpoint.checkpointId))
         {
-            discoveredIds = new HashSet<string>(data.discoveredCheckpointIds);
-            lastCheckpointId = data.lastCheckpointId;
-            lastSceneName = data.lastSceneName;
-
-            // Restore Player Stats
-            var stats = PlayerStatsManager.Instance;
-            stats.currentHp = data.currentHp;
-            stats.currentSp = data.currentSp;
-
-            // Restore Inventory
-            stats.inventory.Clear();
-            foreach (var itemData in data.inventory)
-            {
-                ItemData asset = itemDatabase.Find(i => i.itemName == itemData.itemName);
-                if (asset != null)
-                {
-                    stats.inventory.Add(new ItemStack { item = asset, quantity = itemData.quantity });
-                }
-            }
-
-            // Restore Skills
-            stats.CharacterData.skills.Clear();
-            foreach (var asset in data.unlockedSkills.Select(skillName => skillDatabase.Find(s => s.skillName == skillName)).Where(asset => asset != null))
-            {
-                stats.CharacterData.skills.Add(asset);
-            }
-            
-            UpdateCheckpointsState();
-            
-            if (!string.IsNullOrEmpty(lastCheckpointId))
-            {
-                // Use a modified teleport that handles scenes
-                yield return StartCoroutine(TeleportInternal(lastCheckpointId, lastSceneName));
-            }
-
-            // Re-enable player collider in case it was disabled (e.g., by Killer script)
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            if (player != null)
-            {
-                Collider2D col = player.GetComponent<Collider2D>();
-                if (col != null) col.enabled = true;
-            }
+            discoveredIds.Add(checkpoint.checkpointId);
+            checkpoint.IsDiscovered = true;
         }
 
-        if (ScreenFader.Instance != null)
-            yield return ScreenFader.Instance.FadeIn();
+        lastCheckpointId = checkpoint.checkpointId;
+        lastCheckpointScene = checkpoint.sceneName;
+        checkpointSceneMap[checkpoint.checkpointId] = checkpoint.sceneName;
+
+        Debug.Log($"Checkpoint activado: {checkpoint.displayName}");
     }
+
+    public List<Checkpoint> GetDiscoveredCheckpoints()
+    {
+        return sceneCheckpoints.Where(c => c.IsDiscovered).ToList();
+    }
+
+    // ─── Teletransporte ──────────────────────────────────────────────────────
 
     public void TeleportToCheckpoint(string id)
     {
-        // For menu teleportation, we might not have the scene name immediately.
-        // We'd need a database of all checkpoints in the project.
-        // For now, assume it's in the current scene if not specified, 
-        // OR pass the scene name from the UI element.
-        StartCoroutine(TeleportRoutine(id, "")); 
+        if (!checkpointSceneMap.TryGetValue(id, out string sceneName))
+        {
+            Debug.LogWarning($"No se conoce la escena del checkpoint '{id}'. ¿Fue descubierto?");
+            return;
+        }
+
+        StartCoroutine(TeleportRoutine(id, sceneName));
     }
 
     public void TeleportToCheckpoint(string id, string sceneName)
@@ -204,57 +103,151 @@ public class CheckpointManager : MonoBehaviour
         if (ScreenFader.Instance != null)
             yield return ScreenFader.Instance.FadeOut();
 
-        yield return new WaitForSeconds(0.5f); 
+        if (SceneManager.GetActiveScene().name != sceneName)
+        {
+            yield return SceneManager.LoadSceneAsync(sceneName);
+            yield return null; // Espera a que OnSceneLoaded termine
+        }
 
-        yield return StartCoroutine(TeleportInternal(id, sceneName));
+        PlacePlayerAtCheckpoint(id);
 
         if (ScreenFader.Instance != null)
             yield return ScreenFader.Instance.FadeIn();
     }
 
-    private IEnumerator TeleportInternal(string id, string sceneName)
+    private void PlacePlayerAtCheckpoint(string id)
     {
-        // If sceneName is specified and different from current, load it
-        if (!string.IsNullOrEmpty(sceneName) && SceneManager.GetActiveScene().name != sceneName)
+        sceneCheckpoints = Object.FindObjectsByType<Checkpoint>(FindObjectsSortMode.None).ToList();
+
+        Checkpoint target = sceneCheckpoints.Find(c => c.checkpointId == id);
+        if (target == null)
         {
-            yield return SceneManager.LoadSceneAsync(sceneName);
-            // After scene load, allCheckpoints will be updated via OnSceneLoaded
+            Debug.LogWarning($"Checkpoint '{id}' no encontrado en la escena actual.");
+            return;
         }
 
-        ExecuteTeleport(id);
+        GameObject existing = GameObject.FindGameObjectWithTag("Player");
+        if (existing != null) Destroy(existing);
+
+        if (playerPrefab != null)
+        {
+            GameObject player = Instantiate(playerPrefab, target.GetSpawnPosition(), Quaternion.identity);
+            StartCoroutine(AssignCameraNextFrame(player)); // ← igual aquí
+        }
     }
 
-    private void ExecuteTeleport(string id)
+    private IEnumerator AssignCameraNextFrame(GameObject player)
     {
-        Checkpoint target = allCheckpoints.Find(c => c.checkpointId == id);
-        if (target != null)
+        yield return null;
+        CameraFollowHelper.AssignPlayerToCamera(player);
+    }
+
+    public void RespawnAtLastCheckpoint()
+    {
+        if (string.IsNullOrEmpty(lastCheckpointId))
         {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            if (player != null)
+            Debug.LogWarning("No hay checkpoint activado.");
+            return;
+        }
+
+        StartCoroutine(TeleportRoutine(lastCheckpointId, lastCheckpointScene));
+    }
+
+    public bool HasCheckpoint() => !string.IsNullOrEmpty(lastCheckpointId);
+
+    public void SaveGame()
+    {
+        SaveData data = new SaveData();
+
+        var stats = PlayerStatsManager.Instance;
+        data.currentHp = stats.currentHp;
+        data.currentSp = stats.currentSp;
+
+        foreach (var itemStack in stats.inventory)
+            data.inventory.Add(new SaveData.InventoryItemData
             {
-                player.transform.position = target.GetSpawnPosition();
-                Debug.Log($"Teleported to {target.displayName}");
-            }
-        }
-        else
+                itemName = itemStack.item.itemName,
+                quantity = itemStack.quantity
+            });
+
+        foreach (var skill in stats.CharacterData.skills)
+            data.unlockedSkills.Add(skill.skillName);
+
+        data.lastCheckpointId = lastCheckpointId;
+        data.lastSceneName = lastCheckpointScene;
+        data.discoveredCheckpointIds = discoveredIds.ToList();
+
+        data.checkpointSceneMap = checkpointSceneMap
+            .Select(kvp => new SaveData.CheckpointSceneEntry
+            {
+                checkpointId = kvp.Key,
+                sceneName = kvp.Value
+            }).ToList();
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
         {
-            Debug.LogWarning($"Checkpoint {id} not found in scene {SceneManager.GetActiveScene().name}!");
+            data.playerPosition[0] = player.transform.position.x;
+            data.playerPosition[1] = player.transform.position.y;
+            data.playerPosition[2] = player.transform.position.z;
         }
+
+        SaveSystem.Save(data);
+        Debug.Log("Partida guardada.");
     }
 
-    public void TeleportToLastCheckpoint()
+    public void LoadGame()
     {
+        StartCoroutine(LoadGameRoutine());
+    }
+
+    private IEnumerator LoadGameRoutine()
+    {
+        if (ScreenFader.Instance != null)
+            yield return ScreenFader.Instance.FadeOut();
+
+        yield return new WaitForSeconds(0.5f);
+
+        SaveData data = SaveSystem.Load();
+        if (data == null)
+        {
+            if (ScreenFader.Instance != null)
+                yield return ScreenFader.Instance.FadeIn();
+            yield break;
+        }
+
+        discoveredIds = new HashSet<string>(data.discoveredCheckpointIds);
+        lastCheckpointId = data.lastCheckpointId;
+        lastCheckpointScene = data.lastSceneName;
+
+        checkpointSceneMap.Clear();
+        if (data.checkpointSceneMap != null)
+            foreach (var entry in data.checkpointSceneMap)
+                checkpointSceneMap[entry.checkpointId] = entry.sceneName;
+
+        var stats = PlayerStatsManager.Instance;
+        stats.currentHp = data.currentHp;
+        stats.currentSp = data.currentSp;
+
+        stats.inventory.Clear();
+        foreach (var itemData in data.inventory)
+        {
+            ItemData asset = itemDatabase.Find(i => i.itemName == itemData.itemName);
+            if (asset != null)
+                stats.inventory.Add(new ItemStack { item = asset, quantity = itemData.quantity });
+        }
+
+        stats.CharacterData.skills.Clear();
+        foreach (var skillName in data.unlockedSkills)
+        {
+            SkillData asset = skillDatabase.Find(s => s.skillName == skillName);
+            if (asset != null)
+                stats.CharacterData.skills.Add(asset);
+        }
+
         if (!string.IsNullOrEmpty(lastCheckpointId))
-        {
-            TeleportToCheckpoint(lastCheckpointId, lastSceneName);
-        }
-    }
-
-    public List<Checkpoint> GetDiscoveredCheckpoints()
-    {
-        // This includes checkpoints from other scenes if they were discovered
-        // But we only have access to the ones currently in the scene through 'allCheckpoints'.
-        // For a full system, you might want a SO database of ALL checkpoints in the game.
-        return allCheckpoints.Where(c => c.IsDiscovered).ToList();
+            yield return StartCoroutine(TeleportRoutine(lastCheckpointId, lastCheckpointScene));
+        else if (ScreenFader.Instance != null)
+            yield return ScreenFader.Instance.FadeIn();
     }
 }
