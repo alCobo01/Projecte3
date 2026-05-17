@@ -11,6 +11,7 @@ public class BattleManager : MonoBehaviour
     public static BattleManager Instance { get; private set; }
     public bool IsBattleRunning { get; private set; }
     public BattleUnit PlayerUnit { get; private set; }
+    public int LastCoinReward { get; private set; }
 
     [Header("References")]
     [SerializeField] private BattleUI ui;
@@ -64,6 +65,7 @@ public class BattleManager : MonoBehaviour
         if (enemyData.Length == 0) return;
 
         IsBattleRunning = true;
+        LastCoinReward = 0;
         _endNotified = false;
         _round = 1;
         OnBattleStarted?.Invoke();
@@ -200,7 +202,7 @@ public class BattleManager : MonoBehaviour
             onSkill: (skill, target) =>
             {
                 if (!player.SpendSp(skill.spCost)) return;
-                player.Animator.TriggerAttack();
+                player.Animator.TriggerSpecialAttack();
                 StartCoroutine(PerformAttackMovement(player, target));
                 var before = CaptureHp();
                 ActionResolver.ResolveSkill(player, target, skill, enemies);
@@ -326,6 +328,7 @@ public class BattleManager : MonoBehaviour
         {
             var coinsToReward = Random.Range(minCoinReward, maxCoinReward + 1);
             PlayerStatsManager.Instance.AddCoins(coinsToReward);
+            LastCoinReward = coinsToReward;
             OnCombatMessage?.Invoke($"You won the battle and found {coinsToReward} coins!");
         }
 
