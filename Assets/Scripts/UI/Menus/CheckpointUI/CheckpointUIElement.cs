@@ -9,10 +9,10 @@ public class CheckpointUIElement : MonoBehaviour
     
     private string _checkpointId;
 
-    public void Setup(Checkpoint checkpoint)
+    public void Setup(CheckpointManager.DiscoveredCheckpointData checkpointData)
     {
-        _checkpointId = checkpoint.checkpointId;
-        nameText.text = checkpoint.displayName;
+        _checkpointId = checkpointData.id;
+        nameText.text = checkpointData.displayName;
         teleportButton.onClick.RemoveAllListeners();
         teleportButton.onClick.AddListener(OnTeleportClicked);
     }

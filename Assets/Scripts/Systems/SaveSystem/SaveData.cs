@@ -18,6 +18,14 @@ public class SaveData
     
     // Posición por si acaso (aunque los checkpoints suelen ser el punto de spawn)
     public float[] playerPosition = new float[3];
+    public List<CheckpointSceneEntry> checkpointSceneMap = new();
+
+    [System.Serializable]
+    public class CheckpointSceneEntry
+    {
+        public string checkpointId;
+        public string sceneName;
+    }
 
     [Serializable]
     public class InventoryItemData
