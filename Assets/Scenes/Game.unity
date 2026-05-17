@@ -45732,7 +45732,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BattleManager
   ui: {fileID: 6048116937281368235}
   enemyTurnDelay: 1
-  turnCadenceDelay: 0.5
+  turnCadenceDelay: 1
   lungeDuration: 0.25
   returnDuration: 0.5
   minCoinReward: 10
