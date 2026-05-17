@@ -9,6 +9,7 @@ public class CharacterAnimationController : MonoBehaviour
     private static readonly int JumpHash = Animator.StringToHash("Jump");
     private static readonly int DashHash = Animator.StringToHash("Dash");
     private static readonly int AttackHash = Animator.StringToHash("Attack");
+    private static readonly int SpecialAttackHash = Animator.StringToHash("SpecialAttack");
     private static readonly int HurtHash = Animator.StringToHash("Hurt");
     private static readonly int IsRunningHash = Animator.StringToHash("IsRunning");
     private static readonly int IsBattleHash = Animator.StringToHash("IsBattle");
@@ -19,6 +20,10 @@ public class CharacterAnimationController : MonoBehaviour
     private Rigidbody2D _rb;
     private GroundCheck _groundCheck;
     private bool _aboutToLandTriggered;
+    private float _airborneTime;
+
+    private const float MinAirTimeForLandAnticipation = 0.08f;
+    private const float AboutToLandMinFallSpeed = -0.15f;
 
     protected virtual void Awake()
     {
@@ -33,15 +38,27 @@ public class CharacterAnimationController : MonoBehaviour
         var verticalVelocity = _rb.linearVelocity.y;
         
         _animationBehaviour.SetFloat(HorizontalSpeedHash, speed);
-        _animationBehaviour.SetFloat(VerticalSpeedHash, verticalVelocity);
+        _animationBehaviour.SetFloatImmediate(VerticalSpeedHash, verticalVelocity);
 
         if (!_groundCheck) return;
         
         var isGrounded = _groundCheck.IsGrounded;
         _animationBehaviour.SetBool(IsGroundedHash, isGrounded);
         
-        if (isGrounded) _aboutToLandTriggered = false;
-        if (verticalVelocity <= 0f && _groundCheck.IsNearGround && !isGrounded)
+        if (isGrounded)
+        {
+            _aboutToLandTriggered = false;
+            _airborneTime = 0f;
+        }
+        else
+        {
+            _airborneTime += Time.deltaTime;
+        }
+
+        if (verticalVelocity <= AboutToLandMinFallSpeed &&
+            _groundCheck.IsNearGround &&
+            !isGrounded &&
+            _airborneTime >= MinAirTimeForLandAnticipation)
         {
             if (!_aboutToLandTriggered)
             {
@@ -59,10 +76,12 @@ public class CharacterAnimationController : MonoBehaviour
     {
         _animationBehaviour.Trigger(JumpHash);
         _aboutToLandTriggered = false;
+        _airborneTime = 0f;
     }
     
     public void TriggerDash() => _animationBehaviour.Trigger(DashHash);
     public void TriggerAttack() => _animationBehaviour.Trigger(AttackHash);
+    public void TriggerSpecialAttack() => _animationBehaviour.Trigger(SpecialAttackHash);
     public void TriggerHurt() => _animationBehaviour.Trigger(HurtHash);
     public void SetRunning(bool isRunning) => _animationBehaviour.SetBool(IsRunningHash, isRunning);
     public void SetBattle(bool isBattle) => _animationBehaviour.SetBool(IsBattleHash, isBattle);

@@ -312,7 +312,10 @@ public class BattleUI : MonoBehaviour
 
         ClearFeedback();
         StopFeedbackCoroutines();
-        ShowFeedback(playerWon ? "Victory!" : (_fleeSuccess ? "Fled successfully! Run" : "Defeat"), 3f, blockInput: false);
+        var victoryMessage = playerWon && _manager != null && _manager.LastCoinReward > 0
+            ? $"Victory! +{_manager.LastCoinReward} coins"
+            : "Victory!";
+        ShowFeedback(playerWon ? victoryMessage : (_fleeSuccess ? "Fled successfully! Run" : "Defeat"), 3f, blockInput: false);
         _fleeSuccess = false;
     }
 

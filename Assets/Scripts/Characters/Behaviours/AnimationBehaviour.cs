@@ -27,4 +27,9 @@ public class AnimationBehaviour : MonoBehaviour
     {
         if (_animator) _animator.SetFloat(parameterNameHash, value, 0.1f, Time.deltaTime);
     }
+
+    public void SetFloatImmediate(int parameterNameHash, float value)
+    {
+        if (_animator) _animator.SetFloat(parameterNameHash, value);
+    }
 }
