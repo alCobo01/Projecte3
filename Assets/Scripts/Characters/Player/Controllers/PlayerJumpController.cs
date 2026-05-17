@@ -55,7 +55,7 @@ public class PlayerJumpController : MonoBehaviour
         if (isPressed)
         {
             if (_jumpsRemaining <= 0) return;
-            _animController.TriggerJump();
+            _animController?.TriggerJump();
             _jumpBehaviour.Jump();
             _jumpsRemaining--;
         }

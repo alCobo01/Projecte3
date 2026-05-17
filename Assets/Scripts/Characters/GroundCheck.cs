@@ -8,7 +8,7 @@ public class GroundCheck : MonoBehaviour
     
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float rayLength = 0.2f;
-    [SerializeField] private float nearGroundThreshold = 1.5f;
+    [SerializeField] private float nearGroundThreshold = 2.25f;
 
     private void Update()
     {

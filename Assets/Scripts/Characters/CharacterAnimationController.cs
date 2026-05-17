@@ -37,20 +37,11 @@ public class CharacterAnimationController : MonoBehaviour
 
         if (!_groundCheck) return;
         
-        bool isGrounded = _groundCheck.IsGrounded;
+        var isGrounded = _groundCheck.IsGrounded;
         _animationBehaviour.SetBool(IsGroundedHash, isGrounded);
-
-        // Si tocamos el suelo, reseteamos todo el estado de aire
-        if (isGrounded)
-        {
-            _animationBehaviour.SetBool(IsJumpingHash, false);
-            _aboutToLandTriggered = false;
-        }
-
-        // AboutToLand: trigger predictivo. 
-        // Si estamos bajando (velocidad < -0.1) y detectamos suelo cerca, disparamos.
-        // Quitamos el umbral de -0.5 para que los saltos pequeños también lo activen.
-        if (verticalVelocity < -0.1f && _groundCheck.IsNearGround && !isGrounded)
+        
+        if (isGrounded) _aboutToLandTriggered = false;
+        if (verticalVelocity <= 0f && _groundCheck.IsNearGround && !isGrounded)
         {
             if (!_aboutToLandTriggered)
             {
@@ -59,20 +50,17 @@ public class CharacterAnimationController : MonoBehaviour
             }
         }
         
-        // Si por alguna razón empezamos a subir (Doble Salto) mientras el trigger estaba activo, lo reseteamos
-        if (verticalVelocity > 0.5f)
-        {
-            _aboutToLandTriggered = false;
-        }
+        if (verticalVelocity > 0.5f) _aboutToLandTriggered = false;
     }
     
     public void SetWalking(float speed) => _animationBehaviour.SetFloat(HorizontalSpeedHash, speed);
+    
     public void TriggerJump() 
     {
         _animationBehaviour.Trigger(JumpHash);
-        _animationBehaviour.SetBool(IsJumpingHash, true); // Marcamos que estamos saltando
         _aboutToLandTriggered = false;
     }
+    
     public void TriggerDash() => _animationBehaviour.Trigger(DashHash);
     public void TriggerAttack() => _animationBehaviour.Trigger(AttackHash);
     public void TriggerHurt() => _animationBehaviour.Trigger(HurtHash);

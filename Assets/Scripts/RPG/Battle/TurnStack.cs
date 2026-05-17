@@ -28,6 +28,12 @@ public class TurnStack
 
     public void Rebuild(IEnumerable<BattleUnit> livingUnits) => GenerateNextBatch(livingUnits);
     
+    public void Refresh(IEnumerable<BattleUnit> livingUnits)
+    {
+        _currentBatch.Clear();
+        GenerateNextBatch(livingUnits);
+    }
+    
     public BattleUnit PopCurrent() => _currentBatch.Count > 0 ? _currentBatch.Dequeue() : null;
 
     private void GenerateNextBatch(IEnumerable<BattleUnit> units)
@@ -68,8 +74,8 @@ public class TurnStack
                 
                 else if (pointsDict[unit] == pointsDict[readyUnit])
                 {
-                    // tiebreaker: higher base speed wins
-                    if (unit.Data.speed > readyUnit.Data.speed)
+                    // tiebreaker: higher effective speed wins
+                    if (unit.GetStat(StatType.Speed) > readyUnit.GetStat(StatType.Speed))
                         readyUnit = unit;
                 }
             }
@@ -78,7 +84,7 @@ public class TurnStack
 
             // If no one is ready, everyone gains points equal to their speed
             foreach (var unit in living)
-                pointsDict[unit] += Mathf.Max(1, unit.Data.speed);
+                pointsDict[unit] += Mathf.Max(1, unit.GetStat(StatType.Speed));
         }
 
         return living.FirstOrDefault();

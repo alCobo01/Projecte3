@@ -73,5 +73,4 @@ public class PlayerStatsManager : MonoBehaviour
         else
             currentCoins -= amount;
     }
-    
 }

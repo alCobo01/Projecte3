@@ -3,10 +3,13 @@ using UnityEngine;
 [RequireComponent(typeof(DashBehaviour))]
 public class PlayerDashController : MonoBehaviour
 {
+    private static readonly int DashEndHash = Animator.StringToHash("DashEnd");
+    
     public bool CanDash { get; set; }
     
     [SerializeField] private float dashCooldown = 2f;
-    
+
+    private CharacterAnimationController _animController;
     private PlayerInputController _inputController;
     private DashBehaviour _dashBehaviour;
     
@@ -16,6 +19,7 @@ public class PlayerDashController : MonoBehaviour
     
     private void Awake()
     {
+        _animController = GetComponent<CharacterAnimationController>();
         _inputController = GetComponent<PlayerInputController>();
         _dashBehaviour = GetComponent<DashBehaviour>();
     }
@@ -24,6 +28,7 @@ public class PlayerDashController : MonoBehaviour
     {
         _inputController.OnMoveEvent += UpdateMoveInput;
         _inputController.OnDashEvent += HandleDash;
+        _dashBehaviour.OnDashFinishedEvent += HandleDashFinished;
 
         CanDash = true;
     }
@@ -32,6 +37,7 @@ public class PlayerDashController : MonoBehaviour
     {
         _inputController.OnMoveEvent -= UpdateMoveInput;
         _inputController.OnDashEvent -= HandleDash;
+        _dashBehaviour.OnDashFinishedEvent -= HandleDashFinished;
     } 
     
     private void UpdateMoveInput(Vector2 moveInput)
@@ -48,7 +54,13 @@ public class PlayerDashController : MonoBehaviour
         var targetDirectionX = _currentMoveInput.x != 0 ? Mathf.Sign(_currentMoveInput.x) : _lastFacingDirectionX;
         var dashDirection = new Vector2(targetDirectionX, 0f);
 
+        _animController?.TriggerDash();
         _dashBehaviour.ExecuteDash(dashDirection);
         _lastDashTime = Time.time;
+    }
+
+    private void HandleDashFinished()
+    {
+        _animController?.TriggerHash(DashEndHash);
     }
 }

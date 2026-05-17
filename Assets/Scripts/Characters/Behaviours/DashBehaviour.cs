@@ -6,6 +6,7 @@ public class DashBehaviour : MonoBehaviour
 {
     public bool IsDashing { get; private set; }
     public event UnityAction OnDashEvent;
+    public event UnityAction OnDashFinishedEvent;
     
     [SerializeField] private float dashSpeed = 15f;
     [SerializeField] private float dashDuration = 0.2f;
@@ -36,5 +37,6 @@ public class DashBehaviour : MonoBehaviour
         _rb.linearVelocity = Vector2.zero;
         
         IsDashing = false;
+        OnDashFinishedEvent?.Invoke();
     }
 }

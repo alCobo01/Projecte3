@@ -1,8 +1,8 @@
+using System.Collections;
 using UnityEngine;
 
 public class BossBehaviour : MonoBehaviour
 {
-
     [Header("References")]
     private Animator bossAnimator;
     public GameObject mainVfxObject;
@@ -15,9 +15,8 @@ public class BossBehaviour : MonoBehaviour
 
     [Header("Settings")]
     public float vfxDuration = 4f;       
-
-
-    private bool activated = false;
+    
+    private bool _activated;
 
     private void Awake()
     {
@@ -35,14 +34,14 @@ public class BossBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (activated) return;
+        if (_activated) return;
 
         if (other.gameObject.CompareTag("Player") || other.gameObject.layer == 3)
         {
             playerInput = other.GetComponent<PlayerInputController>();
             playerMovement = other.GetComponent<PlayerMovementController>();
             playerBattleStarter = other.GetComponent<BattleStarter>();
-            activated = true;
+            _activated = true;
             ActivateBoss();
         }
     }
@@ -64,7 +63,7 @@ public class BossBehaviour : MonoBehaviour
         cameraShake.TriggerShake();
     }
 
-    private System.Collections.IEnumerator PlayVFX()
+    private IEnumerator PlayVFX()
     {
         // Delay before starting VFX sequence
         yield return new WaitForSeconds(2.2f);
