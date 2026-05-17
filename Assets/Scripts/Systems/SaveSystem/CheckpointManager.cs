@@ -20,6 +20,14 @@ public class CheckpointManager : MonoBehaviour
     public HashSet<string> discoveredIds = new();
     private List<Checkpoint> sceneCheckpoints = new();
     private Dictionary<string, string> checkpointSceneMap = new();
+    private Dictionary<string, string> checkpointNameMap = new();
+
+    public struct DiscoveredCheckpointData
+    {
+        public string id;
+        public string displayName;
+        public string sceneName;
+    }
 
     private void Awake()
     {
@@ -47,7 +55,14 @@ public class CheckpointManager : MonoBehaviour
         foreach (var cp in sceneCheckpoints)
         {
             if (!string.IsNullOrEmpty(cp.checkpointId))
-                checkpointSceneMap[cp.checkpointId] = scene.name;
+            {
+                checkpointSceneMap[cp.checkpointId] = cp.sceneName;
+                // Si ya lo descubrimos, guardamos el nombre por si acaso no lo teníamos
+                if (discoveredIds.Contains(cp.checkpointId))
+                {
+                    checkpointNameMap[cp.checkpointId] = cp.displayName;
+                }
+            }
 
             cp.IsDiscovered = discoveredIds.Contains(cp.checkpointId);
         }
@@ -71,13 +86,34 @@ public class CheckpointManager : MonoBehaviour
         lastCheckpointId = checkpoint.checkpointId;
         lastCheckpointScene = checkpoint.sceneName;
         checkpointSceneMap[checkpoint.checkpointId] = checkpoint.sceneName;
+        checkpointNameMap[checkpoint.checkpointId] = checkpoint.displayName;
 
         Debug.Log($"Checkpoint activado: {checkpoint.displayName}");
     }
 
-    public List<Checkpoint> GetDiscoveredCheckpoints()
+    public List<DiscoveredCheckpointData> GetDiscoveredCheckpointsData()
     {
-        return sceneCheckpoints.Where(c => c.IsDiscovered).ToList();
+        List<DiscoveredCheckpointData> data = new();
+        foreach (var id in discoveredIds)
+        {
+            if (checkpointSceneMap.TryGetValue(id, out string sceneName))
+            {
+                checkpointNameMap.TryGetValue(id, out string displayName);
+                data.Add(new DiscoveredCheckpointData 
+                { 
+                    id = id, 
+                    displayName = displayName ?? id, 
+                    sceneName = sceneName 
+                });
+            }
+        }
+        return data;
+    }
+
+    public List<Checkpoint> GetDiscoveredCheckpointsInScene()
+    {
+        var allInScene = Object.FindObjectsByType<Checkpoint>(FindObjectsSortMode.None);
+        return allInScene.Where(c => discoveredIds.Contains(c.checkpointId)).ToList();
     }
 
     // ─── Teletransporte ──────────────────────────────────────────────────────
@@ -90,17 +126,17 @@ public class CheckpointManager : MonoBehaviour
             return;
         }
 
-        StartCoroutine(TeleportRoutine(id, sceneName));
+        StartCoroutine(TeleportRoutine(id, sceneName, true));
     }
 
     public void TeleportToCheckpoint(string id, string sceneName)
     {
-        StartCoroutine(TeleportRoutine(id, sceneName));
+        StartCoroutine(TeleportRoutine(id, sceneName, true));
     }
 
-    private IEnumerator TeleportRoutine(string id, string sceneName)
+    private IEnumerator TeleportRoutine(string id, string sceneName, bool useFades)
     {
-        if (ScreenFader.Instance != null)
+        if (useFades && ScreenFader.Instance != null)
             yield return ScreenFader.Instance.FadeOut();
 
         if (SceneManager.GetActiveScene().name != sceneName)
@@ -111,15 +147,16 @@ public class CheckpointManager : MonoBehaviour
 
         PlacePlayerAtCheckpoint(id);
 
-        if (ScreenFader.Instance != null)
+        if (useFades && ScreenFader.Instance != null)
             yield return ScreenFader.Instance.FadeIn();
     }
 
     private void PlacePlayerAtCheckpoint(string id)
     {
-        sceneCheckpoints = Object.FindObjectsByType<Checkpoint>(FindObjectsSortMode.None).ToList();
+        // Re-buscamos en la nueva escena
+        var checkpointsInScene = Object.FindObjectsByType<Checkpoint>(FindObjectsSortMode.None).ToList();
 
-        Checkpoint target = sceneCheckpoints.Find(c => c.checkpointId == id);
+        Checkpoint target = checkpointsInScene.Find(c => c.checkpointId == id);
         if (target == null)
         {
             Debug.LogWarning($"Checkpoint '{id}' no encontrado en la escena actual.");
@@ -145,7 +182,7 @@ public class CheckpointManager : MonoBehaviour
             return;
         }
 
-        StartCoroutine(TeleportRoutine(lastCheckpointId, lastCheckpointScene));
+        StartCoroutine(TeleportRoutine(lastCheckpointId, lastCheckpointScene, true));
     }
 
     public bool HasCheckpoint() => !string.IsNullOrEmpty(lastCheckpointId);
@@ -242,10 +279,10 @@ public class CheckpointManager : MonoBehaviour
                 stats.CharacterData.skills.Add(asset);
         }
 
-        // TeleportRoutine ya incluye FadeIn al final
         if (!string.IsNullOrEmpty(lastCheckpointId))
-            yield return StartCoroutine(TeleportRoutine(lastCheckpointId, lastCheckpointScene));
-        else if (ScreenFader.Instance != null)
+            yield return StartCoroutine(TeleportRoutine(lastCheckpointId, lastCheckpointScene, false));
+
+        if (ScreenFader.Instance != null)
             yield return ScreenFader.Instance.FadeIn();
     }
 }

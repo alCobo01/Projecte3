@@ -23,7 +23,7 @@ public class CheckpointInteractionMenu : BaseMenu
         // Disable teleport if no checkpoints discovered
         if (teleportButton != null)
         {
-            teleportButton.interactable = CheckpointManager.Instance.GetDiscoveredCheckpoints().Count > 0;
+            teleportButton.interactable = CheckpointManager.Instance.discoveredIds.Count > 0;
         }
         
         Open();

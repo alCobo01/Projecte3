@@ -43,15 +43,15 @@ public class CheckpointMenu : BaseMenu
             Destroy(child.gameObject);
         }
 
-        // Obtener checkpoints descubiertos
-        List<Checkpoint> discovered = CheckpointManager.Instance.GetDiscoveredCheckpoints();
+        // Obtener checkpoints descubiertos (todos, no solo los de esta escena)
+        List<CheckpointManager.DiscoveredCheckpointData> discovered = CheckpointManager.Instance.GetDiscoveredCheckpointsData();
 
-        foreach (var cp in discovered)
+        foreach (var cpData in discovered)
         {
             GameObject go = Instantiate(buttonPrefab, container);
             if (go.TryGetComponent<CheckpointUIElement>(out var element))
             {
-                element.Setup(cp);
+                element.Setup(cpData);
             }
         }
     }

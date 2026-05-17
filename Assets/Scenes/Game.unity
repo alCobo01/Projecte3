@@ -2403,11 +2403,11 @@ Transform:
   m_GameObject: {fileID: 527289389}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.775, y: 3.286, z: 0}
+  m_LocalPosition: {x: -8.51199, y: 0.45763993, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 9087325000547316284}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &563631558
 GameObject:
@@ -6871,7 +6871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dfef0f7f94ce6f4fb9a4e8c5f9aea75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CheckpointInteractionMenu
-  teleportButton: {fileID: 0}
+  teleportButton: {fileID: 2062426897}
 --- !u!114 &835832488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9382,12 +9382,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1530939580}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.73699, y: -2.82836, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 9087325000547316284}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1530939582
 MonoBehaviour:
@@ -46690,8 +46690,6 @@ Transform:
   - {fileID: 9092285562903949906}
   - {fileID: 1396673652711078436}
   - {fileID: 6513380394054899774}
-  - {fileID: 1530939581}
-  - {fileID: 527289391}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &9092285562903949906
@@ -46827,3 +46825,5 @@ SceneRoots:
   - {fileID: 7305125215074963290}
   - {fileID: 1168390520}
   - {fileID: 1635122208}
+  - {fileID: 1530939581}
+  - {fileID: 527289391}
