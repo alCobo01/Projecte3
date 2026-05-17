@@ -47,6 +47,13 @@ public class BattleStarter : MonoBehaviour, IBattleStarter
         TryStartBattleWith(other.gameObject);
     } 
 
+    public void TryStartBattleWithTarget(IBattleStarter target)
+    {
+        var targetMb = target as MonoBehaviour;
+        if (targetMb == null) return;
+        TryStartBattleWith(targetMb.gameObject);
+    }
+
     private void TryStartBattleWith(GameObject other)
     {
         if (Time.time < _nextAllowedBattleTime) return;
