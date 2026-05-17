@@ -11,12 +11,14 @@ public class PlayerAttackController : MonoBehaviour
     
     private PlayerInputController _inputController;
     private CharacterAnimationController _animController;
+    private PlayerBattleController _battleController;
     private BattleStarter _battleStarter;
     
     private void Awake()
     {
         _inputController = GetComponent<PlayerInputController>();
         _animController = GetComponent<CharacterAnimationController>();
+        _battleController = GetComponent<PlayerBattleController>();
         _battleStarter = GetComponent<BattleStarter>();
         
         _inputController.OnAttackEvent += HandleAttack;
@@ -26,6 +28,7 @@ public class PlayerAttackController : MonoBehaviour
     
     private void HandleAttack()
     {
+        if (_battleController != null && !_battleController.CanAttack) return;
         _animController.TriggerAttack();
         TryStartBattle();
     }

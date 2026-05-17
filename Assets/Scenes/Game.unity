@@ -8196,7 +8196,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1168390517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9409,11 +9409,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 36d50131e25604671903b21ae4757c9c, type: 2}
   - {fileID: 11400000, guid: 21ed86d250921488e8784b9d8920bc76, type: 2}
   - {fileID: 11400000, guid: 91e95b9e348864770b574740c4aa69f9, type: 2}
-  allCheckpoints:
-  - {fileID: 2012393934}
-  - {fileID: 0}
-  lastCheckpointId: 
-  lastSceneName: 
 --- !u!1 &1541941506
 GameObject:
   m_ObjectHideFlags: 0
@@ -14263,7 +14258,7 @@ GameObject:
   - component: {fileID: 1567506782}
   - component: {fileID: 1567506784}
   m_Layer: 5
-  m_Name: Feedback Image
+  m_Name: Feedback Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30705,21 +30700,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!4 &115924354824821483
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2353256052472866693}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.73699, y: -2.82836, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &129497324625567148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31066,6 +31046,23 @@ GameObject:
   - component: {fileID: 5922961867146576324}
   m_Layer: 0
   m_Name: '[UI]'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &630568418181950084
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8621295410856467640}
+  - component: {fileID: 5714940771230739673}
+  m_Layer: 0
+  m_Name: SoundManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32098,23 +32095,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &2353256052472866693
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 115924354824821483}
-  - component: {fileID: 2690746612001421415}
-  m_Layer: 0
-  m_Name: SoundManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &2376251629206197518
 GameObject:
   m_ObjectHideFlags: 0
@@ -32242,24 +32222,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2690746612001421415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2353256052472866693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5be5b73d44214149971cebef292bda4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
-  sfxVolume: 1
-  musicVolume: 0.5
-  soundFXObject: {fileID: 5278472167116267419, guid: cdec8d69ae14a48c7a57efc8162d59cb, type: 3}
-  soundEffects: []
-  backgroundMusics: []
-  loopPlaylist: 1
 --- !u!114 &2712872220295788010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39592,6 +39554,30 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5714940771230739673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630568418181950084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be5b73d44214149971cebef292bda4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+  sfxVolume: 1
+  musicVolume: 0.5
+  soundFXObject: {fileID: 5278472167116267419, guid: cdec8d69ae14a48c7a57efc8162d59cb, type: 3}
+  soundEffects: []
+  backgroundMusics:
+  - {fileID: 8300000, guid: c3f6a147c479d4c5d901a18f01d856fa, type: 3}
+  - {fileID: 8300000, guid: 9edda411b42b4421987c6e0b6eb94ca0, type: 3}
+  - {fileID: 8300000, guid: 93f2d76654be643d5b919a07e1d8ad2d, type: 3}
+  - {fileID: 8300000, guid: 90140f79344a34102ad45b187365d3e1, type: 3}
+  - {fileID: 8300000, guid: 360e8e103d1554456b77e78b89a1ad36, type: 3}
+  - {fileID: 8300000, guid: b14e38b1a092843e495f0a59dcde3df5, type: 3}
+  loopPlaylist: 1
 --- !u!114 &5745390868757184994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46070,10 +46056,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4620599670675326875, guid: 417233b49c1f2c7428592785176da919, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 6581046736772420373, guid: 417233b49c1f2c7428592785176da919, type: 3}
       propertyPath: 'patrolPoints.Array.data[0]'
       value: 
@@ -46089,10 +46071,6 @@ PrefabInstance:
     - target: {fileID: 7931461823127551002, guid: 417233b49c1f2c7428592785176da919, type: 3}
       propertyPath: m_Name
       value: Golem
-      objectReference: {fileID: 0}
-    - target: {fileID: 7931461823127551002, guid: 417233b49c1f2c7428592785176da919, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -46553,6 +46531,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9119370624677877067}
   m_CullTransparentMesh: 1
+--- !u!4 &8621295410856467640
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630568418181950084}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.4739, y: -1.7633, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8706266371761351188
 GameObject:
   m_ObjectHideFlags: 0
@@ -46943,4 +46936,5 @@ SceneRoots:
   - {fileID: 1635122208}
   - {fileID: 1530939581}
   - {fileID: 527289391}
-  - {fileID: 115924354824821483}
+  - {fileID: 7707304206070380498}
+  - {fileID: 8621295410856467640}
