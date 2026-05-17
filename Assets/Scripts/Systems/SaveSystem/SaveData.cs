@@ -13,6 +13,7 @@ public class SaveData
 
     // Datos del Mundo/Checkpoints
     public string lastCheckpointId;
+    public string lastSceneName;
     public List<string> discoveredCheckpointIds = new();
     
     // Posición por si acaso (aunque los checkpoints suelen ser el punto de spawn)
