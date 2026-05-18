@@ -16,14 +16,17 @@ public class PlayerInteractionController : MonoBehaviour
     
     private void Awake()
     {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
+        Instance = this; // El nuevo jugador siempre toma el control
 
         _inputController = GetComponent<PlayerInputController>();
         _inputController.OnInteractEvent += HandleInteraction;
     }
     
-    private void OnDisable() => _inputController.OnInteractEvent -= HandleInteraction;
+    private void OnDestroy() 
+    {
+        if (Instance == this) Instance = null;
+        if (_inputController != null) _inputController.OnInteractEvent -= HandleInteraction;
+    }
 
     private void Update() => DetectInteractable();
     private void HandleInteraction() => _currentInteractable?.Interact();
@@ -44,19 +47,9 @@ public class PlayerInteractionController : MonoBehaviour
 
         if (newInteractable != _currentInteractable)
         {
-            if (_currentInteractable != null) 
-            {
-                Debug.Log($"Dejando de apuntar a: {_currentInteractable}");
-                OnInteractableUntargeted?.Invoke(_currentInteractable);
-            }
-
+            if (_currentInteractable != null) OnInteractableUntargeted?.Invoke(_currentInteractable);
             _currentInteractable = newInteractable;
-
-            if (_currentInteractable != null) 
-            {
-                Debug.Log($"Apuntando a: {_currentInteractable}");
-                OnInteractableTargeted?.Invoke(_currentInteractable);
-            }
+            if (_currentInteractable != null) OnInteractableTargeted?.Invoke(_currentInteractable);
         }
     }
     

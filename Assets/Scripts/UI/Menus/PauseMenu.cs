@@ -7,7 +7,7 @@ public class PauseMenu : BaseMenu
     private void OnEnable() => PlayerInputController.OnPauseMenuEvent += TogglePauseMenu;
     private void OnDisable() => PlayerInputController.OnPauseMenuEvent -= TogglePauseMenu;
 
-    private void TogglePauseMenu()
+    public void TogglePauseMenu()
     {
         var isActive = !pausePanel.activeSelf;
         pausePanel.SetActive(isActive);
