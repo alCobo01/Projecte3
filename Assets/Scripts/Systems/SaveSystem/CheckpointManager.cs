@@ -135,6 +135,8 @@ public class CheckpointManager : MonoBehaviour
 
     private IEnumerator TeleportRoutine(string id, string sceneName, bool useFades)
     {
+        if (PauseManager.Instance != null) PauseManager.Instance.SetInputLock(true);
+
         if (useFades && ScreenFader.Instance != null)
             yield return ScreenFader.Instance.FadeOut();
 
@@ -149,6 +151,8 @@ public class CheckpointManager : MonoBehaviour
 
         if (useFades && ScreenFader.Instance != null)
             yield return ScreenFader.Instance.FadeIn();
+
+        if (PauseManager.Instance != null) PauseManager.Instance.SetInputLock(false);
     }
 
     private void PlacePlayerAtCheckpoint(string id)
