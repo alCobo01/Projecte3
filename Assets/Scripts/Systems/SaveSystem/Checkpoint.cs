@@ -65,13 +65,15 @@ public class Checkpoint : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        // Marcamos como descubierto inmediatamente para que los visuales reaccionen
+        IsDiscovered = true; 
         StartCoroutine(DelayedInteract());
     }
 
     private System.Collections.IEnumerator DelayedInteract()
     {
         // Si quieres que algo pase justo al tocarlo, puedes lanzar un evento aquí
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.0f);
 
         if (CheckpointInteractionMenu.Instance != null)
         {
