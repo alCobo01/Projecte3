@@ -65,6 +65,14 @@ public class Checkpoint : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        StartCoroutine(DelayedInteract());
+    }
+
+    private System.Collections.IEnumerator DelayedInteract()
+    {
+        // Si quieres que algo pase justo al tocarlo, puedes lanzar un evento aquí
+        yield return new WaitForSeconds(0.5f);
+
         if (CheckpointInteractionMenu.Instance != null)
         {
             CheckpointInteractionMenu.Instance.Open(this);

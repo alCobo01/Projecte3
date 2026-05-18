@@ -1,15 +1,24 @@
+using System;
 using UnityEngine;
 
 public class PlayerInteractionController : MonoBehaviour
 {
+    public static PlayerInteractionController Instance { get; private set; }
+
     [SerializeField] private float interactionRadius = 1.5f;
     [SerializeField] private LayerMask interactionLayer = ~0;
     
     private PlayerInputController _inputController;
     private IInteractable _currentInteractable;
+
+    public event Action<IInteractable> OnInteractableTargeted;
+    public event Action<IInteractable> OnInteractableUntargeted;
     
     private void Awake()
     {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+
         _inputController = GetComponent<PlayerInputController>();
         _inputController.OnInteractEvent += HandleInteraction;
     }
@@ -23,12 +32,31 @@ public class PlayerInteractionController : MonoBehaviour
         Vector2 origin = transform.position;
         var hits = Physics2D.OverlapCircleAll(origin, interactionRadius, interactionLayer);
 
-        _currentInteractable = null;
+        IInteractable newInteractable = null;
         foreach (var hit in hits)
         {
-            if (!hit.TryGetComponent(out IInteractable interactable)) continue;
-            _currentInteractable = interactable;
-            break;
+            if (hit.TryGetComponent(out IInteractable interactable))
+            {
+                newInteractable = interactable;
+                break;
+            }
+        }
+
+        if (newInteractable != _currentInteractable)
+        {
+            if (_currentInteractable != null) 
+            {
+                Debug.Log($"Dejando de apuntar a: {_currentInteractable}");
+                OnInteractableUntargeted?.Invoke(_currentInteractable);
+            }
+
+            _currentInteractable = newInteractable;
+
+            if (_currentInteractable != null) 
+            {
+                Debug.Log($"Apuntando a: {_currentInteractable}");
+                OnInteractableTargeted?.Invoke(_currentInteractable);
+            }
         }
     }
     
