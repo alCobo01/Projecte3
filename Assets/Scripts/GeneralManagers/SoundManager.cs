@@ -10,6 +10,7 @@ public class SoundManager : MonoBehaviour
     [Header("Volume")]
     [Range(0f, 1f)] public float sfxVolume = 1f;
     [Range(0f, 1f)] public float musicVolume = 0.5f;
+    [Range(0.5f, 2f)] public float musicPitch = 1f;
 
     [Header("SFX Prefab")]
     [Tooltip("Prefab con AudioSource configurado. Si es null se crea uno básico.")]
@@ -50,6 +51,8 @@ public class SoundManager : MonoBehaviour
         _musicSource.loop = true;
         _musicSource.playOnAwake = false;
         _musicSource.volume = musicVolume;
+        musicPitch = Mathf.Clamp(musicPitch, 0.5f, 2f);
+        _musicSource.pitch = musicPitch;
         _musicSource.spatialBlend = 0f;
 
         foreach (var sfx in soundEffects)
@@ -149,17 +152,30 @@ public class SoundManager : MonoBehaviour
     {
         _musicSource.clip = clip;
         _musicSource.volume = musicVolume;
+        musicPitch = Mathf.Clamp(musicPitch, 0.5f, 2f);
+        _musicSource.pitch = musicPitch;
         _musicSource.Play();
     }
 
     public void StopMusic() => _musicSource.Stop();
     public void PauseMusic() => _musicSource.Pause();
-    public void ResumeMusic() => _musicSource.UnPause();
+    public void ResumeMusic()
+    {
+        musicPitch = Mathf.Clamp(musicPitch, 0.5f, 2f);
+        _musicSource.pitch = musicPitch;
+        _musicSource.UnPause();
+    }
 
     public void SetMusicVolume(float value)
     {
         musicVolume = Mathf.Clamp01(value);
         _musicSource.volume = musicVolume;
+    }
+
+    public void SetMusicPitch(float value)
+    {
+        musicPitch = Mathf.Clamp(value, 0.5f, 2f);
+        _musicSource.pitch = musicPitch;
     }
 
     public void SetSFXVolume(float value) => sfxVolume = Mathf.Clamp01(value);

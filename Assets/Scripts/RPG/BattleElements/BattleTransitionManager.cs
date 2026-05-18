@@ -18,6 +18,8 @@ public class BattleTransitionManager : MonoBehaviour
     [SerializeField] private float enemyDefeatFlickerDuration = 0.6f;
     [SerializeField] private float enemyFleeFlickerDuration = 1.2f;
     [SerializeField] private float enemyDefeatFlickerInterval = 0.08f;
+    [SerializeField] private int regularBattleMusicIndex = 3;
+    [SerializeField] private int bossBattleMusicIndex = 4;
     [SerializeField] private Vector2 playerViewportPoint;
     [SerializeField] private Vector2 enemyViewportPoint;
     
@@ -57,7 +59,9 @@ public class BattleTransitionManager : MonoBehaviour
 
     public IEnumerator ExecuteBattleEntry()
     {
-        SoundManager.Instance?.PlayMusicByIndex(4);
+        var entryMusicIndex = IsBossBattle() ? bossBattleMusicIndex : regularBattleMusicIndex;
+        SoundManager.Instance.PlayMusicByIndex(entryMusicIndex);
+
         SetPlayerAttackEnabled(false);
         SetPhysicsSimulation(false);
         SetBattleOrientation();
@@ -75,12 +79,15 @@ public class BattleTransitionManager : MonoBehaviour
         
         yield return new WaitWhile(() => battleCameraManager.IsBlending);
         yield return MoveToPositions(playerTarget, enemyTarget, 0f, 1f);
+        SetBattleOrientation();
     }
 
     private void SetBattleOrientation()
     {
-        _player.GetComponent<CharacterFlipBehaviour>().ForceOrientation(true);
-        _enemy.GetComponent<CharacterFlipBehaviour>().ForceOrientation(false);
+        var playerFlip = _player.GetComponentInChildren<CharacterFlipBehaviour>(true);
+        var enemyFlip = _enemy.GetComponentInChildren<CharacterFlipBehaviour>(true);
+        playerFlip.ForceOrientation(true);
+        enemyFlip.ForceOrientation(IsBossBattle());
     }
 
     public IEnumerator ExecuteBattleExit(bool playerWon)
@@ -121,11 +128,7 @@ public class BattleTransitionManager : MonoBehaviour
         _playerAttackController = null;
     }
 
-    private void SetPlayerAttackEnabled(bool isEnabled)
-    {
-        if (_playerAttackController == null) return;
-        _playerAttackController.enabled = isEnabled;
-    }
+    private void SetPlayerAttackEnabled(bool isEnabled) => _playerAttackController.enabled = isEnabled;
 
     private IEnumerator FlickerAndHideEnemy(float duration, bool hideAtEnd)
     {
@@ -238,6 +241,12 @@ public class BattleTransitionManager : MonoBehaviour
         var world = cam.ViewportToWorldPoint(new Vector3(viewport.x, viewport.y, distance));
         world.z = targetZ;
         return world;
+    }
+
+    private bool IsBossBattle()
+    {
+        if (!_enemy) return false;
+        return _enemy.GetComponentInChildren<BossBehaviour>(true);
     }
     
     private void OnDrawGizmosSelected()

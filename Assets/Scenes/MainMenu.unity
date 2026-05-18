@@ -6422,6 +6422,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
   sfxVolume: 1
   musicVolume: 0.5
+  musicPitch: 1
   soundFXObject: {fileID: 5278472167116267419, guid: cdec8d69ae14a48c7a57efc8162d59cb, type: 3}
   soundEffects: []
   backgroundMusics:

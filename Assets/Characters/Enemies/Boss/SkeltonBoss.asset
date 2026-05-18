@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19c9e8a4b898c4a009aafe89c84f1740, type: 3}
   m_Name: SkeltonBoss
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
-  characterName: 
+  characterName: Skeleton
   maxHp: 100
   maxSp: 50
   attack: 10

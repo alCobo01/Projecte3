@@ -4,18 +4,18 @@ using UnityEngine;
 public class BossBehaviour : MonoBehaviour
 {
     [Header("References")]
-    private Animator bossAnimator;
-    public GameObject mainVfxObject;
-    public GameObject vfxObject;
+    [SerializeField] private GameObject mainVfxObject;
+    [SerializeField] private GameObject vfxObject;
+
+    [Header("Settings")]
+    [SerializeField] private float vfxDuration = 4f;       
+    
     private CameraShake cameraShake;
     private BattleStarter bossBattleStarter;
     private PlayerInputController playerInput;
     private PlayerMovementController playerMovement;
     private BattleStarter playerBattleStarter;
-
-    [Header("Settings")]
-    public float vfxDuration = 4f;       
-    
+    private Animator bossAnimator;
     private bool _activated;
 
     private void Awake()
@@ -24,26 +24,25 @@ public class BossBehaviour : MonoBehaviour
         cameraShake = GetComponent<CameraShake>();
         bossBattleStarter = GetComponent<BattleStarter>();
     }
+    
     private void Start()
     {
-        if (mainVfxObject != null)
-            mainVfxObject.SetActive(false);
-        if (vfxObject != null)
-            vfxObject.SetActive(false);
+        mainVfxObject.SetActive(false);
+        vfxObject.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (_activated) return;
-
-        if (other.gameObject.CompareTag("Player") || other.gameObject.layer == 3)
-        {
-            playerInput = other.GetComponent<PlayerInputController>();
-            playerMovement = other.GetComponent<PlayerMovementController>();
-            playerBattleStarter = other.GetComponent<BattleStarter>();
-            _activated = true;
-            ActivateBoss();
-        }
+        if (!other.gameObject.CompareTag("Player") &&
+            other.GetComponentInParent<PlayerInputController>() == null) return;
+        
+        playerInput = other.GetComponentInParent<PlayerInputController>();
+        playerMovement = other.GetComponentInParent<PlayerMovementController>();
+        playerBattleStarter = other.GetComponentInParent<BattleStarter>();
+            
+        _activated = true;
+        ActivateBoss();
     }
 
     private void ActivateBoss()
@@ -51,15 +50,10 @@ public class BossBehaviour : MonoBehaviour
         bossAnimator.SetTrigger("Awake");
 
         // Disable movement 
-        if (playerMovement != null)
-            playerMovement.CanMove = false;
-
-        if (playerInput != null)
-            playerInput.enabled = false;
-
-        if (mainVfxObject != null || vfxObject != null)
-            StartCoroutine(PlayVFX());
-
+        playerMovement.CanMove = false;
+        playerInput.enabled = false;
+        
+        StartCoroutine(PlayVFX());
         cameraShake.TriggerShake();
     }
 
@@ -67,42 +61,20 @@ public class BossBehaviour : MonoBehaviour
     {
         // Delay before starting VFX sequence
         yield return new WaitForSeconds(2.2f);
-
-        if (mainVfxObject != null)
-            mainVfxObject.SetActive(true);
-
+        
+        mainVfxObject.SetActive(true);
         yield return new WaitForSeconds(0.3f);
-
-        if (vfxObject != null)
-            vfxObject.SetActive(true);
-
+        
+        vfxObject.SetActive(true);
         yield return new WaitForSeconds(vfxDuration);
+        
+        mainVfxObject.SetActive(false);
+        vfxObject.SetActive(false);
 
-        if (mainVfxObject != null)
-            mainVfxObject.SetActive(false);
-        if (vfxObject != null)
-            vfxObject.SetActive(false);
-
-        // Start combat
-        if (bossBattleStarter != null && playerBattleStarter != null)
-        {
-            var playerData = playerBattleStarter.BattleParty[0];
-            var enemies = bossBattleStarter.BattleParty;
-            
-            var playerAnim = playerBattleStarter.GetComponentInChildren<CharacterAnimationController>();
-            var enemyAnim = bossBattleStarter.GetComponentInChildren<CharacterAnimationController>();
-            
-            var playerTransform = playerBattleStarter.transform.root;
-            var enemyTransform = bossBattleStarter.transform.root;
-
-            BattleTransitionManager.Instance?.PrepareBattle(playerTransform, enemyTransform);
-            BattleManager.Instance.StartBattle(playerData, enemies, BattleInitiator.Enemy, playerAnim, enemyAnim, playerTransform, enemyTransform);
-        }
-
-        if (playerMovement != null)
-            playerMovement.CanMove = true;
-
-        if (playerInput != null)
-            playerInput.enabled = true;
+        // Start combat via BattleStarter to reuse the validated/common flow.
+        bossBattleStarter.TryStartBattleWithTarget(playerBattleStarter);
+        
+        playerMovement.CanMove = true;
+        playerInput.enabled = true;
     }
 }
