@@ -55,6 +55,7 @@ public class PlayerJumpController : MonoBehaviour
         if (isPressed)
         {
             if (_jumpsRemaining <= 0) return;
+            SoundManager.Instance.PlaySfx("Jump", transform);
             _animController?.TriggerJump();
             _jumpBehaviour.Jump();
             _jumpsRemaining--;

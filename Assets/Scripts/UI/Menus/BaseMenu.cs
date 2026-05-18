@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public abstract class BaseMenu : MonoBehaviour
 {
@@ -16,10 +14,7 @@ public abstract class BaseMenu : MonoBehaviour
         PauseManager.Instance.SetPaused(false);
     } 
     
-    public void CloseGame()
-    {
-        Application.Quit(); 
-    }
+    public void CloseGame() => Application.Quit();
 }
    
 

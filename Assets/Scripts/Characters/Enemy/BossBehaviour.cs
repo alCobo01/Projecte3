@@ -61,11 +61,12 @@ public class BossBehaviour : MonoBehaviour
     {
         // Delay before starting VFX sequence
         yield return new WaitForSeconds(2.2f);
-        
         mainVfxObject.SetActive(true);
-        yield return new WaitForSeconds(0.3f);
+        SoundManager.Instance.PlaySfx("Scream", transform);
         
+        yield return new WaitForSeconds(0.3f);
         vfxObject.SetActive(true);
+        
         yield return new WaitForSeconds(vfxDuration);
         
         mainVfxObject.SetActive(false);

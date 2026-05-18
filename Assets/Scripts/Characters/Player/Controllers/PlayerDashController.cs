@@ -54,6 +54,7 @@ public class PlayerDashController : MonoBehaviour
         var targetDirectionX = _currentMoveInput.x != 0 ? Mathf.Sign(_currentMoveInput.x) : _lastFacingDirectionX;
         var dashDirection = new Vector2(targetDirectionX, 0f);
 
+        SoundManager.Instance.PlaySfx("Dash", transform);
         _animController?.TriggerDash();
         _dashBehaviour.ExecuteDash(dashDirection);
         _lastDashTime = Time.time;

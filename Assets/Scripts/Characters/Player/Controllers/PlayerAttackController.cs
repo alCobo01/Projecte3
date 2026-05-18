@@ -28,7 +28,8 @@ public class PlayerAttackController : MonoBehaviour
     
     private void HandleAttack()
     {
-        if (_battleController != null && !_battleController.CanAttack) return;
+        if (!_battleController.CanAttack) return;
+        SoundManager.Instance.PlaySfx("Attack", transform);
         _animController.TriggerAttack();
         TryStartBattle();
     }

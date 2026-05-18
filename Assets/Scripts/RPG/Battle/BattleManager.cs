@@ -191,6 +191,7 @@ public class BattleManager : MonoBehaviour
             onAttack: target =>
             {
                 player.Animator.TriggerAttack();
+                SoundManager.Instance.PlaySfx("Attack", transform);
                 StartCoroutine(PerformAttackMovement(player, target));
                 var hp = target.CurrentHp;
                 ActionResolver.ResolveAttack(player, target);
@@ -236,6 +237,7 @@ public class BattleManager : MonoBehaviour
         yield return new WaitForSeconds(Mathf.Max(0f, enemyTurnDelay));
 
         enemy.Animator.TriggerAttack();
+        SoundManager.Instance.PlaySfx("Attack", transform);
         StartCoroutine(PerformAttackMovement(enemy, PlayerUnit));
 
         var affordable = enemy.Data.skills.Where(s => s.spCost > 0 && enemy.CurrentSp >= s.spCost).ToList();
@@ -322,12 +324,11 @@ public class BattleManager : MonoBehaviour
         PlayerStatsManager.Instance.currentHp = PlayerUnit.CurrentHp;
         PlayerStatsManager.Instance.currentSp = PlayerUnit.CurrentSp;
         
-        if (playerDied) OnPlayerDied?.Invoke();
-
         if (playerWon)
         {
             var coinsToReward = Random.Range(minCoinReward, maxCoinReward + 1);
             PlayerStatsManager.Instance.AddCoins(coinsToReward);
+            SoundManager.Instance.PlaySfx("GameOver", transform);
             LastCoinReward = coinsToReward;
             OnCombatMessage?.Invoke($"You won the battle and found {coinsToReward} coins!");
         }
@@ -338,12 +339,13 @@ public class BattleManager : MonoBehaviour
         if (_battleLoop != null) StopCoroutine(_battleLoop);
         _battleLoop = null;
 
-        StartCoroutine(BattleExitSequence(playerWon));
+        StartCoroutine(BattleExitSequence(playerWon, playerDied));
     }
 
-    private IEnumerator BattleExitSequence(bool playerWon)
+    private IEnumerator BattleExitSequence(bool playerWon, bool playerDied)
     {
         yield return new WaitForSeconds(3f);
+        if (playerDied) OnPlayerDied?.Invoke();
         ui.CloseBattleUi();
         yield return BattleTransitionManager.Instance?.ExecuteBattleExit(playerWon);
     }
