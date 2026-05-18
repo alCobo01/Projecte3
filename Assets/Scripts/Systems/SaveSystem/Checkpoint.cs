@@ -13,6 +13,7 @@ public class Checkpoint : MonoBehaviour, IInteractable
     [SerializeField] private GameObject inactiveVisuals;
 
     private bool _isDiscovered;
+    private bool _isInteracting;
 
     public bool IsDiscovered
     {
@@ -49,12 +50,6 @@ public class Checkpoint : MonoBehaviour, IInteractable
         UpdateVisuals();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        // El trigger ahora solo podría servir para mostrar un mensaje de "Pulsar E para interactuar"
-        // pero ya no registra ni descubre nada automáticamente.
-    }
-
     private void UpdateVisuals()
     {
         if (activeVisuals != null) activeVisuals.SetActive(_isDiscovered);
@@ -65,6 +60,21 @@ public class Checkpoint : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        if (_isInteracting) return;
+        _isInteracting = true;
+
+        // Bloqueamos input sin congelar el tiempo
+        if (PauseManager.Instance != null) PauseManager.Instance.SetInputLock(true);
+
+        // Marcamos como descubierto inmediatamente para que los visuales reaccionen
+        IsDiscovered = true; 
+        StartCoroutine(DelayedInteract());
+    }
+
+    private System.Collections.IEnumerator DelayedInteract()
+    {
+        yield return new WaitForSeconds(1.0f);
+
         if (CheckpointInteractionMenu.Instance != null)
         {
             CheckpointInteractionMenu.Instance.Open(this);
@@ -73,5 +83,12 @@ public class Checkpoint : MonoBehaviour, IInteractable
         {
             Debug.LogError("No se encuentra CheckpointInteractionMenu en la escena.");
         }
+
+        // LIBERAR EL BLOQUEO: Esto es lo que faltaba. 
+        // El input seguirá desactivado porque el Menú tiene el juego en Pausa,
+        // pero al cerrar el menú, el personaje ya podrá moverse.
+        if (PauseManager.Instance != null) PauseManager.Instance.SetInputLock(false);
+        
+        _isInteracting = false;
     }
 }

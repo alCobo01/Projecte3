@@ -14,6 +14,8 @@ public abstract class BaseMenu : MonoBehaviour
     {
         gameObject.SetActive(false);
         PauseManager.Instance.SetPaused(false);
+        // Limpieza de seguridad: al cerrar cualquier menú, nos aseguramos de que no haya bloqueos de input
+        PauseManager.Instance.SetInputLock(false);
     } 
     
     public void CloseGame()

@@ -24,6 +24,19 @@ public class PlayerInputController : MonoBehaviour, IPlayerActions
     private void OnEnable() => _inputActions.Enable();
     private void OnDisable() => _inputActions.Disable();
 
+    private void Update()
+    {
+        if (PauseManager.Instance != null)
+        {
+            bool shouldDisable = PauseManager.Instance.IsPaused || PauseManager.Instance.IsInputLocked;
+
+            if (shouldDisable && _inputActions.Player.enabled)
+                _inputActions.Player.Disable();
+            else if (!shouldDisable && !_inputActions.Player.enabled)
+                _inputActions.Player.Enable();
+        }
+    }
+
     // Methods
     public void OnMove(InputAction.CallbackContext context) => OnMoveEvent?.Invoke(context.ReadValue<Vector2>());
     public void OnAttack(InputAction.CallbackContext context)
