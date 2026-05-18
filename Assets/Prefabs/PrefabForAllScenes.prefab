@@ -759,7 +759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dfef0f7f94ce6f4fb9a4e8c5f9aea75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CheckpointInteractionMenu
-  teleportButton: {fileID: 0}
+  teleportButton: {fileID: 7568265731605473003}
 --- !u!1 &678802877448406064
 GameObject:
   m_ObjectHideFlags: 0
@@ -1560,6 +1560,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BattleManager
   ui: {fileID: 1442655993609649820}
   enemyTurnDelay: 1
+  turnCadenceDelay: 0.35
   lungeDuration: 0.25
   returnDuration: 0.5
   minCoinReward: 10
@@ -1765,61 +1766,6 @@ Transform:
   - {fileID: 5040261271138539136}
   m_Father: {fileID: 6229543249835675859}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1880417687754739848
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5257686074061720735}
-  - component: {fileID: 2170408022272010755}
-  m_Layer: 0
-  m_Name: '[CheckPointManager]'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5257686074061720735
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1880417687754739848}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6887934796861761514}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2170408022272010755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1880417687754739848}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa9556bdba1bfd44f88e33d2e20367a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CheckpointManager
-  itemDatabase:
-  - {fileID: 11400000, guid: 1151437b315864de4a128fa59ea8c6d7, type: 2}
-  - {fileID: 11400000, guid: 5434996231f724537b0f6dba58965eba, type: 2}
-  skillDatabase:
-  - {fileID: 11400000, guid: 36d50131e25604671903b21ae4757c9c, type: 2}
-  - {fileID: 11400000, guid: 21ed86d250921488e8784b9d8920bc76, type: 2}
-  - {fileID: 11400000, guid: 91e95b9e348864770b574740c4aa69f9, type: 2}
-  allCheckpoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  lastCheckpointId: 
 --- !u!1 &1967327442032057803
 GameObject:
   m_ObjectHideFlags: 0
@@ -2438,7 +2384,6 @@ Transform:
   - {fileID: 5039093940291603037}
   - {fileID: 3293351238939577879}
   - {fileID: 4456592114017117403}
-  - {fileID: 5257686074061720735}
   m_Father: {fileID: 6229543249835675859}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2323647423807729718
@@ -2724,7 +2669,7 @@ Transform:
   m_GameObject: {fileID: 2433324286583968856}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -678.53186, y: -589.3957, z: 0}
+  m_LocalPosition: {x: -678.53186, y: -588.971, z: -494.66}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10095,7 +10040,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5040261271138539136}
-  - component: {fileID: 7806065525932712968}
+  - component: {fileID: 9026510618268797410}
   m_Layer: 0
   m_Name: LimitCamera
   m_TagString: Untagged
@@ -10118,7 +10063,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6008982702618306601}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &7806065525932712968
+--- !u!60 &9026510618268797410
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10164,18 +10109,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 25.856255, y: 2.8068738}
-      - {x: -2.2561946, y: 2.6371467}
-      - {x: -2.2236328, y: -1.7612493}
-      - {x: -1.4329748, y: -1.7328193}
-      - {x: -0.52985287, y: -1.7591054}
-      - {x: 0.30799204, y: -1.7519976}
-      - {x: 11.254722, y: -1.7867258}
-      - {x: 20.047388, y: -1.8146198}
-      - {x: 20.084297, y: -4.6664286}
-      - {x: 25.794628, y: -4.6751375}
-      - {x: 25.78448, y: -4.3605433}
-      - {x: 25.825882, y: -0.17336851}
+    - - {x: 40.201294, y: 3.1627197}
+      - {x: -3.7545996, y: 3.1123617}
+      - {x: -3.7117782, y: -2.1687279}
+      - {x: 19.549425, y: -2.473232}
+      - {x: 40.14637, y: -2.209919}
   m_UseDelaunayMesh: 1
 --- !u!1 &5035401049691620689
 GameObject:
@@ -13086,7 +13024,7 @@ Transform:
   m_GameObject: {fileID: 7103691242070692409}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.062300205, y: -0.22328019, z: -10}
+  m_LocalPosition: {x: -156.2909, y: 175.53217, z: -9.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13166,7 +13104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f453f694addf4275988fac205bc91968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineConfiner2D
-  BoundingShape2D: {fileID: 7806065525932712968}
+  BoundingShape2D: {fileID: 9026510618268797410}
   Damping: 0.49
   SlowingDistance: 5
   OversizeWindow:
@@ -14016,7 +13954,7 @@ SpriteRenderer:
   m_Size: {x: 1.26, y: 0.35}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
 --- !u!1 &7599900156859465837
 GameObject:
@@ -20295,7 +20233,7 @@ Transform:
   m_GameObject: {fileID: 8708528038564911452}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.062300205, y: -0.22328019, z: -10}
+  m_LocalPosition: {x: -2.2600708, y: 1.6331177, z: -9.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -21032,7 +20970,7 @@ SpriteRenderer:
   m_Size: {x: 1.26, y: 0.35}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
 --- !u!1 &8987495105026193819
 GameObject:
