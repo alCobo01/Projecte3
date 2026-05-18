@@ -96588,6 +96588,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1832853266423163037, guid: 70d12ffd5793a27448f6bed086dba642, type: 3}
+      propertyPath: sceneName
+      value: FinalLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1832853266423163037, guid: 70d12ffd5793a27448f6bed086dba642, type: 3}
       propertyPath: displayName
       value: FinalBossDown
       objectReference: {fileID: 0}
@@ -140738,6 +140742,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1832853266423163037, guid: 70d12ffd5793a27448f6bed086dba642, type: 3}
+      propertyPath: sceneName
+      value: FinalLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1832853266423163037, guid: 70d12ffd5793a27448f6bed086dba642, type: 3}
       propertyPath: displayName
       value: FinalBossUp
       objectReference: {fileID: 0}
@@ -140751,11 +140759,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7227530347320021149, guid: 70d12ffd5793a27448f6bed086dba642, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -648.7677
+      value: -665.29
       objectReference: {fileID: 0}
     - target: {fileID: 7227530347320021149, guid: 70d12ffd5793a27448f6bed086dba642, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -592.94666
+      value: -593.95
       objectReference: {fileID: 0}
     - target: {fileID: 7227530347320021149, guid: 70d12ffd5793a27448f6bed086dba642, type: 3}
       propertyPath: m_LocalPosition.z

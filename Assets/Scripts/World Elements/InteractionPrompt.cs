@@ -17,6 +17,19 @@ public class InteractionPrompt : MonoBehaviour
     [SerializeField] private Vector3 largeScale = new Vector3(1.2f, 1.2f, 1f);
 
     private Coroutine _transitionCoroutine;
+    private bool _isHidden;
+
+    public void Show()
+    {
+        _isHidden = false;
+        if (spriteRenderer != null) spriteRenderer.enabled = true;
+    }
+
+    public void Hide()
+    {
+        _isHidden = true;
+        if (spriteRenderer != null) spriteRenderer.enabled = false;
+    }
 
     private void Awake()
     {
@@ -49,7 +62,12 @@ public class InteractionPrompt : MonoBehaviour
     private void StopAndStart(bool reachingTarget)
     {
         if (_transitionCoroutine != null) StopCoroutine(_transitionCoroutine);
-        _transitionCoroutine = StartCoroutine(TransitionRoutine(reachingTarget));
+        
+        // Evitamos error si el objeto se desactiva o si está oculto intencionadamente
+        if (gameObject.activeInHierarchy && !_isHidden)
+        {
+            _transitionCoroutine = StartCoroutine(TransitionRoutine(reachingTarget));
+        }
     }
 
     private IEnumerator TransitionRoutine(bool reachingTarget)

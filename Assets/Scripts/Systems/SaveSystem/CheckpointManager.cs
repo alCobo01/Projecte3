@@ -50,7 +50,7 @@ public class CheckpointManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        sceneCheckpoints = Object.FindObjectsByType<Checkpoint>(FindObjectsSortMode.None).ToList();
+        sceneCheckpoints = Object.FindObjectsByType<Checkpoint>(FindObjectsInactive.Include, FindObjectsSortMode.None).ToList();
 
         foreach (var cp in sceneCheckpoints)
         {
@@ -136,6 +136,8 @@ public class CheckpointManager : MonoBehaviour
 
     private IEnumerator TeleportRoutine(string id, string sceneName, bool useFades)
     {
+        Debug.Log($"[Teleport] Iniciando viaje a Checkpoint '{id}' en escena '{sceneName}'");
+        
         if (PauseManager.Instance != null) PauseManager.Instance.SetInputLock(true);
 
         if (useFades && ScreenFader.Instance != null)
@@ -143,6 +145,7 @@ public class CheckpointManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name != sceneName)
         {
+            Debug.Log($"[Teleport] Cargando nueva escena: {sceneName}");
             yield return SceneManager.LoadSceneAsync(sceneName);
             yield return null; // Espera a que OnSceneLoaded termine
         }
@@ -157,13 +160,15 @@ public class CheckpointManager : MonoBehaviour
 
     private void PlacePlayerAtCheckpoint(string id)
     {
-        // Re-buscamos en la nueva escena
-        var checkpointsInScene = Object.FindObjectsByType<Checkpoint>(FindObjectsSortMode.None).ToList();
+        // Re-buscamos en la nueva escena, incluyendo objetos inactivos
+        var checkpointsInScene = Object.FindObjectsByType<Checkpoint>(FindObjectsInactive.Include, FindObjectsSortMode.None).ToList();
 
         Checkpoint target = checkpointsInScene.Find(c => c.checkpointId == id);
+        
         if (target == null)
         {
-            Debug.LogWarning($"Checkpoint '{id}' no encontrado en la escena actual.");
+            Debug.LogWarning($"Checkpoint '{id}' no encontrado en la escena actual ('{SceneManager.GetActiveScene().name}').");
+            Debug.Log($"IDs encontrados en esta escena ({checkpointsInScene.Count}): " + string.Join(", ", checkpointsInScene.Select(c => $"'{c.checkpointId}'")));
             return;
         }
 
