@@ -171,7 +171,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &15381449
 RectTransform:
   m_ObjectHideFlags: 0
@@ -960,6 +960,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 149677938}
+  - component: {fileID: 149677939}
   m_Layer: 0
   m_Name: '[GameOverMenu]'
   m_TagString: Untagged
@@ -983,6 +984,21 @@ Transform:
   - {fileID: 287573851}
   m_Father: {fileID: 5922961867146576324}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &149677939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149677937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c7fff4fc37301c4ebe24bbee5548c02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameOverMenu
+  uiToDisable: []
+  gameOverPanel: {fileID: 597542150}
+  fadeDuration: 0.3
 --- !u!1 &153187348
 GameObject:
   m_ObjectHideFlags: 0
@@ -1094,7 +1110,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &171906529
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1366,7 +1382,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 597542154}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameOverMenu, Assembly-CSharp
         m_MethodName: CloseGame
         m_Mode: 1
@@ -1717,7 +1733,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &287573851
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5339,7 +5355,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &597542151
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5399,19 +5415,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 597542150}
   m_CullTransparentMesh: 1
---- !u!114 &597542154
-MonoBehaviour:
+--- !u!225 &597542154
+CanvasGroup:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 597542150}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c7fff4fc37301c4ebe24bbee5548c02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameOverMenu
-  uiToDisable: []
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &608564576
 GameObject:
   m_ObjectHideFlags: 0
@@ -8779,7 +8794,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: HAS PERDIDO
+  m_text: You have lost!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1b91620440f220547ba3ab63acf4f244, type: 2}
   m_sharedMaterial: {fileID: 1225960526448105068, guid: 1b91620440f220547ba3ab63acf4f244, type: 2}
@@ -24136,9 +24151,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Salir
-
-'
+  m_text: Exit
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1b91620440f220547ba3ab63acf4f244, type: 2}
   m_sharedMaterial: {fileID: 1225960526448105068, guid: 1b91620440f220547ba3ab63acf4f244, type: 2}
@@ -34607,7 +34620,35 @@ MonoBehaviour:
   musicVolume: 0.5
   musicPitch: 1
   soundFXObject: {fileID: 5278472167116267419, guid: cdec8d69ae14a48c7a57efc8162d59cb, type: 3}
-  soundEffects: []
+  soundEffects:
+  - name: Dash
+    clip: {fileID: 8300000, guid: 6ed37598a978144ca8ab03f676ff78ea, type: 3}
+    volume: 1
+    pitch: 1
+  - name: Jump
+    clip: {fileID: 8300000, guid: 0bd6614bd0f774533ad59ef6e1e3008c, type: 3}
+    volume: 1
+    pitch: 1
+  - name: Attack
+    clip: {fileID: 8300000, guid: 257783026a2f84239ac8a17609a93196, type: 3}
+    volume: 1
+    pitch: 1
+  - name: Scream
+    clip: {fileID: 8300000, guid: 7e9699d47895e4c75bf7e71be076f112, type: 3}
+    volume: 1
+    pitch: 1
+  - name: Victory
+    clip: {fileID: 8300000, guid: 183f07f7f3aa1424eb467ef3dd8db969, type: 3}
+    volume: 1
+    pitch: 1
+  - name: GameOver
+    clip: {fileID: 8300000, guid: a2aeca84e481742ba89b86ccd5cbb4ec, type: 3}
+    volume: 1
+    pitch: 1
+  - name: Teleport
+    clip: {fileID: 8300000, guid: db8f0154fecb74c6a930b990b211ece9, type: 3}
+    volume: 1
+    pitch: 1
   backgroundMusics:
   - {fileID: 8300000, guid: c3f6a147c479d4c5d901a18f01d856fa, type: 3}
   - {fileID: 8300000, guid: 9edda411b42b4421987c6e0b6eb94ca0, type: 3}
@@ -40619,7 +40660,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!222 &7441051761049086925
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -48,13 +48,7 @@ public class Checkpoint : MonoBehaviour, IInteractable
     {
         UpdateVisuals();
     }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        // El trigger ahora solo podría servir para mostrar un mensaje de "Pulsar E para interactuar"
-        // pero ya no registra ni descubre nada automáticamente.
-    }
-
+    
     private void UpdateVisuals()
     {
         if (activeVisuals != null) activeVisuals.SetActive(_isDiscovered);

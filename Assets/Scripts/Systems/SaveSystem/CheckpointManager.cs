@@ -19,8 +19,8 @@ public class CheckpointManager : MonoBehaviour
     private string lastCheckpointScene;
     public HashSet<string> discoveredIds = new();
     private List<Checkpoint> sceneCheckpoints = new();
-    private Dictionary<string, string> checkpointSceneMap = new();
-    private Dictionary<string, string> checkpointNameMap = new();
+    private readonly Dictionary<string, string> checkpointSceneMap = new();
+    private readonly Dictionary<string, string> checkpointNameMap = new();
 
     public struct DiscoveredCheckpointData
     {
@@ -77,9 +77,8 @@ public class CheckpointManager : MonoBehaviour
 
     public void RegisterDiscovery(Checkpoint checkpoint)
     {
-        if (!discoveredIds.Contains(checkpoint.checkpointId))
+        if (discoveredIds.Add(checkpoint.checkpointId))
         {
-            discoveredIds.Add(checkpoint.checkpointId);
             checkpoint.IsDiscovered = true;
         }
 
@@ -145,6 +144,7 @@ public class CheckpointManager : MonoBehaviour
             yield return null; // Espera a que OnSceneLoaded termine
         }
 
+        SoundManager.Instance.PlaySfx("Teleport", transform);
         PlacePlayerAtCheckpoint(id);
 
         if (useFades && ScreenFader.Instance != null)

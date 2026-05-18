@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Player CharData
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   characterName: Maeb
-  maxHp: 200
+  maxHp: 1
   maxSp: 100
   attack: 11
   defense: 10

@@ -4,7 +4,10 @@ using UnityEngine.UI;
 public class CheckpointInteractionMenu : BaseMenu
 {
     public static CheckpointInteractionMenu Instance { get; private set; }
-
+    
+    [SerializeField] private Button teleportButton;
+    private Checkpoint _currentCheckpoint;
+    
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -12,15 +15,11 @@ public class CheckpointInteractionMenu : BaseMenu
         
         gameObject.SetActive(false);
     }
-
-    [SerializeField] private Button teleportButton;
-    private Checkpoint _currentCheckpoint;
-
+    
     public void Open(Checkpoint checkpoint)
     {
         _currentCheckpoint = checkpoint;
         
-        // Disable teleport if no checkpoints discovered
         if (teleportButton != null)
         {
             teleportButton.interactable = CheckpointManager.Instance.discoveredIds.Count > 0;
@@ -40,9 +39,9 @@ public class CheckpointInteractionMenu : BaseMenu
         Debug.Log("Game Saved via Checkpoint!");
         Close();
     }
+    
     public void OnLoadClicked()
     {
-
         CheckpointManager.Instance.LoadGame();
         Close();
     }
