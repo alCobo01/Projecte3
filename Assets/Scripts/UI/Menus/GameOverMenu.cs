@@ -31,6 +31,12 @@ public class GameOverMenu : BaseMenu
         SoundManager.Instance.PlaySfx("GameOver", transform);
     }
 
+    public void ExitToLastCheckpoint()
+    {
+        Close();
+        CheckpointManager.Instance.RespawnAtLastCheckpoint();
+    }
+
     private IEnumerator FadeIn()
     {
         _canvasGroup.alpha = 0f;

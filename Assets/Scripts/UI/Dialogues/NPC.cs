@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Collider2D))]
 public class NPC : MonoBehaviour, IInteractable
@@ -11,6 +12,7 @@ public class NPC : MonoBehaviour, IInteractable
     [Header("UI")]
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TMP_Text dialogueText;
+    [SerializeField] private Image speakerPortraitImage;
 
     [Header("Settings")]
     [SerializeField] protected float interactionCooldown = 0.5f;
@@ -41,6 +43,7 @@ public class NPC : MonoBehaviour, IInteractable
         _lineIndex = 0;
         _isDialogueActive = true;
 
+        ApplySpeakerInfo();
         dialoguePanel.SetActive(true);
         StartCoroutine(TypeLine());
     }
@@ -72,6 +75,7 @@ public class NPC : MonoBehaviour, IInteractable
 
         _isTyping = true;
         dialogueText.SetText("");
+        ApplySpeakerInfo();
 
         foreach (var letter in block.lines[_lineIndex])
         {
@@ -88,6 +92,7 @@ public class NPC : MonoBehaviour, IInteractable
         _isDialogueActive = false;
 
         dialogueText.SetText("");
+        if (speakerPortraitImage != null) speakerPortraitImage.sprite = null;
         dialoguePanel.SetActive(false);
 
         // Avanzar al siguiente diálogo solo si se ha completado y no estamos en el último
@@ -99,6 +104,13 @@ public class NPC : MonoBehaviour, IInteractable
     {
         if (!other.TryGetComponent(out PlayerInputController player)) return;
         if (_isDialogueActive) EndDialogue(false);
+    }
+
+    private void ApplySpeakerInfo()
+    {
+        if (dialogueData == null || dialogueData.dialogues.Length == 0) return;
+        var block = dialogueData.dialogues[Mathf.Min(_currentDialogueIndex, dialogueData.dialogues.Length - 1)];
+        if (speakerPortraitImage != null) speakerPortraitImage.sprite = block.speakerPortrait;
     }
 
 }

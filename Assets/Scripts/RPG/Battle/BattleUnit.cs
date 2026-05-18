@@ -30,7 +30,10 @@ public class BattleUnit
         => CurrentHp = Mathf.Clamp(hp, 0, Data.maxHp);
 
     public void TakeDamage(int amount)
-        => CurrentHp = Mathf.Max(0, CurrentHp - Mathf.Max(1, amount));
+    {
+        CurrentHp = Mathf.Max(0, CurrentHp - Mathf.Max(1, amount));
+        Animator?.TriggerHurt();
+    }
 
     public void Heal(int amount)
         => CurrentHp = Mathf.Min(Data.maxHp, CurrentHp + amount);
