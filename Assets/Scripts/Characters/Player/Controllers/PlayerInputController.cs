@@ -26,14 +26,17 @@ public class PlayerInputController : MonoBehaviour, IPlayerActions
 
     private void Update()
     {
-        if (PauseManager.Instance != null)
-        {
-            bool shouldDisable = PauseManager.Instance.IsInputLocked;
+        if (!PauseManager.Instance) return;
+        var shouldDisable = PauseManager.Instance.IsInputLocked;
 
-            if (shouldDisable && _inputActions.Player.enabled)
+        switch (shouldDisable)
+        {
+            case true when _inputActions.Player.enabled:
                 _inputActions.Player.Disable();
-            else if (!shouldDisable && !_inputActions.Player.enabled)
+                break;
+            case false when !_inputActions.Player.enabled:
                 _inputActions.Player.Enable();
+                break;
         }
     }
 
@@ -44,6 +47,7 @@ public class PlayerInputController : MonoBehaviour, IPlayerActions
         if (!context.performed) return;
         OnAttackEvent?.Invoke();
     }
+    
     public void OnInteract(InputAction.CallbackContext context) => OnInteractEvent?.Invoke();
     public void OnDash(InputAction.CallbackContext context) => OnDashEvent?.Invoke();
     public void OnOpenInventory(InputAction.CallbackContext context) => OnOpenInventoryEvent?.Invoke();

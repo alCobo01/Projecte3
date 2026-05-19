@@ -37,8 +37,8 @@ public class PlayerAttackController : MonoBehaviour
     private void TryStartBattle()
     {
         var pivot = attackPoint != null ? attackPoint : transform;
-        var origin = pivot.position + pivot.forward * attackRange;
-        var hitColliders = Physics.OverlapSphere(origin, attackRadius, targetLayer, QueryTriggerInteraction.Collide);
+        var origin = pivot.position + pivot.right * attackRange;
+        var hitColliders = Physics2D.OverlapCircleAll(origin, attackRadius, targetLayer);
         var damagedTargets = new HashSet<IBattleStarter>();
 
         foreach (var hit in hitColliders)
@@ -49,6 +49,14 @@ public class PlayerAttackController : MonoBehaviour
             if (!_battleStarter) continue;
             _battleStarter.TryStartBattleWithTarget(damageable);
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        var pivot = attackPoint != null ? attackPoint : transform;
+        var origin = pivot.position + pivot.right * attackRange;
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(origin, attackRadius);
     }
 
 
