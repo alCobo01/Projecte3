@@ -28,7 +28,7 @@ public class PlayerInputController : MonoBehaviour, IPlayerActions
     {
         if (PauseManager.Instance != null)
         {
-            bool shouldDisable = PauseManager.Instance.IsPaused || PauseManager.Instance.IsInputLocked;
+            bool shouldDisable = PauseManager.Instance.IsInputLocked;
 
             if (shouldDisable && _inputActions.Player.enabled)
                 _inputActions.Player.Disable();
