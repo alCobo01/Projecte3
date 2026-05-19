@@ -15,6 +15,10 @@ public class CheckpointManager : MonoBehaviour
     public List<ItemData> itemDatabase;
     public List<SkillData> skillDatabase;
 
+    [Header("Abilities")]
+    public bool teleportUnlocked = false;
+    public bool TeleportUnlocked { get => teleportUnlocked; set => teleportUnlocked = value; }
+
     private string lastCheckpointId;
     private string lastCheckpointScene;
     public HashSet<string> discoveredIds = new();

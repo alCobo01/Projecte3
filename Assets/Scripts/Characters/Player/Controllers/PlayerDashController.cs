@@ -30,6 +30,12 @@ public class PlayerDashController : MonoBehaviour
         _inputController.OnDashEvent += HandleDash;
         _dashBehaviour.OnDashFinishedEvent += HandleDashFinished;
 
+        // El dash empieza desactivado hasta que se desbloquee
+        CanDash = false;
+    }
+
+    public void UnlockDash()
+    {
         CanDash = true;
     }
 

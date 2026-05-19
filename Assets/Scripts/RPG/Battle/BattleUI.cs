@@ -217,7 +217,7 @@ public class BattleUI : MonoBehaviour
 
     private void BuildSkills()
     {
-        var skills = (_player?.Data.skills ?? new List<SkillData>())
+        var skills = (_player?.Skills ?? new List<SkillData>())
             .Where(s => s)
             .Select(s => new ListOption($"{s.skillName} ({s.spCost} SP)", () => PickSkill(s), _player.CurrentSp >= s.spCost));
 
@@ -389,7 +389,7 @@ public class BattleUI : MonoBehaviour
     {
         var canUse = !_inputLockedByFeedback && _isPlayerTurn;
         attackButton.interactable = canUse && _enemies.Any(e => !e.IsDead);
-        skillButton.interactable = canUse && _player != null && (_player.Data.skills?.Count ?? 0) > 0;
+        skillButton.interactable = canUse && _player != null && (_player.Skills?.Count ?? 0) > 0;
         itemButton.interactable = canUse;
         fleeButton.interactable = canUse;
     }

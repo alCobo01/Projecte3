@@ -10,20 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7130b1fe8d406a44887de6e51500e85b, type: 3}
-  m_Name: Prueba
+  m_Name: ComienzoJuego
   m_EditorClassIdentifier: Assembly-CSharp::NPCDialogueSequence
   dialogues:
-  - lines:
-    - Holaaaa
-    - Que tal?
-    typingSpeed: 0.05
-  - lines:
-    - En verdad, no me cuentes tu vidaaaa
-    typingSpeed: 0.05
-  - lines:
-    - Es bromaaaaa
-    - Cuentame.
-    typingSpeed: 0.05
-  - lines:
-    - En verdad ns porque te pregunto....
+  - speakerPortrait: {fileID: 7255003796024305070, guid: fce78d19a20c74670be94acec3615bc1, type: 3}
+    lines:
+    - Bueno, vamos a repasar que me han mandado hacer los de la tribu.
+    - "Tengo que \"cazar\" una presa digna y llevarles un hueso como prueba de mis
+      haza\xF1as."
+    - " Qu\xE9 pereza... Supongo que me dar\xE9 una vuelta, a ver qu\xE9 encuentro."
     typingSpeed: 0.05

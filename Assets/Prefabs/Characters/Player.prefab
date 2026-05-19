@@ -427,7 +427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1de26cd914f415a8ef7c22e20f3ec8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DashBehaviour
-  dashSpeed: 10
+  dashSpeed: 8
   dashDuration: 0.2
 --- !u!114 &8136411275181926775
 MonoBehaviour:

@@ -5,6 +5,7 @@ using UnityEngine;
 public class BattleUnit
 {
     public CharacterData Data { get; }
+    public List<SkillData> Skills { get; private set; }
     public CharacterAnimationController Animator { get; set; }
     public Transform Transform { get; set; }
     public int CurrentHp { get; private set; }
@@ -24,6 +25,12 @@ public class BattleUnit
         CurrentHp = data.maxHp;
         IsPlayer = isPlayer;
         CurrentSp = startingSp;
+        Skills = new List<SkillData>();
+    }
+
+    public void SetSkills(List<SkillData> skills)
+    {
+        Skills = skills != null ? new List<SkillData>(skills) : new List<SkillData>();
     }
 
     public void SetHp(int hp)

@@ -62,6 +62,14 @@ public class Checkpoint : MonoBehaviour, IInteractable
     public void Interact()
     {
         if (_isInteracting) return;
+        
+        // Verificamos si los teletransportes están desbloqueados globalmente
+        if (CheckpointManager.Instance != null && !CheckpointManager.Instance.TeleportUnlocked)
+        {
+            Debug.Log("[Checkpoint] Los teletransportes aún no han sido desbloqueados.");
+            return;
+        }
+
         _isInteracting = true;
 
         // MOSTRAMOS el prompt (máscara) al interactuar

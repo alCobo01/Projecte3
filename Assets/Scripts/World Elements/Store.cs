@@ -33,6 +33,30 @@ public class Store : NPC
         _feedbackCanvasGroup = feedbackPanel.GetComponent<CanvasGroup>();
         feedbackPanel.SetActive(false);
         SavePlayerAttackController();
+
+        // Nos suscribimos al evento del DialogueManager
+        if (DialogueManager.Instance != null)
+        {
+            DialogueManager.Instance.OnDialogueEnd += HandleDialogueEnd;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        // Importante desuscribirse al destruir el objeto
+        if (DialogueManager.Instance != null)
+        {
+            DialogueManager.Instance.OnDialogueEnd -= HandleDialogueEnd;
+        }
+    }
+
+    private void HandleDialogueEnd()
+    {
+        // Si acabamos de hablar por primera vez, marcamos que ya puede abrir la tienda
+        if (!_hasTalkedOnce)
+        {
+            _hasTalkedOnce = true;
+        }
     }
 
     public void ShowFeedback(string message)
@@ -64,12 +88,6 @@ public class Store : NPC
     
     public void CloseStore() => ToggleStore();
 
-    protected override void EndDialogue(bool completed)
-    {
-        base.EndDialogue(completed);
-        if (completed) _hasTalkedOnce = true;
-    }
-    
     private void ToggleStore()
     {
         var isActive = !storePanel.activeSelf;
@@ -126,7 +144,7 @@ public class Store : NPC
     private void SetPlayerAttackEnabled(bool isEnabled)
     {
         SavePlayerAttackController();
-        _playerAttackController.enabled = isEnabled;
+        if (_playerAttackController != null) _playerAttackController.enabled = isEnabled;
     }
 
     private void SavePlayerAttackController()

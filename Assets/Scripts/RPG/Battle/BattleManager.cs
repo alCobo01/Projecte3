@@ -72,8 +72,11 @@ public class BattleManager : MonoBehaviour
 
         if (_battleLoop != null) StopCoroutine(_battleLoop);
 
-        var savedHp = PlayerStatsManager.Instance.currentHp <= 0 ? playerData.maxHp : PlayerStatsManager.Instance.currentHp;
-        var savedSp = Mathf.Clamp(PlayerStatsManager.Instance.currentSp, 0, playerData.maxSp);
+        var stats = PlayerStatsManager.Instance;
+        if (stats == null) return;
+
+        var savedHp = stats.currentHp <= 0 ? playerData.maxHp : stats.currentHp;
+        var savedSp = Mathf.Clamp(stats.currentSp, 0, playerData.maxSp);
 
         PlayerUnit = new BattleUnit(playerData, isPlayer: true, startingSp: savedSp) 
         { 
@@ -81,14 +84,21 @@ public class BattleManager : MonoBehaviour
             Transform = playerTransform
         };
         PlayerUnit.SetHp(Mathf.Clamp(savedHp, 1, playerData.maxHp));
+        PlayerUnit.SetSkills(stats.unlockedSkills);
 
         _allUnits.Clear();
         _allUnits.Add(PlayerUnit);
-        _allUnits.AddRange(enemyData.Select(e => new BattleUnit(e, isPlayer: false, startingSp: 0) 
-        { 
-            Animator = enemyAnim,
-            Transform = enemyTransform
-        }));
+        
+        foreach (var e in enemyData)
+        {
+            var enemyUnit = new BattleUnit(e, isPlayer: false, startingSp: 0)
+            {
+                Animator = enemyAnim,
+                Transform = enemyTransform
+            };
+            enemyUnit.SetSkills(e.skills);
+            _allUnits.Add(enemyUnit);
+        }
 
         var first = initiator == BattleInitiator.Enemy
             ? _allUnits.FirstOrDefault(u => !u.IsPlayer && !u.IsDead)
@@ -130,6 +140,14 @@ public class BattleManager : MonoBehaviour
 
     private IEnumerator BattleEntrySequence()
     {
+        // Desactivamos controllers del jugador en el mundo
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            if (player.TryGetComponent(out PlayerInputController input)) input.enabled = false;
+            if (player.TryGetComponent(out PlayerDashController dash)) dash.enabled = false;
+        }
+
         yield return BattleTransitionManager.Instance?.ExecuteBattleEntry();
 
         OnRoundStarted?.Invoke(_round);
@@ -348,6 +366,14 @@ public class BattleManager : MonoBehaviour
         if (playerDied) OnPlayerDied?.Invoke();
         ui.CloseBattleUi();
         yield return BattleTransitionManager.Instance?.ExecuteBattleExit(playerWon);
+
+        // Re-activamos controllers al volver al mundo
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            if (player.TryGetComponent(out PlayerInputController input)) input.enabled = true;
+            if (player.TryGetComponent(out PlayerDashController dash)) dash.enabled = true;
+        }
     }
 
     private void ForceCleanupIfNeeded() { if (!_endNotified) EndBattle(playerWon: false); }
