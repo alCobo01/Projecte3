@@ -15,13 +15,15 @@ namespace WorldElements
         [Header("Settings")]
         [Tooltip("Cooldown in seconds to prevent rapid toggling.")]
         [SerializeField] private float toggleCooldown = 0.5f;
-
+        
         private float _lastToggleTime;
+        private bool _hasPlayedFirstEnterSfx;
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.CompareTag("Player"))
             {
+                TryPlayFirstEnterSfx();
                 TrySetTilemapState(false);
             }
         }
@@ -48,6 +50,14 @@ namespace WorldElements
                 secretTilemap.SetActive(active);
                 _lastToggleTime = Time.time;
             }
+        }
+
+        private void TryPlayFirstEnterSfx()
+        {
+            if (_hasPlayedFirstEnterSfx) return;
+
+            SoundManager.Instance.PlaySfx("Secret", transform);
+            _hasPlayedFirstEnterSfx = true;
         }
     }
 }
