@@ -61,6 +61,7 @@ GameObject:
   - component: {fileID: 8136411275181926775}
   - component: {fileID: 3776352375312374082}
   - component: {fileID: 8738110071435781613}
+  - component: {fileID: 3457697937110899872}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -471,6 +472,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a3ccfe9c8d64d8fa6c2b3f625f25d9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerBattleController
+--- !u!114 &3457697937110899872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2979194186806989327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4c48f90d5d77824890e0342154fab81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerLightController
+  playerLight: {fileID: 8716404484447969552}
+  targetSceneName: FinalLevel
 --- !u!1 &8716404484447969552
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,7 +502,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5053836521846835370
 Transform:
   m_ObjectHideFlags: 0
