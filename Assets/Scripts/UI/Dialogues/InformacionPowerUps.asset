@@ -10,16 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7130b1fe8d406a44887de6e51500e85b, type: 3}
-  m_Name: ShopDialogue
+  m_Name: InformacionPowerUps
   m_EditorClassIdentifier: Assembly-CSharp::NPCDialogueSequence
   dialogues:
-  - speakerPortrait: {fileID: 6795993099827519070, guid: e732ed9b01235d042a6a05acf00e8c07, type: 3}
+  - speakerPortrait: {fileID: 4409704079844857304, guid: 1cbc7ce96b134e0418acce3e8c362026, type: 3}
     lines:
-    - "Uy que chico m\xE1s guapo..."
-    - "Vente, vente, que tengo buena mercanc\xEDa."
-    - Y no hablo de mi misma.
-    typingSpeed: 0.05
-  - speakerPortrait: {fileID: 6795993099827519070, guid: e732ed9b01235d042a6a05acf00e8c07, type: 3}
-    lines:
-    - "\xBFQu\xE9 te interesa?"
-    typingSpeed: 0.05
+    - "Por cierto, me gustar\xEDa encontrar fragmentos de hueso."
+    - Busca bien por la zona, a ver si encuentras restos de animales.
+    - "Te dejar\xE9 usar m\xE1s habilidades como recompensa, si los encuentras."
+    typingSpeed: 0.053
