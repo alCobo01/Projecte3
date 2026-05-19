@@ -33,13 +33,14 @@ public class Checkpoint : MonoBehaviour, IInteractable
         if (string.IsNullOrEmpty(sceneName))
         {
             sceneName = gameObject.scene.name;
+            Debug.Log($"[Checkpoint] ID '{checkpointId}' auto-asignado a escena '{sceneName}'");
         }
     }
 
     private void OnValidate()
     {
         // Helpful for the editor
-        if (string.IsNullOrEmpty(sceneName) && gameObject.scene.name != null)
+        if (string.IsNullOrEmpty(sceneName) && !string.IsNullOrEmpty(gameObject.scene.name))
         {
             sceneName = gameObject.scene.name;
         }
@@ -63,6 +64,10 @@ public class Checkpoint : MonoBehaviour, IInteractable
         if (_isInteracting) return;
         _isInteracting = true;
 
+        // MOSTRAMOS el prompt (máscara) al interactuar
+        var discovery = GetComponentInChildren<AppearOnDiscovery>();
+        if (discovery != null) discovery.SetInteracting(true);
+
         // Bloqueamos input sin congelar el tiempo
         if (PauseManager.Instance != null) PauseManager.Instance.SetInputLock(true);
 
@@ -84,9 +89,16 @@ public class Checkpoint : MonoBehaviour, IInteractable
             Debug.LogError("No se encuentra CheckpointInteractionMenu en la escena.");
         }
 
-        // LIBERAR EL BLOQUEO: Esto es lo que faltaba. 
-        // El input seguirá desactivado porque el Menú tiene el juego en Pausa,
-        // pero al cerrar el menú, el personaje ya podrá moverse.
+        // Esperamos a que el menú se cierre
+        while (CheckpointInteractionMenu.Instance != null && CheckpointInteractionMenu.Instance.gameObject.activeSelf)
+        {
+            yield return null;
+        }
+
+        // OCULTAMOS el prompt (máscara) al terminar
+        var discovery = GetComponentInChildren<AppearOnDiscovery>();
+        if (discovery != null) discovery.SetInteracting(false);
+
         if (PauseManager.Instance != null) PauseManager.Instance.SetInputLock(false);
         
         _isInteracting = false;
