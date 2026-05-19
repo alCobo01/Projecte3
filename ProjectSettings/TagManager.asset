@@ -16,7 +16,7 @@ TagManager:
   - EnemyProjectile
   - Player
   - Interactable
-  - 
+  - Secrets
   - 
   - 
   - 
@@ -46,6 +46,9 @@ TagManager:
     locked: 0
   - name: Characters
     uniqueID: 2274138289
+    locked: 0
+  - name: Secrets
+    uniqueID: 3751586695
     locked: 0
   - name: FrontElements
     uniqueID: 3634982733
