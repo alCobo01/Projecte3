@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameOverMenu : BaseMenu
 {
@@ -34,7 +35,13 @@ public class GameOverMenu : BaseMenu
     public void ExitToLastCheckpoint()
     {
         Close();
-        CheckpointManager.Instance.RespawnAtLastCheckpoint();
+        if (CheckpointManager.Instance.HasCheckpoint())
+        {
+            CheckpointManager.Instance.RespawnAtLastCheckpoint();
+            return;
+        }
+
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
     }
 
     private IEnumerator FadeIn()
