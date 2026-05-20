@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Golem
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   characterName: Golem
-  maxHp: 200
-  maxSp: 0
-  attack: 10
-  defense: 0
-  speed: 0
-  spGainPerHit: 10
+  maxHp: 100
+  maxSp: 50
+  attack: 15
+  defense: 6
+  speed: 6
+  spGainPerHit: 15
   skills: []
   portrait: {fileID: -1876605294, guid: 14f3458921a524028944cf71b5b0f401, type: 3}

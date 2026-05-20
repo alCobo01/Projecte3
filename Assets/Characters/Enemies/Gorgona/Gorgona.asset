@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19c9e8a4b898c4a009aafe89c84f1740, type: 3}
   m_Name: Gorgona
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
-  characterName: Gorgona
-  maxHp: 20
-  maxSp: 20
-  attack: 1
-  defense: 0
-  speed: 20
+  characterName: Gorgon
+  maxHp: 30
+  maxSp: 30
+  attack: 5
+  defense: 5
+  speed: 24
   spGainPerHit: 10
   skills: []
   portrait: {fileID: 4723107735738678597, guid: 056322ad4935e45028afeea8718849a7, type: 3}
