@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd696440763e0a146a7445cb7445d5a1, type: 3}
+  m_Name: ScorpionNode
+  m_EditorClassIdentifier: Assembly-CSharp::Node
+  children:
+  - {fileID: 11400000, guid: 97919bf398d134f5ca623e22761144f6, type: 2}
+  - {fileID: 11400000, guid: 30c968edf2440ee49af01bfbfe305abf, type: 2}
+  - {fileID: 11400000, guid: 014cee2af085470498f186010a73d77d, type: 2}
+  - {fileID: 11400000, guid: 6809d96325aa9dc4d862686fdd7b7ec6, type: 2}
+  - {fileID: 11400000, guid: affcda85cf0a9014087a18ae95aa18a9, type: 2}

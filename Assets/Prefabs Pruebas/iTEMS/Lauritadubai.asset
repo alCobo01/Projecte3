@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15de0671aa0094f148ac43c3cdd57222, type: 3}
+  m_Name: Lauritadubai
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemName: LauritaDubai 69
+  type: 1
+  value: 20
+  boostDuration: 1
+  boostedStat: 0
+  icon: {fileID: -3213338478731498277, guid: 0db70414872244234b7c7f8bd658ab0c, type: 3}
+  description: Encerrade en la carcel de los gemeliers

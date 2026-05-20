@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7130b1fe8d406a44887de6e51500e85b, type: 3}
+  m_Name: Final
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogueSequence
+  dialogues:
+  - speakerPortrait: {fileID: 7255003796024305070, guid: fce78d19a20c74670be94acec3615bc1, type: 3}
+    lines:
+    - "Bueno, supongo que esto servir\xE1 como presa \"digna\"."
+    - "Est\xE1 hecho completamente de hueso; no tengo que complicarme mucho en elegir."
+    - "Bueno, ahora que ya he acabado, la m\xE1scara se vuelve al altar y santas
+      pascuas."
+    typingSpeed: 0.05
+  - speakerPortrait: {fileID: 4409704079844857304, guid: 1cbc7ce96b134e0418acce3e8c362026, type: 3}
+    lines:
+    - "\xA1C\xD3MO TE ATREVES!"
+    typingSpeed: 0.05
+  - speakerPortrait: {fileID: 7255003796024305070, guid: fce78d19a20c74670be94acec3615bc1, type: 3}
+    lines:
+    - Es broma, es broma...
+    - (Nada, que me la voy a tener que quedar...)
+    typingSpeed: 0.05

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7130b1fe8d406a44887de6e51500e85b, type: 3}
+  m_Name: ComienzoJuego
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogueSequence
+  dialogues:
+  - speakerPortrait: {fileID: 7255003796024305070, guid: fce78d19a20c74670be94acec3615bc1, type: 3}
+    lines:
+    - Bueno, vamos a repasar que me han mandado hacer los de la tribu.
+    - "Tengo que \"cazar\" una presa digna y llevarles un hueso como prueba de mis
+      haza\xF1as."
+    - " Qu\xE9 pereza... Supongo que me dar\xE9 una vuelta, a ver qu\xE9 encuentro."
+    typingSpeed: 0.05

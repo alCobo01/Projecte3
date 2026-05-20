@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7130b1fe8d406a44887de6e51500e85b, type: 3}
+  m_Name: MascaraEncuentro
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogueSequence
+  dialogues:
+  - speakerPortrait: {fileID: 4409704079844857304, guid: 1cbc7ce96b134e0418acce3e8c362026, type: 3}
+    lines:
+    - ....
+    typingSpeed: 0.05
+  - speakerPortrait: {fileID: 7255003796024305070, guid: fce78d19a20c74670be94acec3615bc1, type: 3}
+    lines:
+    - ....
+    typingSpeed: 0.05
+  - speakerPortrait: {fileID: 4409704079844857304, guid: 1cbc7ce96b134e0418acce3e8c362026, type: 3}
+    lines:
+    - "S\xE9 que me est\xE1s mirando, ac\xE9rcate."
+    - "Hac\xEDa mucho tiempo que alguien pod\xEDa verme"
+    - "Chico, \xBFno estar\xE1s interesado en recibir mi ayuda?"
+    typingSpeed: 0.05
+  - speakerPortrait: {fileID: 7255003796024305070, guid: fce78d19a20c74670be94acec3615bc1, type: 3}
+    lines:
+    - ....
+    typingSpeed: 0.05
+  - speakerPortrait: {fileID: 4409704079844857304, guid: 1cbc7ce96b134e0418acce3e8c362026, type: 3}
+    lines:
+    - "\xA1NO ME IGNORES!"
+    typingSpeed: 0.05
+  - speakerPortrait: {fileID: 7255003796024305070, guid: fce78d19a20c74670be94acec3615bc1, type: 3}
+    lines:
+    - "(Yo s\xE9 que no salgo mucho de la aldea, pero esto tiene que ser raro s\xED
+      o s\xED)"
+    - "Lo siento, pero me han ense\xF1ado que no tengo que hablar con extra\xF1os."
+    typingSpeed: 0.05
+  - speakerPortrait: {fileID: 4409704079844857304, guid: 1cbc7ce96b134e0418acce3e8c362026, type: 3}
+    lines:
+    - ....
+    - "Si est\xE1s aqu\xED, es por algo, \xBFno? Yo podr\xEDa ayudarte con ello."
+    - "A cambio de que me des un paseo, te dejar\xE9 mis poderes un rato, \xBFqu\xE9
+      dices?"
+    typingSpeed: 0.05
+  - speakerPortrait: {fileID: 7255003796024305070, guid: fce78d19a20c74670be94acec3615bc1, type: 3}
+    lines:
+    - "(Esta persona no sabe que NO es NO. Tendr\xE9 que seguirle el rollo...)"
+    - "Venga, que s\xED, total, eres una m\xE1scara que habla, seguro que no me pasa
+      nada."
+    typingSpeed: 0.05
+  - speakerPortrait: {fileID: 6233934136529506686, guid: b8aad8e0bd2da45d797b5354722c0351, type: 3}
+    lines:
+    - "\xA1Has desbloqueado nuevos poderes!"
+    typingSpeed: 0.05
+  - speakerPortrait: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    lines:
+    - Ahora puedes usar los altares como puntos de guardado interactuando con ellos.
+    - "Tambi\xE9n puedes usar un impulso para explorar."
+    typingSpeed: 0.05

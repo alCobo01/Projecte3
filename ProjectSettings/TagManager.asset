@@ -2,21 +2,21 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
+  serializedVersion: 3
   tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Terrain
+  - Enemy
+  - EnemyProjectile
+  - Player
+  - Interactable
+  - Secrets
   - 
   - 
   - 
@@ -41,3 +41,26 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Terrain
+    uniqueID: 2046251113
+    locked: 0
+  - name: Characters
+    uniqueID: 2274138289
+    locked: 0
+  - name: Secrets
+    uniqueID: 3751586695
+    locked: 0
+  - name: FrontElements
+    uniqueID: 3634982733
+    locked: 0
+  - name: GrayPanel
+    uniqueID: 4277049819
+    locked: 0
+  - name: Platforms
+    uniqueID: 991225815
+    locked: 0
+  - name: TemporalCharacters
+    uniqueID: 1242836441
+    locked: 0
+  m_RenderingLayers:
+  - Default
