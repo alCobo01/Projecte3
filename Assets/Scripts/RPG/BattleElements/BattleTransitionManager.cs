@@ -103,6 +103,7 @@ public class BattleTransitionManager : MonoBehaviour
             _enemyFlickerDone = false;
             StartCoroutine(FlickerAndHideEnemy(enemyFleeFlickerDuration, hideAtEnd: false));
             StartCoroutine(DisableEnemyBattleStarterDuringFlee());
+            StartCoroutine(DisableEnemyAttacksDuringFlee());
         }
 
         yield return MoveToPositions(_playerOriginalPos, _enemyOriginalPos, 1f, 0f);
@@ -160,6 +161,14 @@ public class BattleTransitionManager : MonoBehaviour
         SetBattleStartersEnabled(starters, true);
     }
 
+    private IEnumerator DisableEnemyAttacksDuringFlee()
+    {
+        var attacks = _enemy.GetComponentsInChildren<AttackBehaviour>(true);
+        SetAttackBehavioursEnabled(attacks, false);
+        yield return new WaitUntil(() => _enemyFlickerDone);
+        SetAttackBehavioursEnabled(attacks, true);
+    }
+
     private static void SetRenderersVisible(SpriteRenderer[] renderers, bool isVisible)
     {
         foreach (var renderer in renderers) renderer.enabled = isVisible;
@@ -168,6 +177,11 @@ public class BattleTransitionManager : MonoBehaviour
     private static void SetBattleStartersEnabled(BattleStarter[] starters, bool isEnabled)
     {
         foreach (var starter in starters) starter.enabled = isEnabled;
+    }
+
+    private static void SetAttackBehavioursEnabled(AttackBehaviour[] attacks, bool isEnabled)
+    {
+        foreach (var attack in attacks) attack.enabled = isEnabled;
     }
     
     private IEnumerator MoveToPositions(Vector3 playerTarget, Vector3 enemyTarget, float alphaFrom, float alphaTo)

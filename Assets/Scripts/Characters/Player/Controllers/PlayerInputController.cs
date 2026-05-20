@@ -26,41 +26,34 @@ public class PlayerInputController : MonoBehaviour, IPlayerActions
 
     private void Update()
     {
-        if (PauseManager.Instance != null)
+        if (!PauseManager.Instance) return;
+
+        bool isPaused = PauseManager.Instance.IsPaused || PauseManager.Instance.IsInputLocked;
+        bool dialogueFreeze = DialogueManager.Instance != null && DialogueManager.Instance.ShouldFreezePlayer;
+
+        if (isPaused)
         {
-            bool isPaused = PauseManager.Instance.IsPaused || PauseManager.Instance.IsInputLocked;
-            bool dialogueFreeze = DialogueManager.Instance != null && DialogueManager.Instance.ShouldFreezePlayer;
+            if (_inputActions.Player.enabled) _inputActions.Player.Disable();
+            return;
+        }
 
-            // Si es pausa total, desactivamos todo el mapa
-            if (isPaused)
-            {
-                if (_inputActions.Player.enabled) _inputActions.Player.Disable();
-            }
-            else
-            {
-                // Si el mapa estaba desactivado por pausa, lo activamos
-                if (!_inputActions.Player.enabled) _inputActions.Player.Enable();
+        if (!_inputActions.Player.enabled) _inputActions.Player.Enable();
 
-                // Si estamos en un diálogo que congela, desactivamos solo lo que impide moverse/atacar
-                if (dialogueFreeze)
-                {
-                    _inputActions.Player.Move.Disable();
-                    _inputActions.Player.Attack.Disable();
-                    _inputActions.Player.Jump.Disable();
-                    _inputActions.Player.Dash.Disable();
-                    _inputActions.Player.Fly.Disable();
-                    // Mantenemos Interact, OpenInventory y PauseMenu habilitados
-                }
-                else
-                {
-                    // Si no hay freeze, nos aseguramos de que todo esté habilitado
-                    _inputActions.Player.Move.Enable();
-                    _inputActions.Player.Attack.Enable();
-                    _inputActions.Player.Jump.Enable();
-                    _inputActions.Player.Dash.Enable();
-                    _inputActions.Player.Fly.Enable();
-                }
-            }
+        if (dialogueFreeze)
+        {
+            _inputActions.Player.Move.Disable();
+            _inputActions.Player.Attack.Disable();
+            _inputActions.Player.Jump.Disable();
+            _inputActions.Player.Dash.Disable();
+            _inputActions.Player.Fly.Disable();
+        }
+        else
+        {
+            _inputActions.Player.Move.Enable();
+            _inputActions.Player.Attack.Enable();
+            _inputActions.Player.Jump.Enable();
+            _inputActions.Player.Dash.Enable();
+            _inputActions.Player.Fly.Enable();
         }
     }
 
@@ -71,6 +64,7 @@ public class PlayerInputController : MonoBehaviour, IPlayerActions
         if (!context.performed) return;
         OnAttackEvent?.Invoke();
     }
+    
     public void OnInteract(InputAction.CallbackContext context) => OnInteractEvent?.Invoke();
     public void OnDash(InputAction.CallbackContext context) => OnDashEvent?.Invoke();
     public void OnOpenInventory(InputAction.CallbackContext context) => OnOpenInventoryEvent?.Invoke();
