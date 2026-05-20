@@ -44,7 +44,11 @@ public class SkillUnlockTrigger : MonoBehaviour
             case SkillType.Dash:
                 if (PlayerStatsManager.Instance != null)
                 {
+                    if (PlayerStatsManager.Instance.dashUnlocked) return;
                     PlayerStatsManager.Instance.dashUnlocked = true;
+                    if (combatSkillData != null &&
+                        !PlayerStatsManager.Instance.CharacterData.skills.Contains(combatSkillData))
+                        PlayerStatsManager.Instance.AddSkill(combatSkillData);
                     Debug.Log("[SkillUnlockTrigger] Dash Unlocked!");
                 }
                 break;
@@ -52,6 +56,7 @@ public class SkillUnlockTrigger : MonoBehaviour
             case SkillType.Teleport:
                 if (CheckpointManager.Instance != null)
                 {
+                    if (CheckpointManager.Instance.TeleportUnlocked) return;
                     CheckpointManager.Instance.TeleportUnlocked = true;
                     Debug.Log("[SkillUnlockTrigger] Teleportation Unlocked!");
                 }
@@ -60,12 +65,11 @@ public class SkillUnlockTrigger : MonoBehaviour
             case SkillType.CombatSkill:
                 if (combatSkillData != null && PlayerStatsManager.Instance != null)
                 {
+                    if (PlayerStatsManager.Instance.CharacterData.skills.Contains(combatSkillData)) return;
                     PlayerStatsManager.Instance.AddSkill(combatSkillData);
                     Debug.Log($"[SkillUnlockTrigger] Combat Skill '{combatSkillData.skillName}' Unlocked!");
                 }
                 break;
-            
-            // Add other skills here if needed
         }
 
         OnUnlockEvent?.Invoke();

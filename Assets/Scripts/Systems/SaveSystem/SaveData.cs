@@ -9,7 +9,7 @@ public class SaveData
     public int currentHp;
     public int currentSp;
     public List<InventoryItemData> inventory = new();
-    public List<string> unlockedSkills = new();
+    public List<string> skills = new();
 
     // Datos del Mundo/Checkpoints
     public string lastCheckpointId;

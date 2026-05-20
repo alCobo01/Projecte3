@@ -152615,6 +152615,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueAreaTrigger
   dialogueSequence: {fileID: 11400000, guid: 2e3dc33f436db57479b4f42b37b753e1, type: 2}
+  dialogueId: 3
   triggerOnce: 1
   freezePlayer: 1
 --- !u!61 &1979758877

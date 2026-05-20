@@ -218,7 +218,7 @@ public class CheckpointManager : MonoBehaviour
             });
 
         foreach (var skill in stats.CharacterData.skills)
-            data.unlockedSkills.Add(skill.skillName);
+            data.skills.Add(skill.skillName);
 
         data.lastCheckpointId = lastCheckpointId;
         data.lastSceneName = lastCheckpointScene;
@@ -285,7 +285,7 @@ public class CheckpointManager : MonoBehaviour
         }
 
         stats.CharacterData.skills.Clear();
-        foreach (var skillName in data.unlockedSkills)
+        foreach (var skillName in data.skills)
         {
             SkillData asset = skillDatabase.Find(s => s.skillName == skillName);
             if (asset != null)

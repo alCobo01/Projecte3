@@ -9,6 +9,7 @@ public class DialogueAreaTrigger : MonoBehaviour
     [Header("Dialogue")]
     [Tooltip("The dialogue sequence to trigger.")]
     [SerializeField] private NPCDialogueSequence dialogueSequence;
+    [SerializeField] private string dialogueId;
 
     [Header("Settings")]
     [Tooltip("If true, the dialogue will only trigger once.")]
@@ -33,6 +34,10 @@ public class DialogueAreaTrigger : MonoBehaviour
         // Check if it should only trigger once
         if (_hasTriggered && triggerOnce) return;
 
+        if (triggerOnce && PlayerStatsManager.Instance != null &&
+            PlayerStatsManager.Instance.HasCompletedDialogue(dialogueId))
+            return;
+
         // Detect player
         if (other.CompareTag("Player"))
         {
@@ -41,6 +46,12 @@ public class DialogueAreaTrigger : MonoBehaviour
                 // Trigger dialogue directly through the Manager, passing the freeze setting
                 DialogueManager.Instance.StartDialogue(dialogueSequence, freezePlayer);
                 _hasTriggered = true;
+                if (triggerOnce && PlayerStatsManager.Instance != null)
+                {
+                    if (string.IsNullOrEmpty(dialogueId) && dialogueSequence != null)
+                        dialogueId = dialogueSequence.name;
+                    PlayerStatsManager.Instance.MarkDialogueCompleted(dialogueId);
+                }
             }
             else
             {

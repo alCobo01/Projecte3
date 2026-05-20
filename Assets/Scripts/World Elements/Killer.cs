@@ -36,7 +36,7 @@ public class Killer : MonoBehaviour
             
             // Re-enabling the collider should probably happen after respawn. 
             // CheckpointManager.LoadGame() handles the fade and teleport.
-            CheckpointManager.Instance.LoadGame();
+            CheckpointManager.Instance.RespawnAtLastCheckpoint();
             
             // Note: Since LoadGame is a Coroutine, we might want to re-enable 
             // the collider after the load finishes, but since the scene might reload 

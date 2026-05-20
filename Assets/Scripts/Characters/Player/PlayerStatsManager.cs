@@ -13,8 +13,8 @@ public class PlayerStatsManager : MonoBehaviour
     public int maxSp;
     public int currentCoins;
     public List<ItemStack> inventory = new();
-    public List<SkillData> unlockedSkills = new();
     public bool dashUnlocked;
+    private readonly HashSet<string> _completedDialogues = new();
 
     [SerializeField] private CharacterData characterData;
     public CharacterData CharacterData => characterData;
@@ -62,25 +62,24 @@ public class PlayerStatsManager : MonoBehaviour
         OnInventoryChanged?.Invoke();
     }
 
-    private void Start()
-    {
-        // Inicializamos las habilidades desbloqueadas con las que traiga el CharacterData por defecto
-        if (unlockedSkills.Count == 0 && characterData != null)
-        {
-            unlockedSkills = new List<SkillData>(characterData.skills);
-        }
-    }
-
     public void AddSkill(SkillData skillToAdd)
     {
-        if (skillToAdd == null) return;
-        if (!unlockedSkills.Contains(skillToAdd))
-        {
-            unlockedSkills.Add(skillToAdd);
-        }
+        if (skillToAdd == null || characterData == null) return;
+
+        if (!characterData.skills.Contains(skillToAdd))
+            characterData.skills.Add(skillToAdd);
     }
 
     public void AddCoins(int amount) => currentCoins += amount;
+
+    public bool HasCompletedDialogue(string dialogueId)
+        => !string.IsNullOrEmpty(dialogueId) && _completedDialogues.Contains(dialogueId);
+
+    public void MarkDialogueCompleted(string dialogueId)
+    {
+        if (string.IsNullOrEmpty(dialogueId)) return;
+        _completedDialogues.Add(dialogueId);
+    }
 
     public void SubstractCoins(int amount)
     {

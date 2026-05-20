@@ -87,7 +87,7 @@ public class BattleManager : MonoBehaviour
             FeetVfxAnchor = playerAnim ? playerAnim.FeetVfxAnchor : playerTransform
         };
         PlayerUnit.SetHp(Mathf.Clamp(savedHp, 1, playerData.maxHp));
-        PlayerUnit.SetSkills(stats.unlockedSkills);
+        PlayerUnit.SetSkills(stats.CharacterData.skills);
 
         _allUnits.Clear();
         _allUnits.Add(PlayerUnit);
