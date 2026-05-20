@@ -42,9 +42,9 @@ public class SkillUnlockTrigger : MonoBehaviour
         switch (skillToUnlock)
         {
             case SkillType.Dash:
-                if (player.TryGetComponent(out PlayerDashController dashController))
+                if (PlayerStatsManager.Instance != null)
                 {
-                    dashController.UnlockDash();
+                    PlayerStatsManager.Instance.dashUnlocked = true;
                     Debug.Log("[SkillUnlockTrigger] Dash Unlocked!");
                 }
                 break;

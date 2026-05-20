@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6621946476823515401}
   - component: {fileID: 7128332492489544805}
   - component: {fileID: 1382101160778355099}
+  - component: {fileID: 436746470461667830}
   m_Layer: 0
   m_Name: StatsDown
   m_TagString: Untagged
@@ -4836,3 +4837,16 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
+--- !u!210 &436746470461667830
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8853235224046531425}
+  m_Enabled: 1
+  m_SortingLayerID: 1242836441
+  m_SortingLayer: 7
+  m_SortingOrder: 45
+  m_SortAtRoot: 0
+  m_Sort3DAs2D: 0

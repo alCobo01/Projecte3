@@ -14,6 +14,7 @@ public class PlayerStatsManager : MonoBehaviour
     public int currentCoins;
     public List<ItemStack> inventory = new();
     public List<SkillData> unlockedSkills = new();
+    public bool dashUnlocked;
 
     [SerializeField] private CharacterData characterData;
     public CharacterData CharacterData => characterData;

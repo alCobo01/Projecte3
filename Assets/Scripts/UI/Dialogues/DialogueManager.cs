@@ -1,8 +1,10 @@
 using System.Collections;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Central manager for handling dialogue UI and logic.
@@ -17,6 +19,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField] private Image speakerPortraitImage;
+    [SerializeField] private string dialogueRootName = "Dialogue";
 
     [Header("Input")]
     [Tooltip("The action used to advance the dialogue when the player is frozen.")]
@@ -40,15 +43,14 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
+        if (Instance is null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
-        else
-        {
-            Destroy(gameObject);
-        }
+        else { Destroy(gameObject); }
 
+        RebindSceneReferences();
         if (dialoguePanel != null) dialoguePanel.SetActive(false);
     }
 
@@ -59,6 +61,8 @@ public class DialogueManager : MonoBehaviour
             interactAction.action.started += OnInteractPerformed;
             interactAction.action.Enable();
         }
+
+        SceneManager.sceneLoaded += HandleSceneLoaded;
     }
 
     private void OnDisable()
@@ -66,6 +70,36 @@ public class DialogueManager : MonoBehaviour
         if (interactAction != null)
         {
             interactAction.action.started -= OnInteractPerformed;
+        }
+
+        SceneManager.sceneLoaded -= HandleSceneLoaded;
+    }
+
+    private void HandleSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        RebindSceneReferences();
+        if (dialoguePanel != null) dialoguePanel.SetActive(false);
+    }
+
+    private void RebindSceneReferences()
+    {
+        if (dialoguePanel != null && dialogueText != null && speakerPortraitImage != null) return;
+
+        var root = GameObject.Find(dialogueRootName);
+        if (root == null)
+        {
+            root = Resources.FindObjectsOfTypeAll<GameObject>()
+                .FirstOrDefault(go => go.name == dialogueRootName && go.scene.IsValid());
+        }
+        if (root == null) return;
+
+        dialoguePanel = root;
+        if (dialogueText == null) dialogueText = root.GetComponentInChildren<TMP_Text>(true);
+        if (speakerPortraitImage == null)
+        {
+            var portrait = root.transform.Find("Portrait");
+            if (portrait == null) portrait = root.transform.Find("portrait");
+            if (portrait != null) speakerPortraitImage = portrait.GetComponent<Image>();
         }
     }
 

@@ -28,8 +28,8 @@ public class PlayerInputController : MonoBehaviour, IPlayerActions
     {
         if (!PauseManager.Instance) return;
 
-        bool isPaused = PauseManager.Instance.IsPaused || PauseManager.Instance.IsInputLocked;
-        bool dialogueFreeze = DialogueManager.Instance != null && DialogueManager.Instance.ShouldFreezePlayer;
+        var isPaused = PauseManager.Instance.IsInputLocked;
+        var dialogueFreeze = DialogueManager.Instance && DialogueManager.Instance.ShouldFreezePlayer;
 
         if (isPaused)
         {
@@ -64,8 +64,13 @@ public class PlayerInputController : MonoBehaviour, IPlayerActions
         if (!context.performed) return;
         OnAttackEvent?.Invoke();
     }
+
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        OnInteractEvent?.Invoke();
+    }
     
-    public void OnInteract(InputAction.CallbackContext context) => OnInteractEvent?.Invoke();
     public void OnDash(InputAction.CallbackContext context) => OnDashEvent?.Invoke();
     public void OnOpenInventory(InputAction.CallbackContext context) => OnOpenInventoryEvent?.Invoke();
     public void OnPauseMenu(InputAction.CallbackContext context) => OnPauseMenuEvent?.Invoke();

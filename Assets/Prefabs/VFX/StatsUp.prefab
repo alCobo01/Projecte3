@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 566002606265827707}
   - component: {fileID: 3432292819141774791}
   - component: {fileID: 2006631788554016419}
+  - component: {fileID: -844564978989860174}
   m_Layer: 0
   m_Name: StatsUp
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 4532367662262401384}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.708, y: -2.775, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4836,3 +4837,16 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
+--- !u!210 &-844564978989860174
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4532367662262401384}
+  m_Enabled: 1
+  m_SortingLayerID: 1242836441
+  m_SortingLayer: 7
+  m_SortingOrder: 45
+  m_SortAtRoot: 0
+  m_Sort3DAs2D: 0

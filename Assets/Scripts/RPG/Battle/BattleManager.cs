@@ -15,6 +15,8 @@ public class BattleManager : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private BattleUI ui;
+    [SerializeField] private GameObject statUpVfxPrefab;
+    [SerializeField] private GameObject statDownVfxPrefab;
     
     [Header("Durations")]
     [SerializeField] private float enemyTurnDelay = 1f;
@@ -81,7 +83,8 @@ public class BattleManager : MonoBehaviour
         PlayerUnit = new BattleUnit(playerData, isPlayer: true, startingSp: savedSp) 
         { 
             Animator = playerAnim,
-            Transform = playerTransform
+            Transform = playerTransform,
+            FeetVfxAnchor = playerAnim ? playerAnim.FeetVfxAnchor : playerTransform
         };
         PlayerUnit.SetHp(Mathf.Clamp(savedHp, 1, playerData.maxHp));
         PlayerUnit.SetSkills(stats.unlockedSkills);
@@ -94,7 +97,8 @@ public class BattleManager : MonoBehaviour
             var enemyUnit = new BattleUnit(e, isPlayer: false, startingSp: 0)
             {
                 Animator = enemyAnim,
-                Transform = enemyTransform
+                Transform = enemyTransform,
+                FeetVfxAnchor = enemyAnim ? enemyAnim.FeetVfxAnchor : enemyTransform
             };
             enemyUnit.SetSkills(e.skills);
             _allUnits.Add(enemyUnit);
@@ -106,6 +110,8 @@ public class BattleManager : MonoBehaviour
 
         _turnStack.Build(_allUnits, first);
         ui.Initialize(this);
+
+        SubscribeVfxEvents();
 
         StartCoroutine(BattleEntrySequence());
     }
@@ -236,6 +242,7 @@ public class BattleManager : MonoBehaviour
                 player.Animator.TriggerAttack();
                 var before = CaptureHp();
                 ActionResolver.ResolveItem(player, item);
+                if (item.type == ItemType.Healing) SpawnVfx(statUpVfxPrefab, player);
                 if (item.type == ItemType.Buff && item.boostedStat == StatType.Speed)
                     _turnStack.Refresh(_allUnits.Where(u => !u.IsDead));
                 NotifyHpChanges(before);
@@ -357,6 +364,8 @@ public class BattleManager : MonoBehaviour
         if (_battleLoop != null) StopCoroutine(_battleLoop);
         _battleLoop = null;
 
+        UnsubscribeVfxEvents();
+
         StartCoroutine(BattleExitSequence(playerWon, playerDied));
     }
 
@@ -374,6 +383,48 @@ public class BattleManager : MonoBehaviour
             if (player.TryGetComponent(out PlayerInputController input)) input.enabled = true;
             if (player.TryGetComponent(out PlayerDashController dash)) dash.enabled = true;
         }
+    }
+
+    private void SubscribeVfxEvents()
+    {
+        foreach (var unit in _allUnits)
+        {
+            unit.OnStatBoostApplied += HandleStatBoostVfx;
+            unit.OnStatusEffectApplied += HandleStatusEffectVfx;
+        }
+    }
+
+    private void UnsubscribeVfxEvents()
+    {
+        foreach (var unit in _allUnits)
+        {
+            unit.OnStatBoostApplied -= HandleStatBoostVfx;
+            unit.OnStatusEffectApplied -= HandleStatusEffectVfx;
+        }
+    }
+
+    private void HandleStatBoostVfx(BattleUnit unit, StatType stat, int amount)
+    {
+        if (unit == null || amount == 0) return;
+        var prefab = amount > 0 ? statUpVfxPrefab : statDownVfxPrefab;
+        SpawnVfx(prefab, unit);
+    }
+
+    private void HandleStatusEffectVfx(BattleUnit unit, StatusEffectData effectData)
+    {
+        if (unit == null || effectData == null) return;
+        var isDebuff = effectData.type is StatusEffectType.Poison or StatusEffectType.Stun;
+        SpawnVfx(isDebuff ? statDownVfxPrefab : statUpVfxPrefab, unit);
+    }
+
+    private void SpawnVfx(GameObject prefab, BattleUnit unit)
+    {
+        if (!prefab) return;
+        var anchor = unit.FeetVfxAnchor != null ? unit.FeetVfxAnchor : unit.Transform;
+        if (!anchor) return;
+        var instance = Instantiate(prefab, anchor.position, Quaternion.identity, anchor);
+        var particle = instance.GetComponent<ParticleSystem>();
+        if (particle) particle.Play(true);
     }
 
     private void ForceCleanupIfNeeded() { if (!_endNotified) EndBattle(playerWon: false); }

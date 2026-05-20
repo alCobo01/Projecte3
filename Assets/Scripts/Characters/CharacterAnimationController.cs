@@ -22,6 +22,11 @@ public class CharacterAnimationController : MonoBehaviour
     private bool _aboutToLandTriggered;
     private float _airborneTime;
 
+    [Header("VFX")]
+    [SerializeField] private Transform feetVfxAnchor;
+
+    public Transform FeetVfxAnchor => feetVfxAnchor;
+
     private const float MinAirTimeForLandAnticipation = 0.08f;
     private const float AboutToLandMinFallSpeed = -0.15f;
 

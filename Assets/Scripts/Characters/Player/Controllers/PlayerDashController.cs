@@ -5,8 +5,6 @@ public class PlayerDashController : MonoBehaviour
 {
     private static readonly int DashEndHash = Animator.StringToHash("DashEnd");
     
-    public bool CanDash { get; set; }
-    
     [SerializeField] private float dashCooldown = 2f;
 
     private CharacterAnimationController _animController;
@@ -16,6 +14,7 @@ public class PlayerDashController : MonoBehaviour
     private Vector2 _currentMoveInput;
     private float _lastDashTime;
     private float _lastFacingDirectionX = 1f;
+    private bool _canDash = true;
     
     private void Awake()
     {
@@ -29,14 +28,6 @@ public class PlayerDashController : MonoBehaviour
         _inputController.OnMoveEvent += UpdateMoveInput;
         _inputController.OnDashEvent += HandleDash;
         _dashBehaviour.OnDashFinishedEvent += HandleDashFinished;
-
-        // El dash empieza desactivado hasta que se desbloquee
-        CanDash = false;
-    }
-
-    public void UnlockDash()
-    {
-        CanDash = true;
     }
 
     private void OnDisable()
@@ -54,7 +45,7 @@ public class PlayerDashController : MonoBehaviour
     
     private void HandleDash()
     {
-        if (!CanDash) return;
+        if (!CanDash || !IsDashUnlocked) return;
         if (!(Time.time >= _lastDashTime + dashCooldown) || _dashBehaviour.IsDashing) return;
         
         var targetDirectionX = _currentMoveInput.x != 0 ? Mathf.Sign(_currentMoveInput.x) : _lastFacingDirectionX;
@@ -70,4 +61,12 @@ public class PlayerDashController : MonoBehaviour
     {
         _animController?.TriggerHash(DashEndHash);
     }
+
+    public bool CanDash
+    {
+        get => _canDash;
+        set => _canDash = value;
+    }
+
+    private bool IsDashUnlocked => PlayerStatsManager.Instance != null && PlayerStatsManager.Instance.dashUnlocked;
 }

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BattleUnit
 {
@@ -8,10 +9,14 @@ public class BattleUnit
     public List<SkillData> Skills { get; private set; }
     public CharacterAnimationController Animator { get; set; }
     public Transform Transform { get; set; }
+    public Transform FeetVfxAnchor { get; set; }
     public int CurrentHp { get; private set; }
     public int CurrentSp { get; private set; }
     public bool SkipNextAction { get; set; }
     public bool IsPlayer { get; }
+
+    public event UnityAction<BattleUnit, StatusEffectData> OnStatusEffectApplied;
+    public event UnityAction<BattleUnit, StatType, int> OnStatBoostApplied;
     
     public bool IsDead => CurrentHp <= 0;
     public bool IsStunned => _activeEffects.Any(e => e.Data != null && e.Data.type == StatusEffectType.Stun);
@@ -69,12 +74,16 @@ public class BattleUnit
     }
 
     public void ApplyEffect(StatusEffectData effectData)
-        => _activeEffects.Add(new StatusEffect(effectData));
+    {
+        _activeEffects.Add(new StatusEffect(effectData));
+        OnStatusEffectApplied?.Invoke(this, effectData);
+    }
 
     public void ApplyStatBoost(StatType stat, int amount, int duration)
     {
         _tempBoosts[stat] = _tempBoosts.GetValueOrDefault(stat) + amount;
         _activeEffects.Add(new StatusEffect(stat, amount, duration));
+        OnStatBoostApplied?.Invoke(this, stat, amount);
     }
 
     public void TickEffects()

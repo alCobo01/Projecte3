@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: AvailableSkills
   m_EditorClassIdentifier: Assembly-CSharp::AvailableSkills
   skills:
-  - {fileID: 11400000, guid: 91e95b9e348864770b574740c4aa69f9, type: 2}
-  - {fileID: 11400000, guid: 36d50131e25604671903b21ae4757c9c, type: 2}
-  - {fileID: 11400000, guid: 21ed86d250921488e8784b9d8920bc76, type: 2}
+  - {fileID: 11400000, guid: bc6ad1914b5214630808cc9fe7b51078, type: 2}
+  - {fileID: 11400000, guid: 318c6905cb1ee41db822b58f98e06fc0, type: 2}

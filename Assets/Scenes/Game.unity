@@ -6117,7 +6117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkillUnlockTrigger
   skillToUnlock: 0
-  combatSkillData: {fileID: 11400000, guid: 21ed86d250921488e8784b9d8920bc76, type: 2}
+  combatSkillData: {fileID: 11400000, guid: 63fb0845325814eafaeca12c1fe73dc1, type: 2}
   destroyOnUnlock: 1
   OnUnlockEvent:
     m_PersistentCalls:
@@ -6520,9 +6520,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPC
   dialogueData: {fileID: 11400000, guid: 2e3dc33f436db57479b4f42b37b753e1, type: 2}
-  dialoguePanel: {fileID: 6893716298092448271}
-  dialogueText: {fileID: 7903342716649798855}
-  speakerPortraitImage: {fileID: 4265023497982595601}
   interactionCooldown: 1
 --- !u!61 &1608254911
 BoxCollider2D:
@@ -6642,7 +6639,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
->>>>>>> feat/secretLight
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1635122206
@@ -7703,6 +7699,7 @@ MonoBehaviour:
   dialoguePanel: {fileID: 6893716298092448271}
   dialogueText: {fileID: 7903342716649798855}
   speakerPortraitImage: {fileID: 4265023497982595601}
+  dialogueRootName: Dialogue
   interactAction: {fileID: 1781555164194001046, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   progressionCooldown: 1
 --- !u!4 &1660252253
@@ -19491,7 +19488,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1703146640
 Transform:
   m_ObjectHideFlags: 0
@@ -20990,7 +20987,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5311911019246676495, guid: 0581683d6c792407d9ca93fed5f6f2d0, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6239260578595877635, guid: 0581683d6c792407d9ca93fed5f6f2d0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -29067,6 +29064,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleManager
   ui: {fileID: 1372799920128096073}
+  statUpVfxPrefab: {fileID: 4532367662262401384, guid: f5e2da3d7adeb94448da6b93cf034995, type: 3}
+  statDownVfxPrefab: {fileID: 8853235224046531425, guid: 69a6884e81a51e246861350b74bb5d4d, type: 3}
   enemyTurnDelay: 1
   turnCadenceDelay: 1
   lungeDuration: 0.25
@@ -30127,11 +30126,11 @@ Transform:
   m_GameObject: {fileID: 468578292932384504}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -5.7369995, y: -2.8283691, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7990158659930535778}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3752907652075659417
 MonoBehaviour:
@@ -31633,6 +31632,10 @@ PrefabInstance:
     - target: {fileID: 1008345692149492340, guid: edfc61838705a438d830c56132af00d2, type: 3}
       propertyPath: m_Name
       value: Scorpion
+      objectReference: {fileID: 0}
+    - target: {fileID: 1008345692149492340, guid: edfc61838705a438d830c56132af00d2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1275250008376267638, guid: edfc61838705a438d830c56132af00d2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -33538,6 +33541,7 @@ MonoBehaviour:
   currentCoins: 0
   inventory: []
   unlockedSkills: []
+  dashUnlocked: 0
   characterData: {fileID: 11400000, guid: 94fb8e985149a49e385cdf1821994a0a, type: 2}
 --- !u!222 &5925047881830997073
 CanvasRenderer:
@@ -41334,7 +41338,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7931461823127551002, guid: 417233b49c1f2c7428592785176da919, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -41356,7 +41360,7 @@ MonoBehaviour:
   m_Padding:
     m_Left: 50
     m_Right: 50
-    m_Top: 0
+    m_Top: 100
     m_Bottom: 50
   m_ChildAlignment: 1
   m_StartCorner: 0
@@ -41378,7 +41382,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3750095017070316703}
   - {fileID: 1788394871615139117}
   - {fileID: 6560447793526994188}
   m_Father: {fileID: 0}
@@ -42987,3 +42990,5 @@ SceneRoots:
   - {fileID: 1703146640}
   - {fileID: 1422044242}
   - {fileID: 1660252253}
+  - {fileID: 1608254913}
+  - {fileID: 3750095017070316703}
