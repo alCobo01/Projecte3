@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: AvailableItems
   m_EditorClassIdentifier: Assembly-CSharp::AvailableItems
   items:
-  - item: {fileID: 11400000, guid: 1151437b315864de4a128fa59ea8c6d7, type: 2}
+  - item: {fileID: 11400000, guid: daf27753868814a0fbc9491cd021b942, type: 2}
     quantity: 1
-  - item: {fileID: 11400000, guid: 5434996231f724537b0f6dba58965eba, type: 2}
-    quantity: 0
+  - item: {fileID: 11400000, guid: e631788512fbc4ab6a35c785a9d97f98, type: 2}
+    quantity: 1
+  - item: {fileID: 11400000, guid: bb57440de4a064b1b875b45a8106113e, type: 2}
+    quantity: 1

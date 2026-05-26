@@ -29,9 +29,11 @@ public class UnlockSkillUI : MonoBehaviour
     
     private void ChooseSkill(int index)
     {
+        if (availableSkills == null || index < 0 || index >= availableSkills.skills.Count) return;
         var selectedSkill = availableSkills.skills[index];
+        if (!selectedSkill) return;
         PlayerStatsManager.Instance.AddSkill(selectedSkill);
-        availableSkills.skills.Remove(selectedSkill);
+        availableSkills.skills.RemoveAt(index);
         Toggle();
     }
     
@@ -58,6 +60,7 @@ public class UnlockSkillUI : MonoBehaviour
 
         if (isActive)
         {
+            PopulateGrid();
             panel.SetActive(true);
             _fadeCoroutine = StartCoroutine(Fade(0f, 1f));
         }

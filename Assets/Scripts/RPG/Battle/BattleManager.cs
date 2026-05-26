@@ -439,7 +439,16 @@ public class BattleManager : MonoBehaviour
 
     private void NotifyHpChange(BattleUnit unit, int hpBefore)
     {
-        if (unit != null && hpBefore != unit.CurrentHp) OnDamageTaken?.Invoke(unit);
+        if (unit != null && hpBefore != unit.CurrentHp)
+        {
+            OnDamageTaken?.Invoke(unit);
+
+            if (unit.IsDead && !unit.IsPlayer && unit.Transform != null)
+            {
+                var boss = unit.Transform.GetComponentInChildren<BossBehaviour>();
+                if (boss != null) boss.NotifyBossDied();
+            }
+        }
     }
 
     private void EmitGroupHpDeltaMessages(string actorName, string actionName, Dictionary<BattleUnit, int> before)

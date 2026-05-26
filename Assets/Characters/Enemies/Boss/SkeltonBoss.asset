@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SkeltonBoss
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   characterName: Skeleton
-  maxHp: 150
+  maxHp: 80
   maxSp: 80
   attack: 7
   defense: 7

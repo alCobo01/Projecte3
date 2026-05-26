@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class BossBehaviour : MonoBehaviour
 {
+    public static event System.Action OnBossDied;
+
     [Header("References")]
     [SerializeField] private GameObject mainVfxObject;
     [SerializeField] private GameObject vfxObject;
@@ -17,6 +19,7 @@ public class BossBehaviour : MonoBehaviour
     private BattleStarter playerBattleStarter;
     private Animator bossAnimator;
     private bool _activated;
+    private bool _deathNotified;
 
     private void Awake()
     {
@@ -77,5 +80,12 @@ public class BossBehaviour : MonoBehaviour
         
         playerMovement.CanMove = true;
         playerInput.enabled = true;
+    }
+
+    public void NotifyBossDied()
+    {
+        if (_deathNotified) return;
+        _deathNotified = true;
+        OnBossDied?.Invoke();
     }
 }

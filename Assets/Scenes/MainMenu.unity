@@ -6451,6 +6451,10 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: db8f0154fecb74c6a930b990b211ece9, type: 3}
     volume: 1
     pitch: 1
+  - name: Secret
+    clip: {fileID: 8300000, guid: 55c76fe05d61245409c79efca2f553cc, type: 3}
+    volume: 1
+    pitch: 1
   backgroundMusics:
   - {fileID: 8300000, guid: c3f6a147c479d4c5d901a18f01d856fa, type: 3}
   - {fileID: 8300000, guid: 9edda411b42b4421987c6e0b6eb94ca0, type: 3}
